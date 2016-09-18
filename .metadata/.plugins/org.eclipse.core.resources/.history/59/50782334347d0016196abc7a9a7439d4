@@ -1,0 +1,6 @@
+package br.ufrpe.cliente;
+public class Cliente {
+	private String cpf;
+	private LocalDate nascimento;
+	private 
+}

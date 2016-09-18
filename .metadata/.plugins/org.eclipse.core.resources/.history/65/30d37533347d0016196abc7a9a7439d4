@@ -1,0 +1,9 @@
+package br.ufrpe.cliente;
+
+public class Endereco {
+
+	public Endereco() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

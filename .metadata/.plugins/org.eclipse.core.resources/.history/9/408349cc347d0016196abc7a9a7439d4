@@ -1,0 +1,9 @@
+package br.ufrpe.cliente;
+import java.time.LocalDate;
+public class Cliente {
+	private String cpf;
+	private LocalDate nascimento;
+	private String nome;
+	private String sobrenome;
+	private Endereco end;
+}
