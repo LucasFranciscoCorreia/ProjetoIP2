@@ -1,0 +1,98 @@
+package br.ufrpe.produtos;
+
+public class Produtos {
+	private float preço;
+	private String nome;
+	private String tipo;
+	private String codigo;
+	private int estoque;
+	
+	public Produtos(float preço, String nome, String tipo, String codigo, int estoque) {
+		this.preço = preço;
+		this.nome = nome;
+		this.tipo = tipo;
+		this.codigo = codigo;
+		this.estoque = estoque;
+	}
+	
+	public void addEstoque(int qtd){
+		int x = this.getEstoque();
+		x += qtd;
+		this.setEstoque(x);
+	}
+	
+	public float getPreço() {
+		return preço;
+	}
+	
+	public void setPreço(float preço) {
+		this.preço = preço;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public int getEstoque() {
+		return estoque;
+	}
+	
+	public void setEstoque(int estoque) {
+		this.estoque = estoque;
+	}
+	
+	public String toString(){
+		String res = String.format("Nome: %s \nPreço: %.2f\nCódigo %s\nTipo: %s\nEstoque: %d", nome,preço,codigo,tipo,estoque);
+		return res;
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produtos other = (Produtos) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (estoque != other.estoque)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (Float.floatToIntBits(preço) != Float.floatToIntBits(other.preço))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		return true;
+	}
+	
+	
+	
+
+}
