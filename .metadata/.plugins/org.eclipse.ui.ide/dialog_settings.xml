@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/lucas/Área de Trabalho/ProjetoIP2/Projeto/src/br/ufrpe/funcionario"/>
 		<item value="D:\Rafael\Ciência da Computação\Programação Java\ProjetoIP2"/>
 	</list>
 </section>

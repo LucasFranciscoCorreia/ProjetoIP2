@@ -1,64 +1,51 @@
 package br.ufrpe.produtos;
-
 public class Produtos {
-	private float preço;
+	private float preco;
 	private String nome;
 	private String tipo;
 	private String codigo;
-	private int estoque;
-	
-	public Produtos(float preço, String nome, String tipo, String codigo, int estoque) {
-		this.preço = preço;
+	private int estoque;	
+	public Produtos(float preco, String nome, String tipo, String codigo, int estoque) {
+		this.preco = preco;
 		this.nome = nome;
 		this.tipo = tipo;
 		this.codigo = codigo;
 		this.estoque = estoque;
-	}
-	
+	}	
 	public void addEstoque(int qtd){
 		int x = this.getEstoque();
 		x += qtd;
 		this.setEstoque(x);
-	}
-	
-	public float getPreço() {
-		return preço;
-	}
-	
-	public void setPreço(float preço) {
-		this.preço = preço;
-	}
-	
+	}	
+	public float getPreco() {
+		return preco;
+	}	
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}	
 	public String getNome() {
 		return nome;
-	}
-	
+	}	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public String getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
 	public String getCodigo() {
 		return codigo;
 	}
-
 	public int getEstoque() {
 		return estoque;
-	}
-	
+	}	
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
-	}
-	
+	}	
 	public String toString(){
-		String prod = String.format("Nome: %s \nPreço: %.2f\nCódigo %s\nTipo: %s\nEstoque: %d", nome,preço,codigo,tipo,estoque);
+		String prod = String.format("Nome: %s \nPreÃ§o: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
 		return prod;  
 	}
 
@@ -70,7 +57,4 @@ public class Produtos {
 		}
 		return resultado;	
 	}
-	
-	
-
 }
