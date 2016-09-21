@@ -1,17 +1,52 @@
 package br.ufrpe.cliente;
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import br.ufrpe.animal.Animal;
+import br.ufrpe.animal.RepositorioAnimal;
 public class Cliente {
 	private String cpf;
 	private LocalDate nascimento;
 	private String nome;
+	public RepositorioAnimal getPets() {
+		return pets;
+	}
 	private String sobrenome;
 	private Endereco end;
+	private RepositorioAnimal pets;
 	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome){
 		this.cpf = cpf;
 		this.nome = nome;
 		this.nascimento = nascimento;
 		this.sobrenome = sobrenome;
 		this.end = new Endereco();
+		this.pets = new RepositorioAnimal();
+		
+	}
+	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Animal outro){
+		this.cpf = cpf;
+		this.nome = nome;
+		this.nascimento = nascimento;
+		this.sobrenome = sobrenome;
+		this.end = new Endereco();
+		this.pets = new RepositorioAnimal(outro);
+		
+	}
+	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Animal[] outro){
+		this.cpf = cpf;
+		this.nome = nome;
+		this.nascimento = nascimento;
+		this.sobrenome = sobrenome;
+		this.end = new Endereco();
+		this.pets = new RepositorioAnimal(outro);
+	}
+	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, ArrayList<Animal> outro){
+		this.cpf = cpf;
+		this.nome = nome;
+		this.nascimento = nascimento;
+		this.sobrenome = sobrenome;
+		this.end = new Endereco();
+		this.pets = new RepositorioAnimal(outro);
 	}
 	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end) {
 		this.cpf = cpf;
@@ -19,7 +54,33 @@ public class Cliente {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.end = end;
+		this.pets = new RepositorioAnimal();
 	}
+	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, Animal outro) {
+		this.cpf = cpf;
+		this.nascimento = nascimento;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.end = end;
+		this.pets = new RepositorioAnimal(outro);
+	}
+	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, Animal[] outros) {
+		this.cpf = cpf;
+		this.nascimento = nascimento;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.end = end;
+		this.pets = new RepositorioAnimal(outros);
+	}
+	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, ArrayList<Animal> outros) {
+		this.cpf = cpf;
+		this.nascimento = nascimento;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.end = end;
+		this.pets = new RepositorioAnimal(outros);
+	}
+	
 	public LocalDate getNascimento() {
 		return nascimento;
 	}

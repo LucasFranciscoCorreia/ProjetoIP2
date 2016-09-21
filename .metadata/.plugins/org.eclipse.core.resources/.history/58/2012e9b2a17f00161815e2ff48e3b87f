@@ -1,0 +1,24 @@
+package br.ufrpe.animal;
+
+public class Animal {
+
+	private boolean isAlive;
+	private String especie;
+	private String raca;
+	private String donoNome;
+	private String donoCPF;
+	private double peso;
+	private double tamanho;
+	
+	public Animal(boolean isAlive, String especie, String raca, String donoNome, String donoCPF, double peso, double tamanho) {
+		this.isAlive = isAlive;
+		this.especie = especie;
+		this.raca = raca;
+		this.donoNome = donoNome;
+		this.donoCPF = donoCPF;
+		this.peso = peso;
+		this.tamanho = tamanho;
+	}
+	
+}
+

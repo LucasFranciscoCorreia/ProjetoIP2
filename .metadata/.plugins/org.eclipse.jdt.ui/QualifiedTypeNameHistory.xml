@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="br.ufrpe.cliente.Endereco"/>
 <fullyQualifiedTypeName name="br.ufrpe.cliente.RepositorioCliente"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="br.ufrpe.animal.RepositorioAnimal"/>
 </qualifiedTypeNameHistroy>
