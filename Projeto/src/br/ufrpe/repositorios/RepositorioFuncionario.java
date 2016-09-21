@@ -15,10 +15,6 @@ public class RepositorioFuncionario {
 			this.repositorio.add(repositorio[i]);
 		}
 	}	
-	//Adicionar um outro repositorio a esse:
-	public RepositorioFuncionario(ArrayList<Funcionario> repositorio){
-		this.repositorio = repositorio;
-	}	
 	public void cadastrar(Funcionario funcionario){
 		this.repositorio.add(funcionario);
 	}	
@@ -39,9 +35,18 @@ public class RepositorioFuncionario {
 			}
 		}
 		return i;
-	}	
+	}
+	public Funcionario buscar(int i){
+		if(i < this.repositorio.size() && i >= 0){
+			return this.repositorio.get(i);		
+		}
+		return null;
+	}
 	public void remover(Funcionario funcionario){
 		int i = buscarIndice(funcionario);
 		this.repositorio.remove(i);
+	}
+	public int Size(){
+		return repositorio.size();
 	}
 }

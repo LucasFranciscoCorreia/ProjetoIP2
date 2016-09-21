@@ -49,7 +49,7 @@ public class Endereco {
 		this.cidadeUF = cidadeUF;
 	}
 	public String toString(){
-		String res = String.format("Cidade-UF: %s\nRua: %s\nNumero: %d\nCEP: %s\nComplemento", cidadeUF, rua, numero, cep, complemento);
+		String res = String.format("\nCidade-UF: %s\nRua: %s\nNumero: %d\nCEP: %s\nComplemento", cidadeUF, rua, numero, cep, complemento);
 		return res;
 	}
 	public boolean equals(Endereco outro){

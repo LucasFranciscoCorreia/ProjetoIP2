@@ -7,12 +7,12 @@ public class Cliente {
 	private String cpf;
 	private LocalDate nascimento;
 	private String nome;
-	public RepositorioAnimal getPets() {
-		return pets;
-	}
 	private String sobrenome;
 	private Endereco end;
 	private RepositorioAnimal pets;
+	public RepositorioAnimal getPets() {
+		return pets;
+	}
 	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome){
 		this.cpf = cpf;
 		this.nome = nome;
@@ -22,24 +22,7 @@ public class Cliente {
 		this.pets = new RepositorioAnimal();
 		
 	}
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Animal outro){
-		this.cpf = cpf;
-		this.nome = nome;
-		this.nascimento = nascimento;
-		this.sobrenome = sobrenome;
-		this.end = new Endereco();
-		this.pets = new RepositorioAnimal(outro);
-		
-	}
 	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Animal[] outro){
-		this.cpf = cpf;
-		this.nome = nome;
-		this.nascimento = nascimento;
-		this.sobrenome = sobrenome;
-		this.end = new Endereco();
-		this.pets = new RepositorioAnimal(outro);
-	}
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, ArrayList<Animal> outro){
 		this.cpf = cpf;
 		this.nome = nome;
 		this.nascimento = nascimento;
@@ -55,14 +38,7 @@ public class Cliente {
 		this.end = end;
 		this.pets = new RepositorioAnimal();
 	}
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, Animal outro) {
-		this.cpf = cpf;
-		this.nascimento = nascimento;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.end = end;
-		this.pets = new RepositorioAnimal(outro);
-	}
+
 	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, Animal[] outros) {
 		this.cpf = cpf;
 		this.nascimento = nascimento;
@@ -71,15 +47,6 @@ public class Cliente {
 		this.end = end;
 		this.pets = new RepositorioAnimal(outros);
 	}
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, ArrayList<Animal> outros) {
-		this.cpf = cpf;
-		this.nascimento = nascimento;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.end = end;
-		this.pets = new RepositorioAnimal(outros);
-	}
-	
 	public LocalDate getNascimento() {
 		return nascimento;
 	}
@@ -102,7 +69,7 @@ public class Cliente {
 		return cpf;
 	}
 	private String DataAniversario(){
-		String res = String.format("%0d/%0d/%000d", nascimento.getDayOfMonth(), nascimento.getMonth().getValue(), nascimento.getYear());
+		String res = String.format("%d/%d/%d", nascimento.getDayOfMonth(), nascimento.getMonth().getValue(), nascimento.getYear());
 		return res;
 	}
 	public String toString(){

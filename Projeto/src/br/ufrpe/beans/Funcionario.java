@@ -40,14 +40,14 @@ public class Funcionario {
 	public void setSalario(double salario){
 		this.salario = salario;
 	}	
-	public double getSalario(double salario){
+	public double getSalario(){
 		return this.salario;
 	}	
 	public void setEntrada(LocalDateTime entrada){
 		this.entrada = entrada;
 	}	
 	public String getEntrada(){
-		return String.format("%i/%i/%i", entrada.getDayOfMonth(), entrada.getMonthValue(), entrada.getYear());
+		return String.format("%d/%d/%d %d:%d:%d", entrada.getYear(), entrada.getMonthValue(), entrada.getYear(), entrada.getHour(), entrada.getMinute(), entrada.getSecond());
 	}	
 	public boolean equals(Funcionario outro){
 		return cpf.equals(outro.getCPF());

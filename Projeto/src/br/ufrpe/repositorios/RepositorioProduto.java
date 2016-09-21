@@ -6,6 +6,9 @@ import br.ufrpe.beans.Produtos;
 
 public class RepositorioProduto {
 	private ArrayList<Produtos> rep = new ArrayList<>();
+	public int Size(){
+		return rep.size();
+	}
 	public void adicionar(Produtos novo){
 		rep.add(novo);
 	}
@@ -17,7 +20,10 @@ public class RepositorioProduto {
 		}
 		return null;
 	}
-	public int buscarI(Produtos bus){
+	public Produtos buscar(int i){
+		return rep.get(i);
+	}
+	private int buscarI(Produtos bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return i;
@@ -28,7 +34,7 @@ public class RepositorioProduto {
 	public void remover(Produtos antigo){
 		int i = buscarI(antigo);
 		if(i != -1){
-			remover(antigo);
+			rep.remove(antigo);
 		}else{
 			System.out.println("Produto nao encontrado");
 		}

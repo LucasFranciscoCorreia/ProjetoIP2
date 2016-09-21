@@ -63,8 +63,8 @@ public class Animal {
 	}
 	
 	public String toString(){
-		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %f\nPeso: %f\n", donoNome, donoCPF, raca, especie, tamanho, peso);
-		res+="\nIs Alive? " + isAlive;
+		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", donoNome, donoCPF, raca, especie, tamanho, peso);
+		res+="Is Alive? " + isAlive;
 		return res;
 	}
 	public boolean equals(Animal outro){

@@ -20,27 +20,28 @@ public class RepositorioAnimal {
 			rep.add(outros[i]);
 		}
 	}
+	public int Size(){
+		return rep.size();
+	}
 	public void adicionar(Animal novo){
 		rep.add(novo);
 	}
-	public Animal buscar(Animal bus){
+	private int buscar(Animal bus){
 		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i) == bus){
-				return rep.get(i);
-			}
-		}
-		return null;
-	}
-	public int buscarI(Animal bus){
-		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i) == bus){
+			if(rep.get(i).equals(bus)){
 				return i;
 			}
 		}
 		return -1;
 	}
+	public Animal getPet(int i){
+		if(i >=0 && i < rep.size()){
+			return this.rep.get(i);			
+		}
+		return null;
+	}
 	public void remover(Animal antigo){
-		int i = buscarI(antigo);
+		int i = buscar(antigo);
 		if(i != -1){
 			rep.remove(i);			
 		}else{
@@ -48,7 +49,10 @@ public class RepositorioAnimal {
 		}
 	}
 	public void atualizar(Animal antigo, Animal novo){
-		remover(antigo);
-		adicionar(novo);
+		int i = this.buscar(antigo);
+		if(i != -1){
+			remover(antigo);
+			adicionar(novo);			
+		}
 	}
 }
