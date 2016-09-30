@@ -44,8 +44,8 @@ public class Funcionario {
 		return this.endereco;
 	}
 	
-	public String getEndereco(){
-		return this.endereco.toString();
+	public Endereco getEndereco(){
+		return this.endereco;
 	}	
 	
 	public void setSalario(double salario){

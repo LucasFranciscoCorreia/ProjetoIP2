@@ -5,16 +5,14 @@ public class Animal {
 	private boolean isAlive;
 	private String especie;
 	private String raca;
-	private String donoNome;
-	private String donoCPF;
+	private Cliente dono;
 	private double peso;
 	private double tamanho;
-	public Animal(boolean isAlive, String especie, String raca, String donoNome, String donoCPF, double peso, double tamanho) {
+	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho) {
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;
-		this.donoNome = donoNome;
-		this.donoCPF = donoCPF;
+		this.dono = dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
 	}
@@ -27,11 +25,11 @@ public class Animal {
 	}
 
 	public String getDonoCPF() {
-		return donoCPF;
+		return this.dono.getCpf();
 	}
 
-	public void setDonoCPF(String donoCPF) {
-		this.donoCPF = donoCPF;
+	public void setDonoCPF(Cliente dono) {
+		this.dono = dono;
 	}
 
 	public double getPeso() {
@@ -59,17 +57,17 @@ public class Animal {
 	}
 
 	public String getDonoNome() {
-		return donoNome;
+		return this.dono.getNome();
 	}
 	
 	public String toString(){
-		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", donoNome, donoCPF, raca, especie, tamanho, peso);
+		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
 		res+="Is Alive? " + isAlive;
 		return res;
 	}
 	public boolean equals(Animal outro){
 		boolean res = false;
-		if(donoCPF == outro.getDonoCPF()
+		if(dono.getCpf() == outro.getDonoCPF()
 				&& raca == outro.getRaca()
 				&& especie == outro.getEspecie()
 				&& isAlive == outro.getIsAlive()){

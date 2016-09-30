@@ -3,22 +3,16 @@ import java.util.ArrayList;
 
 import br.ufrpe.beans.Animal;
 public class RepositorioAnimal {
-	ArrayList<Animal> rep;
-	public RepositorioAnimal(){
+	private ArrayList<Animal> rep;
+	private static RepositorioAnimal repo;
+	private RepositorioAnimal(){
 		rep = new ArrayList<>();
 	}
-	public RepositorioAnimal(ArrayList<Animal> outro){
-		rep = outro;
-	}
-	public RepositorioAnimal(Animal outro){
-		rep = new ArrayList<>();
-		rep.add(outro);
-	}
-	public RepositorioAnimal(Animal[] outros){
-		rep = new ArrayList<>();
-		for(int i = 0; i < outros.length;i++){
-			rep.add(outros[i]);
+	public static RepositorioAnimal getInstance(){
+		if (repo == null) {
+			repo = new RepositorioAnimal();
 		}
+		return repo;
 	}
 	public int Size(){
 		return rep.size();

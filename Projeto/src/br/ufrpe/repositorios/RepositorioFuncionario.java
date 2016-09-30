@@ -92,7 +92,7 @@ public class RepositorioFuncionario {
 		
 		if(i != -1){
 			this.repositorio.get(i).setCargo(funcionario.getCargo());
-			this.repositorio.get(i).setEndereco(funcionario.getEnderecoS());
+			this.repositorio.get(i).setEndereco(funcionario.getEndereco());
 			this.repositorio.get(i).setSalario(funcionario.getSalario());
 			
 			return true;

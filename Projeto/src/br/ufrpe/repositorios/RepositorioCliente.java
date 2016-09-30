@@ -4,18 +4,15 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 public class RepositorioCliente {
 	private ArrayList<Cliente> repositorio;
-	public RepositorioCliente() {
+	private static  RepositorioCliente rep;
+	private RepositorioCliente() {
 		 repositorio = new ArrayList<>();
 	}
-	public RepositorioCliente(ArrayList<Cliente> repositorio){
-		this.repositorio = repositorio;
-	}
-	public RepositorioCliente(Cliente[] repositorio){
-		int i;
-		this.repositorio = new ArrayList<>();
-		for(i = 0; i < repositorio.length;i++){
-			this.repositorio.add(repositorio[i]);
+	public static RepositorioCliente getInstance(){
+		if (rep == null) {
+			rep = new RepositorioCliente();
 		}
+		return rep;
 	}
 	public void cadastrar(Cliente outro){
 		this.repositorio.add(outro);
@@ -25,12 +22,12 @@ public class RepositorioCliente {
 	}
 	public Cliente buscar(String cpf){
 		int i;
-		for(i = 0; i < this.getSize();i++){
+		for(i = 0; i < getSize();i++){
 			if(this.repositorio.get(i).getCpf().equals(cpf)){
-				break;
+				return this.repositorio.get(i);
 			}
 		}
-		return this.repositorio.get(i);
+		return null;
 	}
 	public int buscarI(Cliente outro){
 		int i;

@@ -1,34 +1,16 @@
 package br.ufrpe.beans;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
-import br.ufrpe.repositorios.RepositorioAnimal;
+import java.util.Scanner;
 public class Cliente {
 	private String cpf;
 	private LocalDate nascimento;
 	private String nome;
 	private String sobrenome;
 	private Endereco end;
-	private RepositorioAnimal pets;
-	public RepositorioAnimal getPets() {
+	private Animal pets[];
+	private int qntPets;
+	public Animal[] getPets() {
 		return pets;
-	}
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome){
-		this.cpf = cpf;
-		this.nome = nome;
-		this.nascimento = nascimento;
-		this.sobrenome = sobrenome;
-		this.end = new Endereco();
-		this.pets = new RepositorioAnimal();
-		
-	}
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Animal[] outro){
-		this.cpf = cpf;
-		this.nome = nome;
-		this.nascimento = nascimento;
-		this.sobrenome = sobrenome;
-		this.end = new Endereco();
-		this.pets = new RepositorioAnimal(outro);
 	}
 	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end) {
 		this.cpf = cpf;
@@ -36,16 +18,34 @@ public class Cliente {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.end = end;
-		this.pets = new RepositorioAnimal();
+		this.pets = new Animal[1];
+		this.qntPets = 0;
 	}
-
-	public Cliente(String cpf, LocalDate nascimento, String nome, String sobrenome, Endereco end, Animal[] outros) {
-		this.cpf = cpf;
-		this.nascimento = nascimento;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.end = end;
-		this.pets = new RepositorioAnimal(outros);
+	public void setPets(Animal[] pets) {
+		Scanner in = new Scanner(System.in);
+		if (qntPets == 0) {
+			this.pets = pets;
+		}else{
+			System.out.print("Operacao invalida\nUsuario possui animais de estimacao cadastrados\nEssa ação resultaria numa perda de informação dos animais cadastrados\nDeseja confirmar:\1.Sim\n2.Nao\nOpcao: ");
+			int op = in.nextInt();
+			if (op == 1) {
+				this.pets = pets;
+			}
+		}
+	}
+	public void addPet(Animal novo){
+		pets[qntPets] = novo;
+		qntPets++;
+		if (qntPets == pets.length) {
+			duplicarArray();
+		}
+	}
+	private void duplicarArray() {
+		Animal[] novo = new Animal[pets.length*2];
+		for (int i = 0; i < pets.length; i++) {
+			novo[i] = pets[i];
+		}
+		this.pets = novo;
 	}
 	public LocalDate getNascimento() {
 		return nascimento;

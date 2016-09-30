@@ -4,11 +4,14 @@
 <fullyQualifiedTypeName name="br.ufrpe.cliente.RepositorioCliente"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="br.ufrpe.animal.RepositorioAnimal"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioAnimal"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
 <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
 <fullyQualifiedTypeName name="java.time.LocalDate"/>
 <fullyQualifiedTypeName name="java.time.LocalTime"/>
 <fullyQualifiedTypeName name="javax.rmi.ssl.SslRMIClientSocketFactory"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioFuncionario"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioCliente"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioAnimal"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Endereco"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Cliente"/>
 </qualifiedTypeNameHistroy>
