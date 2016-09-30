@@ -1,9 +1,0 @@
-package br.ufrpe.test;
-import br.ufrpe.beans.Animal;
-public class testAnimal {
-	public static void main(String[] args) {
-		Animal a = new Animal(true, "Pastor Alemão", "Cachorro", "José", "101.575.184-93", 1.25f, 47.9f);
-		System.out.println(a);
-		
-	}
-}

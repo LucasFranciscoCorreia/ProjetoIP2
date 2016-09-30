@@ -1,9 +1,0 @@
-package br.ufrpe.produtos;
-
-public class Produtos {
-
-	public Produtos() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

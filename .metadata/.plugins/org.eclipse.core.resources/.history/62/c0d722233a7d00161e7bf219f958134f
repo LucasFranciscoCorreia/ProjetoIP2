@@ -1,9 +1,0 @@
-package br.ufrpe.cliente;
-
-public class RepositorioCliente {
-
-	public RepositorioCliente() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
