@@ -1,0 +1,67 @@
+package br.ufrpe.repositorios;
+import java.util.ArrayList;
+
+import br.ufrpe.beans.Animal;
+public class RepositorioAnimal {
+	private ArrayList<Animal> rep;
+	private ArrayList<Animal> lixeira;
+	private static RepositorioAnimal repo;
+	private RepositorioAnimal(){
+		rep = new ArrayList<>();
+		lixeira = new ArrayList<>();
+	}
+	public static RepositorioAnimal getInstance(){
+		if (repo == null) {
+			repo = new RepositorioAnimal();
+		}
+		return repo;
+	}
+	public int Size(){
+		return rep.size();
+	}
+	public boolean adicionar(Animal novo){
+		boolean ok = false;
+		if (novo != null) {
+			ok = true;
+			for (int i = 0; i < rep.size(); i++) {
+				if (rep.get(i).equals(novo)) {
+					ok = false;
+				}
+			}
+			if (ok) {
+				rep.add(novo);				
+			}
+		}
+		return ok;
+	}
+	private int buscar(Animal bus){
+		for(int i = 0; i < rep.size();i++){
+			if(rep.get(i).equals(bus)){
+				return i;
+			}
+		}
+		return -1;
+	}
+	public Animal getPet(int i){
+		if(i >=0 && i < rep.size()){
+			return this.rep.get(i);			
+		}
+		return null;
+	}
+	public boolean remover(Animal antigo){
+		boolean ok = false;
+		int i = buscar(antigo);
+		if(i != -1){
+			rep.remove(i);		
+			ok = true;
+		}
+		return ok;
+	}
+	public void atualizar(Animal antigo, Animal novo){
+		int i = this.buscar(antigo);
+		if(i != -1){
+			remover(antigo);
+			adicionar(novo);			
+		}
+	}
+}

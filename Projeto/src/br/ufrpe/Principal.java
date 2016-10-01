@@ -13,7 +13,7 @@ import br.ufrpe.repositorios.RepositorioProduto;
 
 public class Principal {
 	public static void main(String[] args) {
-		int op = 0;
+		/*int op = 0;
 		Scanner scanner = new Scanner(System.in);
 		RepositorioCliente clientes = RepositorioCliente.getInstance();
 		RepositorioAnimal animais = RepositorioAnimal.getInstance();
@@ -119,6 +119,6 @@ public class Principal {
 			default:
 				break;
 			}
-		} while (op != 5);
+		} while (op != 5);*/
 	}
 }

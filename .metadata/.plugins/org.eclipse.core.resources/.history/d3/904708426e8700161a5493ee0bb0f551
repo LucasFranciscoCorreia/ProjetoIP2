@@ -1,0 +1,20 @@
+package br.ufrpe.test;
+
+import java.time.LocalDate;
+
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.beans.Endereco;
+import br.ufrpe.repositorios.RepositorioCliente;
+public class testCliente {
+	public static void main(String[] args) {
+		LocalDate aniversario = LocalDate.of(1996, 7, 26);
+		Endereco end = new Endereco();
+		RepositorioCliente rep = RepositorioCliente.getInstance();
+		RepositorioCliente rep2 = RepositorioCliente.getInstance();
+		Cliente c1 = new Cliente("101.575.184.93", aniversario, "Lucas", "Correia", end );
+		Cliente c2 = new Cliente("101.575.184.93", aniversario, "Lucas", "Correia", end);
+		aniversario = LocalDate.now();
+		Cliente c3 = new Cliente("103.364.574-56", aniversario,  "Maria", "Fernanda", end);
+		
+	}
+}

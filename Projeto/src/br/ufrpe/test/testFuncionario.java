@@ -26,7 +26,7 @@ public class testFuncionario {
 		System.out.println("f3 adicionar = " + repositorio.cadastrar(f3));
 		System.out.println("f4 adicionar = " + repositorio.cadastrar(f4));
 		
-		System.out.println("\n\n************Atualização************\n");
+		System.out.println("\n\n************AtualizaÃ§Ã£o************\n");
 		
 		f1.setCargo("Veterinario");
 		f1.setSalario(8499f);

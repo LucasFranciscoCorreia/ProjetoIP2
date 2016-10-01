@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 public class RepositorioCliente {
 	private ArrayList<Cliente> repositorio;
+	private ArrayList<Cliente> lixeira;
 	private static  RepositorioCliente rep;
 	private RepositorioCliente() {
-		 repositorio = new ArrayList<>();
+		repositorio = new ArrayList<>();
+		lixeira = new ArrayList<>();
 	}
 	public static RepositorioCliente getInstance(){
 		if (rep == null) {
@@ -14,8 +16,21 @@ public class RepositorioCliente {
 		}
 		return rep;
 	}
-	public void cadastrar(Cliente outro){
-		this.repositorio.add(outro);
+	public boolean cadastrar(Cliente outro){
+		boolean ok = true;
+		if (outro != null) {
+			for (int i = 0; i < repositorio.size(); i++) {
+				if (outro.equals(repositorio.get(i))) {
+					ok = false;
+				}
+			}
+			if (ok) {
+				this.repositorio.add(outro);			
+			}
+		}else{
+			ok = false;
+		}
+		return ok;
 	}
 	public int getSize(){
 		return this.repositorio.size();
@@ -29,17 +44,52 @@ public class RepositorioCliente {
 		}
 		return null;
 	}
-	public int buscarI(Cliente outro){
-		int i;
-		for(i = 0; i < this.getSize();i++){
+	public Cliente buscar(int i){
+		if (i >= 0 && i < repositorio.size()) {
+			return this.repositorio.get(i);
+		}
+		return null;
+	}
+	private int buscarI(Cliente outro){
+		int ok = -1;
+		for(int i = 0; i < this.getSize();i++){
 			if(this.repositorio.get(i).equals(outro)){
-				break;
+				ok = i;
 			}
 		}
-		return i;
+		return ok;
 	}
-	public void remover(Cliente outro){
+	public boolean remover(Cliente outro){
 		int i = this.buscarI(outro);
-		this.repositorio.remove(i);
+		boolean ok = false;
+		if (i != -1) {
+			this.lixeira.add(outro);
+			this.repositorio.remove(i);
+			ok = true;
+		}
+		return ok;
+	}
+	public boolean atualizar(Cliente antigo, Cliente novo){
+		boolean ok = true;
+		if (antigo != null && novo != null) {
+			int i = buscarI(antigo);
+			if (i != -1) {
+				this.remover(antigo);
+				repositorio.add(novo);
+			}else{
+				ok = false;
+			}
+		}else{
+			ok = false;
+		}
+		return ok;
+	}
+	public Cliente recuperar(String cpf){
+		for (int i = 0; i < lixeira.size(); i++) {
+			if (lixeira.get(i).getCpf().equals(cpf)) {
+				return lixeira.get(i);
+			}
+		}
+		return null;
 	}
 }

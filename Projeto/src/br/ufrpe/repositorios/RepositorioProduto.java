@@ -5,12 +5,31 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Produtos;
 
 public class RepositorioProduto {
-	private ArrayList<Produtos> rep = new ArrayList<>();
+	private ArrayList<Produtos> rep;
+	private ArrayList<Produtos> lixeira;
+	public RepositorioProduto(){
+		 rep = new ArrayList<>();
+		 lixeira = new ArrayList<>();
+	}
 	public int Size(){
 		return rep.size();
 	}
-	public void adicionar(Produtos novo){
-		rep.add(novo);
+	public boolean adicionar(Produtos novo){
+		boolean ok = true;
+		for (int i = 0; i < rep.size(); i++) {
+			if (rep.get(i).equals(novo)) {
+				ok = false;
+			}
+		}
+		if (ok) {
+			rep.add(novo);
+			for (int i = 0; i < lixeira.size(); i++) {
+				if (lixeira.get(i).equals(novo)) {
+					lixeira.remove(i);
+				}
+			}
+		}
+		return ok;
 	}
 	public Produtos buscar(Produtos bus){
 		for(int i = 0; i < rep.size();i++){
@@ -31,21 +50,35 @@ public class RepositorioProduto {
 		}
 		return -1;
 	}
-	public void remover(Produtos antigo){
+	public boolean remover(Produtos antigo){
+		boolean ok = false;
 		int i = buscarI(antigo);
 		if(i != -1){
+			lixeira.add(antigo);
 			rep.remove(antigo);
+			ok = true;
 		}else{
 			System.out.println("Produto nao encontrado");
 		}
+		return ok;
 	}
-	public void atualizar(Produtos antigo, Produtos novo){
+	public boolean atualizar(Produtos antigo, Produtos novo){
+		boolean ok = false;
 		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i) == antigo){
-				rep.remove(i);
+			if(rep.get(i).equals(antigo)){
+				this.remover(antigo);
 				rep.add(novo);
-				break;
+				ok = true;
 			}
 		}
+		return ok;
+	}
+	public Produtos recuperar(String codigo){
+		for (int i = 0; i < lixeira.size(); i++) {
+			if (lixeira.get(i).getCodigo().equals(codigo)) {
+				return lixeira.get(i);
+			}
+		}
+		return null;
 	}
 }

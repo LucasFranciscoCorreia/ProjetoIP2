@@ -1,0 +1,13 @@
+package br.ufrpe.test;
+
+import java.time.LocalDate;
+import br.ufrpe.beans.Cliente;
+public class testCliente {
+	public static void main(String[] args) {
+		Endereco end = new Endereco();
+		Cliente c1 = new Cliente();
+		Cliente c2 = new Cliente();
+		Cliente c3 = new Cliente();
+		
+	}
+}

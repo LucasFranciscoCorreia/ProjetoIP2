@@ -52,7 +52,7 @@ public class Produtos {
 	public boolean equals(Produtos prod) {
 		
 		boolean resultado = false;
-		if (this.getCodigo()== prod.getCodigo() && this.getTipo().equals(prod.getTipo())){
+		if (this.getCodigo()== prod.getCodigo()){
 			resultado = true;
 		}
 		return resultado;	
