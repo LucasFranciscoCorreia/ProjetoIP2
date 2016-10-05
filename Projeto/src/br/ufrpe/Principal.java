@@ -20,11 +20,11 @@ public class Principal {
 		RepositorioProduto produtos = new RepositorioProduto();
 		RepositorioFuncionario funcionarios = RepositorioFuncionario.getInstanciado();
 		do {
-			System.out.print("1.Cliente\n2.Animal\n3.Cliente\n4.Funcionario\n5.Sair\nOpcao: ");
+			System.out.print("1.Cliente\n2.Animal\n3.Produto\n4.Funcionario\n5.Sair\nOpcao: ");
 			op = scanner.nextInt();
 			switch (op) {
 			case 1:
-				System.out.print("1.Cadastrar\nRemover\n3.Atualizar\n4.Pesquisar\n5.Sair\nOpcao: ");
+				System.out.print("1.Cadastrar\n2.Remover\n3.Atualizar\n4.Pesquisar\n5.Sair\nOpcao: ");
 				int op2 = scanner.nextInt();
 				switch (op2) {
 				case 1:
@@ -37,7 +37,7 @@ public class Principal {
 						String nome = scanner.next();
 						System.out.print("Digite o sobrenome do cliente: ");
 						String sobrenome = scanner.next();
-						System.out.print("Digite o cpf: ");
+						System.out.print("Digite o CPF: ");
 						String cpf = scanner.next();
 						System.out.print("Digite a data de nascimento do cliente: ");
 						String data = scanner.nextLine();

@@ -1,12 +1,12 @@
 package br.ufrpe.test;
 
-import br.ufrpe.beans.Produtos;
+import br.ufrpe.beans.Produto;
 import br.ufrpe.repositorios.RepositorioProduto;
 
 public class testProduto {
 	public static void main(String[] args) {
-		Produtos a = new Produtos(2.4f, "predinisona", "medicamento", "1234-5", 243);
-		Produtos b = new Produtos(2.4f, "predinisona", "medicamento", "1234-5", 243);
+		Produto a = new Produto(2.4f, "predinisona", "medicamento", "1234-5", 243);
+		Produto b = new Produto(2.4f, "predinisona", "medicamento", "1234-5", 243);
 		System.out.println(a.equals(b));
 		b.setPreco(3.9f);
 		System.out.println(a.equals(b));

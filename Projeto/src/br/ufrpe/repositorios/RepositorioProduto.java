@@ -2,17 +2,17 @@ package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beans.Produtos;
+import br.ufrpe.beans.Produto;
 
 public class RepositorioProduto {
-	private ArrayList<Produtos> rep = new ArrayList<>();
+	private ArrayList<Produto> rep = new ArrayList<>();
 	public int Size(){
 		return rep.size();
 	}
-	public void adicionar(Produtos novo){
+	public void adicionar(Produto novo){
 		rep.add(novo);
 	}
-	public Produtos buscar(Produtos bus){
+	public Produto buscar(Produto bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return rep.get(i);
@@ -20,10 +20,10 @@ public class RepositorioProduto {
 		}
 		return null;
 	}
-	public Produtos buscar(int i){
+	public Produto buscar(int i){
 		return rep.get(i);
 	}
-	private int buscarI(Produtos bus){
+	private int buscarI(Produto bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return i;
@@ -31,7 +31,7 @@ public class RepositorioProduto {
 		}
 		return -1;
 	}
-	public void remover(Produtos antigo){
+	public void remover(Produto antigo){
 		int i = buscarI(antigo);
 		if(i != -1){
 			rep.remove(antigo);
@@ -39,7 +39,7 @@ public class RepositorioProduto {
 			System.out.println("Produto nao encontrado");
 		}
 	}
-	public void atualizar(Produtos antigo, Produtos novo){
+	public void atualizar(Produto antigo, Produto novo){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == antigo){
 				rep.remove(i);
