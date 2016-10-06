@@ -12,6 +12,9 @@ public class Produto {
 		this.codigo = codigo;
 		this.estoque = estoque;
 	}	
+	public Produto(String nome){ //Pro Animal que nao eh vendivel :)
+		this.nome = nome;
+	}
 	public void addEstoque(int qtd){
 		int x = this.getEstoque();
 		x += qtd;

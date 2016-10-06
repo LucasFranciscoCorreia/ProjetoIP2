@@ -1,0 +1,23 @@
+package br.ufrpe.test;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import br.ufrpe.beans.Animal;
+import br.ufrpe.repositorios.RepositorioAnimal;
+
+public class testAnimal {
+	public static void main(String[] args) {
+		
+		RepositorioAnimal repoAnimal = RepositorioAnimal.getInstance();
+		boolean state = true;
+		
+		
+		do{
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Deseja Adicionar um novo animal? (pet-cliente) (S/N)");
+			
+			
+		}while(state);
+		
+	}
+}

@@ -1,6 +1,6 @@
 package br.ufrpe.beans;
 
-public class Animal {
+public class Animal extends Produto{
 
 	private boolean isAlive;
 	private String especie;
@@ -8,7 +8,20 @@ public class Animal {
 	private Cliente dono;
 	private double peso;
 	private double tamanho;
-	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho) {
+	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho,String nome) {
+		
+		super(nome);
+		this.isAlive = isAlive;
+		this.especie = especie;
+		this.raca = raca;
+		this.dono = dono;
+		this.peso = peso;
+		this.tamanho = tamanho;
+	}
+	
+	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho){
+		
+		super(preco,nome,tipo,codigo,estoque);
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;

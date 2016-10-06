@@ -51,4 +51,12 @@ public class RepositorioAnimal {
 			adicionar(novo);			
 		}
 	}
+	
+	public String toString(){
+		String animais="";
+		for (Animal s: this.rep){
+			animais += s+"\n";
+		}
+		return animais;
+	}
 }

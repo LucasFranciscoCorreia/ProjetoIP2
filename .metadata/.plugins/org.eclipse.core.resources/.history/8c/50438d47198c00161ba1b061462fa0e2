@@ -1,0 +1,89 @@
+package br.ufrpe.beans;
+
+public class Animal extends Produto{
+
+	private boolean isAlive;
+	private String especie;
+	private String raca;
+	private Cliente dono;
+	private double peso;
+	private double tamanho;
+	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho) {
+		this.isAlive = isAlive;
+		this.especie = especie;
+		this.raca = raca;
+		this.dono = dono;
+		this.peso = peso;
+		this.tamanho = tamanho;
+	}
+	
+	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho){
+		
+		super(preco,nome,tipo,codigo,estoque);
+		this.isAlive = isAlive;
+		this.especie = especie;
+		this.raca = raca;
+		this.dono = dono;
+		this.peso = peso;
+		this.tamanho = tamanho;
+	}
+	public boolean getIsAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	public String getDonoCPF() {
+		return this.dono.getCpf();
+	}
+
+	public void setDonoCPF(Cliente dono) {
+		this.dono = dono;
+	}
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public double getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(double tamanho) {
+		this.tamanho = tamanho;
+	}
+
+	public String getEspecie() {
+		return especie;
+	}
+
+	public String getRaca() {
+		return raca;
+	}
+
+	public String getDonoNome() {
+		return this.dono.getNome();
+	}
+	
+	public String toString(){
+		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
+		res+="Is Alive? " + isAlive;
+		return res;
+	}
+	public boolean equals(Animal outro){
+		boolean res = false;
+		if(dono.getCpf() == outro.getDonoCPF()
+				&& raca == outro.getRaca()
+				&& especie == outro.getEspecie()
+				&& isAlive == outro.getIsAlive()){
+			res = true;
+		}
+		return res;
+	}
+}

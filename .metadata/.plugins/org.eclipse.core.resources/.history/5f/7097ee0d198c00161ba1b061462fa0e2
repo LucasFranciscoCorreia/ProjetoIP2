@@ -1,0 +1,14 @@
+package br.ufrpe.test;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import br.ufrpe.beans.Animal;
+import br.ufrpe.repositorios.RepositorioAnimal;
+import br.ufrpe.repositorios.RepositorioProduto;
+public class testAnimal {
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+	}
+}
