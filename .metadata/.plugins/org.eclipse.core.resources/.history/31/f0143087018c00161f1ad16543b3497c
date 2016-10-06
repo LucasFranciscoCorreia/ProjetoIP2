@@ -67,7 +67,7 @@ public class Principal {
 					LocalDate aniversario = LocalDate.parse(data, DATE_FORMAT);		
 					
 
-                    scanner.next();
+                    in.next();
 					/*
 					 * Endereço:
 					 */

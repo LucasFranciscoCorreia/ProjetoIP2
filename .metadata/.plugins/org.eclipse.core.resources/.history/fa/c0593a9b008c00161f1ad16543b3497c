@@ -61,24 +61,24 @@ public class Principal {
 					System.out.print("Digite o CPF: ");
 					String cpf = scanner.next();
 					System.out.print("Digite a data de nascimento do cliente (dd-mm-aaaa): ");
-					String data = scanner.next();
+					String data = scanner.nextLine();
 					
 					DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 					LocalDate aniversario = LocalDate.parse(data, DATE_FORMAT);		
-					
+					System.out.println(aniversario);
 
-                    scanner.next();
+
 					/*
 					 * Endereço:
 					 */
 					System.out.print("Digite o nome da rua: ");
 					String rua = scanner.nextLine();
 					System.out.print("Digite o complemento: ");
-					String complemento = scanner.next();
+					String complemento = scanner.nextLine();
 					System.out.println("Digite o numero da casa: ");
 					short numero = scanner.nextShort();
 					System.out.print("Digite o cep: ");
-					String cep = scanner.next();
+					String cep = scanner.nextLine();
 					System.out.print("Digite a cidade-UF: ");
 					String cidadeUF = scanner.nextLine();
 
