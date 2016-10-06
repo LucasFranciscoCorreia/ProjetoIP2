@@ -5,9 +5,11 @@ import br.ufrpe.beans.Animal;
 public class RepositorioAnimal {
 	private ArrayList<Animal> rep;
 	private static RepositorioAnimal repo;
+	
 	private RepositorioAnimal(){
 		rep = new ArrayList<>();
 	}
+	
 	public static RepositorioAnimal getInstance(){
 		if (repo == null) {
 			repo = new RepositorioAnimal();

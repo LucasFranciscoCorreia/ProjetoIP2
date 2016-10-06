@@ -3,9 +3,24 @@ package br.ufrpe.repositorios;
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Produto;
-
+/* weeee */
 public class RepositorioProduto {
-	private ArrayList<Produto> rep = new ArrayList<>();
+	private  ArrayList<Produto> rep;
+	private static RepositorioProduto instance;
+	
+	private RepositorioProduto(){
+		rep = new ArrayList<>();
+	}
+	
+	public static synchronized RepositorioProduto getInstance(){
+		if(instance == null){
+			
+			instance = new RepositorioProduto();
+		}
+		
+		return instance;
+	}
+	
 	public int Size(){
 		return rep.size();
 	}

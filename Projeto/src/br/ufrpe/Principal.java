@@ -17,7 +17,7 @@ public class Principal {
 		Scanner scanner = new Scanner(System.in);
 		RepositorioCliente clientes = RepositorioCliente.getInstance();
 		RepositorioAnimal animais = RepositorioAnimal.getInstance();
-		RepositorioProduto produtos = new RepositorioProduto();
+		RepositorioProduto produtos = RepositorioProduto.getInstance();
 		RepositorioFuncionario funcionarios = RepositorioFuncionario.getInstanciado();
 		do {
 			System.out.print("1.Cliente\n2.Animal\n3.Produto\n4.Funcionario\n5.Sair\nOpcao: ");

@@ -4,7 +4,7 @@ public class Produto {
 	private String nome;
 	private String tipo;
 	private String codigo;
-	private int estoque;	
+	private int estoque;	//De cada item
 	public Produto(float preco, String nome, String tipo, String codigo, int estoque) {
 		this.preco = preco;
 		this.nome = nome;

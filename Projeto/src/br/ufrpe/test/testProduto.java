@@ -13,7 +13,8 @@ public class testProduto {
 		b.setTipo("Animal");
 		System.out.println(a.equals(b));		
 		System.out.println();
-		RepositorioProduto rep1 = new RepositorioProduto();
+		RepositorioProduto rep1 = RepositorioProduto.getInstance();
+		
 		for (int i = 0; i < rep1.Size(); i++) {
 			System.out.println(rep1.buscar(i));
 		}

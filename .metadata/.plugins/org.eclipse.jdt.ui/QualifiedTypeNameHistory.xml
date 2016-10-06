@@ -11,7 +11,7 @@
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioFuncionario"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioCliente"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioAnimal"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Endereco"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Cliente"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
 </qualifiedTypeNameHistroy>
