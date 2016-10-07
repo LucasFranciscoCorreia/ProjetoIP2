@@ -20,7 +20,7 @@ public class Principal {
 		
 		RepositorioCliente clienteRepositorio = RepositorioCliente.getInstance();
 		RepositorioAnimal animalRepositorio = RepositorioAnimal.getInstance();
-		RepositorioProduto produtoRepositorio = RepositorioProduto.getInstance();
+		RepositorioProduto produtoRepositorio = new RepositorioProduto();
 		RepositorioFuncionario funcionarioRepositorio = RepositorioFuncionario.getInstanciado();
 		
 		
@@ -65,18 +65,16 @@ public class Principal {
 						data = scanner.next();
 						
 						DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-						LocalDate aniversario = LocalDate.parse(data, DATE_FORMAT);		
-						
-	
-	                    scanner.next();
+						LocalDate aniversario = LocalDate.parse(data, DATE_FORMAT);
 						/*
 						 * Endere�o:
 						 */
 						System.out.print("Digite o nome da rua: ");
+						scanner.next();
 						rua = scanner.nextLine();
 						System.out.print("Digite o complemento: ");
-						complemento = scanner.next();
-						System.out.println("Digite o numero da casa: ");
+						complemento = scanner.nextLine();
+						System.out.print("Digite o numero da casa: ");
 						numero = scanner.nextShort();
 						System.out.print("Digite o cep: ");
 						cep = scanner.next();
@@ -99,6 +97,7 @@ public class Principal {
 	
 							for (int j = 0; j < pets.length; j++) {
 								System.out.println("Digite a ra�a: ");
+								scanner.next();
 								raca = scanner.nextLine();
 								System.out.print("Digite a especie: ");
 								especie = scanner.nextLine();
@@ -310,7 +309,7 @@ public class Principal {
 					System.out.println("Opcao: ");
 					op2 = scanner.nextInt();
 					
-					Produto produto;
+					Produtos produto;
 					
 					switch (op2){
 					case 1:
@@ -325,7 +324,7 @@ public class Principal {
 						System.out.println("Informe a quantidade em estoque: ");
 						estoque = scanner.nextInt();
 						
-						produto = new Produto(preco, nome, tipo, codigo, estoque);
+						produto = new Produtos(preco, nome, tipo, codigo, estoque);
 						
 						if(produtoRepositorio.buscar(codigo) == null){
 							produtoRepositorio.adicionar(produto);
@@ -356,7 +355,7 @@ public class Principal {
 							System.out.println("Informe a quantidade em estoque: ");
 							estoque = scanner.nextInt();
 							
-							Produto produtoNovo = new Produto(preco, nome, tipo, codigo, estoque);
+							Produtos produtoNovo = new Produtos(preco, nome, tipo, codigo, estoque);
 							produtoRepositorio.atualizar(produto, produtoNovo);
 							System.out.println("Produto atualizado\n");
 						}else{System.out.println("Produto n�o existe\n");}
@@ -501,6 +500,6 @@ public class Principal {
 				System.out.println("Op��o Invalida\n");
 				break;
 			}
-		} while (op != 5);*/
+		} while (op != 5);
 	}
 }

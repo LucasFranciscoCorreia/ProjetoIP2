@@ -1,11 +1,10 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-
-import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Produtos;
 /* weeee */
 public class RepositorioProduto {
-	private  ArrayList<Produto> rep;
+	private  ArrayList<Produtos> rep;
 	
 	public RepositorioProduto(){
 		 rep = new ArrayList<>();
@@ -13,8 +12,6 @@ public class RepositorioProduto {
 	public int Size(){
 		return rep.size();
 	}
-	public void adicionar(Produto novo){
-		rep.add(novo);
 	public boolean adicionar(Produtos novo){
 		boolean ok = true;
 		for (int i = 0; i < rep.size(); i++) {
@@ -24,15 +21,10 @@ public class RepositorioProduto {
 		}
 		if (ok) {
 			rep.add(novo);
-			for (int i = 0; i < lixeira.size(); i++) {
-				if (lixeira.get(i).equals(novo)) {
-					lixeira.remove(i);
-				}
-			}
 		}
 		return ok;
 	}
-	public Produto buscar(Produto bus){
+	public Produtos buscar(Produtos bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return rep.get(i);
@@ -40,10 +32,10 @@ public class RepositorioProduto {
 		}
 		return null;
 	}
-	public Produto buscar(int i){
+	public Produtos buscar(int i){
 		return rep.get(i);
 	}
-	public Produto buscar(String codigo){
+	public Produtos buscar(String codigo){
 		for(int i = 0 ; i < rep.size(); i++){
 			if(rep.get(i).getCodigo().equals(codigo)){
 				return rep.get(i);
@@ -52,7 +44,7 @@ public class RepositorioProduto {
 		
 		return null;
 	}
-	private int buscarI(Produto bus){
+	private int buscarI(Produtos bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return i;
@@ -64,7 +56,6 @@ public class RepositorioProduto {
 		boolean ok = false;
 		int i = buscarI(antigo);
 		if(i != -1){
-			lixeira.add(antigo);
 			rep.remove(antigo);
 			ok = true;
 		}else{
@@ -82,13 +73,5 @@ public class RepositorioProduto {
 			}
 		}
 		return ok;
-	}
-	public Produtos recuperar(String codigo){
-		for (int i = 0; i < lixeira.size(); i++) {
-			if (lixeira.get(i).getCodigo().equals(codigo)) {
-				return lixeira.get(i);
-			}
-		}
-		return null;
 	}
 }
