@@ -5,17 +5,16 @@ import java.util.Iterator;
 
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
-import br.ufrpe.repositorios.RepositorioCliente;
+import br.ufrpe.negocios.ControladorCliente;
 public class testCliente {
 	public static void main(String[] args) {
 		LocalDate aniversario = LocalDate.of(1996, 7, 26);
 		Endereco end = new Endereco();
-		RepositorioCliente rep = RepositorioCliente.getInstance();
-		RepositorioCliente rep2 = RepositorioCliente.getInstance();
-		Cliente c1 = new Cliente("101.575.184-93", aniversario, "Lucas", "Correia", end );
-		Cliente c2 = new Cliente("101.575.184-93", aniversario, "Lucas", "Correia", end);
+		ControladorCliente clienteControlador = new ControladorCliente();
+		Cliente c1 = new Cliente("101.575.184-93", aniversario, "Lucas", end);
+		Cliente c2 = new Cliente("101.575.184-93", aniversario, "Lucas", end);
 		aniversario = LocalDate.now();
-		Cliente c3 = new Cliente("103.364.574-56", aniversario,  "Maria", "Fernanda", end);
+		Cliente c3 = new Cliente("103.364.574-56", aniversario,  "Maria", end);
 		
 		System.out.println("**Equals**");
 		System.out.println(c1.equals(c2));
@@ -23,42 +22,36 @@ public class testCliente {
 		System.out.println();
 		
 		System.out.println("**Cadastrar**");
-		System.out.println(rep.cadastrar(c1));
-		System.out.println(rep.cadastrar(c2));
-		System.out.println(rep2.cadastrar(c2));
-		System.out.println(rep.cadastrar(c3));
+		System.out.println();
+		clienteControlador.cadastrar(c1);
+		clienteControlador.cadastrar(c2);
+		clienteControlador.cadastrar(c3);
 		System.out.println();
 		
 		System.out.println("**Apresentar**");
-		for (int i = 0; i < rep.getSize(); i++) {
-			System.out.println(rep.buscar(i));
-			System.out.println();
-		}
+		
+		clienteControlador.buscar("101.575.184-93");
+		clienteControlador.buscar("1232152354");
+			
+		
 		System.out.println("**Remover**");
-		System.out.println(rep.remover(c3));
+		clienteControlador.remover("101.575.184-93");
 		System.out.println();
-		System.out.println(rep.remover(c3));
+		clienteControlador.remover("1234123");
 		System.out.println();
 		
 		System.out.println("**apresentar**");
-		for (int i = 0; i < rep.getSize(); i++) {
-			System.out.println(rep.buscar(i));
-			System.out.println();
-		}
-		
-		System.out.println("**Recuperar**");
-		System.out.println(rep.cadastrar(rep.recuperar("103.364.574-56")));
+
+		clienteControlador.buscar("101.575.184-93");
 		System.out.println();
 		
 		System.out.println("**Atualizar**");
-		c2 = new Cliente("563.642.624-78", aniversario, "Raissa", "Camelo", end);
-		System.out.println(rep.atualizar(c1, c2));
+		
+		c2 = new Cliente("563.642.624-78", aniversario, "Raissa", end);
+		clienteControlador.atualizar(c1, c2);
 		System.out.println();
-		System.out.println(rep.cadastrar(rep.recuperar("101.575.184-93")));
+		clienteControlador.buscar("563.642.624-78");
 		System.out.println();
-		for (int i = 0; i < rep.getSize(); i++) {
-			System.out.println(rep.buscar(i));
-			System.out.println();
-		}
+		
 	}
 }

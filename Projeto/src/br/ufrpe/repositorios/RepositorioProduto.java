@@ -1,77 +1,59 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-
 import br.ufrpe.beans.Produto;
+
 public class RepositorioProduto {
-	private  ArrayList<Produto> rep;
+	private  ArrayList<Produto> repositorio;
+	private static RepositorioProduto unicInstanc;
 	
-	public RepositorioProduto(){
-		 rep = new ArrayList<>();
+	private RepositorioProduto(){
+		 repositorio = new ArrayList<>();
 	}
-	public int Size(){
-		return rep.size();
-	}
-	public boolean adicionar(Produto novo){
-		boolean ok = true;
-		for (int i = 0; i < rep.size(); i++) {
-			if (rep.get(i).equals(novo)) {
-				ok = false;
-			}
-		}
-		if (ok) {
-			rep.add(novo);
-		}
-		return ok;
-	}
-	public Produto buscar(Produto bus){
-		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i) == bus){
-				return rep.get(i);
-			}
-		}
-		return null;
-	}
-	public Produto buscar(int i){
-		return rep.get(i);
-	}
-	public Produto buscar(String codigo){
-		for(int i = 0 ; i < rep.size(); i++){
-			if(rep.get(i).getCodigo().equals(codigo)){
-				return buscar(i);
-			}
+	
+	public static synchronized RepositorioProduto getInstanciado(){
+		if(unicInstanc == null){
+			unicInstanc = new RepositorioProduto();
 		}
 		
-		return null;
+		return unicInstanc;
 	}
-	private int buscarI(Produto bus){
-		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i) == bus){
+	
+	public int Size(){
+		return repositorio.size();
+	}
+	
+	private int buscarI(String bus){
+		for(int i = 0; i < repositorio.size();i++){
+			if(repositorio.get(i).getCodigo().equals(bus)){
 				return i;
 			}
 		}
 		return -1;
 	}
-	public boolean remover(Produto antigo){
-		boolean ok = false;
-		int i = buscarI(antigo);
-		if(i != -1){
-			rep.remove(antigo);
-			ok = true;
-		}else{
-			System.out.println("Produto nao encontrado");
-		}
-		return ok;
+	
+	public void cadastrar(Produto novo){
+		repositorio.add(novo);
 	}
-	public boolean atualizar(Produto antigo, Produto novo){
-		boolean ok = false;
-		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i).equals(antigo)){
-				this.remover(antigo);
-				rep.add(novo);
-				ok = true;
-			}
-		}
-		return ok;
+	
+	public Produto buscar(String codigo){
+		int i = buscarI(codigo);
+		
+		if(i != -1){
+			return repositorio.get(i);			
+		}else{return null;}
+	}
+	
+	public void remover(String codigo){
+		int i = buscarI(codigo);
+		
+		repositorio.remove(i);
+	}
+	
+	public void atualizarEstoque(Produto novo){
+		int i = buscarI(novo.getCodigo());
+	
+		repositorio.get(i).setEstoque(novo.getEstoque());
+		repositorio.get(i).setPreco(novo.getPreco());
 	}
 }

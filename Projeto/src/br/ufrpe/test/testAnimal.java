@@ -15,9 +15,9 @@ public class testAnimal {
 		LocalDate aniversario = LocalDate.of(1996, 7, 26);
 		RepositorioAnimal rep = RepositorioAnimal.getInstance();
 		Cliente c = new Cliente("101.575.184-93", aniversario, "Lucas", "Correia", end );
-		Animal a1 = new Animal(true, "Husky", "Cachorro",c , 37.0, 1.6, "a1");
-		Animal a2 = new Animal(true, "Husky", "Cachorro", c, 37.0, 1.6, "a2");
-		Animal a3 = new Animal(true, "Persa", "Gato", c, 1.6, 0.42, "a3");
+		Animal a1 = new Animal(true, "Husky", "Cachorro",c , 37.0, 1.6, "a1", "001");
+		Animal a2 = new Animal(true, "Husky", "Cachorro", c, 37.0, 1.6, "a2", "002");
+		Animal a3 = new Animal(true, "Persa", "Gato", c, 1.6, 0.42, "a3", "003");
 		
 		RepositorioAnimal repoAnimal = RepositorioAnimal.getInstance();
 		Endereco ende = new Endereco();
@@ -52,7 +52,9 @@ public class testAnimal {
 				peso = sc.nextDouble();
 				System.out.println("Digite o tamanho do Animal: ");
 				tamanho = sc.nextDouble();
-				Animal animal = new Animal(true, especie, raca, dono, peso, tamanho, nome);
+				System.out.println("Digite o codigo do Animal");
+				String codigo = sc.nextLine();
+				Animal animal = new Animal(true, especie, raca, dono, peso, tamanho, nome, codigo);
 				repoAnimal.adicionar(animal);
 				
 				
