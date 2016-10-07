@@ -1,12 +1,21 @@
 package br.ufrpe.test;
 
 import java.time.LocalDateTime;
+import java.util.Scanner;
+
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.repositorios.RepositorioFuncionario;
 
 public class testFuncionario {
 	public static void main(String[] args) {
+		Scanner scanf = new Scanner(System.in);
+		String nome;
+		System.out.println("Digite o seu nome: ");
+		nome = scanf.nextLine();
+		System.out.print("Digite o seu nome: ");
+		nome = scanf.nextLine();
+		
 		Endereco end1 = new Endereco();
 		LocalDateTime entrada = LocalDateTime.now();
 		RepositorioFuncionario repositorio = RepositorioFuncionario.getInstanciado();

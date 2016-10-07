@@ -101,18 +101,17 @@ public class Principal {
 								raca = scanner.nextLine();
 								System.out.print("Digite a especie: ");
 								especie = scanner.nextLine();
-								System.out.println("Digite o peso do animal: ");
+								System.out.print("Digite o peso do animal: ");
 								peso = scanner.nextFloat();
-								System.out.println("Digite a altura do animal: ");
+								System.out.print("Digite a altura do animal: ");
 								h = scanner.nextFloat();
-	
-								Animal novo = new Animal(true, especie, raca, cliente, peso, h);
-	
+								System.out.print("Digite o nome do pet: ");
+								String nomePet = scanner.nextLine();
+								Animal novo = new Animal(true, especie, raca, cliente, peso, h, nomePet);
 								animalRepositorio.adicionar(novo);
 								cliente.addPet(novo);
 							}
 						}
-	
 						if(clienteRepositorio.buscar(cpf) == null){
 							clienteRepositorio.cadastrar(cliente);
 							System.out.println("Cliente cadastrado\n");
@@ -159,16 +158,17 @@ public class Principal {
 								Animal[] pets = new Animal[op4];
 	
 								for (int j = 0; j < pets.length; j++) {
-									System.out.println("Digite a ra�a: ");
+									System.out.print("Digite a ra�a: ");
 									raca = scanner.nextLine();
 									System.out.print("Digite a especie: ");
 									especie = scanner.nextLine();
-									System.out.println("Digite o peso do animal: ");
+									System.out.print("Digite o peso do animal: ");
 									peso = scanner.nextFloat();
-									System.out.println("Digite a altura do animal: ");
+									System.out.print("Digite a altura do animal: ");
 									h = scanner.nextFloat();
-	
-									Animal novo = new Animal(true, especie, raca, cliente3, peso, h);
+									System.out.print("Digite o nome do pet: ");
+									String nomePet = scanner.nextLine();
+									Animal novo = new Animal(true, especie, raca, cliente3, peso, h, nomePet);
 	
 									animalRepositorio.adicionar(novo);
 									cliente3.addPet(novo);
@@ -251,24 +251,26 @@ public class Principal {
 							raca = scanner.nextLine();
 							System.out.print("Digite a especie: ");
 							especie = scanner.nextLine();
-							System.out.println("Digite o peso do animal: ");
+							System.out.print("Digite o peso do animal: ");
 							peso = scanner.nextFloat();
-							System.out.println("Digite a altura do animal: ");
+							System.out.print("Digite a altura do animal: ");
 							h = scanner.nextFloat();
-	
-							Animal novo = new Animal(true, especie, raca, dono, peso, h);
+							System.out.print("Digite o nome do pet: ");
+							String nomePet = scanner.nextLine();
+							Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet);
 							animalRepositorio.adicionar(novo);
 						}else if(op3 == 2){
 							System.out.println("Digite a ra�a: ");
 							raca = scanner.nextLine();
 							System.out.print("Digite a especie: ");
 							especie = scanner.nextLine();
-							System.out.println("Digite o peso do animal: ");
+							System.out.print("Digite o peso do animal: ");
 							peso = scanner.nextFloat();
-							System.out.println("Digite a altura do animal: ");
+							System.out.print("Digite a altura do animal: ");
 							h = scanner.nextFloat();
-	
-							Animal novo = new Animal(true, especie, raca, null, peso, h);
+							System.out.print("Digite o nome do animal: ");
+							String nomePet = scanner.nextLine();
+							Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet);
 							animalRepositorio.adicionar(novo);
 						}else{
 							System.out.println("Op��o invalida\n");
@@ -309,7 +311,7 @@ public class Principal {
 					System.out.println("Opcao: ");
 					op2 = scanner.nextInt();
 					
-					Produtos produto;
+					Produto produto;
 					
 					switch (op2){
 					case 1:
@@ -327,7 +329,7 @@ public class Principal {
 						System.out.println("Informe a quantidade em estoque: ");
 						estoque = scanner.nextInt();
 						
-						produto = new Produtos(preco, nome, tipo, codigo, estoque);
+						produto = new Produto(preco, nome, tipo, codigo, estoque);
 						
 						if(produtoRepositorio.buscar(codigo) == null){
 							produtoRepositorio.adicionar(produto);
@@ -360,7 +362,7 @@ public class Principal {
 							System.out.println("Informe a quantidade em estoque: ");
 							estoque = scanner.nextInt();
 							
-							Produtos produtoNovo = new Produtos(preco, nome, tipo, codigo, estoque);
+							Produto produtoNovo = new Produto(preco, nome, tipo, codigo, estoque);
 							produtoRepositorio.atualizar(produto, produtoNovo);
 							System.out.println("\n----------Produto atualizado----------\n");
 						}else{System.out.println("\n----------Produto n�o existe----------\n");}
