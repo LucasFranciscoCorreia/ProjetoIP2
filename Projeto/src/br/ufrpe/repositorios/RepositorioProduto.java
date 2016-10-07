@@ -38,7 +38,7 @@ public class RepositorioProduto {
 	public Produto buscar(String codigo){
 		for(int i = 0 ; i < rep.size(); i++){
 			if(rep.get(i).getCodigo().equals(codigo)){
-				return rep.get(i);
+				return buscar(i);
 			}
 		}
 		

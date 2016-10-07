@@ -37,12 +37,14 @@ public class RepositorioCliente {
 	}
 	public Cliente buscar(String cpf){
 		int i;
+		Cliente c = null;
 		for(i = 0; i < getSize();i++){
-			if(this.repositorio.get(i).getCpf().equals(cpf)){
-				return this.repositorio.get(i);
+			c = repositorio.get(i);				
+			if(c.getCpf().equals(cpf)){
+				return c;
 			}
 		}
-		return null;
+		return c;
 	}
 	public Cliente buscar(int i){
 		if (i >= 0 && i < repositorio.size()) {
@@ -83,6 +85,11 @@ public class RepositorioCliente {
 			ok = false;
 		}
 		return ok;
+	}
+	public void listar(){
+		for(int i = 0; i < repositorio.size();i++){
+			System.out.println(repositorio.get(i));
+		}
 	}
 	public Cliente recuperar(String cpf){
 		for (int i = 0; i < lixeira.size(); i++) {
