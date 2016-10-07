@@ -84,19 +84,19 @@ public class Principal {
 						end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 						cliente = new Cliente(cpf, aniversario, nome, sobrenome, end);
 	
-						System.out.print("Deseja cadastrar um PET agora? "
+						System.out.println("Deseja cadastrar um PET agora? "
 								+ "\n\t1.Sim"
 								+ "\n\t2.N�o");
 						op3 = scanner.nextInt();
 	
 						if (op3 == 1) {
-							System.out.print("Quantos pets deseja adicionar?");
+							System.out.println("Quantos pets deseja adicionar?");
 							op3 = scanner.nextInt();
 	
 							Animal[] pets = new Animal[op3];
 	
 							for (int j = 0; j < pets.length; j++) {
-								System.out.print("Digite a ra�a: ");
+								System.out.println("Digite a ra�a: ");
 								scanner.next();
 								raca = scanner.nextLine();
 								System.out.print("Digite a especie: ");

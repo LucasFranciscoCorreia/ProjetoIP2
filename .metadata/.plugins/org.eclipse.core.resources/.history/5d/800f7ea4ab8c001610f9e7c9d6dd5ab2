@@ -84,19 +84,19 @@ public class Principal {
 						end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 						cliente = new Cliente(cpf, aniversario, nome, sobrenome, end);
 	
-						System.out.print("Deseja cadastrar um PET agora? "
+						System.out.println("Deseja cadastrar um PET agora? "
 								+ "\n\t1.Sim"
 								+ "\n\t2.N�o");
 						op3 = scanner.nextInt();
 	
 						if (op3 == 1) {
-							System.out.print("Quantos pets deseja adicionar?");
+							System.out.println("Quantos pets deseja adicionar?");
 							op3 = scanner.nextInt();
 	
 							Animal[] pets = new Animal[op3];
 	
 							for (int j = 0; j < pets.length; j++) {
-								System.out.print("Digite a ra�a: ");
+								System.out.println("Digite a ra�a: ");
 								scanner.next();
 								raca = scanner.nextLine();
 								System.out.print("Digite a especie: ");
@@ -152,7 +152,7 @@ public class Principal {
 							
 							switch(op3){
 							case 1:
-								System.out.print("Quantos pets deseja adicionar?");
+								System.out.println("Quantos pets deseja adicionar?");
 								int op4 = scanner.nextInt();
 	
 								Animal[] pets = new Animal[op4];
@@ -186,7 +186,7 @@ public class Principal {
 								rua = scanner.nextLine();
 								System.out.print("Digite o complemento: ");
 								complemento = scanner.next();
-								System.out.print("Digite o numero da casa: ");
+								System.out.println("Digite o numero da casa: ");
 								numero = scanner.nextShort();
 								System.out.print("Digite o cep: ");
 								cep = scanner.next();
@@ -207,8 +207,7 @@ public class Principal {
 						break;
 					
 					case 4: 
-						System.out.print("Informe o CPF: ");
-						scanner.next();
+						System.out.println("Informe o CPF: ");
 						cpf = scanner.nextLine();
 						
 						System.out.println(clienteRepositorio.buscar(cpf).toString());
@@ -231,19 +230,19 @@ public class Principal {
 							+ "\t4.Pesquisar\n"
 							+ "\t5.Sair");
 					System.out.println("\n############################################################\n");
-					System.out.print("Opcao: ");
+					System.out.println("Opcao: ");
 					op2 = scanner.nextInt();
 					
 					switch(op2){
 					case 1:
 						System.out.println("Cadastrar dono: ");
-						System.out.print("\t1.Sim"
+						System.out.println("\t1.Sim"
 								+ "\n\t2.N�o"
 								+ "\n\nOp��o: ");
 						op3 = scanner.nextInt();
 						
 						if(op3 == 1){
-							System.out.print("Informe o cpf: ");
+							System.out.println("Informe o cpf: ");
 							String cpfD = scanner.nextLine();
 							
 							Cliente dono = clienteRepositorio.buscar(cpfD);
@@ -261,7 +260,7 @@ public class Principal {
 							Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet);
 							animalRepositorio.adicionar(novo);
 						}else if(op3 == 2){
-							System.out.print("Digite a ra�a: ");
+							System.out.println("Digite a ra�a: ");
 							raca = scanner.nextLine();
 							System.out.print("Digite a especie: ");
 							especie = scanner.nextLine();
