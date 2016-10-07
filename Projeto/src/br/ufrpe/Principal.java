@@ -8,6 +8,7 @@ import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.negocios.ControladorCliente;
 import br.ufrpe.repositorios.RepositorioAnimal;
@@ -17,7 +18,7 @@ import br.ufrpe.repositorios.RepositorioProduto;
 public class Principal {
 	public static void main(String[] args) {
 		char op = '0', op2 = '0', op3 = '0';
-		String cpf, nome, sobrenome, data, tipo, codigo;
+		String cpf, nome, data, tipo, codigo;
 		String rua, complemento, cidadeUF, cep;
 		String raca, especie;
 		float peso, h;
@@ -28,8 +29,6 @@ public class Principal {
 		RepositorioAnimal animalRepositorio = RepositorioAnimal.getInstance();
 		RepositorioProduto produtoRepositorio = new RepositorioProduto();
 		RepositorioFuncionario funcionarioRepositorio = RepositorioFuncionario.getInstanciado();
-		
-		
 		do {
 			System.out.print("########################## MENU ##########################\n");
 			System.out.print("\t1.Cliente\n"
@@ -56,14 +55,9 @@ public class Principal {
 					
 					switch (op2) {
 					case '1':
-						Cliente cliente;
-						/*
-						 * Cliente:
-						 */
+						Pessoa cliente;
 						System.out.print("\nDigite o nome do cliente: ");
 						nome = scanner.nextLine();
-						System.out.print("Digite o sobrenome do cliente: ");
-						sobrenome = scanner.nextLine();
 						System.out.print("Digite o CPF: ");
 						cpf = scanner.nextLine();
 						System.out.print("Digite a data de nascimento do cliente (dd-mm-aaaa): ");
@@ -87,7 +81,7 @@ public class Principal {
 						cidadeUF = scanner.nextLine();
 	
 						end = new Endereco(rua, complemento, numero, cep, cidadeUF);
-						cliente = new Cliente(cpf, aniversario, nome, sobrenome, end);
+						cliente = new Cliente(cpf, aniversario, nome,end);
 						System.out.println(cliente);
 	
 						System.out.print("Deseja cadastrar um PET agora? "
@@ -108,15 +102,15 @@ public class Principal {
 								System.out.print("Digite o peso do animal: ");
 								peso = Float.parseFloat(scanner.nextLine());
 								System.out.print("Digite a altura do animal: ");
-								h = scanner.nextFloat();
+								h = Float.parseFloat(scanner.nextLine());
 								System.out.print("Digite o nome do pet: ");
 								String nomePet = scanner.nextLine();
-								Animal novo = new Animal(true, especie, raca, cliente, peso, h, nomePet);
+								Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet);
 								animalRepositorio.adicionar(novo);
-								cliente.addPet(novo);
+								((Cliente) cliente).addPet(novo);
 							}
 						}
-						clienteControlador.cadastrar(cliente);
+						clienteControlador.cadastrar((Cliente) cliente);
 						break;
 						
 					case '2':
@@ -144,25 +138,26 @@ public class Principal {
 							switch(op3){
 							case '1':
 								System.out.print("Quantos pets deseja adicionar?");
-								int op4 = scanner.nextInt();
+								char op4 = scanner.nextLine().charAt(0);
 	
-								Animal[] pets = new Animal[op4];
-	
+								Animal[] pets = new Animal[Integer.parseInt(Character.toString(op4))];
 								for (int j = 0; j < pets.length; j++) {
 									System.out.print("Digite a raca: ");
 									raca = scanner.nextLine();
 									System.out.print("Digite a especie: ");
 									especie = scanner.nextLine();
 									System.out.print("Digite o peso do animal: ");
-									peso = scanner.nextFloat();
+									peso = Float.parseFloat(scanner.nextLine());
 									System.out.print("Digite a altura do animal: ");
-									h = scanner.nextFloat();
+									h = Float.parseFloat(scanner.nextLine());
 									System.out.print("Digite o nome do pet: ");
 									String nomePet = scanner.nextLine();
-									Animal novo = new Animal(true, especie, raca, cliente3, peso, h, nomePet);
+									
+									
+									pets[j] = new Animal(true, especie, raca, cliente3, peso, h, nomePet);
 	
-									animalRepositorio.adicionar(novo);
-									cliente3.addPet(novo);
+									animalRepositorio.adicionar(pets[j]);
+									cliente3.addPet(pets[j]);
 								}
 								clienteControlador.atualizar(clienteControlador.buscar(cpf), cliente3);
 								break;
@@ -387,7 +382,7 @@ public class Principal {
 				break;
 			case '4':
 				double salario;
-				String cargo, dataEntrada;
+				String cargo;
 				Funcionario funcionario;
 				
 				do{
@@ -411,9 +406,6 @@ public class Principal {
 						salario = scanner.nextDouble();
 						System.out.print("Informe o cargo: ");
 						cargo = scanner.nextLine();
-						scanner.next();
-						System.out.print("Informe a entrada (dd-mm-aaaa): ");
-						String entradaf = scanner.next();
 						LocalDate entrada = LocalDate.now();
 						
 						//Esperando criar classe de cadastro
@@ -485,7 +477,7 @@ public class Principal {
 	
 								end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 								
-								funcionario.setEndereco(end);
+								funcionario.setEnd(end);
 								break;
 							case '2':
 								System.out.println("Informe o cargo: ");
@@ -534,5 +526,6 @@ public class Principal {
 				break;
 			}
 		} while (op != 5);
+		scanner.close();
 	}
 }

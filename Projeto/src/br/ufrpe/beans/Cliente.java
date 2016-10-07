@@ -2,14 +2,14 @@ package br.ufrpe.beans;
 import java.time.LocalDate;
 
 public class Cliente extends Pessoa {
-	
+
 	private Animal pets[];
 	private int qntPets;
 	public Animal[] getPets() {
 		return pets;
 	}
 	public Cliente(String cpf, LocalDate nascimento, String nome, Endereco end) {
-		
+
 		super(cpf, nascimento,nome,end);
 		this.pets = new Animal[1];
 		this.qntPets = 0;
@@ -29,12 +29,20 @@ public class Cliente extends Pessoa {
 		}
 		this.pets = novo;
 	}
-	
+
 	public boolean equals(Cliente outro){
 		boolean res = false;
 		if(this.getCpf().equals(outro.getCpf())){
-			
+
 			res = true;
+		}
+		return res;
+	}
+	public String toString(){
+		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.getNascimento(), this.getEnd());
+		res += "\nAnimais: \n";
+		for(int i = 0; i < qntPets;i++){
+			res+= pets[i];
 		}
 		return res;
 	}

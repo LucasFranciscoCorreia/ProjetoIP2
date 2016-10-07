@@ -27,15 +27,6 @@ public class RepositorioCliente {
 		}
 		return null;
 	}
-	private int buscarI(Cliente outro){
-		int ok = -1;
-		for(int i = 0; i < repositorio.size();i++){
-			if (repositorio.get(i).equals(outro)) {
-				ok = i;
-			}
-		}
-		return ok;
-	}
 	public Cliente buscar(int i){
 		return repositorio.get(i);
 	}
@@ -56,9 +47,7 @@ public class RepositorioCliente {
 		Cliente c;
 		for(int i = 0; i < repositorio.size();i++){
 			c = repositorio.get(i);
-			System.out.println(c);
 			if (c.getCpf().equals(cpf)) {
-				System.out.println("ok");
 				lixeira.add(repositorio.get(i));
 				repositorio.remove(i);
 				ok = true;
