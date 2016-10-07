@@ -38,6 +38,15 @@ public class RepositorioProduto {
 	public Produto buscar(int i){
 		return rep.get(i);
 	}
+	public Produto buscar(String codigo){
+		for(int i = 0 ; i < rep.size(); i++){
+			if(rep.get(i).getCodigo().equals(codigo)){
+				return rep.get(i);
+			}
+		}
+		
+		return null;
+	}
 	private int buscarI(Produto bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
@@ -50,8 +59,6 @@ public class RepositorioProduto {
 		int i = buscarI(antigo);
 		if(i != -1){
 			rep.remove(antigo);
-		}else{
-			System.out.println("Produto nao encontrado");
 		}
 	}
 	public void atualizar(Produto antigo, Produto novo){
