@@ -22,6 +22,7 @@ public class RepositorioFuncionario {
 	
 	//Sistema de Busca:
 	private int buscarIndice(String cpf){
+		
 		for(int i = 0; i < this.repositorio.size(); i++){
 			if(this.repositorio.get(i).getCPF().equals(cpf)){
 				return i;
@@ -48,10 +49,14 @@ public class RepositorioFuncionario {
 	}	
 	
 	public Funcionario buscar(String cpf){
-		int i = buscarIndice(cpf);
-		
-		if(i == -1){return null;}
-		else{return this.repositorio.get(i);}
+		Funcionario f;
+		for(int i = 0; i < repositorio.size();i++){
+			f = repositorio.get(i);
+			if (f.getCPF().equals(cpf)) {
+				return f;
+			}
+		}
+		return null;
 	}
 	
 	public Funcionario buscar(Funcionario funcionario){
