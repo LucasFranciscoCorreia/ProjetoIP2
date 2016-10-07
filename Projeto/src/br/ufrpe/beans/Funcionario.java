@@ -1,17 +1,17 @@
 package br.ufrpe.beans;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Funcionario {
 	private String nome;
 	private String cpf;
 	private Endereco endereco;
 	private double salario;
-	private LocalDateTime entrada;
+	private LocalDate entrada;
 	private String cargo;	
 	
 	public Funcionario(String nome, String cpf, Endereco endereco, 
-			double salario, LocalDateTime entrada, String cargo){
+			double salario, LocalDate entrada, String cargo){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
@@ -57,7 +57,7 @@ public class Funcionario {
 	}	
 	
 	public String getEntrada(){
-		return String.format("%d/%d/%d %d:%d:%d", entrada.getYear(), entrada.getMonthValue(), entrada.getYear(), entrada.getHour(), entrada.getMinute(), entrada.getSecond());
+		return String.format("%d/%d/%d", entrada.getYear(), entrada.getMonthValue(), entrada.getYear());
 	}	
 	
 	public boolean equals(Funcionario outro){

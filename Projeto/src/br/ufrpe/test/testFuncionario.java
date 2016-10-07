@@ -1,6 +1,6 @@
 package br.ufrpe.test;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import br.ufrpe.beans.Endereco;
@@ -17,13 +17,13 @@ public class testFuncionario {
 		nome = scanf.nextLine();
 		
 		Endereco end1 = new Endereco();
-		LocalDateTime entrada = LocalDateTime.now();
+		LocalDate entrada = LocalDate.now();
 		RepositorioFuncionario repositorio = RepositorioFuncionario.getInstanciado();
 		
-		Funcionario f1 = new Funcionario("Lucas", "101.575.184-93", end1, 3499f, entrada, "Balconista");
-		Funcionario f2 = new Funcionario("Lucas", "101.575.184-93", end1, 3499f, entrada, "Balconista");
-		Funcionario f3 = new Funcionario("Fernanda", "103.364.574-56", end1, 7845f, entrada, "Gerente");
-		Funcionario f4 = new Funcionario("Raissa", "563.642.624-78", end1, 8799f, entrada, "Recepcionista");
+		Funcionario f1 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
+		Funcionario f2 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
+		Funcionario f3 = new Funcionario("Fernanda", "103.364.574-56", end1, 7845.5, entrada, "Gerente");
+		Funcionario f4 = new Funcionario("Raissa", "563.642.624-78", end1, 8799.5, entrada, "Recepcionista");
 		
 		System.out.println("************Equals************\n");
 		System.out.println("Equals f1 e f2: " + f1.equals(f2));
