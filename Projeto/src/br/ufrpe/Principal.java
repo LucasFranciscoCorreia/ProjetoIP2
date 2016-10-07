@@ -315,10 +315,13 @@ public class Principal {
 					case 1:
 						System.out.println("\nInforme o nome: ");
 						nome = scanner.nextLine();
+						scanner.next();
 						System.out.println("Informe o tipo: ");
 						tipo = scanner.nextLine();
+						scanner.next();
 						System.out.println("Informe o codigo: ");
 						codigo = scanner.nextLine();
+						scanner.next();
 						System.out.println("Informe o pre�o: ");
 						preco = scanner.nextFloat();
 						System.out.println("Informe a quantidade em estoque: ");
@@ -328,22 +331,24 @@ public class Principal {
 						
 						if(produtoRepositorio.buscar(codigo) == null){
 							produtoRepositorio.adicionar(produto);
-							System.out.println("Produto cadastrado com sucesso\n");
-						}else{System.out.println("Erro!! Produto j� se encontra no sistema\n");}
+							System.out.println("\n----------Produto cadastrado com sucesso----------\n");
+						}else{System.out.println("\n----------Erro!! Produto j� se encontra no sistema----------\n");}
 						break;
 					case 2:
 						System.out.println("Informe o c�digo: ");
 						codigo = scanner.nextLine();
+						scanner.next();
 						
 						produto = produtoRepositorio.buscar(codigo);
 						if(produto != null){
 							produtoRepositorio.remover(produto);
-							System.out.println("Produto removido com sucesso\n");
-						}else{System.out.println("Produto n�o existe\n");}
+							System.out.println("\n----------Produto removido com sucesso----------\n");
+						}else{System.out.println("\n----------Produto n�o existe----------\n");}
 						break;
 					case 3:
 						System.out.println("Informe o c�digo: ");
 						codigo = scanner.nextLine();
+						scanner.next();
 						
 						produto = produtoRepositorio.buscar(codigo);
 								
@@ -357,20 +362,24 @@ public class Principal {
 							
 							Produtos produtoNovo = new Produtos(preco, nome, tipo, codigo, estoque);
 							produtoRepositorio.atualizar(produto, produtoNovo);
-							System.out.println("Produto atualizado\n");
-						}else{System.out.println("Produto n�o existe\n");}
+							System.out.println("\n----------Produto atualizado----------\n");
+						}else{System.out.println("\n----------Produto n�o existe----------\n");}
 						break;
 					case 4:
+						/*
+						 * Erro!!!
+						 */
 						System.out.println("Informe o c�digo: ");
 						codigo = scanner.nextLine();
+						scanner.next();
 						
 						produto = produtoRepositorio.buscar(codigo);
 						if(produto != null){
-							System.out.println("\n" + produto.toString() + "\n");
-						}else{System.out.println("Produto n�o existe\n");}
+							System.out.println("\n" + produto + "\n");
+						}else{System.out.println("\n----------Produto n�o existe----------\n");}
 						break;
 					default:
-						System.out.println("Op��o Invalida");
+						System.out.println("\n----------Op��o Invalida----------");
 						break;
 					}
 				}while(op2 != 5);
@@ -422,17 +431,17 @@ public class Principal {
 						funcionario = new Funcionario(nome, cpf, end, salario, entrada, cargo);
 						
 						if(funcionarioRepositorio.cadastrar(funcionario)){
-							System.out.println("Funcionario cadastrado com sucesso\n");
-						}else{System.out.println("Funcionario j� existe no sistema\n");}
+							System.out.println("\n----------Funcionario cadastrado com sucesso----------\n");
+						}else{System.out.println("\n----------Funcionario j� existe no sistema----------\n");}
 						break;
 					case 2:
 						System.out.println("Informe o CPF: ");
 						cpf = scanner.nextLine();
 						
 						if(funcionarioRepositorio.remover(cpf)){
-							System.out.println("Funcionario removido com sucesso\n");
+							System.out.println("\n----------Funcionario removido com sucesso----------\n");
 							break;
-						}else{System.out.println("Funcionario n�o encontrado\n");}
+						}else{System.out.println("\n----------Funcionario n�o encontrado----------\n");}
 						break;
 					case 3:
 						System.out.println("Informe o CPF: ");
@@ -491,13 +500,13 @@ public class Principal {
 						System.out.println("\n" + funcionarioRepositorio.buscar(cpf).toString() + "\n");
 						break;
 					default:
-						System.out.println("Op��o Invalida\n");
+						System.out.println("\n----------Op��o Invalida----------\n");
 						break;
 					}
 				}while(op2 != 5);
 				break;
 			default:
-				System.out.println("Op��o Invalida\n");
+				System.out.println("\n----------Op��o Invalida----------\n");
 				break;
 			}
 		} while (op != 5);
