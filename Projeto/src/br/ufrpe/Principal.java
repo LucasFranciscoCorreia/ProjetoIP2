@@ -9,7 +9,7 @@ import br.ufrpe.repositorios.*;
 
 public class Principal {
 	public static void main(String[] args) {
-		int op = 0, op2 = 0, op3 = 0;
+		char op = '0', op2 = '0', op3 = '0';
 		String cpf, nome, sobrenome, data, tipo, codigo;
 		String rua, complemento, cidadeUF, cep;
 		String raca, especie;
@@ -34,35 +34,35 @@ public class Principal {
 					+ "\t5.Sair");
 			System.out.println("\n#######################################################\n");
 			System.out.println("Opcao: ");
-			op = scanner.nextInt();
-			
+			op = scanner.nextLine().charAt(0);
 			switch (op) {
-			case 1:
+			case '1':
 				do{
 					System.out.println("\n########################## Cliente ##########################");
 					System.out.print("\t1.Cadastrar\n"
 							+ "\t2.Remover\n"
 							+ "\t3.Atualizar\n"
 							+ "\t4.Pesquisar\n"
-							+ "\t5.Sair");
+							+ "\t5.Listar\n"
+							+ "\t6.Sair");
 					System.out.println("\n#############################################################\n");
 					System.out.println("Opcao: ");
-					op2 = scanner.nextInt();
+					op2 = scanner.nextLine().charAt(0);
 					
 					switch (op2) {
-					case 1:
+					case '1':
 						Cliente cliente;
 						/*
 						 * Cliente:
 						 */
 						System.out.print("\nDigite o nome do cliente: ");
-						nome = scanner.next();
+						nome = scanner.nextLine();
 						System.out.print("Digite o sobrenome do cliente: ");
-						sobrenome = scanner.next();
+						sobrenome = scanner.nextLine();
 						System.out.print("Digite o CPF: ");
-						cpf = scanner.next();
+						cpf = scanner.nextLine();
 						System.out.print("Digite a data de nascimento do cliente (dd-mm-aaaa): ");
-						data = scanner.next();
+						data = scanner.nextLine();
 						
 						DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 						LocalDate aniversario = LocalDate.parse(data, DATE_FORMAT);
@@ -70,34 +70,35 @@ public class Principal {
 						 * Endereco:
 						 */
 						System.out.print("Digite o nome da rua: ");
-						scanner.next();
 						rua = scanner.nextLine();
 						System.out.print("Digite o complemento: ");
 						complemento = scanner.nextLine();
 						System.out.print("Digite o numero da casa: ");
-						numero = scanner.nextShort();
+						String linha = scanner.nextLine();
+						numero = Short.parseShort(linha);
 						System.out.print("Digite o cep: ");
-						cep = scanner.next();
+						cep = scanner.nextLine();
 						System.out.print("Digite a cidade-UF: ");
 						cidadeUF = scanner.nextLine();
 	
 						end = new Endereco(rua, complemento, numero, cep, cidadeUF);
+						System.out.println(end);
 						cliente = new Cliente(cpf, aniversario, nome, sobrenome, end);
+						System.out.println(cliente);
 	
 						System.out.print("Deseja cadastrar um PET agora? "
 								+ "\n\t1.Sim"
 								+ "\n\t2.N�o");
-						op3 = scanner.nextInt();
+						op3 = scanner.nextLine().charAt(0);
 	
-						if (op3 == 1) {
+						if (op3 == '1') {
 							System.out.print("Quantos pets deseja adicionar?");
-							op3 = scanner.nextInt();
+							op3 = scanner.nextLine().charAt(0);
 	
 							Animal[] pets = new Animal[op3];
 	
 							for (int j = 0; j < pets.length; j++) {
-								System.out.print("Digite a ra�a: ");
-								scanner.next();
+								System.out.print("Digite a raca: ");
 								raca = scanner.nextLine();
 								System.out.print("Digite a especie: ");
 								especie = scanner.nextLine();
@@ -116,12 +117,13 @@ public class Principal {
 							clienteRepositorio.cadastrar(cliente);
 							System.out.println("Cliente cadastrado\n");
 						}else{
-							System.out.println("Erro!! Cliente ja � cadastrado no sistema\n");
+							System.out.println("Erro!! Cliente ja eh cadastrado no sistema\n");
 						}
 						break;
 						
-					case 2:
+					case '2':
 						System.out.println("Digite o cpf do cliente: ");
+						scanner.next();
 						cpf = scanner.nextLine();
 					
 						Cliente cliente2 = clienteRepositorio.buscar(cpf);
@@ -130,10 +132,10 @@ public class Principal {
 							clienteRepositorio.remover(cliente2);
 							System.out.println("Cliente removido com sucesso\n");
 						} else {
-							System.out.println("Cliente n�o encontrado\n");
+							System.out.println("Cliente nao encontrado\n");
 						}
 						break;
-					case 3:
+					case '3':
 						/*
 						 * Incompleto!!!
 						 */
@@ -148,17 +150,17 @@ public class Principal {
 									+ "\t2.Alterar pets do cliente\n"
 									+ "\t3.Mudar endereco\n"
 									+ "\t4.Sair");
-							op3 = scanner.nextInt();
+							op3 = scanner.nextLine().charAt(0);
 							
 							switch(op3){
-							case 1:
+							case '1':
 								System.out.print("Quantos pets deseja adicionar?");
 								int op4 = scanner.nextInt();
 	
 								Animal[] pets = new Animal[op4];
 	
 								for (int j = 0; j < pets.length; j++) {
-									System.out.print("Digite a ra�a: ");
+									System.out.print("Digite a raca: ");
 									raca = scanner.nextLine();
 									System.out.print("Digite a especie: ");
 									especie = scanner.nextLine();
@@ -176,12 +178,12 @@ public class Principal {
 								clienteRepositorio.remover(cliente3);
 								clienteRepositorio.cadastrar(cliente3);
 								break;
-							case 2:
+							case '2':
 								/*
 								 * Falta receber o animal do cliente: (incompleto)
 								 */
 								break;
-							case 3:
+							case '3':
 								System.out.print("Digite o nome da rua: ");
 								rua = scanner.nextLine();
 								System.out.print("Digite o complemento: ");
@@ -189,7 +191,7 @@ public class Principal {
 								System.out.print("Digite o numero da casa: ");
 								numero = scanner.nextShort();
 								System.out.print("Digite o cep: ");
-								cep = scanner.next();
+								cep = scanner.nextLine();
 								System.out.print("Digite a cidade-UF: ");
 								cidadeUF = scanner.nextLine();
 	
@@ -200,26 +202,39 @@ public class Principal {
 								clienteRepositorio.cadastrar(cliente3);
 								break;
 							default:
-								System.out.println("Op��o invalida\n");
+								System.out.println("Opcao invalida\n");
 								break;
 							}
-						}else{System.out.println("Cliente n�o encontrado\n");}
+						}else{System.out.println("Cliente nao encontrado\n");}
 						break;
 					
-					case 4: 
+					case '4': 
 						System.out.print("Informe o CPF: ");
 						scanner.next();
 						cpf = scanner.nextLine();
+						Cliente c = clienteRepositorio.buscar(cpf);
+						if (c != null) {
+							System.out.println(c);
+						}else{
+							System.out.println("Cliente nao encontrado");
+						}
+						break;
+					case '5':
+						clienteRepositorio.listar();
+						break;
+					case '6': 
 						
-						System.out.println(clienteRepositorio.buscar(cpf).toString());
 						break;
 					default:
-						System.out.println("Op��o Invalida\n");
+						System.out.println("Opcao Invalida\n");
 						break;
 					}
-				}while(op2 != 5);
+				}while(op2 != '6');
 				break;
-			case 2:
+			case '6':
+				
+				break;
+			case '2':
 				do{
 					/*
 					 * Incompleto, precisa de um codigo para o animal!!
@@ -232,17 +247,17 @@ public class Principal {
 							+ "\t5.Sair");
 					System.out.println("\n############################################################\n");
 					System.out.print("Opcao: ");
-					op2 = scanner.nextInt();
+					op2 = scanner.nextLine().charAt(0);
 					
 					switch(op2){
-					case 1:
+					case '1':
 						System.out.println("Cadastrar dono: ");
 						System.out.println("\t1.Sim"
 								+ "\n\t2.Nao"
 								+ "\n\nOpcao: ");
-						op3 = scanner.nextInt();
+						op3 = scanner.nextLine().charAt(0);
 						
-						if(op3 == 1){
+						if(op3 == '1'){
 							System.out.print("Informe o cpf: ");
 							String cpfD = scanner.nextLine();
 							
@@ -274,31 +289,31 @@ public class Principal {
 							Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet);
 							animalRepositorio.adicionar(novo);
 						}else{
-							System.out.println("Op��o invalida\n");
+							System.out.println("Opcao invalida\n");
 						}
 						break;
-					case 2:
+					case '2':
 						/*
 						 * Incompleto(Remover)
 						 */
 						break;
-					case 3:
+					case '3':
 						/*
 						 * Incompleto(Atualizar)
 						 */
 						break;
-					case 4:
+					case '4':
 						/*
 						 * Incompleto(Pesquisar)
 						 */
 						break;
 					default:
-						System.out.println("Op��o Invalida\n");
+						System.out.println("Opcao Invalida\n");
 						break;
 					}
-				}while(op2 != 5);
+				}while(op2 != '5');
 				break;
-			case 3:
+			case '3':
 				int estoque;
 				float preco;
 				do{
@@ -310,12 +325,12 @@ public class Principal {
 							+ "\t5.Sair");
 					System.out.println("\n#############################################################\n");
 					System.out.println("Opcao: ");
-					op2 = scanner.nextInt();
+					op2 = scanner.nextLine().charAt(0);
 					
 					Produto produto;
 					
 					switch (op2){
-					case 1:
+					case '1':
 						System.out.println("\nInforme o nome: ");
 						nome = scanner.nextLine();
 						scanner.next();
@@ -337,8 +352,8 @@ public class Principal {
 							System.out.println("\n----------Produto cadastrado com sucesso----------\n");
 						}else{System.out.println("\n----------Erro!! Produto nao se encontra no sistema----------\n");}
 						break;
-					case 2:
-						System.out.println("Informe o c�digo: ");
+					case '2':
+						System.out.println("Informe o codigo: ");
 						codigo = scanner.nextLine();
 						scanner.next();
 						
@@ -348,7 +363,7 @@ public class Principal {
 							System.out.println("\n----------Produto removido com sucesso----------\n");
 						}else{System.out.println("\n----------Produto nao existe----------\n");}
 						break;
-					case 3:
+					case '3':
 						System.out.println("Informe o codigo: ");
 						codigo = scanner.nextLine();
 						scanner.next();
@@ -358,7 +373,7 @@ public class Principal {
 						if(produto != null){
 							nome = produto.getNome();
 							tipo = produto.getTipo();
-							System.out.println("Informe o pre�o: ");
+							System.out.println("Informe o preco: ");
 							preco = scanner.nextFloat();
 							System.out.println("Informe a quantidade em estoque: ");
 							estoque = scanner.nextInt();
@@ -366,13 +381,13 @@ public class Principal {
 							Produto produtoNovo = new Produto(preco, nome, tipo, codigo, estoque);
 							produtoRepositorio.atualizar(produto, produtoNovo);
 							System.out.println("\n----------Produto atualizado----------\n");
-						}else{System.out.println("\n----------Produto n�o existe----------\n");}
+						}else{System.out.println("\n----------Produto nao existe----------\n");}
 						break;
-					case 4:
+					case '4':
 						/*
 						 * Erro!!!
 						 */
-						System.out.println("Informe o c�digo: ");
+						System.out.println("Informe o codigo: ");
 						codigo = scanner.nextLine();
 						scanner.next();
 						
@@ -385,9 +400,9 @@ public class Principal {
 						System.out.println("\n----------Opcao Invalida----------");
 						break;
 					}
-				}while(op2 != 5);
+				}while(op2 != '5');
 				break;
-			case 4:
+			case '4':
 				double salario;
 				String cargo, dataEntrada;
 				Funcionario funcionario;
@@ -401,10 +416,10 @@ public class Principal {
 							+ "\t5.Sair");
 					System.out.println("\n#################################################################\n");
 					System.out.println("Opcao: ");
-					op2 = scanner.nextInt();
+					op2 = scanner.nextLine().charAt(0);
 					
 					switch (op2){
-					case 1:
+					case '1':
 						System.out.print("\nInforme o nome: ");
 						nome = scanner.next();
 						System.out.print("Informe o CPF: ");
@@ -444,7 +459,7 @@ public class Principal {
 							System.out.println("\n\n----------Funcionario cadastrado com sucesso----------\n");
 						}else{System.out.println("\n\n----------Funcionario ja cadastrado no sistema----------\n");}
 						break;
-					case 2:
+					case '2':
 						System.out.print("Informe o CPF: ");
 						scanner.next();
 						cpf = scanner.nextLine();
@@ -454,7 +469,7 @@ public class Principal {
 							break;
 						}else{System.out.println("\n\n----------Funcionario nao encontrado----------\n");}
 						break;
-					case 3:
+					case '3':
 						/*
 						 * Com problema!!!!
 						 */
@@ -470,10 +485,10 @@ public class Principal {
 									+ "2.Atualizar Cargo\n"
 									+ "3.Atualizar Salario\n"
 									+ "\nOpcao: ");
-							op3 = scanner.nextInt();
+							op3 = scanner.nextLine().charAt(0);
 							
 							switch(op3){
-							case 1:
+							case '1':
 								System.out.print("Digite o nome da rua: ");
 								rua = scanner.nextLine();
 								System.out.print("Digite o complemento: ");
@@ -489,13 +504,13 @@ public class Principal {
 								
 								funcionario.setEndereco(end);
 								break;
-							case 2:
+							case '2':
 								System.out.println("Informe o cargo: ");
 								cargo = scanner.nextLine();
 								
 								funcionario.setCargo(cargo);
 								break;
-							case 3:
+							case '3':
 								System.out.println("Informe o salario: ");
 								salario = scanner.nextDouble();
 								
@@ -509,7 +524,7 @@ public class Principal {
 							funcionarioRepositorio.atualizar(funcionario);
 						}else{System.out.println("\n\n----------Funcionario nao encontrado----------\n");}
 						break;
-					case 4:
+					case '4':
 						/*
 						 * Com problema!!!!!
 						 */
@@ -529,7 +544,7 @@ public class Principal {
 						System.out.println("\n\n----------Opcao Invalida----------\n");
 						break;
 					}
-				}while(op2 != 5);
+				}while(op2 != '5');
 				break;
 			default:
 				System.out.println("\n\n----------Opcao Invalida----------\n");
