@@ -54,7 +54,7 @@ public class ControladorCliente {
 		}
 		return null;
 	}
-	public Cliente Buscar(String cpf){
+	public Cliente buscar(String cpf){
 		if (cpf != null){
 			Cliente c= repo.buscar(cpf);
 			if (c != null) {
@@ -66,5 +66,8 @@ public class ControladorCliente {
 			System.out.println("CPF invaldo");
 		}
 		return null;
+	}
+	public void listar(){
+		System.out.println(repo.listar());
 	}
 }

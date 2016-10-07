@@ -4,8 +4,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-import br.ufrpe.beans.*;
-import br.ufrpe.repositorios.*;
+import br.ufrpe.beans.Animal;
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.beans.Endereco;
+import br.ufrpe.beans.Funcionario;
+import br.ufrpe.beans.Produto;
+import br.ufrpe.negocios.ControladorCliente;
+import br.ufrpe.repositorios.RepositorioAnimal;
+import br.ufrpe.repositorios.RepositorioFuncionario;
+import br.ufrpe.repositorios.RepositorioProduto;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -17,15 +24,13 @@ public class Principal {
 		short numero;
 		Endereco end;
 		Scanner scanner = new Scanner(System.in);
-		
-		RepositorioCliente clienteRepositorio = RepositorioCliente.getInstance();
+		ControladorCliente clienteControlador = new ControladorCliente();
 		RepositorioAnimal animalRepositorio = RepositorioAnimal.getInstance();
 		RepositorioProduto produtoRepositorio = new RepositorioProduto();
 		RepositorioFuncionario funcionarioRepositorio = RepositorioFuncionario.getInstanciado();
 		
 		
 		do {
-			
 			System.out.print("########################## MENU ##########################\n");
 			System.out.print("\t1.Cliente\n"
 					+ "\t2.Animal\n"
@@ -46,7 +51,7 @@ public class Principal {
 							+ "\t5.Listar\n"
 							+ "\t6.Sair");
 					System.out.println("\n#############################################################\n");
-					System.out.println("Opcao: ");
+					System.out.print("Opcao: ");
 					op2 = scanner.nextLine().charAt(0);
 					
 					switch (op2) {
@@ -82,28 +87,26 @@ public class Principal {
 						cidadeUF = scanner.nextLine();
 	
 						end = new Endereco(rua, complemento, numero, cep, cidadeUF);
-						System.out.println(end);
 						cliente = new Cliente(cpf, aniversario, nome, sobrenome, end);
 						System.out.println(cliente);
 	
 						System.out.print("Deseja cadastrar um PET agora? "
 								+ "\n\t1.Sim"
-								+ "\n\t2.N�o");
+								+ "\n\t2.N�o\nOpcao: ");
 						op3 = scanner.nextLine().charAt(0);
 	
 						if (op3 == '1') {
-							System.out.print("Quantos pets deseja adicionar?");
+							System.out.print("Quantos pets deseja adicionar?: ");
 							op3 = scanner.nextLine().charAt(0);
 	
-							Animal[] pets = new Animal[op3];
-	
+							Animal[] pets = new Animal[Integer.parseInt(Character.toString(op3))];
 							for (int j = 0; j < pets.length; j++) {
 								System.out.print("Digite a raca: ");
 								raca = scanner.nextLine();
 								System.out.print("Digite a especie: ");
 								especie = scanner.nextLine();
 								System.out.print("Digite o peso do animal: ");
-								peso = scanner.nextFloat();
+								peso = Float.parseFloat(scanner.nextLine());
 								System.out.print("Digite a altura do animal: ");
 								h = scanner.nextFloat();
 								System.out.print("Digite o nome do pet: ");
@@ -113,27 +116,13 @@ public class Principal {
 								cliente.addPet(novo);
 							}
 						}
-						if(clienteRepositorio.buscar(cpf) == null){
-							clienteRepositorio.cadastrar(cliente);
-							System.out.println("Cliente cadastrado\n");
-						}else{
-							System.out.println("Erro!! Cliente ja eh cadastrado no sistema\n");
-						}
+						clienteControlador.cadastrar(cliente);
 						break;
 						
 					case '2':
 						System.out.println("Digite o cpf do cliente: ");
-						scanner.next();
 						cpf = scanner.nextLine();
-					
-						Cliente cliente2 = clienteRepositorio.buscar(cpf);
-						
-						if (cliente2 != null) {
-							clienteRepositorio.remover(cliente2);
-							System.out.println("Cliente removido com sucesso\n");
-						} else {
-							System.out.println("Cliente nao encontrado\n");
-						}
+						clienteControlador.remover(cpf);
 						break;
 					case '3':
 						/*
@@ -143,7 +132,7 @@ public class Principal {
 						System.out.println("Digite o cpf do cliente: ");
 						cpf = scanner.nextLine();
 						
-						Cliente cliente3  = clienteRepositorio.buscar(cpf);
+						Cliente cliente3  = clienteControlador.buscar(cpf);
 						
 						if(cliente3 != null){
 							System.out.println("\t1.Adicionar pets a um cliente\n"
@@ -175,8 +164,7 @@ public class Principal {
 									animalRepositorio.adicionar(novo);
 									cliente3.addPet(novo);
 								}
-								clienteRepositorio.remover(cliente3);
-								clienteRepositorio.cadastrar(cliente3);
+								clienteControlador.atualizar(clienteControlador.buscar(cpf), cliente3);
 								break;
 							case '2':
 								/*
@@ -197,9 +185,7 @@ public class Principal {
 	
 								end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 								cliente3.setEnd(end);
-								
-								clienteRepositorio.remover(cliente3);
-								clienteRepositorio.cadastrar(cliente3);
+								clienteControlador.atualizar(clienteControlador.buscar(cpf), cliente3);
 								break;
 							default:
 								System.out.println("Opcao invalida\n");
@@ -210,17 +196,14 @@ public class Principal {
 					
 					case '4': 
 						System.out.print("Informe o CPF: ");
-						scanner.next();
 						cpf = scanner.nextLine();
-						Cliente c = clienteRepositorio.buscar(cpf);
+						Cliente c = clienteControlador.buscar(cpf);
 						if (c != null) {
 							System.out.println(c);
-						}else{
-							System.out.println("Cliente nao encontrado");
 						}
 						break;
 					case '5':
-						clienteRepositorio.listar();
+						clienteControlador.listar();
 						break;
 					case '6': 
 						
@@ -261,7 +244,7 @@ public class Principal {
 							System.out.print("Informe o cpf: ");
 							String cpfD = scanner.nextLine();
 							
-							Cliente dono = clienteRepositorio.buscar(cpfD);
+							Cliente dono = clienteControlador.buscar(cpfD);
 							
 							System.out.println("Digite a raca: ");
 							raca = scanner.nextLine();

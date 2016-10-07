@@ -20,14 +20,24 @@ public class RepositorioCliente {
 		return this.repositorio.size();
 	}
 	public Cliente buscar(String cpf){
+		for(int i = 0; i < repositorio.size();i++){
+			if (repositorio.get(i).getCpf().equals(cpf)) {
+				return repositorio.get(i);
+			}
+		}
 		return null;
 	}
 	private int buscarI(Cliente outro){
 		int ok = -1;
+		for(int i = 0; i < repositorio.size();i++){
+			if (repositorio.get(i).equals(outro)) {
+				ok = i;
+			}
+		}
 		return ok;
 	}
 	public Cliente buscar(int i){
-		return null;
+		return repositorio.get(i);
 	}
 	public boolean cadastrar(Cliente outro){
 		boolean ok =  true;
@@ -43,8 +53,12 @@ public class RepositorioCliente {
 	}
 	public boolean remover(String cpf){
 		boolean ok = false;
+		Cliente c;
 		for(int i = 0; i < repositorio.size();i++){
-			if (cpf.equals(repositorio.get(i).getCpf())) {
+			c = repositorio.get(i);
+			System.out.println(c);
+			if (c.getCpf().equals(cpf)) {
+				System.out.println("ok");
 				lixeira.add(repositorio.get(i));
 				repositorio.remove(i);
 				ok = true;
@@ -71,5 +85,12 @@ public class RepositorioCliente {
 			}
 		}
 		return null;
+	}
+	public String listar(){
+		String res = "";
+		for(int i = 0; i < repositorio.size();i++){
+			res += repositorio.get(i);
+		}
+		return res;
 	}
 }

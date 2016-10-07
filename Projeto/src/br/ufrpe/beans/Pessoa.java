@@ -1,0 +1,4 @@
+package br.ufrpe.beans;
+public class Pessoa {
+
+}
