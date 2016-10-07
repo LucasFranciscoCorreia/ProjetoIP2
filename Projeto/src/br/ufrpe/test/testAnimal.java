@@ -15,13 +15,13 @@ public class testAnimal {
 		LocalDate aniversario = LocalDate.of(1996, 7, 26);
 		RepositorioAnimal rep = RepositorioAnimal.getInstance();
 		Cliente c = new Cliente("101.575.184-93", aniversario, "Lucas", "Correia", end );
-		Animal a1 = new Animal(true, "Husky", "Cachorro",c , 37.0, 1.6);
-		Animal a2 = new Animal(true, "Husky", "Cachorro", c, 37.0, 1.6);
-		Animal a3 = new Animal(true, "Persa", "Gato", c, 1.6, 0.42);
+		Animal a1 = new Animal(true, "Husky", "Cachorro",c , 37.0, 1.6, "a1");
+		Animal a2 = new Animal(true, "Husky", "Cachorro", c, 37.0, 1.6, "a2");
+		Animal a3 = new Animal(true, "Persa", "Gato", c, 1.6, 0.42, "a3");
 		
 		RepositorioAnimal repoAnimal = RepositorioAnimal.getInstance();
 		Endereco ende = new Endereco();
-		Cliente dono = new Cliente("2938249", nascimento, "Raissa", "Camelo", ende);
+		Cliente dono = new Cliente("2938249", aniversario, "Raissa", "Camelo", ende);
 		
 		boolean state = true;
 		
