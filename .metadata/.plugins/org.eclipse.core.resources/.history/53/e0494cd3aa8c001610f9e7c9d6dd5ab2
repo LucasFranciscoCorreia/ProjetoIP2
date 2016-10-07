@@ -2,7 +2,8 @@ package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Produtos;
+/* weeee */
 public class RepositorioProduto {
 	private  ArrayList<Produto> rep;
 	
