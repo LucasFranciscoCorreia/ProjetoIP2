@@ -43,6 +43,15 @@ public class RepositorioProduto {
 	public Produto buscar(int i){
 		return rep.get(i);
 	}
+	public Produto buscar(String codigo){
+		for(int i = 0 ; i < rep.size(); i++){
+			if(rep.get(i).getCodigo().equals(codigo)){
+				return rep.get(i);
+			}
+		}
+		
+		return null;
+	}
 	private int buscarI(Produto bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
