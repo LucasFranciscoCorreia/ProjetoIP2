@@ -45,7 +45,7 @@ public class Produto {
 		this.estoque = estoque;
 	}	
 	public String toString(){
-		String prod = String.format("Nome: %s \nPreÃ§o: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
+		String prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
 		return prod;  
 	}
 
