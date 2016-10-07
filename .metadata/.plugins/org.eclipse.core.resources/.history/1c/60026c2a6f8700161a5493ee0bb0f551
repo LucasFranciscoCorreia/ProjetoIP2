@@ -1,0 +1,54 @@
+package br.ufrpe.repositorios;
+import java.util.ArrayList;
+
+import br.ufrpe.beans.Cliente;
+public class RepositorioCliente {
+	private ArrayList<Cliente> repositorio;
+	private static  RepositorioCliente rep;
+	private RepositorioCliente() {
+		 repositorio = new ArrayList<>();
+	}
+	public static RepositorioCliente getInstance(){
+		if (rep == null) {
+			rep = new RepositorioCliente();
+		}
+		return rep;
+	}
+	public ArrayList<Cliente>  getList(){
+		return repositorio;
+	}
+	public void cadastrar(Cliente outro){
+		this.repositorio.add(outro);
+	}
+	public int getSize(){
+		return this.repositorio.size();
+	}
+	public Cliente buscar(String cpf){
+		int i;
+		for(i = 0; i < getSize();i++){
+			if(this.repositorio.get(i).getCpf().equals(cpf)){
+				return this.repositorio.get(i);
+			}
+		}
+		return null;
+	}
+	public Cliente buscar(int i){
+		if (i >= 0 && i < repositorio.size()) {
+			return this.repositorio.get(i);
+		}
+		return null;
+	}
+	public int buscarI(Cliente outro){
+		int i;
+		for(i = 0; i < this.getSize();i++){
+			if(this.repositorio.get(i).equals(outro)){
+				break;
+			}
+		}
+		return i;
+	}
+	public void remover(Cliente outro){
+		int i = this.buscarI(outro);
+		this.repositorio.remove(i);
+	}
+}

@@ -1,33 +1,30 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-
-import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Produtos;
 /* weeee */
 public class RepositorioProduto {
-	private  ArrayList<Produto> rep;
-	private static RepositorioProduto instance;
+	private  ArrayList<Produtos> rep;
 	
-	private RepositorioProduto(){
-		rep = new ArrayList<>();
+	public RepositorioProduto(){
+		 rep = new ArrayList<>();
 	}
-	
-	public static synchronized RepositorioProduto getInstance(){
-		if(instance == null){
-			
-			instance = new RepositorioProduto();
-		}
-		
-		return instance;
-	}
-	
 	public int Size(){
 		return rep.size();
 	}
-	public void adicionar(Produto novo){
-		rep.add(novo);
+	public boolean adicionar(Produtos novo){
+		boolean ok = true;
+		for (int i = 0; i < rep.size(); i++) {
+			if (rep.get(i).equals(novo)) {
+				ok = false;
+			}
+		}
+		if (ok) {
+			rep.add(novo);
+		}
+		return ok;
 	}
-	public Produto buscar(Produto bus){
+	public Produtos buscar(Produtos bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return rep.get(i);
@@ -35,10 +32,19 @@ public class RepositorioProduto {
 		}
 		return null;
 	}
-	public Produto buscar(int i){
+	public Produtos buscar(int i){
 		return rep.get(i);
 	}
-	private int buscarI(Produto bus){
+	public Produtos buscar(String codigo){
+		for(int i = 0 ; i < rep.size(); i++){
+			if(rep.get(i).getCodigo().equals(codigo)){
+				return rep.get(i);
+			}
+		}
+		
+		return null;
+	}
+	private int buscarI(Produtos bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i) == bus){
 				return i;
@@ -46,21 +52,26 @@ public class RepositorioProduto {
 		}
 		return -1;
 	}
-	public void remover(Produto antigo){
+	public boolean remover(Produtos antigo){
+		boolean ok = false;
 		int i = buscarI(antigo);
 		if(i != -1){
 			rep.remove(antigo);
+			ok = true;
 		}else{
 			System.out.println("Produto nao encontrado");
 		}
+		return ok;
 	}
-	public void atualizar(Produto antigo, Produto novo){
+	public boolean atualizar(Produtos antigo, Produtos novo){
+		boolean ok = false;
 		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i) == antigo){
-				rep.remove(i);
+			if(rep.get(i).equals(antigo)){
+				this.remover(antigo);
 				rep.add(novo);
-				break;
+				ok = true;
 			}
 		}
+		return ok;
 	}
 }

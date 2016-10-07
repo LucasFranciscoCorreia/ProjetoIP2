@@ -1,0 +1,12 @@
+package br.ufrpe.test;
+import java.util.ArrayList;
+
+import br.ufrpe.beans.Animal;
+import br.ufrpe.repositorios.RepositorioAnimal;
+public class testAnimal {
+	public static void main(String[] args) {
+		Animal a1 = new Animal(true, "Husky", "Cachorro", , 37.0, 1.6);
+		Animal a2 = new Animal(true, "Husky", "Cachorro", , 37.0, 1.6);
+		Animal a3 = new Animal(true, "Persa", "Gato", , 1.6, 0.42);
+	}
+}

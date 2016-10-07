@@ -11,9 +11,15 @@ import br.ufrpe.repositorios.RepositorioAnimal;
 
 public class testAnimal {
 	public static void main(String[] args) {
+		Endereco end = new Endereco();
+		LocalDate aniversario = LocalDate.of(1996, 7, 26);
+		RepositorioAnimal rep = RepositorioAnimal.getInstance();
+		Cliente c = new Cliente("101.575.184-93", aniversario, "Lucas", "Correia", end );
+		Animal a1 = new Animal(true, "Husky", "Cachorro",c , 37.0, 1.6);
+		Animal a2 = new Animal(true, "Husky", "Cachorro", c, 37.0, 1.6);
+		Animal a3 = new Animal(true, "Persa", "Gato", c, 1.6, 0.42);
 		
 		RepositorioAnimal repoAnimal = RepositorioAnimal.getInstance();
-		LocalDate nascimento = LocalDate.now();
 		Endereco ende = new Endereco();
 		Cliente dono = new Cliente("2938249", nascimento, "Raissa", "Camelo", ende);
 		
@@ -61,5 +67,6 @@ public class testAnimal {
 		System.out.println("Saiu");
 		System.out.println(repoAnimal.toString());
 		
+		LocalDate nascimento = LocalDate.now();
 	}
 }
