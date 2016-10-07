@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;br.ufrpe.beans.Produtos&apos; to &apos;Produto&apos;&#x0D;&#x0A;- Original project: &apos;Projeto&apos;&#x0D;&#x0A;- Original element: &apos;br.ufrpe.beans.Produtos&apos;&#x0D;&#x0A;- Renamed element: &apos;br.ufrpe.beans.Produto&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Produtos&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;br.ufrpe.beans{Produtos.java[Produtos" matchStrategy="1" name="Produto" qualified="false" references="true" similarDeclarations="false" stamp="1475708885082" textual="false" version="1.0"/>
+</session>

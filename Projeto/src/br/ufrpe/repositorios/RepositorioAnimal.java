@@ -6,10 +6,12 @@ public class RepositorioAnimal {
 	private ArrayList<Animal> rep;
 	private ArrayList<Animal> lixeira;
 	private static RepositorioAnimal repo;
+	
 	private RepositorioAnimal(){
 		rep = new ArrayList<>();
 		lixeira = new ArrayList<>();
 	}
+	
 	public static RepositorioAnimal getInstance(){
 		if (repo == null) {
 			repo = new RepositorioAnimal();

@@ -1,6 +1,6 @@
 package br.ufrpe.test;
 
-import br.ufrpe.beans.Produtos;
+import br.ufrpe.beans.Produto;
 import br.ufrpe.repositorios.RepositorioProduto;
 
 public class testProduto {
@@ -16,7 +16,8 @@ public class testProduto {
 		b.setTipo("Animal");
 		System.out.println(a.equals(c));		
 		System.out.println();
-		RepositorioProduto rep1 = new RepositorioProduto();
+		RepositorioProduto rep1 = RepositorioProduto.getInstance();
+		
 		for (int i = 0; i < rep1.Size(); i++) {
 			System.out.println(rep1.buscar(i));
 		}
