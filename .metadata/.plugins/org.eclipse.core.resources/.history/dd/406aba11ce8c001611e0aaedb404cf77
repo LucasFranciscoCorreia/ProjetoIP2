@@ -1,0 +1,51 @@
+package br.ufrpe.beans;
+import java.time.LocalDate;
+public class Pessoa {
+	
+	private String cpf;
+	private LocalDate nascimento;
+	private String nome;
+	private Endereco end;
+	
+	public Pessoa(String cpf, LocalDate nascimento, String nome,Endereco end){
+		this.cpf = cpf;
+		this.nome = nome;
+		this.nascimento = nascimento;
+		this.end = end;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public LocalDate getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(LocalDate nascimento) {
+		this.nascimento = nascimento;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Endereco getEnd() {
+		return this.end;
+	}
+
+	public void setEnd(Endereco end) {
+		this.end = end;
+	}
+	
+	
+
+}
