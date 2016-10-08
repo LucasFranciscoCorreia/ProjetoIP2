@@ -8,9 +8,9 @@ public class Animal extends Produto{
 	private Cliente dono;
 	private double peso;
 	private double tamanho;
-	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho,String nome) {
+	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho,String nome,String codigo) {
 		
-		super(nome);
+		super(nome,codigo);
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;

@@ -11,9 +11,9 @@ import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.negocios.ControladorCliente;
+import br.ufrpe.negocios.ControladorFuncionario;
+import br.ufrpe.negocios.ControladorProduto;
 import br.ufrpe.repositorios.RepositorioAnimal;
-import br.ufrpe.repositorios.RepositorioFuncionario;
-import br.ufrpe.repositorios.RepositorioProduto;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -25,10 +25,13 @@ public class Principal {
 		short numero;
 		Endereco end;
 		Scanner scanner = new Scanner(System.in);
+		
 		ControladorCliente clienteControlador = new ControladorCliente();
 		RepositorioAnimal animalRepositorio = RepositorioAnimal.getInstance();
-		RepositorioProduto produtoRepositorio = new RepositorioProduto();
-		RepositorioFuncionario funcionarioRepositorio = RepositorioFuncionario.getInstanciado();
+		ControladorProduto produtoControlador = new ControladorProduto();
+		ControladorFuncionario funcionarioControlador = new ControladorFuncionario();
+		
+		
 		do {
 			System.out.print("########################## MENU ##########################\n");
 			System.out.print("\t1.Cliente\n"
@@ -62,9 +65,11 @@ public class Principal {
 						cpf = scanner.nextLine();
 						System.out.print("Digite a data de nascimento do cliente (dd-mm-aaaa): ");
 						data = scanner.nextLine();
-						
+
 						DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 						LocalDate aniversario = LocalDate.parse(data, DATE_FORMAT);
+						
+						
 						/*
 						 * Endereco:
 						 */
@@ -86,7 +91,7 @@ public class Principal {
 	
 						System.out.print("Deseja cadastrar um PET agora? "
 								+ "\n\t1.Sim"
-								+ "\n\t2.N�o\nOpcao: ");
+								+ "\n\t2.Nao\nOpcao: ");
 						op3 = scanner.nextLine().charAt(0);
 	
 						if (op3 == '1') {
@@ -100,12 +105,15 @@ public class Principal {
 								System.out.print("Digite a especie: ");
 								especie = scanner.nextLine();
 								System.out.print("Digite o peso do animal: ");
-								peso = Float.parseFloat(scanner.nextLine());
+								peso = Float.parseFloat(scanner.nextLine());								
 								System.out.print("Digite a altura do animal: ");
 								h = Float.parseFloat(scanner.nextLine());
 								System.out.print("Digite o nome do pet: ");
 								String nomePet = scanner.nextLine();
-								Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet);
+							
+								System.out.print("Digite o c�digo do pet");
+								String codigoPet = scanner.nextLine();
+								Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
 								animalRepositorio.adicionar(novo);
 								((Cliente) cliente).addPet(novo);
 							}
@@ -114,34 +122,28 @@ public class Principal {
 						break;
 						
 					case '2':
-						System.out.println("Digite o cpf do cliente: ");
+						System.out.print("Digite o cpf do cliente: ");
 						cpf = scanner.nextLine();
-						clienteControlador.remover(cpf);
+						clienteControlador.remover(cpf);					
 						break;
 					case '3':
-						/*
-						 * Incompleto!!!
-						 */
-						
-						System.out.println("Digite o cpf do cliente: ");
+						System.out.print("Digite o cpf do cliente: ");
 						cpf = scanner.nextLine();
 						
 						Cliente cliente3  = clienteControlador.buscar(cpf);
 						
 						if(cliente3 != null){
-							System.out.println("\t1.Adicionar pets a um cliente\n"
+							System.out.print("\t1.Adicionar pets a um cliente\n"
 									+ "\t2.Alterar pets do cliente\n"
 									+ "\t3.Mudar endereco\n"
-									+ "\t4.Sair");
+									+ "\t4.Sair\nOpcao: ");
 							op3 = scanner.nextLine().charAt(0);
 							
 							switch(op3){
 							case '1':
 								System.out.print("Quantos pets deseja adicionar?");
 								char op4 = scanner.nextLine().charAt(0);
-	
-								Animal[] pets = new Animal[Integer.parseInt(Character.toString(op4))];
-								for (int j = 0; j < pets.length; j++) {
+								for (int j = 0; j < Integer.parseInt(Character.toString(op4)); j++) {
 									System.out.print("Digite a raca: ");
 									raca = scanner.nextLine();
 									System.out.print("Digite a especie: ");
@@ -152,12 +154,12 @@ public class Principal {
 									h = Float.parseFloat(scanner.nextLine());
 									System.out.print("Digite o nome do pet: ");
 									String nomePet = scanner.nextLine();
-									
-									
-									pets[j] = new Animal(true, especie, raca, cliente3, peso, h, nomePet);
+									System.out.println("Digite o codigo do pet");
+									String codigoPet = scanner.nextLine();
+									Animal novo = new Animal(true, especie, raca, cliente3, peso, h, nomePet,codigoPet);
 	
-									animalRepositorio.adicionar(pets[j]);
-									cliente3.addPet(pets[j]);
+									animalRepositorio.adicionar(novo);
+									cliente3.addPet(novo);
 								}
 								clienteControlador.atualizar(clienteControlador.buscar(cpf), cliente3);
 								break;
@@ -193,7 +195,7 @@ public class Principal {
 						System.out.print("Informe o CPF: ");
 						cpf = scanner.nextLine();
 						Cliente c = clienteControlador.buscar(cpf);
-						if (c != null) {
+						if (c!= null) {
 							System.out.println(c);
 						}
 						break;
@@ -251,7 +253,9 @@ public class Principal {
 							h = scanner.nextFloat();
 							System.out.print("Digite o nome do pet: ");
 							String nomePet = scanner.nextLine();
-							Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet);
+							System.out.println("Digite o codigo do pet");
+							String codigoPet = scanner.nextLine();
+							Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
 							animalRepositorio.adicionar(novo);
 						}else if(op3 == 2){
 							System.out.println("Digite a raca: ");
@@ -264,7 +268,9 @@ public class Principal {
 							h = scanner.nextFloat();
 							System.out.print("Digite o nome do animal: ");
 							String nomePet = scanner.nextLine();
-							Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet);
+							System.out.println("Digite o codigo do pet");
+							String codigoPet = scanner.nextLine();
+							Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet,codigoPet);
 							animalRepositorio.adicionar(novo);
 						}else{
 							System.out.println("Opcao invalida\n");
@@ -292,6 +298,9 @@ public class Principal {
 				}while(op2 != '5');
 				break;
 			case '3':
+				/*
+				 * Menu Produto
+				 */
 				int estoque;
 				float preco;
 				do{
@@ -309,75 +318,76 @@ public class Principal {
 					
 					switch (op2){
 					case '1':
+						/*
+						 * Cadastrar
+						 */
 						System.out.println("\nInforme o nome: ");
 						nome = scanner.nextLine();
-						scanner.next();
 						System.out.println("Informe o tipo: ");
 						tipo = scanner.nextLine();
-						scanner.next();
 						System.out.println("Informe o codigo: ");
 						codigo = scanner.nextLine();
-						scanner.next();
 						System.out.println("Informe o preco: ");
-						preco = scanner.nextFloat();
+						preco = Float.parseFloat(scanner.nextLine());
 						System.out.println("Informe a quantidade em estoque: ");
-						estoque = scanner.nextInt();
+						estoque = Integer.parseInt(scanner.nextLine());
+
 						
 						produto = new Produto(preco, nome, tipo, codigo, estoque);
 						
-						if(produtoRepositorio.buscar(codigo) == null){
-							produtoRepositorio.adicionar(produto);
-							System.out.println("\n----------Produto cadastrado com sucesso----------\n");
-						}else{System.out.println("\n----------Erro!! Produto nao se encontra no sistema----------\n");}
+						produtoControlador.cadastrar(produto);;
+							
 						break;
 					case '2':
+						/*
+						 * Remover
+						 */
 						System.out.println("Informe o codigo: ");
-						codigo = scanner.nextLine();
-						scanner.next();
-						
-						produto = produtoRepositorio.buscar(codigo);
-						if(produto != null){
-							produtoRepositorio.remover(produto);
-							System.out.println("\n----------Produto removido com sucesso----------\n");
-						}else{System.out.println("\n----------Produto nao existe----------\n");}
+						codigo = scanner.nextLine();				
+	
+						produtoControlador.remover(codigo);
+							
 						break;
 					case '3':
-						System.out.println("Informe o codigo: ");
-						codigo = scanner.nextLine();
-						scanner.next();
+						/*
+						 * Atualizar
+						 */
 						
-						produto = produtoRepositorio.buscar(codigo);
-								
+						System.out.println("Informe o codigo: ");
+						codigo = scanner.nextLine();						
+						produto = produtoControlador.pesquisar(codigo);
 						if(produto != null){
 							nome = produto.getNome();
+							System.out.println(nome);
 							tipo = produto.getTipo();
+							System.out.println(tipo);
 							System.out.println("Informe o preco: ");
-							preco = scanner.nextFloat();
+							preco = Float.parseFloat(scanner.nextLine());
 							System.out.println("Informe a quantidade em estoque: ");
-							estoque = scanner.nextInt();
+							estoque = Integer.parseInt(scanner.nextLine());
 							
 							Produto produtoNovo = new Produto(preco, nome, tipo, codigo, estoque);
-							produtoRepositorio.atualizar(produto, produtoNovo);
-							System.out.println("\n----------Produto atualizado----------\n");
+							produtoControlador.atualizar(produtoNovo);
 						}else{System.out.println("\n----------Produto nao existe----------\n");}
 						break;
 					case '4':
 						/*
-						 * Erro!!!
+						 * Pesquisar
 						 */
 						System.out.println("Informe o codigo: ");
-						codigo = scanner.nextLine();
-						scanner.next();
-						
-						produto = produtoRepositorio.buscar(codigo);
+						codigo = scanner.nextLine();			
+						produto = produtoControlador.pesquisar(codigo);
 						if(produto != null){
 							System.out.println("\n" + produto + "\n");
-						}else{System.out.println("\n----------Produto nao existe----------\n");}
+						}
+						break;
+					case '5':
 						break;
 					default:
 						System.out.println("\n----------Opcao Invalida----------");
 						break;
 					}
+					
 				}while(op2 != '5');
 				break;
 			case '4':
@@ -399,64 +409,52 @@ public class Principal {
 					switch (op2){
 					case '1':
 						System.out.print("\nInforme o nome: ");
-						nome = scanner.next();
+						nome = scanner.nextLine();
 						System.out.print("Informe o CPF: ");
-						cpf = scanner.next();
+						cpf = scanner.nextLine();
 						System.out.print("Informe o salario: ");
-						salario = scanner.nextDouble();
+						salario = Double.parseDouble(scanner.nextLine());
 						System.out.print("Informe o cargo: ");
 						cargo = scanner.nextLine();
-						LocalDate entrada = LocalDate.now();
+						System.out.print("Informe a entrada (dd-mm-aaaa): ");
+						data = scanner.nextLine();
 						
-						//Esperando criar classe de cadastro
-						//dataEntrada = scanner.next();
-						
-//						DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy/hh:mm");
-//						LocalDate entrada = LocalDate.parse(dataEntrada, DATE_FORMAT);	
+						DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+						LocalDate entrada = LocalDate.parse(data, DATE_FORMAT);
 					
 						System.out.print("Digite o nome da rua: ");
-						scanner.next();
 						rua = scanner.nextLine();
 						System.out.print("Digite o complemento: ");
-						complemento = scanner.next();
+						complemento = scanner.nextLine();
 						System.out.print("Digite o numero da casa: ");
-						numero = scanner.nextShort();
+						numero = Short.parseShort(scanner.nextLine());
 						System.out.print("Digite o cep: ");
-						cep = scanner.next();
+						cep = scanner.nextLine();
 						System.out.print("Digite a cidade-UF: ");
-						scanner.next();
 						cidadeUF = scanner.nextLine();
 	
 						end = new Endereco(rua, complemento, numero, cep, cidadeUF);
-						funcionario = new Funcionario(nome, cpf, end, salario, entrada, cargo);
-						
-						if(funcionarioRepositorio.cadastrar(funcionario)){
-							System.out.println("\n\n----------Funcionario cadastrado com sucesso----------\n");
-						}else{System.out.println("\n\n----------Funcionario ja cadastrado no sistema----------\n");}
+						funcionario = new Funcionario(nome, cpf, end, salario, entrada, cargo);	
+						funcionarioControlador.cadastrar(funcionario);
 						break;
+						
 					case '2':
 						System.out.print("Informe o CPF: ");
-						scanner.next();
 						cpf = scanner.nextLine();
+						funcionarioControlador.remover(cpf);
 						
-						if(funcionarioRepositorio.remover(cpf)){
-							System.out.println("\n\n----------Funcionario removido com sucesso----------\n");
-							break;
-						}else{System.out.println("\n\n----------Funcionario nao encontrado----------\n");}
 						break;
 					case '3':
 						/*
-						 * Com problema!!!!
+						 * Atualizar
 						 */
 						System.out.print("Informe o CPF: ");
-						scanner.next();
 						cpf = scanner.nextLine();
 						
-						funcionario = funcionarioRepositorio.buscar(cpf);
+						funcionario = funcionarioControlador.pesquisar(cpf);
 						
-						//Nao esta entrando
 						if(funcionario != null){
-							System.out.print("\n1.Atualizar endereco\n"
+							System.out.print("\n1.Atualizar Endereco\n"
 									+ "2.Atualizar Cargo\n"
 									+ "3.Atualizar Salario\n"
 									+ "\nOpcao: ");
@@ -467,51 +465,48 @@ public class Principal {
 								System.out.print("Digite o nome da rua: ");
 								rua = scanner.nextLine();
 								System.out.print("Digite o complemento: ");
-								complemento = scanner.next();
+								complemento = scanner.nextLine();
 								System.out.print("Digite o numero da casa: ");
-								numero = scanner.nextShort();
+								numero = Short.parseShort(scanner.nextLine());
 								System.out.print("Digite o cep: ");
-								cep = scanner.next();
+								cep = scanner.nextLine();
 								System.out.print("Digite a cidade-UF: ");
 								cidadeUF = scanner.nextLine();
 	
 								end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 								
 								funcionario.setEnd(end);
+								funcionarioControlador.atualizar(funcionario);
 								break;
 							case '2':
 								System.out.println("Informe o cargo: ");
-								cargo = scanner.nextLine();
-								
+								cargo = scanner.nextLine();							
 								funcionario.setCargo(cargo);
+								funcionarioControlador.atualizar(funcionario);
+								
 								break;
 							case '3':
 								System.out.println("Informe o salario: ");
-								salario = scanner.nextDouble();
-								
+								salario = Double.parseDouble(scanner.nextLine());
 								funcionario.setSalario(salario);
+								funcionarioControlador.atualizar(funcionario);
 								break;
 							default:
 								System.out.println("\n\n----------Opcao Invalida----------\n");
 								break;							
-							}
-							
-							funcionarioRepositorio.atualizar(funcionario);
-						}else{System.out.println("\n\n----------Funcionario nao encontrado----------\n");}
+							}					
+							funcionarioControlador.atualizar(funcionario);
+						}
 						break;
 					case '4':
 						/*
-						 * Com problema!!!!!
+						 * Funcionario
 						 */
 						System.out.println("Informe o cpf: ");
-						scanner.next();
 						cpf = scanner.nextLine();
-						
-						//Passa direto para o else
-						if(funcionarioRepositorio.buscar(cpf) != null){
-							System.out.println("\n\n" + funcionarioRepositorio.buscar(cpf).toString() + "\n");
-						}else{
-							System.out.println("\n\n----------Funcionario nao cadastrado----------\n");
+								
+						if(funcionarioControlador.pesquisar(cpf) != null){
+							System.out.println("\n\n" + funcionarioControlador.pesquisar(cpf).toString() + "\n");
 						}
 						
 						break;
@@ -528,4 +523,5 @@ public class Principal {
 		} while (op != 5);
 		scanner.close();
 	}
+	
 }

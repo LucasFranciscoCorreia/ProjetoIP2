@@ -9,8 +9,11 @@ public class ControladorCliente {
 	public void cadastrar(Cliente novo){
 		if (novo != null) {
 			boolean ok = repo.cadastrar(novo);
+
 			if (!ok) {
 				System.out.println("Cliente ja cadastrado");
+			}
+			else{System.out.println("Cliente cadastrado com sucesso");
 			}
 		}else{
 			System.out.println("Cliente invalido");
@@ -41,19 +44,8 @@ public class ControladorCliente {
 			System.out.println("Clientes Invalidos");
 		}
 	}
-	public Cliente recuperar(String cpf){
-		if (cpf != null) {
-			Cliente c = repo.recuperar(cpf);
-			if (c != null) {
-				return c;
-			}else{
-				System.out.println("Cliente nao encontrado");
-			}
-		}else{
-			System.out.println("CPF invalido");
-		}
-		return null;
-	}
+	
+	
 	public Cliente buscar(String cpf){
 		if (cpf != null){
 			Cliente c= repo.buscar(cpf);
