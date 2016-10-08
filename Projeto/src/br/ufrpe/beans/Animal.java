@@ -78,6 +78,9 @@ public class Animal extends Produto{
 		res+="Is Alive? " + isAlive;
 		return res;
 	}
+	public void setDono(Cliente dono){
+		this.dono = dono;
+	}
 	public boolean equals(Animal outro){
 		boolean res = false;
 		if(dono.getCpf() == outro.getDonoCPF()

@@ -75,8 +75,17 @@ public class RepositorioAnimal {
 		}
 		return ok;
 	}
-	
-	private int buscar(String codigo){
+	public Animal buscar(String codigo){
+		Animal a;
+		for(int i = 0; i< rep.size(); i++){
+			a= rep.get(i);
+			if(a.getCodigo() != null && a.getCodigo().equals(codigo)){
+		       return a;
+			}
+		}
+		return null;
+	}
+	private int buscarI(String codigo){
         int result = -1;
 		
 		for(int i = 0; i< rep.size(); i++){
@@ -90,7 +99,7 @@ public class RepositorioAnimal {
 		
 		boolean result = false;
 		if(codigo != null){
-			int busca = this.buscar(codigo);
+			int busca = this.buscarI(codigo);
 			if(busca != -1){
 				rep.remove(rep.get(busca));
 				result = true;

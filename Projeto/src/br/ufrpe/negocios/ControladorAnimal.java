@@ -6,7 +6,7 @@ public class ControladorAnimal {
 	private RepositorioAnimal repositorioAnimal;
 	
 	public ControladorAnimal(){
-		RepositorioAnimal.getInstance();
+		repositorioAnimal = RepositorioAnimal.getInstance();
 	}
 	
 	public void cadastrar(Animal novo){
@@ -32,11 +32,11 @@ public class ControladorAnimal {
 				System.out.println("Animal Removido com sucesso");
 			}
 			else{
-				System.out.println("Animal n„o encontrado.");
+				System.out.println("Animal n√£o encontrado.");
 			}
 		}
 		else{
-			System.out.println("Animal inv·lido");
+			System.out.println("Animal inv√°lido");
 		}
 	}
 	
@@ -49,14 +49,26 @@ public class ControladorAnimal {
 				System.out.println("Animal atualizado com Sucesso");
 			}
 			else{
-				System.out.println("Animal n„o encontrado.");
+				System.out.println("Animal n√£o encontrado.");
 			}
 		}
 		else{
-			System.out.println("Animal inv·lido");
+			System.out.println("Animal inv√°lido");
 		}
 	}
 	
-	//Buscar
+	public Animal buscar(String codigo){
+		if (codigo != null) {
+			Animal a = repositorioAnimal.buscar(codigo);
+			if (a != null) {
+				return a;
+			}else{
+				System.out.println("animal nao encontrado");
+			}
+		}else{
+			System.out.println("Codigo incorreto");
+		}
+		return null;
+	}
 
 }
