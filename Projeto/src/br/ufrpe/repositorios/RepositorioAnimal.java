@@ -41,7 +41,7 @@ public class RepositorioAnimal {
 		}
 		return ok;
 	}
-	private int buscar(Animal bus){
+	private int buscarIndice(Animal bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i).equals(bus)){
 				return i;
@@ -57,7 +57,7 @@ public class RepositorioAnimal {
 	}
 	public boolean remover(Animal antigo){
 		boolean ok = false;
-		int i = buscar(antigo);
+		int i = buscarIndice(antigo);
 		if(i != -1){
 			lixeira.add(antigo);
 			rep.remove(i);		
@@ -67,7 +67,7 @@ public class RepositorioAnimal {
 	}
 	public boolean atualizar(Animal antigo, Animal novo){
 		boolean ok = false;
-		int i = this.buscar(antigo);
+		int i = this.buscarIndice(antigo);
 		if(i != -1){
 			ok = true;
 			this.remover(antigo);
@@ -75,6 +75,30 @@ public class RepositorioAnimal {
 		}
 		return ok;
 	}
+	
+	private int buscar(String codigo){
+        int result = -1;
+		
+		for(int i = 0; i< rep.size(); i++){
+			if(rep.get(i).getCodigo().equals(codigo)){
+		       result = i;
+			}
+		}
+		return result;
+	}
+	public boolean remover(String codigo){
+		
+		boolean result = false;
+		if(codigo != null){
+			int busca = this.buscar(codigo);
+			if(busca != -1){
+				rep.remove(rep.get(busca));
+				result = true;
+			}
+		}
+		return result;
+	}
+	
 	public Animal recuperar(String cpf, String raca){
 		for (int i = 0; i < lixeira.size(); i++) {
 			if (lixeira.get(i).getDonoCPF().equals(cpf) && lixeira.get(i).getRaca().equals(raca)) {
