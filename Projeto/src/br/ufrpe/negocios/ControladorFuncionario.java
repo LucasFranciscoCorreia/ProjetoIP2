@@ -2,33 +2,37 @@ package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.repositorios.RepositorioFuncionario;
+import br.ufrpe.dados.IControladorFuncionario;
 
-public class ControladorFuncionario {
+public class ControladorFuncionario implements IControladorFuncionario{
 	private RepositorioFuncionario repositorioFuncionario;
 	
 	public ControladorFuncionario(){
-		repositorioFuncionario = repositorioFuncionario.getInstanciado();
+		repositorioFuncionario = RepositorioFuncionario.getInstance();
 	}
-	public void cadastrar(Funcionario funcionario){
+	public boolean cadastrar(Funcionario funcionario){
 		if(funcionario != null){
 			Funcionario verificar = repositorioFuncionario.buscar(funcionario.getCpf());
 			
 			if(verificar == null){
 				repositorioFuncionario.cadastrar(funcionario);
-				System.out.println("\t*****Funcionario cadastrado com sucesso*****");
-			}else{System.out.println("\t*****Funcionario nao cadastrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida*****");}
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
-	public void remover(String cpf){
+	public boolean remover(String cpf){
 		if(cpf != null){
 			Funcionario verificar = repositorioFuncionario.buscar(cpf);
 			
 			if(verificar != null){
 				repositorioFuncionario.remover(cpf);
-				System.out.println("\t*****Funcionario removido com sucesso*****");
-			}else{System.out.println("\t*****Funcionario nao cadastrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida****");}
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public Funcionario pesquisar(String cpf){
@@ -38,20 +42,20 @@ public class ControladorFuncionario {
 			if(verificar != null){
 				return verificar;
 			}else{return null;}
-		}else{
-			System.out.println("\t*****Entrada Invalida****");
-			return null;
-		}
+		}else{return null;}
 	}
 	
-	public void atualizar(Funcionario novo){
+	public boolean atualizar(Funcionario novo){
 		if(novo != null){
 			Funcionario verificar = repositorioFuncionario.buscar(novo);
 			
 			if(verificar != null){
 				repositorioFuncionario.atualizar(novo);
-			}else{System.out.println("\t*****Funcionario nao cadastrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida****");}
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }

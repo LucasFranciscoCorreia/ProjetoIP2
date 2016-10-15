@@ -1,10 +1,10 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-
+import br.ufrpe.dados.IRepositorioFuncionario;
 import br.ufrpe.beans.Funcionario;
 
-public class RepositorioFuncionario {
+public class RepositorioFuncionario implements IRepositorioFuncionario{
 	private ArrayList<Funcionario> repositorio;
 	private static RepositorioFuncionario unicInstanc;
 	
@@ -13,7 +13,7 @@ public class RepositorioFuncionario {
 		repositorio = new ArrayList<>();
 	}	
 	
-	public static synchronized RepositorioFuncionario getInstanciado(){
+	public static IRepositorioFuncionario getInstance(){
 		if(unicInstanc == null){
 			unicInstanc = new RepositorioFuncionario();
 		}
@@ -66,7 +66,8 @@ public class RepositorioFuncionario {
 		this.repositorio.get(i).setSalario(funcionario.getSalario());
 	}
 	
-	public int Size(){
+	public int size(){
 		return repositorio.size();
 	}
+
 }
