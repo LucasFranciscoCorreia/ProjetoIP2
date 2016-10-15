@@ -1,6 +1,6 @@
 package br.ufrpe.beans;
 import java.time.LocalDate;
-public class Pessoa {
+public abstract class Pessoa {
 	
 	private String cpf;
 	private LocalDate nascimento;
@@ -24,26 +24,14 @@ public class Pessoa {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	public LocalDate getNascimento() {
 		return nascimento;
-	}
-
-	public void setNascimento(LocalDate nascimento) {
-		this.nascimento = nascimento;
 	}
 
 	public String getNome() {
 		return nome;
 	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
+	
 	public Endereco getEnd() {
 		return this.end;
 	}
@@ -56,6 +44,7 @@ public class Pessoa {
 		String res = String.format("%d/%d/%d", nascimento.getDayOfMonth(), nascimento.getMonth().getValue(), nascimento.getYear());
 		return res;
 	}
+	
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", nome, cpf, this.DataAniversario(), end);
 		return res;
