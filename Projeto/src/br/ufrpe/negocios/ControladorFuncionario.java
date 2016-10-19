@@ -1,11 +1,12 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.interfaces.IControladorFuncionario;
+import br.ufrpe.interfaces.IRepositorioFuncionario;
 import br.ufrpe.repositorios.RepositorioFuncionario;
-import br.ufrpe.dados.IControladorFuncionario;
 
 public class ControladorFuncionario implements IControladorFuncionario{
-	private RepositorioFuncionario repositorioFuncionario;
+	private IRepositorioFuncionario repositorioFuncionario;
 	
 	public ControladorFuncionario(){
 		repositorioFuncionario = RepositorioFuncionario.getInstance();
@@ -15,8 +16,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 			Funcionario verificar = repositorioFuncionario.buscar(funcionario.getCpf());
 			
 			if(verificar == null){
-				repositorioFuncionario.cadastrar(funcionario);
-				return true;
+				return repositorioFuncionario.cadastrar(funcionario);
 			}
 		}
 		
@@ -28,8 +28,7 @@ public class ControladorFuncionario implements IControladorFuncionario{
 			Funcionario verificar = repositorioFuncionario.buscar(cpf);
 			
 			if(verificar != null){
-				repositorioFuncionario.remover(cpf);
-				return true;
+				return repositorioFuncionario.remover(cpf);
 			}
 		}
 		return false;

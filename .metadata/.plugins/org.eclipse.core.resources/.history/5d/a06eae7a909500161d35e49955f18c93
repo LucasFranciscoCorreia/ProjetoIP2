@@ -1,0 +1,13 @@
+package br.ufrpe.dados;
+
+import br.ufrpe.beans.Funcionario;
+
+public interface IRepositorioFuncionario {
+	
+	void cadastrar(Funcionario funcionario);
+	Funcionario buscar(Funcionario funcionario);
+	Funcionario buscar(String cpf);
+	void remover(String cpf);
+	void atualizar(Funcionario Funcionario);
+	int size();
+}
