@@ -1,0 +1,41 @@
+package br.ufrpe;
+
+import java.time.LocalDate;
+
+public class Caixa {
+	public static class Dia{
+		private double balcao;
+		private LocalDate dia;
+		public Dia(){
+			balcao = 0;
+			dia = LocalDate.now();
+		}
+		public double getCaixa() {
+			return balcao;
+		}
+		public LocalDate getDia() {
+			return dia;
+		}
+		public void addCaixa(double valor){
+			balcao += valor;
+		}
+	}
+	private Dia[] caixa;
+	private LocalDate hoje;
+	private static Caixa c;
+	private Caixa(){
+		caixa = new Dia[1];
+	}
+	public static synchronized Caixa getInstance(){
+		if (c == null) {
+			c = new Caixa();
+		}
+		return c;
+	}
+	public void addCaixa(){
+		hoje = LocalDate.now();
+		if (caixa[caixa.length-1] != null && hoje.equals(caixa[caixa.length-1].getCaixa())) {
+			
+		}
+	}
+}

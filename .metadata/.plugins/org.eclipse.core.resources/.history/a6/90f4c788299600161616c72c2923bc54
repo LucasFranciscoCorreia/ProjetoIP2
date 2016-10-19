@@ -1,0 +1,87 @@
+package br.ufrpe;
+
+import java.time.LocalDate;
+
+public class Caixa {
+	public static class Dia{
+		private double balcao;
+		private LocalDate dia;
+		public Dia(){
+			balcao = 0;
+			dia = LocalDate.now();
+		}
+		public double getCaixa() {
+			return balcao;
+		}
+		public LocalDate getDia() {
+			return dia;
+		}
+		public void addCaixa(double valor){
+			balcao += valor;
+		}
+	}
+	private Dia[] caixa;
+	private LocalDate hoje;
+	private static Caixa c;
+	private int i;
+	private Caixa(){
+		caixa = new Dia[1];
+		i= 0;
+	}
+	public static synchronized Caixa getInstance(){
+		if (c == null) {
+			c = new Caixa();
+		}
+		return c;
+	}
+	public void addCaixa(double valor){
+		boolean res = false;
+		Dia c;
+		hoje = LocalDate.now();
+		if (i > 0 && caixa[i-1] != null && hoje.equals(caixa[i-1].getDia())) {
+			c = caixa[i-1];
+		}else{
+			if (caixa[i] != null && hoje.equals(caixa[i].getDia())) {
+				c = caixa[i];
+			}else{	
+				c = new Dia();
+				res = true;				
+			}
+		}
+		c.addCaixa(valor);
+		System.out.println(c.getCaixa());
+		if (res) {
+			addDia(c);
+		}
+	}
+	private void addDia(Dia d){
+		caixa[i] = d;
+		System.out.println(caixa[i].getCaixa());
+		i++;
+		if(i == caixa.length){
+			duplicarVetor();
+		}
+	}
+	private void duplicarVetor(){
+		int tam = 2*i;
+		Dia vetor[] = new Dia[tam];
+		for(int i = 0; i < this.i;i++){
+			vetor[i] = caixa[i];
+		}
+		caixa = vetor;
+	}
+	public double valorArrecadadoHoje(){
+		double res;
+		hoje = LocalDate.now();
+		if (i-1 > 0 && caixa[i-1] != null && hoje.equals(caixa[i-1].getDia())) {
+			res =  caixa[i-1].getCaixa();
+		}else{
+			if (caixa[i] != null && hoje.equals(caixa[i].getDia())) {
+				res = caixa[i].getCaixa();
+			}else{
+				res = 0;				
+			}
+		}
+		return res;
+	}
+}

@@ -8,14 +8,14 @@ import br.ufrpe.beans.Funcionario;
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
 	private List<Funcionario> repositorio;
-	private static RepositorioFuncionario unicInstanc;
+	private static IRepositorioFuncionario unicInstanc;
 	
 	//Singleton:
 	private RepositorioFuncionario(){
 		repositorio = new ArrayList<>();
 	}	
 	
-	public static RepositorioFuncionario getInstance(){
+	public static IRepositorioFuncionario getInstance(){
 		if(unicInstanc == null){
 			unicInstanc = new RepositorioFuncionario();
 		}

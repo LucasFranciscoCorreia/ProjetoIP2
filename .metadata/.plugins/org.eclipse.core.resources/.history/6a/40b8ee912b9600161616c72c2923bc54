@@ -1,0 +1,12 @@
+package br.ufrpe.test;
+
+import br.ufrpe.Caixa;
+
+public class testCaixa {
+	public static void main(String[] args) {
+		Caixa c = Caixa.getInstance();
+		//System.out.println(c.valorArrecadadoHoje());
+		c.addCaixa(100);
+		System.out.println(c.valorArrecadadoHoje());
+	}
+}
