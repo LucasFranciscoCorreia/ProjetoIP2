@@ -1,9 +1,10 @@
 package br.ufrpe.repositorios;
 
+import br.ufrpe.dados.IRepositorioProduto;
 import java.util.ArrayList;
 import br.ufrpe.beans.Produto;
 
-public class RepositorioProduto {
+public class RepositorioProduto implements IRepositorioProduto {
 	private  ArrayList<Produto> repositorio;
 	private static RepositorioProduto unicInstanc;
 	

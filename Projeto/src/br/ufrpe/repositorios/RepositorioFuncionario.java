@@ -1,10 +1,10 @@
 package br.ufrpe.repositorios;
-
+import br.ufrpe.dados.IRepositorioFuncionario;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.beans.Funcionario;
-import br.ufrpe.interfaces.IRepositorioFuncionario;
+
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
 	private List<Funcionario> repositorio;
