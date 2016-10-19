@@ -49,7 +49,7 @@ public abstract class Pessoa {
 	}
 	
 	public String toString(){
-		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", nome, cpf, this.DataAniversario(), end);
+		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", nome, cpf, this.getNascimento(), end);
 		return res;
 	}
 

@@ -39,7 +39,7 @@ public class Cliente extends Pessoa {
 		return res;
 	}
 	public String toString(){
-		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario(), this.getEnd());
+		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario, this.getEnd());
 		res += "\nAnimais: \n";
 		for(int i = 0; i < qntPets;i++){
 			res+= pets[i];

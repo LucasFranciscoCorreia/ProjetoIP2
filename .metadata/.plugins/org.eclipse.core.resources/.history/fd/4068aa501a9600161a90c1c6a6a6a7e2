@@ -13,11 +13,11 @@ public class Funcionario extends Pessoa{
 	}
 	
 	public Funcionario(String nome, String cpf, Endereco endereco, 
-			double salario, LocalDate aniversario, String cargo){
+			double salario, LocalDate entrada, String cargo){
 		
-		super(cpf,aniversario, nome,endereco);
+		super(cpf, nome,endereco);
 		this.salario = salario;
-		this.entrada = LocalDate.now();
+		this.entrada = entrada;
 		this.cargo = cargo;
 	}	
 	

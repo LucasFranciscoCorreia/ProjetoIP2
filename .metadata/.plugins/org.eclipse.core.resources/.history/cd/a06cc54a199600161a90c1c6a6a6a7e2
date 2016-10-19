@@ -147,9 +147,9 @@ public class Principal {
 		 */
 		System.out.println("Informe o cpf: ");
 		cpf = scanner.nextLine();
-		Funcionario f =funcionarioControlador.pesquisar(cpf); 
-		if(f != null){
-			System.out.println("\n\n" + f + "\n");
+
+		if(funcionarioControlador.pesquisar(cpf) != null){
+			System.out.println("\n\n" + funcionarioControlador.pesquisar(cpf) + "\n");
 		}
 	}
 
@@ -265,7 +265,7 @@ public class Principal {
 		salario = Double.parseDouble(scanner.nextLine());
 		System.out.print("Informe o cargo: ");
 		cargo = scanner.nextLine();
-		System.out.print("Informe a data de aniversario (dd-mm-aaaa): ");
+		System.out.print("Informe a entrada (dd-mm-aaaa): ");
 		data = scanner.nextLine();
 
 		DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");

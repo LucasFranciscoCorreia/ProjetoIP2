@@ -50,7 +50,7 @@ public class RepositorioPessoa {
 	public String listar(){
 		String res = "";
 		for(int i = 0; i < array.size();i++){
-			res += array.get(i) + "\n\n";
+			res += array.get(i) + "\n";
 		}
 		return res;
 	}

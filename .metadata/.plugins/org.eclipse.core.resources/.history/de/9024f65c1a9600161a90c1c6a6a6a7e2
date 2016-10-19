@@ -17,7 +17,7 @@ public class Funcionario extends Pessoa{
 		
 		super(cpf,aniversario, nome,endereco);
 		this.salario = salario;
-		this.entrada = LocalDate.now();
+		this.entrada = entrada;
 		this.cargo = cargo;
 	}	
 	

@@ -265,7 +265,7 @@ public class Principal {
 		salario = Double.parseDouble(scanner.nextLine());
 		System.out.print("Informe o cargo: ");
 		cargo = scanner.nextLine();
-		System.out.print("Informe a data de aniversario (dd-mm-aaaa): ");
+		System.out.print("Informe a entrada (dd-mm-aaaa): ");
 		data = scanner.nextLine();
 
 		DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
