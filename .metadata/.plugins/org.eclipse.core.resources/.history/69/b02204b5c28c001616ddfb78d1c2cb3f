@@ -1,8 +1,0 @@
-package br.ufrpe.negocios;
-import br.ufrpe.repositorios.RepositorioCliente;
-public class ControladorCliente {
-	private RepositorioCliente repo;
-	public ControladorCliente(){
-		repo = RepositorioCliente.getInstance();
-	}
-}

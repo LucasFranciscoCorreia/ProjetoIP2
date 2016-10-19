@@ -42,9 +42,11 @@ public class Funcionario extends Pessoa{
 		return this.getCpf().equals(outro.getCpf());
 	}	
 	
-	public String toStringF(){
-		
-		return this.toString() +"Cargo: "+this.cargo+"Salário: "+this.salario+"Entrada: "+this.entrada;
+	
+	public String toString(){
+		String res = super.toString();
+		res += "Cargo: "+this.cargo+"Salï¿½rio: "+this.salario+"\nEntrada: "+this.entrada;
+		return res;
 	
 	}
 }

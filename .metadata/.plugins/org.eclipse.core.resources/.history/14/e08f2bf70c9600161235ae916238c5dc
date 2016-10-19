@@ -1,0 +1,5 @@
+package br.ufrpe.dados;
+
+public interface IRepositorioCliente {
+
+}

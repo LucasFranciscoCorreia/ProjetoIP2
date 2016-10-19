@@ -40,7 +40,7 @@ public abstract class Pessoa {
 		this.end = end;
 	}
 	
-	private String DataAniversario(){
+	public String DataAniversario(){
 		String res = String.format("%d/%d/%d", nascimento.getDayOfMonth(), nascimento.getMonth().getValue(), nascimento.getYear());
 		return res;
 	}

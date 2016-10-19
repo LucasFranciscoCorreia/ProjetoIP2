@@ -2,13 +2,12 @@ package br.ufrpe.repositorios;
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Cliente;
-public class RepositorioCliente {
+import br.ufrpe.dados.IRepositorioCliente;
+public class RepositorioCliente implements IRepositorioCliente{
 	private ArrayList<Cliente> repositorio;
-	private ArrayList<Cliente> lixeira;
 	private static  RepositorioCliente rep;
 	private RepositorioCliente() {
 		repositorio = new ArrayList<>();
-		lixeira = new ArrayList<>();
 	}
 	public static RepositorioCliente getInstance(){
 		if (rep == null) {
@@ -48,32 +47,22 @@ public class RepositorioCliente {
 		for(int i = 0; i < repositorio.size();i++){
 			c = repositorio.get(i);
 			if (c.getCpf().equals(cpf)) {
-				lixeira.add(repositorio.get(i));
 				repositorio.remove(i);
 				ok = true;
 			}
 		}
 		return ok;
 	}
-	public boolean atualizar(Cliente antigo, Cliente novo){
+	public boolean atualizar(Cliente novo){
 		boolean ok = false;
 		for(int i = 0; i < repositorio.size();i++){
-			if (antigo.equals(repositorio.get(i))) {
+			if (novo.equals(repositorio.get(i))) {
 				ok = true;
-				lixeira.add(antigo);
 				repositorio.remove(i);
 				repositorio.add(novo);
 			}
 		}
 		return ok;
-	}
-	public Cliente recuperar(String cpf){
-		for (int i = 0; i < lixeira.size(); i++) {
-			if (lixeira.get(i).getCpf().equals(cpf)) {
-				return lixeira.get(i);
-			}
-		}
-		return null;
 	}
 	public String listar(){
 		String res = "";

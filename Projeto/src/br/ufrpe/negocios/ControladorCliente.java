@@ -1,7 +1,8 @@
 package br.ufrpe.negocios;
-import br.ufrpe.repositorios.RepositorioCliente;
 import br.ufrpe.beans.Cliente;
-public class ControladorCliente {
+import br.ufrpe.dados.IControladorCliente;
+import br.ufrpe.repositorios.RepositorioCliente;
+public class ControladorCliente implements IControladorCliente {
 	private RepositorioCliente repo;
 	public ControladorCliente(){
 		repo = RepositorioCliente.getInstance();
@@ -19,22 +20,25 @@ public class ControladorCliente {
 			System.out.println("Cliente invalido");
 		}
 	}
-	public void remover(String cpf){
+	public boolean remover(String cpf){
+		boolean res = false;
 		if (cpf != null) {
 			boolean ok = repo.remover(cpf);
 			if (ok) {
 				System.out.println("Cliente removido com sucesso");
+				res = true;
 			}else{
 				System.out.println("Cliente nao encontrado");
 			}
 		}else{
 			System.out.println("Cliente invalido");
 		}
+		return res;
 	}
-	public void atualizar(Cliente antigo, Cliente novo){
-		if (antigo != null && novo != null) {
-			boolean ok = repo.remover(antigo.getCpf());
-			if (ok) {
+	public void atualizar(Cliente novo){
+		if (novo != null) {
+			boolean ok = repo.remover(novo.getCpf());
+			if (ok){
 				repo.cadastrar(novo);	
 				System.out.println("Usuario atualizado com sucesso");
 			}else{
@@ -44,8 +48,6 @@ public class ControladorCliente {
 			System.out.println("Clientes Invalidos");
 		}
 	}
-	
-	
 	public Cliente buscar(String cpf){
 		if (cpf != null){
 			Cliente c= repo.buscar(cpf);

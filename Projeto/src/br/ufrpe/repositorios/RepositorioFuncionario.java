@@ -13,7 +13,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 		repositorio = new ArrayList<>();
 	}	
 	
-	public static IRepositorioFuncionario getInstance(){
+	public static RepositorioFuncionario getInstance(){
 		if(unicInstanc == null){
 			unicInstanc = new RepositorioFuncionario();
 		}

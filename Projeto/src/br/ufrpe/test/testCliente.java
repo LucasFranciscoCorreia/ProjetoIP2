@@ -48,7 +48,7 @@ public class testCliente {
 		System.out.println("**Atualizar**");
 		
 		c2 = new Cliente("563.642.624-78", aniversario, "Raissa", end);
-		clienteControlador.atualizar(c1, c2);
+		clienteControlador.atualizar(c2);
 		System.out.println();
 		clienteControlador.buscar("563.642.624-78");
 		System.out.println();
