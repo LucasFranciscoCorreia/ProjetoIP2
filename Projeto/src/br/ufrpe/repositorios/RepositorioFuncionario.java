@@ -1,12 +1,14 @@
 package br.ufrpe.repositorios;
-
-import java.util.ArrayList;
 import br.ufrpe.dados.IRepositorioFuncionario;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.ufrpe.beans.Funcionario;
 
+
 public class RepositorioFuncionario implements IRepositorioFuncionario{
-	private ArrayList<Funcionario> repositorio;
-	private static RepositorioFuncionario unicInstanc;
+	private List<Funcionario> repositorio;
+	private static IRepositorioFuncionario unicInstanc;
 	
 	//Singleton:
 	private RepositorioFuncionario(){
@@ -33,8 +35,8 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	}
 	
 	//CRUD:	
-	public void cadastrar(Funcionario funcionario){
-		this.repositorio.add(funcionario);
+	public boolean cadastrar(Funcionario funcionario){
+		return this.repositorio.add(funcionario);
 	}	
 	
 	public Funcionario buscar(Funcionario funcionario){
@@ -53,10 +55,9 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 		}else{return null;}		
 	}
 	
-	public void remover(String cpf){
-		int i = buscarIndice(cpf);
-		
-		this.repositorio.remove(i);
+	public boolean remover(String cpf){
+		Funcionario funcionario = new Funcionario(cpf);
+		return this.repositorio.remove(funcionario);
 	}
 	
 	public void atualizar(Funcionario funcionario){

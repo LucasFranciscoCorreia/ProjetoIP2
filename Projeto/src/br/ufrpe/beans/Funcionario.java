@@ -8,6 +8,10 @@ public class Funcionario extends Pessoa{
 	private LocalDate entrada;
 	private String cargo;	
 	
+	public Funcionario(String cpf){
+		super(cpf, null, null);
+	}
+	
 	public Funcionario(String nome, String cpf, Endereco endereco, 
 			double salario, LocalDate entrada, String cargo){
 		

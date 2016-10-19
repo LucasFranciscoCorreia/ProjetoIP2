@@ -1,8 +1,9 @@
 package br.ufrpe.repositorios;
 import java.util.ArrayList;
+import br.ufrpe.dados.IRepositorioAnimal;
 
 import br.ufrpe.beans.Animal;
-public class RepositorioAnimal {
+public class RepositorioAnimal implements IRepositorioAnimal {
 	private ArrayList<Animal> rep;
 	private ArrayList<Animal> lixeira;
 	private static RepositorioAnimal repo;
@@ -41,7 +42,7 @@ public class RepositorioAnimal {
 		}
 		return ok;
 	}
-	private int buscarIndice(Animal bus){
+	public int buscarIndice(Animal bus){
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i).equals(bus)){
 				return i;

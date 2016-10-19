@@ -6,4 +6,7 @@
 <fullyQualifiedTypeName name="br.ufrpe.negocios.ControladorFuncionario"/>
 <fullyQualifiedTypeName name="br.ufrpe.negocios.ControladorCliente"/>
 <fullyQualifiedTypeName name="java.lang.Character"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioFuncionario"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
 </qualifiedTypeNameHistroy>
