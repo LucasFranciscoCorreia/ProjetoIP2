@@ -11,8 +11,6 @@ public class testCaixa {
 		System.out.println(c.valorArrecadadoHoje());
 		c.addCaixa(200);
 		System.out.println(c.valorArrecadadoHoje());
-		c.addCaixa(200);
-		System.out.println(c.valorArrecadadoHoje());
 		scanner.nextLine();
 		c.addCaixa(300);
 		System.out.println(c.valorArrecadadoHoje());

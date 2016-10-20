@@ -59,6 +59,7 @@ public class Caixa {
 					c = caixa[i-1];
 				}else{	
 					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}
 			}
@@ -72,10 +73,12 @@ public class Caixa {
 					c = caixa[i];				
 				}else{
 					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}		
 			}else{
 				c = new Dia();
+				c.setDia(hoje);
 				res = true;
 			}
 		}
