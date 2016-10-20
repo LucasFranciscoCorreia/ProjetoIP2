@@ -6,6 +6,9 @@ public class Caixa {
 	public static class Dia{
 		private double balcao;
 		private LocalDate dia;
+		public void setDia(LocalDate dia) {
+			this.dia = dia;
+		}
 		public Dia(){
 			balcao = 0;
 			dia = LocalDate.now();
@@ -34,21 +37,21 @@ public class Caixa {
 		}
 		return c;
 	}
-	public void addCaixa(double valor, LocalDate hoje){
+	public void addCaixa(double valor){
 		boolean res = false;
+		hoje = LocalDate.now();
 		Dia c;
 		LocalDate ultimoDia;
 		boolean ok = false;
 		if (i-1 >= 0) {
 			if (caixa[i-1] != null) {
-				ultimoDia = caixa[i-1].getDia();
-				if (ultimoDia.getYear() == hoje.getYear() && ultimoDia.getMonthValue() == hoje.getMonthValue() && ultimoDia.getDayOfMonth() == hoje.getDayOfMonth()) {
+				if (hoje.equals(caixa[i-1].getDia()))
 					ok = true;
-				}
 				if (ok) {
 					c = caixa[i-1];				
 				}else{
 					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}		
 			}else{
@@ -59,7 +62,8 @@ public class Caixa {
 				if (caixa[i-1] != null && ok) {
 					c = caixa[i-1];
 				}else{	
-					c = new Dia();		
+					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}
 			}
@@ -73,16 +77,17 @@ public class Caixa {
 					c = caixa[i];				
 				}else{
 					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}		
 			}else{
 				c = new Dia();
+				c.setDia(hoje);
 				res = true;
 			}
 		}
 		c.addCaixa(valor);
 		if (res) {
-		//	System.out.println("ok");
 			addDia(c);			
 		}
 	}
@@ -94,62 +99,38 @@ public class Caixa {
 		}
 	}
 	private void duplicarVetor(){
-		int tam = 2*i;
-		Dia vetor[] = new Dia[tam];
+		Dia vetor[] = new Dia[caixa.length*2];
 		for(int i = 0; i < this.i;i++){
 			vetor[i] = caixa[i];
 		}
 		caixa = vetor;
 	}
-	public double valorArrecadadoHoje(LocalDate hoje){
-		for(int i = 0; i < this.i;i++){
-			System.out.println(i + ">"+ caixa[i].getCaixa());
-		}
+	public double valorArrecadadoHoje(){
 		double res = 0;
+		hoje = LocalDate.now();
 		boolean ok = false;
-		LocalDate ultimoDia;
-		
 		if (i-1 >= 0) {
 			if (caixa[i-1] != null) {
-				ultimoDia = caixa[i-1].getDia();
-			//System.out.println(hoje.equals(ultimoDia));
-				if (ultimoDia.getYear() == hoje.getYear() && ultimoDia.getMonthValue() == hoje.getMonthValue() && ultimoDia.getDayOfMonth() == hoje.getDayOfMonth()) {
+				if(hoje.equals(caixa[i-1].getDia()))
 					ok = true;
-				}
-				//System.out.println(ok);
 				if (ok) {
-					System.out.println("ok1");
-					System.out.println(">" + i);
 					res =  caixa[i-1].getCaixa();				
 				}else{
-					System.out.println("ok2");
-					System.out.println(">" + i);
 					res = 0;
 				}
 			}else{
-				System.out.println("Ok3");
-				System.out.println(">" + i);
 				res = 0;
 			}
 		}else{
 			if (caixa[i] != null) {
-				ultimoDia = caixa[i].getDia();
-		
-				if (ultimoDia.getYear() == hoje.getYear() && ultimoDia.getMonthValue() == hoje.getMonthValue() && ultimoDia.getDayOfMonth() == hoje.getDayOfMonth()) {
+				if(hoje.equals(caixa[i].getDia()))
 					ok = true;
-				}else
 				if (ok) {
-					System.out.println("ok4");
-					System.out.println(">" + i);
 					res = caixa[i].getCaixa();					
 				}else{
-					System.out.println("ok5");
-					System.out.println(">" + i);
 					res =0;
 				}
 			}else{
-				System.out.println("ok6");
-				System.out.println(">" + i);
 				res = 0;				
 			}
 		}

@@ -12,7 +12,7 @@ public class testFuncionario {
 	public static void main(String[] args) {
 		Endereco end1 = new Endereco();
 		LocalDate entrada = LocalDate.now();
-		ControladorFuncionario controlador = new ControladorFuncionario(RepositorioFuncionario.getInstance());
+		ControladorFuncionario controlador = new ControladorFuncionario();
 		
 		Funcionario f1 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
 		Funcionario f2 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
@@ -29,7 +29,7 @@ public class testFuncionario {
 		controlador.cadastrar(f3);
 		controlador.cadastrar(f4);
 		
-		System.out.println("\n\n************Atualizaï¿½ï¿½o************\n");
+		System.out.println("\n\n************Atualização************\n");
 		
 		f1.setCargo("Veterinario");
 		f1.setSalario(8499f);
