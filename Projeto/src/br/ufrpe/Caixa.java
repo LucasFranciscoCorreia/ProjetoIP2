@@ -6,6 +6,9 @@ public class Caixa {
 	public static class Dia{
 		private double balcao;
 		private LocalDate dia;
+		public void setDia(LocalDate dia) {
+			this.dia = dia;
+		}
 		public Dia(){
 			balcao = 0;
 			dia = LocalDate.now();
@@ -48,6 +51,7 @@ public class Caixa {
 					c = caixa[i-1];				
 				}else{
 					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}		
 			}else{
@@ -59,6 +63,10 @@ public class Caixa {
 					c = caixa[i-1];
 				}else{	
 					c = new Dia();
+<<<<<<< HEAD
+=======
+					c.setDia(hoje);
+>>>>>>> master
 					res = true;
 				}
 			}
@@ -72,10 +80,12 @@ public class Caixa {
 					c = caixa[i];				
 				}else{
 					c = new Dia();
+					c.setDia(hoje);
 					res = true;
 				}		
 			}else{
 				c = new Dia();
+				c.setDia(hoje);
 				res = true;
 			}
 		}
