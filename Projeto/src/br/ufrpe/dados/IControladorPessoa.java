@@ -3,8 +3,9 @@ import br.ufrpe.beans.Pessoa;
 
 public interface IControladorPessoa {
 	
-	boolean cadastrar(Pessoa pessoa);
-	boolean remover(String cpf);
-	Pessoa pesquisar(String cpf);
-	boolean atualizar(Pessoa novo);
+	void cadastrarPessoa(Pessoa pessoa);
+	Pessoa buscarPessoa(String cpf);
+	boolean atualizarPessoa(Pessoa novo);
+	void listar();
+	void removerPessoa(String cpf);
 }

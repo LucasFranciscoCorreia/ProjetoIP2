@@ -1,0 +1,16 @@
+package br.ufrpe.dados;
+
+import br.ufrpe.beans.Animal;
+
+public interface IControladorAnimal {
+	
+	int size();
+	int buscarIndice(Animal bus);
+	boolean adicionar(Animal novo);
+	Animal getPet(int i);
+	boolean remover(Animal antigo);
+	boolean remover(String codigo);
+	boolean atualizar(Animal antigo, Animal novo);
+	Animal buscar(String codigo);
+	String toString();
+}

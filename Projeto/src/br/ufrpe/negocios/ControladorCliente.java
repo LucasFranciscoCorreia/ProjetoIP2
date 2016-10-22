@@ -1,10 +1,12 @@
 package br.ufrpe.negocios;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.dados.IControladorCliente;
+import br.ufrpe.dados.IRepositorioCliente;
 import br.ufrpe.repositorios.RepositorioCliente;
 public class ControladorCliente implements IControladorCliente {
-	private RepositorioCliente repo;
-	public ControladorCliente(){
+	private IRepositorioCliente repo;
+	
+	public ControladorCliente(IRepositorioCliente instance){
 		repo = RepositorioCliente.getInstance();
 	}
 	public void cadastrar(Cliente novo){

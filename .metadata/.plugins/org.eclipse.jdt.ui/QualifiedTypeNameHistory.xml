@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioAnimal"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
 <fullyQualifiedTypeName name="br.ufrpe.negocios.ControladorProduto"/>
 <fullyQualifiedTypeName name="br.ufrpe.negocios.ControladorFuncionario"/>
 <fullyQualifiedTypeName name="br.ufrpe.negocios.ControladorCliente"/>
 <fullyQualifiedTypeName name="java.lang.Character"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Produto"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IControladorProduto"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioProduto"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioCliente"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioAnimal"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Animal"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IControladorAnimal"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IControladorPessoa"/>
+<fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioPessoa"/>
 </qualifiedTypeNameHistroy>

@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
+import br.ufrpe.dados.IRepositorioPessoa;
 
-public class RepositorioPessoa {
+public class RepositorioPessoa implements IRepositorioPessoa{
 	private ArrayList<Pessoa> array;
-	private static RepositorioPessoa rep;
+	private static IRepositorioPessoa rep;
+	
 	private RepositorioPessoa(){
 		array = new ArrayList<>();
 	}
-	public static RepositorioPessoa getInstance(){
+	public static IRepositorioPessoa getInstance(){
 		if(rep == null){
 			rep = new RepositorioPessoa();
 		}
@@ -44,7 +46,7 @@ public class RepositorioPessoa {
 		}
 		return null;
 	}
-	public int Size(){
+	public int size(){
 		return array.size();
 	}
 	public String listar(){
@@ -53,5 +55,10 @@ public class RepositorioPessoa {
 			res += array.get(i) + "\n\n";
 		}
 		return res;
+	}
+	
+	public boolean atualizar(Pessoa p) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

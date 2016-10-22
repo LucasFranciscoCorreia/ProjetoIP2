@@ -2,12 +2,14 @@ package br.ufrpe.negocios;
 
 import br.ufrpe.repositorios.RepositorioProduto;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.dados.IControladorProduto;
+import br.ufrpe.dados.IRepositorioProduto;
 
-public class ControladorProduto {
-	private RepositorioProduto repositorioProduto;
+public class ControladorProduto implements IControladorProduto{
+	private IRepositorioProduto repositorioProduto;
 	
-	public ControladorProduto(){
-		repositorioProduto = repositorioProduto.getInstanciado();
+	public ControladorProduto(IRepositorioProduto instance){
+		repositorioProduto = instance;
 	}
 	
 	public void cadastrar(Produto produto){

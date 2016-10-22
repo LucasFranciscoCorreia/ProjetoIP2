@@ -15,7 +15,11 @@ import br.ufrpe.negocios.ControladorCliente;
 import br.ufrpe.negocios.ControladorFuncionario;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
+import br.ufrpe.repositorios.RepositorioAnimal;
+import br.ufrpe.repositorios.RepositorioCliente;
 import br.ufrpe.repositorios.RepositorioFuncionario;
+import br.ufrpe.repositorios.RepositorioPessoa;
+import br.ufrpe.repositorios.RepositorioProduto;
 
 public class Principal {
 
@@ -806,11 +810,11 @@ public class Principal {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
-		ControladorCliente clienteControlador = new ControladorCliente();
-		ControladorAnimal animalControlador = new ControladorAnimal();
-		ControladorProduto produtoControlador = new ControladorProduto();
+		ControladorCliente clienteControlador = new ControladorCliente(RepositorioCliente.getInstance());
+		ControladorAnimal animalControlador = new ControladorAnimal(RepositorioAnimal.getInstance());
+		ControladorProduto produtoControlador = new ControladorProduto(RepositorioProduto.getInstance());
 		ControladorFuncionario funcionarioControlador = new ControladorFuncionario(RepositorioFuncionario.getInstance());
-		ControladorPessoa pessoaControlador = new ControladorPessoa();
+		ControladorPessoa pessoaControlador = new ControladorPessoa(RepositorioPessoa.getInstance());
 
 		menu(scanner, clienteControlador, animalControlador, produtoControlador, funcionarioControlador,pessoaControlador);
 		scanner.close();

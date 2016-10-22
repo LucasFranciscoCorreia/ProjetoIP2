@@ -5,11 +5,12 @@ import br.ufrpe.beans.Cliente;
 import br.ufrpe.dados.IRepositorioCliente;
 public class RepositorioCliente implements IRepositorioCliente{
 	private ArrayList<Cliente> repositorio;
-	private static  RepositorioCliente rep;
+	private static  IRepositorioCliente rep;
+	
 	private RepositorioCliente() {
 		repositorio = new ArrayList<>();
 	}
-	public static RepositorioCliente getInstance(){
+	public static IRepositorioCliente getInstance(){
 		if (rep == null) {
 			rep = new RepositorioCliente();
 		}

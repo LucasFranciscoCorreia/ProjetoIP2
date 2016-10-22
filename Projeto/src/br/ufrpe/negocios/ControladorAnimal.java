@@ -1,12 +1,14 @@
 package br.ufrpe.negocios;
 import br.ufrpe.repositorios.RepositorioAnimal;
 import br.ufrpe.beans.*;
-public class ControladorAnimal {
+import br.ufrpe.dados.IControladorAnimal;
+import br.ufrpe.dados.IRepositorioAnimal;
+public class ControladorAnimal implements IControladorAnimal{
 	
-	private RepositorioAnimal repositorioAnimal;
+	private IRepositorioAnimal repositorioAnimal;
 	
-	public ControladorAnimal(){
-		repositorioAnimal = RepositorioAnimal.getInstance();
+	public ControladorAnimal(IRepositorioAnimal instance){
+		repositorioAnimal = instance;
 	}
 	
 	public void cadastrar(Animal novo){

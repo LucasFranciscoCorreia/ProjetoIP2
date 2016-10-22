@@ -1,12 +1,15 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Pessoa;
+import br.ufrpe.dados.IControladorPessoa;
+import br.ufrpe.dados.IRepositorioPessoa;
 import br.ufrpe.repositorios.RepositorioPessoa;
 
-public class ControladorPessoa {
-	private RepositorioPessoa p;
-	public ControladorPessoa(){
-		p = RepositorioPessoa.getInstance();
+public class ControladorPessoa implements IControladorPessoa {
+	private IRepositorioPessoa p;
+	
+	public ControladorPessoa(IRepositorioPessoa instance){
+		p = instance;
 	}
 	public Pessoa buscarPessoa(String cpf){
 		Pessoa busca = p.buscar(cpf);
@@ -31,5 +34,11 @@ public class ControladorPessoa {
 	}
 	public void listar(){
 		System.out.println(p.listar());
+	}
+	
+	@Override
+	public boolean atualizarPessoa(Pessoa novo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

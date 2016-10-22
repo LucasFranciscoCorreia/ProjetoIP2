@@ -6,13 +6,13 @@ import br.ufrpe.beans.Produto;
 
 public class RepositorioProduto implements IRepositorioProduto {
 	private  ArrayList<Produto> repositorio;
-	private static RepositorioProduto unicInstanc;
+	private static IRepositorioProduto unicInstanc;
 	
 	private RepositorioProduto(){
 		 repositorio = new ArrayList<>();
 	}
 	
-	public static synchronized RepositorioProduto getInstanciado(){
+	public static synchronized IRepositorioProduto getInstance(){
 		if(unicInstanc == null){
 			unicInstanc = new RepositorioProduto();
 		}

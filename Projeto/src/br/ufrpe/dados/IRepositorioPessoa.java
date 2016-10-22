@@ -3,9 +3,10 @@ import br.ufrpe.beans.Pessoa;
 
 public interface IRepositorioPessoa {
 	
-	void cadastrar(Pessoa pessoa);
+	boolean cadastrar(Pessoa pessoa);
 	Pessoa buscar(String cpf);
-	void remover(String cpf);
-	void atualizar(Pessoa p);
+	boolean remover(String cpf);
+	boolean atualizar(Pessoa p);
 	int size();
+	String listar();
 }

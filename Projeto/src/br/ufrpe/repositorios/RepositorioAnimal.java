@@ -1,25 +1,44 @@
 package br.ufrpe.repositorios;
+
 import java.util.ArrayList;
 import br.ufrpe.dados.IRepositorioAnimal;
-
 import br.ufrpe.beans.Animal;
+
 public class RepositorioAnimal implements IRepositorioAnimal {
 	private ArrayList<Animal> rep;
 	private ArrayList<Animal> lixeira;
-	private static RepositorioAnimal repo;
+	private static IRepositorioAnimal repo;
 	
 	private RepositorioAnimal(){
 		rep = new ArrayList<>();
 		lixeira = new ArrayList<>();
 	}
 	
-	public static RepositorioAnimal getInstance(){
+	public static IRepositorioAnimal getInstance(){
 		if (repo == null) {
 			repo = new RepositorioAnimal();
 		}
 		return repo;
 	}
-	public int Size(){
+	public int buscarIndice(Animal bus){
+		for(int i = 0; i < rep.size();i++){
+			if(rep.get(i).equals(bus)){
+				return i;
+			}
+		}
+		return -1;
+	}
+	private int buscarI(String codigo){
+		int result = -1;
+		
+		for(int i = 0; i< rep.size(); i++){
+			if(rep.get(i).getCodigo().equals(codigo)){
+				result = i;
+			}
+		}
+		return result;
+	}
+	public int size(){
 		return rep.size();
 	}
 	public boolean adicionar(Animal novo){
@@ -41,14 +60,6 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 			}
 		}
 		return ok;
-	}
-	public int buscarIndice(Animal bus){
-		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i).equals(bus)){
-				return i;
-			}
-		}
-		return -1;
 	}
 	public Animal getPet(int i){
 		if(i >=0 && i < rep.size()){
@@ -85,16 +96,6 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 			}
 		}
 		return null;
-	}
-	private int buscarI(String codigo){
-        int result = -1;
-		
-		for(int i = 0; i< rep.size(); i++){
-			if(rep.get(i).getCodigo().equals(codigo)){
-		       result = i;
-			}
-		}
-		return result;
 	}
 	public boolean remover(String codigo){
 		

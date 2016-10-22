@@ -12,7 +12,7 @@ public interface IRepositorioAnimal {
 	 Animal buscar(String codigo);
 	 boolean remover(String codigo);
 	 Animal recuperar(String cpf, String raca);
-	 int Size();
+	 int size();
 	
 	
 	
