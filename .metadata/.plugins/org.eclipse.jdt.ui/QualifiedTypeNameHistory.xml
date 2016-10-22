@@ -16,4 +16,11 @@
 <fullyQualifiedTypeName name="br.ufrpe.dados.IControladorAnimal"/>
 <fullyQualifiedTypeName name="br.ufrpe.dados.IControladorPessoa"/>
 <fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioPessoa"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.FNCException"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.FuncionarioJaExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ErroAoRemoverException"/>
+<fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ErroAoSalvarException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.FuncionarioNaoExisteException"/>
 </qualifiedTypeNameHistroy>

@@ -1,11 +1,14 @@
 package br.ufrpe.dados;
 
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.repositorios.ErroAoRemoverException;
+import br.ufrpe.repositorios.ErroAoSalvarException;
+import br.ufrpe.repositorios.FuncionarioNaoExisteException;
 
 public interface IControladorFuncionario {
 	
-	boolean cadastrar(Funcionario funcionario);
-	boolean remover(String cpf);
-	Funcionario pesquisar(String cpf);
-	boolean atualizar(Funcionario novo);
+	void cadastrar(Funcionario funcionario) throws ErroAoSalvarException, FuncionarioNaoExisteException;
+	void remover(String cpf) throws FuncionarioNaoExisteException, ErroAoRemoverException;
+	Funcionario pesquisar(String cpf)  throws FuncionarioNaoExisteException;
+	void atualizar(Funcionario novo) throws FuncionarioNaoExisteException;
 }

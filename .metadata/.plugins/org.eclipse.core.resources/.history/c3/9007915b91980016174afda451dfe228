@@ -1,0 +1,11 @@
+package br.ufrpe.dados;
+
+import br.ufrpe.beans.Funcionario;
+
+public interface IControladorFuncionario {
+	
+	void cadastrar(Funcionario funcionario);
+	void remover(String cpf);
+	Funcionario pesquisar(String cpf);
+	void atualizar(Funcionario novo);
+}

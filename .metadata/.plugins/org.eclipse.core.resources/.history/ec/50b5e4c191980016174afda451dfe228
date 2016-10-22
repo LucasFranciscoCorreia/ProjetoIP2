@@ -1,0 +1,63 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.beans.Funcionario;
+import br.ufrpe.dados.IControladorFuncionario;
+import br.ufrpe.dados.IRepositorioFuncionario;
+import br.ufrpe.repositorios.ErroAoRemoverException;
+import br.ufrpe.repositorios.ErroAoSalvarException;
+import br.ufrpe.repositorios.FuncionarioNaoExisteException;
+
+public class ControladorFuncionario implements IControladorFuncionario{
+	private IRepositorioFuncionario repositorioFuncionario;
+	
+	public ControladorFuncionario(IRepositorioFuncionario instance){
+		repositorioFuncionario = instance;
+	}
+	public void cadastrar(Funcionario funcionario) throws ErroAoSalvarException, FuncionarioNaoExisteException{
+		if(funcionario == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			Funcionario pesquisado = repositorioFuncionario.buscar(funcionario.getCpf());
+			this.repositorioFuncionario.cadastrar(funcionario);
+		}
+	}
+	
+	public void remover(String cpf){
+		if(cpf == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			try{
+				repositorioFuncionario.remover(cpf);
+			}catch(FuncionarioNaoExisteException | ErroAoRemoverException E){
+				throw E;
+			}
+		}
+	}
+	
+	public Funcionario pesquisar(String cpf){
+		if(cpf == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			try{
+				Funcionario pesquisado = repositorioFuncionario.buscar(cpf);				
+				return pesquisado;
+			}catch(FuncionarioNaoExisteException FNE){
+				throw FNE;
+			}
+		}
+	}
+	
+	public void atualizar(Funcionario novo){
+		if(novo == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			try{
+				Funcionario pesquisado = repositorioFuncionario.buscar(novo.getCpf());
+				repositorioFuncionario.atualizar(novo);				
+			}catch(FuncionarioNaoExisteException FNE){
+				throw FNE;
+			}
+		}
+	}
+	
+}

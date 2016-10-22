@@ -34,36 +34,57 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	}
 	
 	//CRUD:	
-	public boolean cadastrar(Funcionario funcionario){
-		return this.repositorio.add(funcionario);
+	public void cadastrar(Funcionario funcionario) throws ErroAoSalvarException{
+		//cadastrou = true //nao cadastrou = false
+		if(!this.repositorio.add(funcionario)){
+			throw new ErroAoSalvarException(funcionario);
+		}
 	}	
 	
-	public Funcionario buscar(Funcionario funcionario){
-		int i = buscarIndice(funcionario.getCpf());
-		
-		if(i != -1){
-			return this.repositorio.get(i);
-		}else{return null;}	
-	}
-	
-	public Funcionario buscar(String cpf){
+	public Funcionario buscar(String cpf) throws FuncionarioNaoExisteException{
 		int i = buscarIndice(cpf);
-		
 		if(i != -1){
 			return this.repositorio.get(i);
-		}else{return null;}		
+		}else{
+			throw new FuncionarioNaoExisteException(cpf);
+		}
 	}
 	
-	public boolean remover(String cpf){
-		Funcionario funcionario = new Funcionario(cpf);
-		return this.repositorio.remove(funcionario);
+	public void remover(String cpf) throws FuncionarioNaoExisteException, ErroAoRemoverException{
+		if(cpf == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			int i = buscarIndice(cpf);
+			
+			if(i != -1){
+				Funcionario funcionario = new Funcionario(cpf);
+				//removeu com sucesso = true //falha ao remover = false;
+				if(!this.repositorio.remove(funcionario)){
+					throw new ErroAoRemoverException();
+				}
+			}else{
+				throw new FuncionarioNaoExisteException(cpf);
+			}
+		}
 	}
 	
-	public void atualizar(Funcionario funcionario){
-		int i = buscarIndice(funcionario.getCpf());
-		this.repositorio.get(i).setCargo(funcionario.getCargo());
-		this.repositorio.get(i).setEnd(funcionario.getEnd());
-		this.repositorio.get(i).setSalario(funcionario.getSalario());
+	public void atualizar(Funcionario funcionario) throws FuncionarioNaoExisteException{
+		if(funcionario == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			int i = buscarIndice(funcionario.getCpf());
+			if(i != -1){
+				if(funcionario.getCargo() != null){
+					this.repositorio.get(i).setCargo(funcionario.getCargo());					
+				}if(funcionario.getEnd() != null){
+					this.repositorio.get(i).setEnd(funcionario.getEnd());					
+				}if(funcionario.getSalario() != 0){
+					this.repositorio.get(i).setSalario(funcionario.getSalario());									
+				}
+			}else{
+				throw new FuncionarioNaoExisteException(funcionario.getCpf());
+			}
+		}
 	}
 	
 	public int size(){

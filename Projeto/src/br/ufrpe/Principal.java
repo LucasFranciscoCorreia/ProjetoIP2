@@ -15,6 +15,9 @@ import br.ufrpe.negocios.ControladorCliente;
 import br.ufrpe.negocios.ControladorFuncionario;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
+import br.ufrpe.repositorios.ErroAoRemoverException;
+import br.ufrpe.repositorios.ErroAoSalvarException;
+import br.ufrpe.repositorios.FuncionarioNaoExisteException;
 import br.ufrpe.repositorios.RepositorioAnimal;
 import br.ufrpe.repositorios.RepositorioCliente;
 import br.ufrpe.repositorios.RepositorioFuncionario;
@@ -150,11 +153,16 @@ public class Principal {
 		/*
 		 * Funcionario
 		 */
-		System.out.println("Informe o cpf: ");
-		cpf = scanner.nextLine();
-		Funcionario f =funcionarioControlador.pesquisar(cpf); 
-		if(f != null){
-			System.out.println("\n\n" + f + "\n");
+		try{
+			System.out.println("Informe o cpf: ");
+			cpf = scanner.nextLine();
+			
+			Funcionario f = funcionarioControlador.pesquisar(cpf); 
+			System.out.println("\n\n" + f + "\n");			
+		}catch(IllegalArgumentException I){
+			System.out.println(I.getMessage());
+		}catch(FuncionarioNaoExisteException FNE){
+			System.out.println(FNE.getMessage());
 		}
 	}
 
@@ -165,25 +173,25 @@ public class Principal {
 		/*
 		 * Atualizar
 		 */
-		System.out.print("Informe o CPF: ");
-		cpf = scanner.nextLine();
-
-		funcionario = funcionarioControlador.pesquisar(cpf);
-
-		if(funcionario != null){
+		try{
+			System.out.print("Informe o CPF: ");
+			cpf = scanner.nextLine();
+			
+			funcionario = funcionarioControlador.pesquisar(cpf);
+			
 			System.out.print("\n1.Atualizar Endereco\n"
 					+ "2.Atualizar Cargo\n"
 					+ "3.Atualizar Salario\n"
 					+ "\nOpcao: ");
 			op3 = scanner.nextLine().charAt(0);
-
+			
 			switch(op3){
 			case '1':
 				atualizarEnderecoFuncionario(scanner, funcionarioControlador, funcionario);
 				break;
 			case '2':
 				atualizarCargoFuncionario(scanner, funcionarioControlador, funcionario);
-
+				
 				break;
 			case '3':
 				atualizarSalarioFuncionario(scanner, funcionarioControlador, funcionario);
@@ -193,25 +201,37 @@ public class Principal {
 				break;							
 			}					
 			funcionarioControlador.atualizar(funcionario);
+		}catch(IllegalArgumentException | FuncionarioNaoExisteException E){
+			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void atualizarSalarioFuncionario(Scanner scanner, ControladorFuncionario funcionarioControlador,
 			Funcionario funcionario) {
 		double salario;
-		System.out.println("Informe o salario: ");
-		salario = Double.parseDouble(scanner.nextLine());
-		funcionario.setSalario(salario);
-		funcionarioControlador.atualizar(funcionario);
+		try{
+			System.out.println("Informe o salario: ");
+			salario = Double.parseDouble(scanner.nextLine());
+			funcionario.setSalario(salario);
+			
+			funcionarioControlador.atualizar(funcionario);
+		}catch(IllegalArgumentException | FuncionarioNaoExisteException E){
+			System.out.println(E.getMessage());
+		}
 	}
 
 	private static void atualizarCargoFuncionario(Scanner scanner, ControladorFuncionario funcionarioControlador,
 			Funcionario funcionario) {
 		String cargo;
-		System.out.println("Informe o cargo: ");
-		cargo = scanner.nextLine();							
-		funcionario.setCargo(cargo);
-		funcionarioControlador.atualizar(funcionario);
+		try{
+			System.out.println("Informe o cargo: ");
+			cargo = scanner.nextLine();							
+			funcionario.setCargo(cargo);
+			
+			funcionarioControlador.atualizar(funcionario);
+		}catch(IllegalArgumentException | FuncionarioNaoExisteException E){
+			System.out.println(E.getMessage());
+		}
 	}
 
 	private static void atualizarEnderecoFuncionario(Scanner scanner, ControladorFuncionario funcionarioControlador,
@@ -233,20 +253,26 @@ public class Principal {
 		System.out.print("Digite a cidade-UF: ");
 		cidadeUF = scanner.nextLine();
 
-		end = new Endereco(rua, complemento, numero, cep, cidadeUF);
-
-		funcionario.setEnd(end);
-		funcionarioControlador.atualizar(funcionario);
+		try{
+			end = new Endereco(rua, complemento, numero, cep, cidadeUF);
+			funcionario.setEnd(end);
+			funcionarioControlador.atualizar(funcionario);
+		}catch(IllegalArgumentException | FuncionarioNaoExisteException E){
+			System.out.println(E.getMessage());
+		}
 	}
 
 	private static void removerFuncionario(Scanner scanner, ControladorFuncionario funcionarioControlador, ControladorPessoa pessoaControlador) {
 		String cpf;
-		System.out.print("Informe o CPF: ");
-		cpf = scanner.nextLine();
-		boolean ok = funcionarioControlador.remover(cpf);
-		if (ok) {
-			pessoaControlador.removerPessoa(cpf);
+		try{
+			System.out.print("Informe o CPF: ");
+			cpf = scanner.nextLine();
+			
+			funcionarioControlador.remover(cpf);
+		}catch(FuncionarioNaoExisteException | ErroAoRemoverException | IllegalArgumentException E){
+			System.out.println(E.getMessage());
 		}
+		
 	}
 
 	private static void cadastrarFuncionario(Scanner scanner, ControladorFuncionario funcionarioControlador, ControladorPessoa pessoaControlador) {
@@ -287,10 +313,15 @@ public class Principal {
 		System.out.print("Digite a cidade-UF: ");
 		cidadeUF = scanner.nextLine();
 
-		end = new Endereco(rua, complemento, numero, cep, cidadeUF);
-		funcionario = new Funcionario(nome, cpf, end, salario, entrada, cargo);	
-		funcionarioControlador.cadastrar((Funcionario) funcionario);
-		pessoaControlador.cadastrarPessoa(funcionario);
+		try{
+			end = new Endereco(rua, complemento, numero, cep, cidadeUF);
+			funcionario = new Funcionario(nome, cpf, end, salario, entrada, cargo);	
+			
+			funcionarioControlador.cadastrar((Funcionario) funcionario);
+			pessoaControlador.cadastrarPessoa(funcionario);
+		}catch(ErroAoSalvarException | FuncionarioNaoExisteException | IllegalArgumentException E){
+			System.out.println(E.getMessage());
+		}
 	}
 
 	private static void menuProduto(Scanner scanner, ControladorProduto produtoControlador) {

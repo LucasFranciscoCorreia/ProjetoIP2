@@ -1,0 +1,59 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.beans.Funcionario;
+import br.ufrpe.dados.IControladorFuncionario;
+import br.ufrpe.dados.IRepositorioFuncionario;
+
+public class ControladorFuncionario implements IControladorFuncionario{
+	private IRepositorioFuncionario repositorioFuncionario;
+	
+	public ControladorFuncionario(IRepositorioFuncionario instance){
+		repositorioFuncionario = instance;
+	}
+	public void cadastrar(Funcionario funcionario){
+		if(funcionario == null){
+			throw new IllegalArgumentException("Parametro inválido");
+		}else{
+			repositorioFuncionario.buscar(funcionario.getCpf());
+			if(){
+				return repositorioFuncionario.cadastrar(funcionario);
+			}			
+		}
+		
+		return false;
+	}
+	
+	public void remover(String cpf){
+		if(cpf != null){
+			Funcionario verificar = repositorioFuncionario.buscar(cpf);
+			
+			if(verificar != null){
+				return repositorioFuncionario.remover(cpf);
+			}
+		}
+		return false;
+	}
+	
+	public Funcionario pesquisar(String cpf){
+		if(cpf != null){
+			Funcionario verificar = repositorioFuncionario.buscar(cpf);
+			if(verificar != null){
+				return verificar;
+			}else{return null;}
+		}else{return null;}
+	}
+	
+	public void atualizar(Funcionario novo){
+		if(novo != null){
+			Funcionario verificar = repositorioFuncionario.buscar(novo);
+			
+			if(verificar != null){
+				repositorioFuncionario.atualizar(novo);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+}

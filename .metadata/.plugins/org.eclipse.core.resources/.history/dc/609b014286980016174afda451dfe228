@@ -1,0 +1,17 @@
+package br.ufrpe.repositorios;
+
+import br.ufrpe.beans.Funcionario;
+
+public class FuncionarioNaoExisteException extends Exception{
+	Funcionario funcionario;
+	String cpf;
+	
+	public FuncionarioNaoExisteException(string cpf){
+		super("CPF de numero " + cpf + " nao cadastrado no sistema!");
+		this.cpf = cpf;
+	}
+	public FuncionarioNaoExisteException(Funcionario f){
+		super("CPF de numero " + f.getCpf() + " nao cadastrado no sistema!");
+		funcionario = f;
+	}
+}

@@ -1,0 +1,9 @@
+package br.ufrpe.repositorios;
+
+import br.ufrpe.beans.Funcionario;
+
+public class FNCException extends Exception{	
+	public FNCException (Funcionario funcionario){
+		super("Funcionario nao cadastrado com sucesso!");
+	}
+}
