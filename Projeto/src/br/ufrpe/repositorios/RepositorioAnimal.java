@@ -22,15 +22,15 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 	}
 	public int buscarIndice(Animal bus) throws AnimalNaoExisteException{
 		for(int i = 0; i < rep.size();i++){
-			if(rep.get(i).equals(bus)){
-				return i;
-			}
-		}
+			if(rep.get(i).equals(bus)){ //Duvida: deve-se manter esse return dentro do laço?
+				return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
+			}				//usar um if depois dele (if i > -1)
+		}				//Como fiz no metodo abaixo:
 		String m = "Animal nao existe: "+bus.toString();
 		throw new AnimalNaoExisteException(bus, m);
 		
 	}
-	private int buscarI(String codigo){
+	public int buscarIndice(String codigo) throws CodigoNaoExisteException{
 		int result = -1;
 		
 		for(int i = 0; i< rep.size(); i++){
@@ -38,12 +38,16 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 				result = i;
 			}
 		}
+		if(result == -1){
+			String m = "Codigo nao existe: "+codigo;
+			throw new CodigoNaoExisteException(codigo, m);
+		}
 		return result;
 	}
 	public int size(){
 		return rep.size();
 	}
-	public boolean adicionar(Animal novo){
+	public void adicionar(Animal novo) throws AnimalJaExisteException{
 		boolean ok = false;
 		if (novo != null) {
 			ok = true;
@@ -60,8 +64,12 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 					}
 				}
 			}
+			else{
+				String m = "Animal Ja Existente: "+novo.getCodigo();
+				throw new AnimalJaExisteException(novo,m);
+			}
 		}
-		return ok;
+		
 	}
 	public Animal getPet(int i){
 		if(i >=0 && i < rep.size()){
@@ -79,37 +87,45 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 		}
 		return ok;
 	}
-	public boolean atualizar(Animal antigo, Animal novo){
+	private void adicionarDireto(Animal novo){
+		if(novo != null){
+			this.rep.add(novo);
+		}
+	}
+	public boolean atualizar(Animal antigo, Animal novo) throws AnimalJaExisteException, AnimalNaoExisteException{
 		boolean ok = false;
 		int i = this.buscarIndice(antigo);
 		if(i != -1){
 			ok = true;
-			this.remover(antigo);
-			adicionar(novo);	
+			this.remover(antigo); 
+			adicionarDireto(novo);	// o antigo e o novo tem o mesmo codigo, isso nao esta certo
 		}
+		
 		return ok;
 	}
-	public Animal buscar(String codigo){
+	public Animal buscar(String codigo)throws CodigoNaoExisteException{
 		Animal a;
 		for(int i = 0; i< rep.size(); i++){
 			a= rep.get(i);
 			if(a.getCodigo() != null && a.getCodigo().equals(codigo)){
 		       return a;
 			}
-		}
-		return null;
+		}//Mudar para for reach]
+		String m = "Codigo Digitado nao Existe: "+codigo;
+		throw new CodigoNaoExisteException(codigo, m);
+		
 	}
-	public boolean remover(String codigo){
+	public boolean remover(String codigo)throws CodigoNaoExisteException{
 		
 		boolean result = false;
 		if(codigo != null){
-			int busca = this.buscarI(codigo);
+			int busca = this.buscarIndice(codigo);
 			if(busca != -1){
 				rep.remove(rep.get(busca));
 				result = true;
 			}
 		}
-		return result;
+		return result; //Exception ja eh "throwed" em buscar
 	}
 	
 	public Animal recuperar(String cpf, String raca){
