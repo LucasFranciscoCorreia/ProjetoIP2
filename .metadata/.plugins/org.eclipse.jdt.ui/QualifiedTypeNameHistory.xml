@@ -23,4 +23,6 @@
 <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ErroAoSalvarException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.FuncionarioNaoExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.IndiceOutofBoundsException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.AnimalNaoExisteException"/>
 </qualifiedTypeNameHistroy>

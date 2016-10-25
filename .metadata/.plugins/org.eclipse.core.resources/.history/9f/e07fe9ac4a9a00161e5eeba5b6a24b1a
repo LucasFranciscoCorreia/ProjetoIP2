@@ -1,0 +1,8 @@
+package br.ufrpe.repositorios;
+import br.ufrpe.beans.Animal;
+
+public class AnimalNaoExisteException extends Exception{
+	
+	public Animal animalNaoExistente;
+
+}

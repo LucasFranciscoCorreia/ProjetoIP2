@@ -1,0 +1,12 @@
+package br.ufrpe.repositorios extends Excpetion;
+
+public class IndiceOutofBoundsException {
+
+	private int indiceOut;
+	
+	public IndiceOutofBoundsException(int indiceOut, String m){
+		super(m);
+		
+	}
+
+}
