@@ -24,5 +24,8 @@
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ErroAoSalvarException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.FuncionarioNaoExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IndiceOutofBoundsException"/>
+<fullyQualifiedTypeName name="java.lang.SuppressWarnings"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.CodigoNaoExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.AnimalJaExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.AnimalNaoExisteException"/>
 </qualifiedTypeNameHistroy>

@@ -15,6 +15,9 @@ import br.ufrpe.negocios.ControladorCliente;
 import br.ufrpe.negocios.ControladorFuncionario;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
+import br.ufrpe.repositorios.AnimalJaExisteException;
+import br.ufrpe.repositorios.AnimalNaoExisteException;
+import br.ufrpe.repositorios.CodigoNaoExisteException;
 import br.ufrpe.repositorios.ErroAoRemoverException;
 import br.ufrpe.repositorios.ErroAoSalvarException;
 import br.ufrpe.repositorios.FuncionarioNaoExisteException;
@@ -487,10 +490,18 @@ public class Principal {
 		String codigo;
 		System.out.print("Digite o codigo do animal: ");
 		codigo = scanner.nextLine();
-		Animal a = animalControlador.buscar(codigo);
-		if (a != null) {
-			System.out.println(a);
+		try{
+			Animal a = animalControlador.buscar(codigo);
+			System.out.println("Animal codigo: "+a.getCodigo());
+			System.out.println("Raca: "+a.getRaca());
+			System.out.println("Nome: "+a.getNome());
+			System.out.println("Dono: "+a.getDonoNome());
+			System.out.println("CPF: "+a.getDonoCPF());
 		}
+		catch(CodigoNaoExisteException e){
+			System.out.println(e.getMessage());
+		}
+		// O que isso faz?
 	}
 
 	private static void atualizarAnimal(Scanner scanner, ControladorCliente clienteControlador,
@@ -502,6 +513,8 @@ public class Principal {
 		float h;
 		System.out.println("Digite o codigo do animal: ");
 		codigo = scanner.nextLine();
+		try{
+			
 		Animal a = animalControlador.buscar(codigo);
 		if (a != null) {
 			System.out.print("\t1.Adicionar novo dono\n"
@@ -552,13 +565,24 @@ public class Principal {
 		}else{
 			System.out.println("Codigo invalido");
 		}
+		
+		}
+		catch( CodigoNaoExisteException e){
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 	private static void removerAnimal(Scanner scanner, ControladorAnimal animalControlador) {
 		String codigo;
 		System.out.print("Digite o codigo do animal: ");
 		codigo = scanner.nextLine();
+		try{
 		animalControlador.remover(codigo);
+		}
+		catch(CodigoNaoExisteException e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private static void cadastrarAnimal(Scanner scanner, ControladorCliente clienteControlador,
@@ -593,7 +617,12 @@ public class Principal {
 				System.out.println("Digite o codigo do pet");
 				String codigoPet = scanner.nextLine();
 				Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
-				animalControlador.cadastrar(novo);
+				try{
+					animalControlador.cadastrar(novo);
+				}
+				catch(AnimalJaExisteException e){
+					System.out.println(e.getMessage());
+				}
 			}else{
 				System.out.println("Cliente nao encontrado");
 			}
@@ -611,10 +640,14 @@ public class Principal {
 			System.out.print("Digite o codigo do pet: ");
 			String codigoPet = scanner.nextLine();
 			Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet,codigoPet);
+			try{
 			animalControlador.cadastrar(novo);
-		}else{
-			System.out.println("Opcao invalida\n");
+			}
+			catch(AnimalJaExisteException e){
+				System.out.println(e.getMessage());
+			}
 		}
+		
 	}
 
 	private static void menuCliente(Scanner scanner, ControladorCliente clienteControlador,
@@ -719,8 +752,12 @@ public class Principal {
 					System.out.println("Digite o codigo do pet");
 					String codigoPet = scanner.nextLine();
 					Animal novo = new Animal(true, especie, raca, cliente, peso, h, nomePet,codigoPet);
-
+					try{
 					animalControlador.cadastrar(novo);
+					}
+					catch(AnimalJaExisteException e){
+						System.out.println(e.getMessage());
+					}
 					cliente.addPet(novo);
 				}
 				clienteControlador.atualizar(cliente);
@@ -830,7 +867,12 @@ public class Principal {
 				System.out.print("Digite o c�digo do pet");
 				String codigoPet = scanner.nextLine();
 				Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
+				try{
 				animalControlador.cadastrar(novo);
+				}
+				catch(AnimalJaExisteException e){
+					System.out.println(e.getMessage());
+				}
 				((Cliente) cliente).addPet(novo);
 			}
 		}

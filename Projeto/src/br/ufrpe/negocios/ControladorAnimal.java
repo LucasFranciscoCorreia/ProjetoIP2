@@ -1,4 +1,7 @@
 package br.ufrpe.negocios;
+import br.ufrpe.repositorios.AnimalJaExisteException;
+import br.ufrpe.repositorios.AnimalNaoExisteException;
+import br.ufrpe.repositorios.CodigoNaoExisteException;
 import br.ufrpe.repositorios.RepositorioAnimal;
 import br.ufrpe.beans.*;
 import br.ufrpe.dados.IControladorAnimal;
@@ -11,21 +14,14 @@ public class ControladorAnimal implements IControladorAnimal{
 		repositorioAnimal = instance;
 	}
 	
-	public void cadastrar(Animal novo){
+	public void cadastrar(Animal novo) throws AnimalJaExisteException{
 		if (novo != null) {
-			boolean check = repositorioAnimal.adicionar(novo);
-
-			if (!check) {
-				System.out.println("Animal ja cadastrado");
-			}
-			else{System.out.println("Animal cadastrado com sucesso");
-			}
-		}else{
-			System.out.println("Animal invalido");
+			 repositorioAnimal.adicionar(novo);
 		}
+	
 	}
 		
-	public void remover(String codigo){
+	public void remover(String codigo)throws CodigoNaoExisteException{
 		
 		if (codigo != null){
 			
@@ -42,7 +38,7 @@ public class ControladorAnimal implements IControladorAnimal{
 		}
 	}
 	
-	public void atualizar(Animal novo, Animal antigo){
+	public void atualizar(Animal novo, Animal antigo)throws AnimalJaExisteException, AnimalNaoExisteException{
 		
 		if(novo != null && antigo != null){
 			boolean check = repositorioAnimal.atualizar(antigo, novo);
@@ -59,7 +55,7 @@ public class ControladorAnimal implements IControladorAnimal{
 		}
 	}
 	
-	public Animal buscar(String codigo){
+	public Animal buscar(String codigo) throws CodigoNaoExisteException{
 		if (codigo != null) {
 			Animal a = repositorioAnimal.buscar(codigo);
 			if (a != null) {
