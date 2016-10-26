@@ -6,6 +6,7 @@ import br.ufrpe.Caixa;
 
 public class testCaixa {
 	public static void main(String[] args) {
+		System.out.println("\"");
 		Scanner scanner = new Scanner(System.in);
 		Caixa c = Caixa.getInstance();
 		System.out.println(c.valorArrecadadoHoje());

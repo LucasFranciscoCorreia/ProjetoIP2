@@ -6,6 +6,8 @@ import java.util.Scanner;
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.negocios.ControladorFuncionario;
+import br.ufrpe.repositorios.ErroAoSalvarException;
+import br.ufrpe.repositorios.FuncionarioNaoExisteException;
 import br.ufrpe.repositorios.RepositorioFuncionario;
 
 public class testFuncionario {
@@ -24,16 +26,24 @@ public class testFuncionario {
 		System.out.println("equals f1 e f3: " + f1.equals(f3));
 		
 		System.out.println("\n\n************Adicionar ao Repositorio************\n");
-		controlador.cadastrar(f1);
-		controlador.cadastrar(f2);
-		controlador.cadastrar(f3);
-		controlador.cadastrar(f4);
+		try {
+			controlador.cadastrar(f1);
+			controlador.cadastrar(f2);
+			controlador.cadastrar(f3);
+			controlador.cadastrar(f4);
+		} catch (ErroAoSalvarException | FuncionarioNaoExisteException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		System.out.println("\n\n************Atualiza��o************\n");
 		
 		f1.setCargo("Veterinario");
 		f1.setSalario(8499f);
-		controlador.atualizar(f1);
+		try {
+			controlador.atualizar(f1);
+		} catch (FuncionarioNaoExisteException e) {
+			System.out.println(e.getMessage());
+		}
 		
 //		System.out.println("\n\n************Imprimir todos os cadastrados************\n");
 //		System.out.printl

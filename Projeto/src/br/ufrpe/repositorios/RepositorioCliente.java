@@ -6,7 +6,7 @@ import br.ufrpe.dados.IRepositorioCliente;
 public class RepositorioCliente implements IRepositorioCliente{
 	private ArrayList<Cliente> repositorio;
 	private static  IRepositorioCliente rep;
-	
+
 	private RepositorioCliente() {
 		repositorio = new ArrayList<>();
 	}
@@ -19,51 +19,41 @@ public class RepositorioCliente implements IRepositorioCliente{
 	public int getSize(){
 		return this.repositorio.size();
 	}
-	public Cliente buscar(String cpf){
+	public Cliente buscar(String cpf) throws ClienteNaoEncontradoException{
 		for(int i = 0; i < repositorio.size();i++){
 			if (repositorio.get(i).getCpf().equals(cpf)) {
 				return repositorio.get(i);
 			}
 		}
-		return null;
+		throw new ClienteNaoEncontradoException(cpf);
 	}
-	public Cliente buscar(int i){
-		return repositorio.get(i);
+	public Cliente buscar(int i) throws IndiceNaoEncontradoException{
+		Cliente c = repositorio.get(i);
+		if(c != null){
+			return repositorio.get(i);			
+		}
+		throw new IndiceNaoEncontradoException(i);
 	}
-	public boolean cadastrar(Cliente outro){
-		boolean ok =  true;
-		for(int i = 0;i <repositorio.size();i++){
-			if (outro.equals(repositorio.get(i))) {
-				ok = false;
+	public void cadastrar(Cliente outro) throws ClienteJaExisteException, ClienteInvalidoException{
+		if(outro != null){
+			for(int i = 0;i <repositorio.size();i++){
+				if (outro.equals(repositorio.get(i))) {
+					throw new ClienteJaExisteException(outro);
+				}
 			}
+			repositorio.add(outro);
+		}else{
+			throw new ClienteInvalidoException(outro);
 		}
-		if (ok) {
-			repositorio.add(outro);			
-		}
-		return ok;
 	}
-	public boolean remover(String cpf){
-		boolean ok = false;
+	public void remover(String cpf) throws ClienteNaoExisteException, ClienteNaoEncontradoException{
 		Cliente c;
 		for(int i = 0; i < repositorio.size();i++){
 			c = repositorio.get(i);
 			if (c.getCpf().equals(cpf)) {
 				repositorio.remove(i);
-				ok = true;
 			}
 		}
-		return ok;
-	}
-	public boolean atualizar(Cliente novo){
-		boolean ok = false;
-		for(int i = 0; i < repositorio.size();i++){
-			if (novo.equals(repositorio.get(i))) {
-				ok = true;
-				repositorio.remove(i);
-				repositorio.add(novo);
-			}
-		}
-		return ok;
 	}
 	public String listar(){
 		String res = "";

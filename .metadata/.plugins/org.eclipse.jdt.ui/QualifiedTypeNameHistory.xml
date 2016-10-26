@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="br.ufrpe.beans.Produto"/>
 <fullyQualifiedTypeName name="br.ufrpe.dados.IControladorProduto"/>
 <fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioProduto"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
 <fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioCliente"/>
 <fullyQualifiedTypeName name="br.ufrpe.dados.IRepositorioAnimal"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Animal"/>
@@ -28,4 +27,12 @@
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.CodigoNaoExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.AnimalJaExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.AnimalNaoExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.IndiceNaoEncontradoException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ClienteJaExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ClienteNaoExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ClienteInvalidoException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ClienteNaoEncontradoException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.ParametroInvalidoException"/>
+<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
 </qualifiedTypeNameHistroy>

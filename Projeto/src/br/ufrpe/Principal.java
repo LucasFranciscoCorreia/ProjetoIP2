@@ -17,10 +17,15 @@ import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
 import br.ufrpe.repositorios.AnimalJaExisteException;
 import br.ufrpe.repositorios.AnimalNaoExisteException;
+import br.ufrpe.repositorios.ClienteInvalidoException;
+import br.ufrpe.repositorios.ClienteJaExisteException;
+import br.ufrpe.repositorios.ClienteNaoEncontradoException;
+import br.ufrpe.repositorios.ClienteNaoExisteException;
 import br.ufrpe.repositorios.CodigoNaoExisteException;
 import br.ufrpe.repositorios.ErroAoRemoverException;
 import br.ufrpe.repositorios.ErroAoSalvarException;
 import br.ufrpe.repositorios.FuncionarioNaoExisteException;
+import br.ufrpe.repositorios.ParametroInvalidoException;
 import br.ufrpe.repositorios.RepositorioAnimal;
 import br.ufrpe.repositorios.RepositorioCliente;
 import br.ufrpe.repositorios.RepositorioFuncionario;
@@ -159,7 +164,7 @@ public class Principal {
 		try{
 			System.out.println("Informe o cpf: ");
 			cpf = scanner.nextLine();
-			
+
 			Funcionario f = funcionarioControlador.pesquisar(cpf); 
 			System.out.println("\n\n" + f + "\n");			
 		}catch(IllegalArgumentException I){
@@ -179,22 +184,22 @@ public class Principal {
 		try{
 			System.out.print("Informe o CPF: ");
 			cpf = scanner.nextLine();
-			
+
 			funcionario = funcionarioControlador.pesquisar(cpf);
-			
+
 			System.out.print("\n1.Atualizar Endereco\n"
 					+ "2.Atualizar Cargo\n"
 					+ "3.Atualizar Salario\n"
 					+ "\nOpcao: ");
 			op3 = scanner.nextLine().charAt(0);
-			
+
 			switch(op3){
 			case '1':
 				atualizarEnderecoFuncionario(scanner, funcionarioControlador, funcionario);
 				break;
 			case '2':
 				atualizarCargoFuncionario(scanner, funcionarioControlador, funcionario);
-				
+
 				break;
 			case '3':
 				atualizarSalarioFuncionario(scanner, funcionarioControlador, funcionario);
@@ -216,7 +221,7 @@ public class Principal {
 			System.out.println("Informe o salario: ");
 			salario = Double.parseDouble(scanner.nextLine());
 			funcionario.setSalario(salario);
-			
+
 			funcionarioControlador.atualizar(funcionario);
 		}catch(IllegalArgumentException | FuncionarioNaoExisteException E){
 			System.out.println(E.getMessage());
@@ -230,7 +235,7 @@ public class Principal {
 			System.out.println("Informe o cargo: ");
 			cargo = scanner.nextLine();							
 			funcionario.setCargo(cargo);
-			
+
 			funcionarioControlador.atualizar(funcionario);
 		}catch(IllegalArgumentException | FuncionarioNaoExisteException E){
 			System.out.println(E.getMessage());
@@ -270,12 +275,12 @@ public class Principal {
 		try{
 			System.out.print("Informe o CPF: ");
 			cpf = scanner.nextLine();
-			
+
 			funcionarioControlador.remover(cpf);
 		}catch(FuncionarioNaoExisteException | ErroAoRemoverException | IllegalArgumentException E){
 			System.out.println(E.getMessage());
 		}
-		
+
 	}
 
 	private static void cadastrarFuncionario(Scanner scanner, ControladorFuncionario funcionarioControlador, ControladorPessoa pessoaControlador) {
@@ -319,7 +324,7 @@ public class Principal {
 		try{
 			end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 			funcionario = new Funcionario(nome, cpf, end, salario, entrada, cargo);	
-			
+
 			funcionarioControlador.cadastrar((Funcionario) funcionario);
 			pessoaControlador.cadastrarPessoa(funcionario);
 		}catch(ErroAoSalvarException | FuncionarioNaoExisteException | IllegalArgumentException E){
@@ -514,63 +519,63 @@ public class Principal {
 		System.out.println("Digite o codigo do animal: ");
 		codigo = scanner.nextLine();
 		try{
-			
-		Animal a = animalControlador.buscar(codigo);
-		if (a != null) {
-			System.out.print("\t1.Adicionar novo dono\n"
-					+ "\t2.Remover dono\n"
-					+ "\t3.Mudar estatisticas\n"
-					+ "\t4.Sair\nOpcao: ");
-			op3 = scanner.nextLine().charAt(0);
-			if (op3 == '1') {
-				if (a.getDonoCPF() == null) {
-					System.out.print("Digite o cpf do cliente: ");
-					cpf = scanner.nextLine();
-					Cliente c = (Cliente) clienteControlador.buscar(cpf);
-					if (c != null) {
-						a.setDono(c);
-					}else{
-						System.out.println("Cliente nao encontrado");
-					}
-				}else{
-					System.out.println("Pet ja pertence a alguém");
-				}
-			}else if (op3 == '2') {
-				System.out.println("Digite o codigo do animal:");
-				codigo = scanner.nextLine();
-				a = animalControlador.buscar(codigo);
-				if (a != null) {
+
+			Animal a = animalControlador.buscar(codigo);
+			if (a != null) {
+				System.out.print("\t1.Adicionar novo dono\n"
+						+ "\t2.Remover dono\n"
+						+ "\t3.Mudar estatisticas\n"
+						+ "\t4.Sair\nOpcao: ");
+				op3 = scanner.nextLine().charAt(0);
+				if (op3 == '1') {
 					if (a.getDonoCPF() == null) {
-						System.out.println("Animal ja nao possui dono");
+						try {
+							System.out.print("Digite o cpf do cliente: ");
+							cpf = scanner.nextLine();
+							Cliente c = (Cliente) clienteControlador.buscar(cpf);
+							a.setDono(c);							
+						} catch (ClienteNaoEncontradoException | ParametroInvalidoException e) {
+							System.out.println(e.getMessage());
+						}
 					}else{
-						a.setDono(null);
+						System.out.println("Pet ja pertence a alguém");
 					}
-				}else{
-					System.out.println("Animal nao encontrado");
+				}else if (op3 == '2') {
+					System.out.println("Digite o codigo do animal:");
+					codigo = scanner.nextLine();
+					a = animalControlador.buscar(codigo);
+					if (a != null) {
+						if (a.getDonoCPF() == null) {
+							System.out.println("Animal ja nao possui dono");
+						}else{
+							a.setDono(null);
+						}
+					}else{
+						System.out.println("Animal nao encontrado");
+					}
+				}else if(op3 == '3'){
+					System.out.println("Digite o codigo do animal: ");
+					codigo = scanner.nextLine();
+					a = animalControlador.buscar(codigo);
+					System.out.println(a);
+					if (a != null) {
+						System.out.println("Digite o peso do animal: ");									
+						peso = Float.parseFloat(scanner.nextLine());
+						System.out.println("Digite a altura do animal: ");
+						h= Float.parseFloat(scanner.nextLine());
+						a.setTamanho(h);
+						a.setPeso(peso);
+					}
 				}
-			}else if(op3 == '3'){
-				System.out.println("Digite o codigo do animal: ");
-				codigo = scanner.nextLine();
-				a = animalControlador.buscar(codigo);
-				System.out.println(a);
-				if (a != null) {
-					System.out.println("Digite o peso do animal: ");									
-					peso = Float.parseFloat(scanner.nextLine());
-					System.out.println("Digite a altura do animal: ");
-					h= Float.parseFloat(scanner.nextLine());
-					a.setTamanho(h);
-					a.setPeso(peso);
-				}
+			}else{
+				System.out.println("Codigo invalido");
 			}
-		}else{
-			System.out.println("Codigo invalido");
-		}
-		
+
 		}
 		catch( CodigoNaoExisteException e){
 			System.out.println(e.getMessage());
 		}
-		
+
 	}
 
 	private static void removerAnimal(Scanner scanner, ControladorAnimal animalControlador) {
@@ -578,7 +583,7 @@ public class Principal {
 		System.out.print("Digite o codigo do animal: ");
 		codigo = scanner.nextLine();
 		try{
-		animalControlador.remover(codigo);
+			animalControlador.remover(codigo);
 		}
 		catch(CodigoNaoExisteException e){
 			System.out.println(e.getMessage());
@@ -599,32 +604,36 @@ public class Principal {
 		op3 = scanner.nextLine().charAt(0);
 
 		if(op3 == '1'){
+
 			System.out.print("Informe o cpf: ");
 			String cpfD = scanner.nextLine();
-
-			Cliente dono = (Cliente) clienteControlador.buscar(cpfD);
-			if (dono != null) {
-				System.out.println("Digite a raca: ");
-				raca = scanner.nextLine();
-				System.out.print("Digite a especie: ");
-				especie = scanner.nextLine();
-				System.out.print("Digite o peso do animal: ");
-				peso = Float.parseFloat(scanner.nextLine());
-				System.out.print("Digite a altura do animal: ");
-				h = Float.parseFloat(scanner.nextLine());
-				System.out.print("Digite o nome do pet: ");
-				String nomePet = scanner.nextLine();
-				System.out.println("Digite o codigo do pet");
-				String codigoPet = scanner.nextLine();
-				Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
-				try{
-					animalControlador.cadastrar(novo);
+			try{
+				Cliente dono = (Cliente) clienteControlador.buscar(cpfD);
+				if (dono != null) {
+					System.out.println("Digite a raca: ");
+					raca = scanner.nextLine();
+					System.out.print("Digite a especie: ");
+					especie = scanner.nextLine();
+					System.out.print("Digite o peso do animal: ");
+					peso = Float.parseFloat(scanner.nextLine());
+					System.out.print("Digite a altura do animal: ");
+					h = Float.parseFloat(scanner.nextLine());
+					System.out.print("Digite o nome do pet: ");
+					String nomePet = scanner.nextLine();
+					System.out.println("Digite o codigo do pet");
+					String codigoPet = scanner.nextLine();
+					Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
+					try{
+						animalControlador.cadastrar(novo);
+					}
+					catch(AnimalJaExisteException e){
+						System.out.println(e.getMessage());
+					}
+				}else{
+					System.out.println("Cliente nao encontrado");
 				}
-				catch(AnimalJaExisteException e){
-					System.out.println(e.getMessage());
-				}
-			}else{
-				System.out.println("Cliente nao encontrado");
+			} catch(ClienteNaoEncontradoException | ParametroInvalidoException e){
+				System.out.println(e.getMessage());
 			}
 		}else if(op3 == '2'){
 			System.out.print("Digite a raca: ");
@@ -641,13 +650,13 @@ public class Principal {
 			String codigoPet = scanner.nextLine();
 			Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet,codigoPet);
 			try{
-			animalControlador.cadastrar(novo);
+				animalControlador.cadastrar(novo);
 			}
 			catch(AnimalJaExisteException e){
 				System.out.println(e.getMessage());
 			}
 		}
-		
+
 	}
 
 	private static void menuCliente(Scanner scanner, ControladorCliente clienteControlador,
@@ -696,16 +705,21 @@ public class Principal {
 	}
 
 	private static void listarClientes(ControladorCliente clienteControlador) {
-		clienteControlador.listar();
+		System.out.println(clienteControlador.listar());
 	}
 
 	private static void pesquisarCliente(Scanner scanner, ControladorCliente clienteControlador) {
-		String cpf;
-		System.out.print("Informe o CPF: ");
-		cpf = scanner.nextLine();
-		Cliente c =(Cliente) clienteControlador.buscar(cpf);
-		if (c!= null) {
-			System.out.println(c);
+		try {
+			String cpf;
+			System.out.print("Informe o CPF: ");
+			cpf = scanner.nextLine();
+			Cliente c;
+			c = (Cliente) clienteControlador.buscar(cpf);
+			if (c!= null) {
+				System.out.println(c);
+			}
+		} catch (ClienteNaoEncontradoException | ParametroInvalidoException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -725,8 +739,13 @@ public class Principal {
 		Endereco end;
 		System.out.print("Digite o cpf do cliente: ");
 		cpf = scanner.nextLine();
-
-		Cliente cliente  = clienteControlador.buscar(cpf);
+		
+		Cliente cliente = null;
+		try {
+			cliente = clienteControlador.buscar(cpf);
+		} catch (ClienteNaoEncontradoException | ParametroInvalidoException e1) {
+			System.out.println(e1.getMessage());
+		}
 
 		if(cliente != null){
 			System.out.print("\t1.Adicionar pets a um cliente\n"
@@ -753,14 +772,13 @@ public class Principal {
 					String codigoPet = scanner.nextLine();
 					Animal novo = new Animal(true, especie, raca, cliente, peso, h, nomePet,codigoPet);
 					try{
-					animalControlador.cadastrar(novo);
+						animalControlador.cadastrar(novo);
 					}
 					catch(AnimalJaExisteException e){
 						System.out.println(e.getMessage());
 					}
 					cliente.addPet(novo);
 				}
-				clienteControlador.atualizar(cliente);
 				break;
 			case '2':
 				break;
@@ -778,7 +796,6 @@ public class Principal {
 
 				end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 				cliente.setEnd(end);
-				clienteControlador.atualizar(cliente);
 				break;
 			default:
 				System.out.println("Opcao invalida\n");
@@ -791,9 +808,10 @@ public class Principal {
 		String cpf;
 		System.out.print("Digite o cpf do cliente: ");
 		cpf = scanner.nextLine();
-		boolean ok = clienteControlador.remover(cpf);
-		if (ok) {
-			pessoaControlador.removerPessoa(cpf);		
+		try {
+			clienteControlador.remover(cpf);
+		} catch (ClienteNaoExisteException | ClienteNaoEncontradoException | ClienteInvalidoException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -868,7 +886,7 @@ public class Principal {
 				String codigoPet = scanner.nextLine();
 				Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
 				try{
-				animalControlador.cadastrar(novo);
+					animalControlador.cadastrar(novo);
 				}
 				catch(AnimalJaExisteException e){
 					System.out.println(e.getMessage());
@@ -876,7 +894,11 @@ public class Principal {
 				((Cliente) cliente).addPet(novo);
 			}
 		}
-		clienteControlador.cadastrar((Cliente) cliente);
+		try {
+			clienteControlador.cadastrar((Cliente) cliente);
+		} catch (ClienteJaExisteException | ClienteInvalidoException e) {
+			System.out.println(e.getMessage());
+		}
 		pessoaControlador.cadastrarPessoa(cliente);
 	}
 

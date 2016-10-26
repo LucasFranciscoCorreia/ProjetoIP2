@@ -1,0 +1,11 @@
+package br.ufrpe.dados;
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.repositorios.ClienteInvalidoException;
+import br.ufrpe.repositorios.ClienteJaExisteException;
+public interface IControladorCliente {
+	void cadastrar(Cliente c) throws ClienteJaExisteException, ClienteInvalidoException;
+	void remover(String cpf);
+	void atualizar(Cliente n);
+	Cliente buscar(String cpf);
+	void listar();
+}

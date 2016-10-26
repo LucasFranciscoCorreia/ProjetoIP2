@@ -1,0 +1,5 @@
+ackage br.ufrpe.negocios;
+
+public class ClienteInvalidoException extends Exception {
+
+}

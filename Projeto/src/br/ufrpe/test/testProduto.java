@@ -2,6 +2,7 @@ package br.ufrpe.test;
 
 import br.ufrpe.beans.Produto;
 import br.ufrpe.negocios.ControladorProduto;
+import br.ufrpe.repositorios.RepositorioProduto;
 
 public class testProduto {
 	public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class testProduto {
 		b.setTipo("Animal");
 		System.out.println(a.equals(c));		
 		System.out.println();
-		ControladorProduto controladorProduto = new ControladorProduto();
+		ControladorProduto controladorProduto = new ControladorProduto(RepositorioProduto.getInstance());
 		
 		System.out.println("--------------------------------------");
 		System.out.println("Cadastrar: ");
