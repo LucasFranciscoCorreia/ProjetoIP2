@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.FuncionarioJaExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ErroAoRemoverException"/>
-<fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ErroAoSalvarException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.FuncionarioNaoExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IndiceOutofBoundsException"/>
@@ -33,6 +32,7 @@
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ClienteInvalidoException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ClienteNaoEncontradoException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.ParametroInvalidoException"/>
-<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioProduto"/>
+<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+<fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 </qualifiedTypeNameHistroy>

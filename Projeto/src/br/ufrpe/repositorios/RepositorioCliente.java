@@ -27,7 +27,7 @@ public class RepositorioCliente implements IRepositorioCliente{
 		}
 		throw new ClienteNaoEncontradoException(cpf);
 	}
-	public Cliente buscar(int i) throws IndiceNaoEncontradoException{
+	private Cliente buscar(int i) throws IndiceNaoEncontradoException{
 		Cliente c = repositorio.get(i);
 		if(c != null){
 			return repositorio.get(i);			
