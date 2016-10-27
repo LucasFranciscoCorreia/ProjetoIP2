@@ -1,11 +1,10 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Funcionario;
-import br.ufrpe.dados.IControladorFuncionario;
-import br.ufrpe.dados.IRepositorioFuncionario;
-import br.ufrpe.repositorios.ErroAoRemoverException;
-import br.ufrpe.repositorios.ErroAoSalvarException;
-import br.ufrpe.repositorios.FuncionarioNaoExisteException;
+import br.ufrpe.exceçoes.ErroAoRemoverException;
+import br.ufrpe.exceçoes.ErroAoSalvarException;
+import br.ufrpe.exceçoes.FuncionarioNaoExisteException;
+import br.ufrpe.repositorios.IRepositorioFuncionario;
 
 public class ControladorFuncionario implements IControladorFuncionario{
 	private IRepositorioFuncionario repositorioFuncionario;

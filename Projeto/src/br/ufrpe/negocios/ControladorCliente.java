@@ -1,12 +1,11 @@
 package br.ufrpe.negocios;
 import br.ufrpe.beans.Cliente;
-import br.ufrpe.dados.IControladorCliente;
-import br.ufrpe.dados.IRepositorioCliente;
-import br.ufrpe.repositorios.ClienteInvalidoException;
-import br.ufrpe.repositorios.ClienteJaExisteException;
-import br.ufrpe.repositorios.ClienteNaoEncontradoException;
-import br.ufrpe.repositorios.ClienteNaoExisteException;
-import br.ufrpe.repositorios.ParametroInvalidoException;
+import br.ufrpe.exceçoes.ClienteInvalidoException;
+import br.ufrpe.exceçoes.ClienteJaExisteException;
+import br.ufrpe.exceçoes.ClienteNaoEncontradoException;
+import br.ufrpe.exceçoes.ClienteNaoExisteException;
+import br.ufrpe.exceçoes.ParametroInvalidoException;
+import br.ufrpe.repositorios.IRepositorioCliente;
 import br.ufrpe.repositorios.RepositorioCliente;
 public class ControladorCliente implements IControladorCliente {
 	private IRepositorioCliente repo;

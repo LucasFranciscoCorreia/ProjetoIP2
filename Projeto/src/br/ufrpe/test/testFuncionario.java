@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.exceçoes.ErroAoSalvarException;
+import br.ufrpe.exceçoes.FuncionarioNaoExisteException;
 import br.ufrpe.negocios.ControladorFuncionario;
-import br.ufrpe.repositorios.ErroAoSalvarException;
-import br.ufrpe.repositorios.FuncionarioNaoExisteException;
 import br.ufrpe.repositorios.RepositorioFuncionario;
 
 public class testFuncionario {

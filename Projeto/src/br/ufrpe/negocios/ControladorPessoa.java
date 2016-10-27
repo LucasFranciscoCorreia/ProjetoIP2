@@ -1,8 +1,7 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Pessoa;
-import br.ufrpe.dados.IControladorPessoa;
-import br.ufrpe.dados.IRepositorioPessoa;
+import br.ufrpe.repositorios.IRepositorioPessoa;
 import br.ufrpe.repositorios.RepositorioPessoa;
 
 public class ControladorPessoa implements IControladorPessoa {

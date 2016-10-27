@@ -8,6 +8,8 @@ public class Animal extends Produto{
 	private Cliente dono;
 	private double peso;
 	private double tamanho;
+	private String categoria;
+	
 	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho,String nome,String codigo) {
 		
 		super(nome,codigo);
@@ -17,6 +19,7 @@ public class Animal extends Produto{
 		this.dono = dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
+		this.categoria = "Paciente";
 	}
 	
 	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho){
@@ -28,6 +31,7 @@ public class Animal extends Produto{
 		this.dono = dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
+		this.categoria = "Produto";
 	}
 	public boolean getIsAlive() {
 		return isAlive;
@@ -73,9 +77,17 @@ public class Animal extends Produto{
 		return this.dono.getNome();
 	}
 	
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 	public String toString(){
 		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
-		res+="Is Alive? " + isAlive;
+		res+="Is Alive? " + isAlive +"\nCategoria: "+categoria;
 		return res;
 	}
 	public void setDono(Cliente dono){

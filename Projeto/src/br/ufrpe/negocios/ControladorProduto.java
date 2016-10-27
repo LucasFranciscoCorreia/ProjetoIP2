@@ -1,9 +1,8 @@
 package br.ufrpe.negocios;
 
+import br.ufrpe.repositorios.IRepositorioProduto;
 import br.ufrpe.repositorios.RepositorioProduto;
 import br.ufrpe.beans.Produto;
-import br.ufrpe.dados.IControladorProduto;
-import br.ufrpe.dados.IRepositorioProduto;
 
 public class ControladorProduto implements IControladorProduto{
 	private IRepositorioProduto repositorioProduto;
