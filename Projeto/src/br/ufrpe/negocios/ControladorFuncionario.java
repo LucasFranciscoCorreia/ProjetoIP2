@@ -2,27 +2,22 @@ package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Login;
-import br.ufrpe.dados.IControladorFuncionario;
-import br.ufrpe.dados.IRepositorioFuncionario;
-import br.ufrpe.repositorios.ErroAoRemoverException;
-import br.ufrpe.repositorios.ErroAoSalvarException;
-import br.ufrpe.repositorios.FuncionarioNaoExisteException;
-import br.ufrpe.exce�oes.ErroAoRemoverException;
-import br.ufrpe.exce�oes.ErroAoSalvarException;
-import br.ufrpe.exce�oes.FuncionarioNaoExisteException;
+import br.ufrpe.negocios.IControladorFuncionario;
 import br.ufrpe.repositorios.IRepositorioFuncionario;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.FuncionarioNaoExisteException;
 
 public class ControladorFuncionario implements IControladorFuncionario{
 	private IRepositorioFuncionario repositorioFuncionario;
 
-	public ControladorFuncionario(IRepositorioFuncionario instance){
-		repositorioFuncionario = instance;
+	public ControladorFuncionario(br.ufrpe.repositorios.IRepositorioFuncionario iRepositorioFuncionario){
+		repositorioFuncionario = iRepositorioFuncionario;
 	}
 	public void cadastrar(Funcionario funcionario) throws ErroAoSalvarException, FuncionarioNaoExisteException{
 		if(funcionario == null){
-			throw new IllegalArgumentException("Parametro inv�lido");
+			throw new IllegalArgumentException("Parametro invalido");
 		}else{
-			Funcionario pesquisado = repositorioFuncionario.buscar(funcionario.getCpf());
 			this.repositorioFuncionario.cadastrar(funcionario);
 		}
 	}
@@ -55,7 +50,6 @@ public class ControladorFuncionario implements IControladorFuncionario{
 	public boolean login(String login, int senha){
 		Login teste = new Login(login, senha);
 		boolean ok = this.repositorioFuncionario.checarLogin(teste);
-		System.out.println(ok);
 		if(ok){
 			return true;
 		}else{

@@ -1,0 +1,9 @@
+package br.ufrpe.repositorios;
+import br.ufrpe.beans.Cliente;
+public interface IRepositorioCliente {
+	int getSize();
+	Cliente buscar(String cpf) throws ClienteNaoEncontradoException;
+	void cadastrar(Cliente outro) throws ClienteJaExisteException, ClienteInvalidoException;
+	void remover(String cpf) throws ClienteNaoExisteException, ClienteNaoEncontradoException;
+	String listar();
+}

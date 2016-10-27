@@ -1,17 +1,17 @@
 package br.ufrpe.negocios;
 import br.ufrpe.beans.Cliente;
-import br.ufrpe.exceçoes.ClienteInvalidoException;
-import br.ufrpe.exceçoes.ClienteJaExisteException;
-import br.ufrpe.exceçoes.ClienteNaoEncontradoException;
-import br.ufrpe.exceçoes.ClienteNaoExisteException;
-import br.ufrpe.exceçoes.ParametroInvalidoException;
+import br.ufrpe.excecoes.ClienteInvalidoException;
+import br.ufrpe.excecoes.ClienteJaExisteException;
+import br.ufrpe.excecoes.ClienteNaoEncontradoException;
+import br.ufrpe.excecoes.ClienteNaoExisteException;
+import br.ufrpe.excecoes.ParametroInvalidoException;
 import br.ufrpe.repositorios.IRepositorioCliente;
 import br.ufrpe.repositorios.RepositorioCliente;
 public class ControladorCliente implements IControladorCliente {
 	private IRepositorioCliente repo;
 	
 	public ControladorCliente(IRepositorioCliente instance){
-		repo = RepositorioCliente.getInstance();
+		repo = instance;
 	}
 	public void cadastrar(Cliente novo) throws ClienteJaExisteException, ClienteInvalidoException{
 		if (novo != null) {

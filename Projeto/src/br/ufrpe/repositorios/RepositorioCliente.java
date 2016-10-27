@@ -2,11 +2,11 @@ package br.ufrpe.repositorios;
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Cliente;
-import br.ufrpe.exceçoes.ClienteInvalidoException;
-import br.ufrpe.exceçoes.ClienteJaExisteException;
-import br.ufrpe.exceçoes.ClienteNaoEncontradoException;
-import br.ufrpe.exceçoes.ClienteNaoExisteException;
-import br.ufrpe.exceçoes.IndiceNaoEncontradoException;
+import br.ufrpe.excecoes.ClienteInvalidoException;
+import br.ufrpe.excecoes.ClienteJaExisteException;
+import br.ufrpe.excecoes.ClienteNaoEncontradoException;
+import br.ufrpe.excecoes.ClienteNaoExisteException;
+import br.ufrpe.excecoes.IndiceNaoEncontradoException;
 public class RepositorioCliente implements IRepositorioCliente{
 	private ArrayList<Cliente> repositorio;
 	private static  IRepositorioCliente rep;
