@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.beans.Login;
 
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
@@ -52,7 +53,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	
 	public void remover(String cpf) throws FuncionarioNaoExisteException, ErroAoRemoverException{
 		if(cpf == null){
-			throw new IllegalArgumentException("Parametro inválido");
+			throw new IllegalArgumentException("Parametro invï¿½lido");
 		}else{
 			int i = buscarIndice(cpf);
 			
@@ -70,7 +71,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	
 	public void atualizar(Funcionario funcionario) throws FuncionarioNaoExisteException{
 		if(funcionario == null){
-			throw new IllegalArgumentException("Parametro inválido");
+			throw new IllegalArgumentException("Parametro invï¿½lido");
 		}else{
 			int i = buscarIndice(funcionario.getCpf());
 			if(i != -1){
@@ -89,6 +90,21 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	
 	public int size(){
 		return repositorio.size();
+	}
+
+	@Override
+	public boolean checarLogin(Login teste) {
+		boolean ok = false;
+		for(int i = 0 ; i < repositorio.size();i++){
+			Login test = this.repositorio.get(i).getLog();
+			System.out.println(test);
+			System.out.println(teste);
+			if(test.equals(teste)){
+				ok = true;
+			}
+		}
+		return ok;
+		
 	}
 
 }

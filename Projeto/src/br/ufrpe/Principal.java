@@ -971,8 +971,41 @@ public class Principal {
 		ControladorProduto produtoControlador = new ControladorProduto(RepositorioProduto.getInstance());
 		ControladorFuncionario funcionarioControlador = new ControladorFuncionario(RepositorioFuncionario.getInstance());
 		ControladorPessoa pessoaControlador = new ControladorPessoa(RepositorioPessoa.getInstance());
-
+		Pessoa lucas = new Funcionario("Lucas", "101.575.184-93",new Endereco(), 3500, LocalDate.of(1996, 7, 26), "Balconista");
+		try {
+			funcionarioControlador.cadastrar((Funcionario) lucas);
+		} catch (ErroAoSalvarException | FuncionarioNaoExisteException e) {
+			System.out.println(e.getMessage());
+			System.out.println("erro ao salvar");
+		}
+		boolean ok = true;
+		System.out.println(lucas);
+		do{
+			ok = login(funcionarioControlador, scanner);
+		}while(ok);
 		menu(scanner, clienteControlador, animalControlador, produtoControlador, funcionarioControlador,pessoaControlador);
 		scanner.close();
+	}
+	private static boolean login(ControladorFuncionario funcionarioControlador, Scanner scanner) {
+		Funcionario f = null;
+		try {
+			f = funcionarioControlador.pesquisar("101.575.184-93");
+		} catch (FuncionarioNaoExisteException e) {
+			System.out.println(e.getMessage());
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		System.out.println("Digite o login: ");
+		String login = f.getLog().getLogin();
+		System.out.println("Digite a senha: ");
+		int senha = f.getLog().getSenha();
+		boolean ok = funcionarioControlador.login(login, senha);
+		System.out.println(ok);
+		if(ok == false){
+			System.out.println("Login invalido");
+		}else{
+			System.out.println("Bem vindo " + login);
+		}
+		return !ok;
 	}
 }
