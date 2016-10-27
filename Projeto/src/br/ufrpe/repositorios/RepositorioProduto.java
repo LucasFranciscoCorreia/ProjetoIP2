@@ -1,6 +1,5 @@
 package br.ufrpe.repositorios;
 
-import br.ufrpe.dados.IRepositorioProduto;
 import java.util.ArrayList;
 import br.ufrpe.beans.Produto;
 

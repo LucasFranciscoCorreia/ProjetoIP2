@@ -1,8 +1,11 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-import br.ufrpe.dados.IRepositorioAnimal;
+
 import br.ufrpe.beans.Animal;
+import br.ufrpe.exceçoes.AnimalJaExisteException;
+import br.ufrpe.exceçoes.AnimalNaoExisteException;
+import br.ufrpe.exceçoes.CodigoNaoExisteException;
 
 public class RepositorioAnimal implements IRepositorioAnimal {
 	private ArrayList<Animal> rep;

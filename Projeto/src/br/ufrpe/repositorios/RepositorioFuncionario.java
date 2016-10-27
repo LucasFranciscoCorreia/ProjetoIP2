@@ -1,9 +1,11 @@
 package br.ufrpe.repositorios;
-import br.ufrpe.dados.IRepositorioFuncionario;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.exce�oes.ErroAoRemoverException;
+import br.ufrpe.exce�oes.ErroAoSalvarException;
+import br.ufrpe.exce�oes.FuncionarioNaoExisteException;
 import br.ufrpe.beans.Login;
 
 

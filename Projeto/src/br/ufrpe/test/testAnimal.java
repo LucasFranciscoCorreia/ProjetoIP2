@@ -6,8 +6,8 @@ import java.time.*;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
-import br.ufrpe.dados.IRepositorioAnimal;
-import br.ufrpe.repositorios.AnimalJaExisteException;
+import br.ufrpe.exceçoes.AnimalJaExisteException;
+import br.ufrpe.repositorios.IRepositorioAnimal;
 import br.ufrpe.repositorios.RepositorioAnimal;
 
 

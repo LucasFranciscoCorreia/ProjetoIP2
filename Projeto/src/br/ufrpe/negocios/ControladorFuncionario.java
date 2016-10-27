@@ -7,6 +7,10 @@ import br.ufrpe.dados.IRepositorioFuncionario;
 import br.ufrpe.repositorios.ErroAoRemoverException;
 import br.ufrpe.repositorios.ErroAoSalvarException;
 import br.ufrpe.repositorios.FuncionarioNaoExisteException;
+import br.ufrpe.exce�oes.ErroAoRemoverException;
+import br.ufrpe.exce�oes.ErroAoSalvarException;
+import br.ufrpe.exce�oes.FuncionarioNaoExisteException;
+import br.ufrpe.repositorios.IRepositorioFuncionario;
 
 public class ControladorFuncionario implements IControladorFuncionario{
 	private IRepositorioFuncionario repositorioFuncionario;

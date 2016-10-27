@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
-import br.ufrpe.dados.IRepositorioPessoa;
 
 public class RepositorioPessoa implements IRepositorioPessoa{
 	private ArrayList<Pessoa> array;

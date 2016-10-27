@@ -1,5 +1,5 @@
 package br.ufrpe.beans;
-public class Produto {
+public abstract class Produto {
 	private float preco;
 	private String nome;
 	private String tipo;

@@ -12,21 +12,23 @@ import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Remedio;
+import br.ufrpe.exceçoes.AnimalJaExisteException;
+import br.ufrpe.exceçoes.CaracterInvalidoException;
+import br.ufrpe.exceçoes.ClienteInvalidoException;
+import br.ufrpe.exceçoes.ClienteJaExisteException;
+import br.ufrpe.exceçoes.ClienteNaoEncontradoException;
+import br.ufrpe.exceçoes.ClienteNaoExisteException;
+import br.ufrpe.exceçoes.CodigoNaoExisteException;
+import br.ufrpe.exceçoes.ErroAoRemoverException;
+import br.ufrpe.exceçoes.ErroAoSalvarException;
+import br.ufrpe.exceçoes.FuncionarioNaoExisteException;
+import br.ufrpe.exceçoes.ParametroInvalidoException;
 import br.ufrpe.negocios.ControladorAnimal;
 import br.ufrpe.negocios.ControladorCliente;
 import br.ufrpe.negocios.ControladorFuncionario;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
-import br.ufrpe.repositorios.AnimalJaExisteException;
-import br.ufrpe.repositorios.ClienteInvalidoException;
-import br.ufrpe.repositorios.ClienteJaExisteException;
-import br.ufrpe.repositorios.ClienteNaoEncontradoException;
-import br.ufrpe.repositorios.ClienteNaoExisteException;
-import br.ufrpe.repositorios.CodigoNaoExisteException;
-import br.ufrpe.repositorios.ErroAoRemoverException;
-import br.ufrpe.repositorios.ErroAoSalvarException;
-import br.ufrpe.repositorios.FuncionarioNaoExisteException;
-import br.ufrpe.repositorios.ParametroInvalidoException;
 import br.ufrpe.repositorios.RepositorioAnimal;
 import br.ufrpe.repositorios.RepositorioCliente;
 import br.ufrpe.repositorios.RepositorioFuncionario;
@@ -474,7 +476,7 @@ public class Principal {
 			System.out.println("Informe a quantidade em estoque: ");
 			estoque = getInt(scanner);
 
-			Produto produtoNovo = new Produto(preco, nome, tipo, codigo, estoque);
+			Produto produtoNovo = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
 			produtoControlador.atualizar(produtoNovo);
 		}else{System.out.println("\n----------Produto nao existe----------\n");}
 	}
@@ -512,7 +514,7 @@ public class Principal {
 		estoque = getInt(scanner);
 
 
-		produto = new Produto(preco, nome, tipo, codigo, estoque);
+		produto = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
 
 		produtoControlador.cadastrar(produto);;
 	}
@@ -943,7 +945,7 @@ public class Principal {
 				System.out.print("Digite o nome do pet: ");
 				String nomePet = scanner.nextLine();
 
-				System.out.print("Digite o cï¿½digo do pet");
+				System.out.print("Digite o codigo do pet");
 				String codigoPet = scanner.nextLine();
 				Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
 				try{

@@ -31,7 +31,7 @@ public class Caixa {
 		caixa = new Dia[1];
 		i= 0;
 	}
-	public static synchronized Caixa getInstance(){
+	public static Caixa getInstance(){
 		if (c == null) {
 			c = new Caixa();
 		}
