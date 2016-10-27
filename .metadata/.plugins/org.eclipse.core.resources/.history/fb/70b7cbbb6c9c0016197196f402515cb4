@@ -1,0 +1,15 @@
+package br.ufrpe.dados;
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.excecoes.ClienteInvalidoException;
+import br.ufrpe.excecoes.ClienteJaExisteException;
+import br.ufrpe.excecoes.ClienteNaoEncontradoException;
+import br.ufrpe.excecoes.ClienteNaoExisteException;
+import br.ufrpe.excecoes.IndiceNaoEncontradoException;
+import br.ufrpe.repositorios.RepositorioCliente;
+public interface IRepositorioCliente {
+	int getSize();
+	Cliente buscar(String cpf) throws ClienteNaoEncontradoException;
+	void cadastrar(Cliente outro) throws ClienteJaExisteException, ClienteInvalidoException;
+	void remover(String cpf) throws ClienteNaoExisteException, ClienteNaoEncontradoException;
+	String listar();
+}

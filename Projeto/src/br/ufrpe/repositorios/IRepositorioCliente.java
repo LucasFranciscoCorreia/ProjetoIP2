@@ -1,9 +1,9 @@
 package br.ufrpe.repositorios;
 import br.ufrpe.beans.Cliente;
-import br.ufrpe.exceçoes.ClienteInvalidoException;
-import br.ufrpe.exceçoes.ClienteJaExisteException;
-import br.ufrpe.exceçoes.ClienteNaoEncontradoException;
-import br.ufrpe.exceçoes.ClienteNaoExisteException;
+import br.ufrpe.excecoes.ClienteInvalidoException;
+import br.ufrpe.excecoes.ClienteJaExisteException;
+import br.ufrpe.excecoes.ClienteNaoEncontradoException;
+import br.ufrpe.excecoes.ClienteNaoExisteException;
 public interface IRepositorioCliente {
 	int getSize();
 	Cliente buscar(String cpf) throws ClienteNaoEncontradoException;

@@ -1,9 +1,10 @@
 package br.ufrpe.repositorios;
 
 import br.ufrpe.beans.Funcionario;
-import br.ufrpe.exceçoes.ErroAoRemoverException;
-import br.ufrpe.exceçoes.ErroAoSalvarException;
-import br.ufrpe.exceçoes.FuncionarioNaoExisteException;
+import br.ufrpe.beans.Login;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.FuncionarioNaoExisteException;
 
 public interface IRepositorioFuncionario {
 	
@@ -12,4 +13,5 @@ public interface IRepositorioFuncionario {
 	void remover(String cpf) throws FuncionarioNaoExisteException, ErroAoRemoverException;
 	void atualizar(Funcionario funcionario) throws FuncionarioNaoExisteException;
 	int size();
+	boolean checarLogin(Login teste);
 }

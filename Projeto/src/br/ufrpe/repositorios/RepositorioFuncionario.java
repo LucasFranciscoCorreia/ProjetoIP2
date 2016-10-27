@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.beans.Funcionario;
-import br.ufrpe.exce�oes.ErroAoRemoverException;
-import br.ufrpe.exce�oes.ErroAoSalvarException;
-import br.ufrpe.exce�oes.FuncionarioNaoExisteException;
 import br.ufrpe.beans.Login;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.FuncionarioNaoExisteException;
 
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
@@ -99,8 +99,6 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 		boolean ok = false;
 		for(int i = 0 ; i < repositorio.size();i++){
 			Login test = this.repositorio.get(i).getLog();
-			System.out.println(test);
-			System.out.println(teste);
 			if(test.equals(teste)){
 				ok = true;
 			}

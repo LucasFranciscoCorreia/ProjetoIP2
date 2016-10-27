@@ -1,10 +1,9 @@
 package br.ufrpe.negocios;
+import br.ufrpe.beans.Animal;
+import br.ufrpe.excecoes.AnimalNaoExisteException;
+import br.ufrpe.excecoes.CodigoNaoExisteException;
+import br.ufrpe.excecoes.AnimalJaExisteException;
 import br.ufrpe.repositorios.IRepositorioAnimal;
-import br.ufrpe.repositorios.RepositorioAnimal;
-import br.ufrpe.beans.*;
-import br.ufrpe.exceçoes.AnimalJaExisteException;
-import br.ufrpe.exceçoes.AnimalNaoExisteException;
-import br.ufrpe.exceçoes.CodigoNaoExisteException;
 public class ControladorAnimal implements IControladorAnimal{
 	
 	private IRepositorioAnimal repositorioAnimal;
