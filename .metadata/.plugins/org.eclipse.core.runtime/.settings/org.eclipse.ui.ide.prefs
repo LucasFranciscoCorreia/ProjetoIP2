@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=master
@@ -6,3 +7,13 @@ eclipse.preferences.version=1
 platformState=1473379546348
 quickStart=false
 tipsAndTricks=true
+=======
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=master
+PROBLEMS_FILTERS_MIGRATE=true
+eclipse.preferences.version=1
+platformState=1471354435052
+quickStart=false
+tipsAndTricks=true
+>>>>>>> Stashed changes

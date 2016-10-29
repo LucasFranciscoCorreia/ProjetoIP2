@@ -8,27 +8,25 @@ public class Animal extends Produto{
 	private Cliente dono;
 	private double peso;
 	private double tamanho;
-	private String categoria;
-	
-	public Animal(boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho,String nome,String codigo) {
+	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo) {
 		
 		super(nome,codigo);
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;
-		this.dono = dono;
+		this.dono = (Cliente) dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
 		this.categoria = "Paciente";
 	}
 	
-	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Cliente dono, double peso, double tamanho){
+	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho){
 		
 		super(preco,nome,tipo,codigo,estoque);
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;
-		this.dono = dono;
+		this.dono = (Cliente) dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
 		this.categoria = "Produto";

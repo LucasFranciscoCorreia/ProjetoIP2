@@ -1,0 +1,56 @@
+package br.ufrpe.beans;
+
+import java.time.LocalDate;
+
+public class Funcionario extends Pessoa{
+	
+	private double salario;
+	private LocalDate entrada;
+	private String cargo;	
+	
+	public Funcionario(String cpf){
+		super(cpf, null, null);
+	}
+	
+	public Funcionario(String nome, String cpf, Endereco endereco, 
+			double salario, LocalDate aniversario, String cargo){
+		
+		super(cpf,aniversario, nome,endereco);
+		this.salario = salario;
+		this.entrada = LocalDate.now();
+		this.cargo = cargo;
+	}	
+	
+	public String getCargo(){
+		return cargo;
+	}	
+	
+	public void setCargo(String cargo){
+		this.cargo = cargo;
+	}	
+	
+	
+	public void setSalario(double salario){
+		this.salario = salario;
+	}	
+	
+	public double getSalario(){
+		return this.salario;
+	}	
+	
+	public String getEntrada(){
+		return String.format("%d/%d/%d", entrada.getYear(), entrada.getMonthValue(), entrada.getYear());
+	}	
+	
+	public boolean equals(Funcionario outro){
+		return cpf.equals(outro.getCpf());
+	}	
+	
+	
+	public String toString(){
+		String res = super.toString();
+		res += "\nCargo: "+this.cargo+"\nSal�rio: "+this.salario+"\nEntrada: "+this.entrada;
+		return res;
+	
+	}
+}

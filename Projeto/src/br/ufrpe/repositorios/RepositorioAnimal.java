@@ -1,7 +1,10 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-
+import br.ufrpe.dados.IRepositorioAnimal;
+import br.ufrpe.expectionsProjeto.AnimalJaExisteException;
+import br.ufrpe.expectionsProjeto.AnimalNaoExisteException;
+import br.ufrpe.expectionsProjeto.CodigoNaoExisteException;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.excecoes.AnimalJaExisteException;
 import br.ufrpe.excecoes.AnimalNaoExisteException;

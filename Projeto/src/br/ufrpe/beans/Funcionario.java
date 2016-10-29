@@ -58,11 +58,7 @@ public class Funcionario extends Pessoa{
 		return String.format("%d/%d/%d", entrada.getYear(), entrada.getMonthValue(), entrada.getYear());
 	}	
 	
-	public boolean equals(Funcionario outro){
-		return this.getCpf().equals(outro.getCpf());
-	}	
-	
-	
+	@Override
 	public String toString(){
 		String res = super.toString();
 		res += "\nCargo: "+this.cargo+"\nSal�rio: "+this.salario+"\nEntrada: "+this.entrada + "\nLogin: " + this.log.getLogin() + "\nSenha: " + this.log.getSenha();

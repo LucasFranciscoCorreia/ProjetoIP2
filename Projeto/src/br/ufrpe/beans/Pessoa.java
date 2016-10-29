@@ -1,10 +1,11 @@
 package br.ufrpe.beans;
+
 import java.time.LocalDate;
+
 public abstract class Pessoa {
 	
-	private String cpf;
+	private String cpf, nome;
 	private LocalDate nascimento;
-	private String nome;
 	private Endereco end;
 	
 	public Pessoa(String cpf, LocalDate nascimento, String nome,Endereco end){
@@ -51,6 +52,10 @@ public abstract class Pessoa {
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", nome, cpf, this.DataAniversario(), end);
 		return res;
+	}
+	
+	public boolean equals(Pessoa outro){
+		return (cpf.equals(outro.getCpf()));
 	}
 
 }

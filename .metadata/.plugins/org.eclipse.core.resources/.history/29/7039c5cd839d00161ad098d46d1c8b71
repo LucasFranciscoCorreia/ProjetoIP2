@@ -1,0 +1,20 @@
+package br.ufrpe.dados;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.expectionsProjeto.ErroAoAtualizarException;
+import br.ufrpe.expectionsProjeto.ErroAoRemoverException;
+import br.ufrpe.expectionsProjeto.ErroAoSalvarException;
+import br.ufrpe.expectionsProjeto.PessoaNaoExisteException;
+
+public interface IControladorPessoa {
+	
+	void cadastrar(Pessoa pessoa) throws PessoaNaoExisteException, ErroAoSalvarException;
+	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
+	void remover(String cpf) throws PessoaNaoExisteException, ErroAoRemoverException;
+	void atualizar(Pessoa novo) throws PessoaNaoExisteException, ErroAoAtualizarException;
+	String listar();
+	String listarCLiente();
+	String listarFuncionario();
+	int size();
+	int sizeCliente();
+	int sizeFuncionario();
+}

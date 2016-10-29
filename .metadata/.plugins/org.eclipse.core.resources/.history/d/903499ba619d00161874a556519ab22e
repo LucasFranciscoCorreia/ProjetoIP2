@@ -1,0 +1,63 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.dados.IControladorPessoa;
+import br.ufrpe.dados.IRepositorioPessoa;
+import br.ufrpe.expectionsProjeto.ErroAoRemoverException;
+import br.ufrpe.expectionsProjeto.ErroAoSalvarException;
+import br.ufrpe.expectionsProjeto.PessoaNaoExisteException;
+import br.ufrpe.repositorios.RepositorioPessoa;
+
+public class ControladorPessoa implements IControladorPessoa {
+	private IRepositorioPessoa repositorio;
+	
+	public ControladorPessoa(IRepositorioPessoa instance){
+		repositorio = instance;
+	}
+	public Pessoa pesquisar(String cpf) throws PessoaNaoExisteException{
+		if(cpf == null){
+			throw new IllegalArgumentException("CPF invalido!");
+		}else{
+			Pessoa pessoa = repositorio.buscar(cpf);
+			return pessoa;
+		}
+	}
+	public void cadastrar(Pessoa novo) throws PessoaNaoExisteException, ErroAoSalvarException{
+		if(novo == null){
+			throw new IllegalArgumentException("Pessoa invalida!");
+		}else{
+			try{
+				Pessoa pesquisado = repositorio.buscar(novo.getCpf());
+			}catch(PessoaNaoExisteException E){
+				repositorio.cadastrar(novo);
+			}		
+		}
+	}
+	
+	public void remover(String cpf) throws PessoaNaoExisteException, ErroAoRemoverException{
+		if(cpf == null){
+			throw new IllegalArgumentException("CPF invalido!");
+		}else{
+			Pessoa pesquisado = repositorio.buscar(cpf);
+			repositorio.remover(pesquisado.getCpf());
+		}
+	}
+	
+	public void listarCLiente(){
+		
+	}
+	
+	public void listarFuncionario(){
+		
+	}
+	public void listar(){
+		repositorio.listar();
+	}
+	
+	public int size(){
+		
+	}
+	
+	public void atualizar(Pessoa novo) {
+	}
+}

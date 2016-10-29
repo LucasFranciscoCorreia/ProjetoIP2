@@ -1,0 +1,17 @@
+package br.ufrpe.dados;
+import br.ufrpe.beans.Pessoa;
+import exceptionsProjeto.ErroAoRemoverException;
+import exceptionsProjeto.ErroAoSalvarException;
+import exceptionsProjeto.PessoaNaoExisteException;
+
+public interface IRepositorioPessoa {
+	
+	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
+	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
+	void remover(String cpf) throws ErroAoRemoverException;
+	boolean atualizar(Pessoa p);
+	int sizeFuncionario();
+	int sizeCliente();
+	int size();
+	String listar();
+}

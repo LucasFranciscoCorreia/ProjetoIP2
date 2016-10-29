@@ -1,4 +1,5 @@
 1477352497828	Delete element
+<<<<<<< Updated upstream
 1477485838389	Delete element
 1477588122748	Rename package 'br.ufrpe.exceçoes'
 1477588822852	Delete element
@@ -16,3 +17,21 @@
 1477588841513	Delete element
 1477588844825	Delete element
 1477590150350	Delete element
+=======
+1477691347439	Move compilation units
+1477691449455	Move compilation unit
+1477691480319	Move compilation unit
+1477691487493	Move compilation units
+1477691493440	Delete element
+1477691497283	Delete element
+1477694017465	Rename field 'p'
+1477707175984	Delete elements
+1477707290277	Delete element
+1477707293407	Delete element
+1477707296203	Delete element
+1477707299174	Delete element
+1477707313594	Delete element
+1477707318931	Delete element
+1477707325944	Delete element
+1477707328332	Delete element
+>>>>>>> Stashed changes

@@ -1,9 +1,9 @@
 package br.ufrpe.dados;
 
 import br.ufrpe.beans.Animal;
-import br.ufrpe.repositorios.AnimalNaoExisteException;
-import br.ufrpe.repositorios.CodigoNaoExisteException;
-import br.ufrpe.repositorios.AnimalJaExisteException;
+import br.ufrpe.expectionsProjeto.AnimalJaExisteException;
+import br.ufrpe.expectionsProjeto.AnimalNaoExisteException;
+import br.ufrpe.expectionsProjeto.CodigoNaoExisteException;
 
 public interface IRepositorioAnimal {
 	

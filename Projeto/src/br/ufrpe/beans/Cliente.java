@@ -5,6 +5,7 @@ public class Cliente extends Pessoa {
 
 	private Animal pets[];
 	private int qntPets;
+	
 	public Animal[] getPets() {
 		return pets;
 	}
@@ -29,15 +30,8 @@ public class Cliente extends Pessoa {
 		}
 		this.pets = novo;
 	}
-
-	public boolean equals(Cliente outro){
-		boolean res = false;
-		if(this.getCpf().equals(outro.getCpf())){
-
-			res = true;
-		}
-		return res;
-	}
+	
+	@Override
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario(), this.getEnd());
 		res += "\nAnimais: \n";

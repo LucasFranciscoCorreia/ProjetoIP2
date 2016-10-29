@@ -5,59 +5,148 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
+import br.ufrpe.dados.IRepositorioPessoa;
+import br.ufrpe.expectionsProjeto.ErroAoAtualizarException;
+import br.ufrpe.expectionsProjeto.ErroAoRemoverException;
+import br.ufrpe.expectionsProjeto.ErroAoSalvarException;
+import br.ufrpe.expectionsProjeto.PessoaNaoExisteException;
 
 public class RepositorioPessoa implements IRepositorioPessoa{
-	private ArrayList<Pessoa> array;
-	private static IRepositorioPessoa rep;
+	private ArrayList<Pessoa> repositorio;
+	private static IRepositorioPessoa unicInstanc;
 	
 	private RepositorioPessoa(){
-		array = new ArrayList<>();
+		repositorio = new ArrayList<>();
 	}
 	public static IRepositorioPessoa getInstance(){
-		if(rep == null){
-			rep = new RepositorioPessoa();
+		if(unicInstanc == null){
+			unicInstanc = new RepositorioPessoa();
 		}
-		return rep;
+		return unicInstanc;
 	}
-	public boolean cadastrar(Pessoa p){
-		for(int i = 0; i < array.size();i++){
-			if (p.equals(array.get(i))) {
-				return false;
+	
+	private int buscarIndice(String cpf){
+		for(int i = 0; i < this.repositorio.size(); i++){
+			if(this.repositorio.get(i).getCpf().equals(cpf)){
+				return i;
 			}
 		}
-		array.add(p);
-		return true;
+		return -1;
 	}
-	public boolean remover(String cpf){
-		for(int i = 0; i < array.size();i++){
-			if (cpf.equals(array.get(i).getCpf())) {
-				array.remove(i);
-				return true;
+	
+	public void cadastrar(Pessoa pessoa) throws ErroAoSalvarException{
+		if(pessoa == null){
+			throw new IllegalArgumentException("Erro ao salvar!");
+		}else{
+			if(!this.repositorio.add(pessoa)){
+				throw new ErroAoSalvarException(pessoa);
 			}
 		}
-		return false;
 	}
-	public Pessoa buscar(String cpf){
-		for(int i = 0; i < array.size(); i++){
-			if (array.get(i).getCpf().equals(cpf)) {
-				return array.get(i);
+
+	public void remover(String cpf) throws ErroAoRemoverException{
+		if(cpf == null){
+			throw new IllegalArgumentException("CPF inv�lido!");
+		}else{
+			int indice = buscarIndice(cpf);
+			
+			if(indice != -1){
+				this.repositorio.remove(indice);
+			}else{
+				throw new ErroAoRemoverException();
 			}
 		}
-		return null;
 	}
+	
+	public Pessoa buscar(String cpf) throws PessoaNaoExisteException{
+		if(cpf == null){
+			throw new IllegalArgumentException("CPF inv�lido!");
+		}else{
+			int indice = buscarIndice(cpf);
+			
+			if(indice != -1){
+				return this.repositorio.get(indice);
+			}else{
+				throw new PessoaNaoExisteException();
+			}
+		}		
+	}
+	
+	public int sizeFuncionario(){
+		int funcionario = 0;
+		for(int i = 0; i < size(); i++){
+			if(repositorio.get(i) instanceof Funcionario){
+				funcionario++;
+			}
+		}
+		return funcionario;
+	}
+	
+	public int sizeCliente(){
+		int cliente = 0;
+		for(int i = 0; i < size(); i++){
+			if(repositorio.get(i) instanceof Cliente){
+				cliente++;
+			}
+		}
+		return cliente;
+	}
+	
 	public int size(){
-		return array.size();
+		return repositorio.size();
 	}
+	
+	public ArrayList<Cliente> listarCliente(){
+		ArrayList<Cliente> clientes = new ArrayList<>();
+		for(int i = 0; i < size(); i++){
+			if(repositorio.get(i) instanceof Cliente){
+				clientes.add(((Cliente) repositorio.get(i)));
+			}
+		}
+		return clientes;
+	}
+	
+	public ArrayList<Funcionario> listarFuncionario(){
+		ArrayList<Funcionario> funcionarios = new ArrayList<>();
+		for(int i = 0; i < size(); i++){
+			if(repositorio.get(i) instanceof Funcionario){
+				funcionarios.add(((Funcionario) repositorio.get(i)));
+			}
+		}
+		return funcionarios;
+	}
+	
 	public String listar(){
 		String res = "";
-		for(int i = 0; i < array.size();i++){
-			res += array.get(i) + "\n\n";
+		for(int i = 0; i < repositorio.size();i++){
+			res += repositorio.get(i) + "\n\n";
 		}
 		return res;
 	}
 	
-	public boolean atualizar(Pessoa p) {
-		// TODO Auto-generated method stub
-		return false;
+	public void atualizar(Pessoa pessoa) throws PessoaNaoExisteException, ErroAoAtualizarException{
+		if(pessoa == null){
+			throw new IllegalArgumentException("Erro ao atualizar!");
+		}else{
+			int indice = buscarIndice(pessoa.getCpf());
+			
+			if(indice == -1){
+				throw new PessoaNaoExisteException();
+			}else{
+				if(pessoa instanceof Funcionario){
+					if(((Funcionario) pessoa).getCargo() != null){
+						((Funcionario) repositorio.get(indice)).setCargo(((Funcionario) pessoa).getCargo());	
+					}if(pessoa.getEnd() != null){
+						repositorio.get(indice).setEnd(pessoa.getEnd());
+					}if(((Funcionario) pessoa).getSalario() != 0){
+						((Funcionario) repositorio.get(indice)).setSalario(((Funcionario) pessoa).getSalario());			
+					}
+				}else if(pessoa instanceof Cliente){
+					//repositorio.get(indice) = pessoa;
+				}else{
+					throw new ErroAoAtualizarException();
+				}				
+			}
+		}
 	}
 }

@@ -1,0 +1,12 @@
+package br.ufrpe.dados;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.expectionsProjeto.PessoaNaoExisteException;
+
+public interface IControladorPessoa {
+	
+	void cadastrarPessoa(Pessoa pessoa);
+	Pessoa buscarPessoa(String cpf) throws PessoaNaoExisteException;
+	boolean atualizarPessoa(Pessoa novo);
+	void listar();
+	void removerPessoa(String cpf);
+}

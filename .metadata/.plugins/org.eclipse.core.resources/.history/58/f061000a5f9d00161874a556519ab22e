@@ -1,0 +1,44 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.dados.IControladorPessoa;
+import br.ufrpe.dados.IRepositorioPessoa;
+import br.ufrpe.repositorios.RepositorioPessoa;
+
+public class ControladorPessoa implements IControladorPessoa {
+	private IRepositorioPessoa repositorio;
+	
+	public ControladorPessoa(IRepositorioPessoa instance){
+		repositorio = instance;
+	}
+	public Pessoa buscarPessoa(String cpf){
+		Pessoa busca = repositorio.buscar(cpf);
+		if (busca == null) {
+			System.out.println("Pessoa nao encontrada");
+			return null;
+		}
+		return busca;
+	}
+	public void cadastrarPessoa(Pessoa novo){
+		if (novo != null) {
+			boolean ok = repositorio.cadastrar(novo);
+			if (!ok) {
+				System.out.println("Nao foi possivel cadastrar Pessoa");
+			}
+		}else{
+			System.out.println("Pessoa invalida para cadastro");
+		}
+	}
+	public void removerPessoa(String cpf){
+		repositorio.remover(cpf);
+	}
+	public void listar(){
+		System.out.println(repositorio.listar());
+	}
+	
+	@Override
+	public boolean atualizarPessoa(Pessoa novo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+}

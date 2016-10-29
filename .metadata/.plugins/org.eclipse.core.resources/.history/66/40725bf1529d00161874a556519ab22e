@@ -1,0 +1,13 @@
+package br.ufrpe.dados;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.repositorios.ErroAoSalvarException;
+
+public interface IRepositorioPessoa {
+	
+	boolean cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
+	Pessoa buscar(String cpf);
+	boolean remover(String cpf);
+	boolean atualizar(Pessoa p);
+	int size();
+	String listar();
+}
