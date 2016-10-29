@@ -8,6 +8,7 @@ public class Animal extends Produto{
 	private Cliente dono;
 	private double peso;
 	private double tamanho;
+	private String categoria;
 	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo) {
 		
 		super(nome,codigo);

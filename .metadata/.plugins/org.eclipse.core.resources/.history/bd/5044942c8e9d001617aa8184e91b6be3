@@ -1,0 +1,13 @@
+package br.ufrpe.repositorios;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.excecoes.PessoaNaoExisteException;
+
+public interface IRepositorioPessoa {
+	
+	void cadastrar(Pessoa pessoa);
+	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
+	void remover(String cpf);
+	void atualizar(Pessoa p);
+	int size();
+	String listar();
+}

@@ -1,12 +1,24 @@
 package br.ufrpe.repositorios;
+import java.util.ArrayList;
+
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.PessoaNaoExisteException;
 
 public interface IRepositorioPessoa {
 	
-	boolean cadastrar(Pessoa pessoa);
-	Pessoa buscar(String cpf);
-	boolean remover(String cpf);
-	boolean atualizar(Pessoa p);
+	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
+	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
+	void remover(String cpf) throws ErroAoRemoverException;
+	void atualizar(Pessoa p) throws PessoaNaoExisteException, ErroAoAtualizarException;
 	int size();
+	int sizeFuncionario();
+	int sizeCliente();
 	String listar();
+	ArrayList<Funcionario> listarFuncionario();
+	ArrayList<Cliente> listarCliente();
 }

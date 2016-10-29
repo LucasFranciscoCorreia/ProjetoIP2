@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
-import br.ufrpe.dados.IRepositorioPessoa;
-import br.ufrpe.expectionsProjeto.ErroAoAtualizarException;
-import br.ufrpe.expectionsProjeto.ErroAoRemoverException;
-import br.ufrpe.expectionsProjeto.ErroAoSalvarException;
-import br.ufrpe.expectionsProjeto.PessoaNaoExisteException;
+import br.ufrpe.repositorios.IRepositorioPessoa;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.PessoaNaoExisteException;
 
 public class RepositorioPessoa implements IRepositorioPessoa{
 	private ArrayList<Pessoa> repositorio;
