@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioAnimal"/>
 <fullyQualifiedTypeName name="br.ufrpe.negocios.IControladorPessoa"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioPessoa"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.CodigoNaoExisteException"/>
 </qualifiedTypeNameHistroy>

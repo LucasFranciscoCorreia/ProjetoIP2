@@ -1,17 +1,17 @@
 package br.ufrpe.negocios;
 
-import br.ufrpe.beans.Pessoa;
+import java.util.ArrayList;
+
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
-import java.util.ArrayList;
-import br.ufrpe.negocios.IControladorPessoa;
-import br.ufrpe.repositorios.IRepositorioPessoa;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.PessoaJaCadastradaException;
 import br.ufrpe.excecoes.PessoaNaoExisteException;
-import br.ufrpe.repositorios.RepositorioPessoa;
+import br.ufrpe.repositorios.IRepositorioPessoa;
 
 public class ControladorPessoa implements IControladorPessoa {
 	private IRepositorioPessoa repositorio;
@@ -33,7 +33,9 @@ public class ControladorPessoa implements IControladorPessoa {
 		}else{
 			try{
 				Pessoa pesquisado = repositorio.buscar(novo.getCpf());
-				throw new PessoaJaCadastradaException();
+				if(pesquisado != null){
+					throw new PessoaJaCadastradaException();					
+				}
 			}catch(PessoaNaoExisteException E){
 				repositorio.cadastrar(novo);
 			}		
@@ -101,5 +103,13 @@ public class ControladorPessoa implements IControladorPessoa {
 	
 	public int sizeFuncionario() {
 		return repositorio.sizeFuncionario();
+	}
+	public boolean login(String login, int senha) {
+		Login log = new Login(login, senha);
+		boolean ok = false;
+		if(this.repositorio.checarLogin(log)){
+			ok = true;
+		}
+		return ok;
 	}
 }

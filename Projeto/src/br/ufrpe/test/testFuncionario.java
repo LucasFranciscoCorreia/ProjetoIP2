@@ -4,22 +4,24 @@ import java.time.LocalDate;
 
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
-import br.ufrpe.repositorios.IRepositorioFuncionario;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.FuncionarioNaoExisteException;
-import br.ufrpe.negocios.ControladorFuncionario;
-import br.ufrpe.repositorios.RepositorioFuncionario;
+import br.ufrpe.excecoes.PessoaJaCadastradaException;
+import br.ufrpe.excecoes.PessoaNaoExisteException;
+import br.ufrpe.negocios.ControladorPessoa;
+import br.ufrpe.repositorios.RepositorioPessoa;
 
 public class testFuncionario {
 	public static void main(String[] args) {
 		Endereco end1 = new Endereco();
 		LocalDate entrada = LocalDate.now();
-		ControladorFuncionario controlador = new ControladorFuncionario((IRepositorioFuncionario) RepositorioFuncionario.getInstance());
+		ControladorPessoa controlador = new ControladorPessoa(RepositorioPessoa.getInstance());
 
-		Funcionario f1 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
-		Funcionario f2 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
-		Funcionario f3 = new Funcionario("Fernanda", "103.364.574-56", end1, 7845.5, entrada, "Gerente");
-		Funcionario f4 = new Funcionario("Raissa", "563.642.624-78", end1, 8799.5, entrada, "Recepcionista");
+		Pessoa f1 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
+		Pessoa f2 = new Funcionario("Lucas", "101.575.184-93", end1, 3499.5, entrada, "Balconista");
+		Pessoa f3 = new Funcionario("Fernanda", "103.364.574-56", end1, 7845.5, entrada, "Gerente");
+		Pessoa f4 = new Funcionario("Raissa", "563.642.624-78", end1, 8799.5, entrada, "Recepcionista");
 
 		System.out.println("************Equals************\n");
 		System.out.println("Equals f1 e f2: " + f1.equals(f2));
@@ -33,19 +35,19 @@ public class testFuncionario {
 			controlador.cadastrar(f3);
 			controlador.cadastrar(f4);
 		} catch (ErroAoSalvarException
-				| FuncionarioNaoExisteException e1) {
+				| PessoaNaoExisteException | PessoaJaCadastradaException e1) {
 			System.out.println(e1.getMessage());
 		}
 
 
 		System.out.println("\n\n************Atualiza��o************\n");
 
-		f1.setCargo("Veterinario");
-		f1.setSalario(8499f);
+		((Funcionario) f1).setCargo("Veterinario");
+		((Funcionario )f1).setSalario(8499f);
 
 		try {
 			controlador.atualizar(f1);
-		} catch (FuncionarioNaoExisteException e) {
+		} catch (PessoaNaoExisteException | ErroAoAtualizarException e) {
 			System.out.println(e.getMessage());
 		}
 
