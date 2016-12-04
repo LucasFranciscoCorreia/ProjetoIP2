@@ -1,3 +1,60 @@
+/*
+ * Classe Animal
+ * 
+ * Versão 0.0.1
+ * 
+ * 4 de Dezembro de 2016
+ * 
+ * Copyright
+ */
+ 
+/*
+ 	*
+ 	*Versão: 0.0.1
+ 	*Data de Criação: -/-/2016
+ 	*Copyright (c) 2016 DEINFO/UFRPE
+ 	*Departamento de Estatístca e Informática 
+  ()
+    * UFRPE - 
+    * Módulo <>
+    * Todos od direitos reservados.
+  *
+  * Este software foi criado para fins acadêmicos, visando a aprovação na disciplina 
+  * Introdução a Programação II, lecionada no período 2016.2, 
+  * pelo professor PhD. Leandro Marques.
+  */
+/*
+ * Descriação da Classe:
+ * Essa classe fo criada afim de possibilitar o cadastro de "animais" na CRUD gerida 
+ * pelo programa, como o projeto se trata de um gestor de pet-shop, essa classe se mostra 
+ * essencial, contendo todas as caracteriscas necessárias para um animal, seja ele um
+ * produto da loja ou um animal pertencente à um cliente.
+ * Como reparado, a classe é uma extensão de produto, contudo, caso o animal cadastrado
+ * em questão não seja um produto da loja, os parametros passados pelo construtor (e
+ * consequentemente pelo "super") serão inválidos.
+ * Exemplo de uso:
+ * 
+ *	Animal a = Animal(True,Cachorro(Canis Familiares), Vira-Lata, Alexandre G.,5, 100, Dede, codigo);/
+ *  (Esse foi um exemplo de um cadastratamento de um animal "pet", um cliente da clínica)
+ *   Foi usado o primeiro construtor
+ * Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo);
+ * (Esse foi um exemplo de um cadastramento de um animal "Produto", à ser vendido na loja)
+ *  Foi usado o segundo construtor
+ * 
+ * Limitações:
+ * Essa classe se restringe ao cadastramento/ alteração de dados do Tipo "Animal", fazendo parte do package "beans".
+ * Todos os métodos contido nela se restringem à alteração das caracteristicas de um objeto instanciado na mesma.
+ * 
+ * Autor: Raissa Camelo
+ * Versão: 0.0.1
+ */
+	/*
+	 * Métodos:
+	 	* Os métodos contidos nesta classe consistem em:
+	 	* Dois construtores.
+	 	* Métodos getters e setters para todas as características.
+	 	* Método equals.
+	 */
 package br.ufrpe.beans;
 
 public class Animal extends Produto{
@@ -9,6 +66,7 @@ public class Animal extends Produto{
 	private double peso;
 	private double tamanho;
 	private String categoria;
+	
 	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo) {
 		
 		super(nome,codigo);
