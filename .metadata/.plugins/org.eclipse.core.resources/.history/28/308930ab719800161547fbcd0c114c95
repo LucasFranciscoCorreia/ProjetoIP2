@@ -1,7 +1,0 @@
-package br.ufrpe.dados;
-
-import br.ufrpe.beans.Produto;
-
-public interface IControladorProduto {
-	
-}

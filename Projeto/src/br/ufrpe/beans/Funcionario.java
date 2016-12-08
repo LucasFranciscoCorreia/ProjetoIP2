@@ -1,6 +1,20 @@
+/*
+ * Projeto: PetShop, grupo 42
+ * 
+ * Tipo: Funcionario
+ */
 package br.ufrpe.beans;
 
 import java.time.LocalDate;
+
+/**
+ * Esta classe representa um funcionario, com cargo, salario,
+ * data de entrada na empresa e um login de acesso ao sistema.
+ * 
+ * @author Maria Fernanda
+ * 
+ * @see Pessoa
+ */
 
 public class Funcionario extends Pessoa{
 	
@@ -9,10 +23,30 @@ public class Funcionario extends Pessoa{
 	private String cargo;	
 	private Login log;
 	
+	/**
+	 * Construtor basico de Funcionario, contem apenas cpf
+	 * 
+	 * @param cpf		cpf do funcionario
+	 * 
+	 * @see Pessoa
+	 */
 	public Funcionario(String cpf){
 		super(cpf, null, null);
 	}
 	
+	/**
+	 * Construtor de Funcionario
+	 * 
+	 * @param nome
+	 * @param cpf
+	 * @param endereco
+	 * @param salario
+	 * @param aniversario
+	 * @param cargo
+	 * 
+	 * @see Pessoa
+	 * @see Endereco
+	 */
 	public Funcionario(String nome, String cpf, Endereco endereco, 
 			double salario, LocalDate aniversario, String cargo){
 		
@@ -29,39 +63,87 @@ public class Funcionario extends Pessoa{
 		log = new Login(nome, Integer.parseInt(senha));
 	}	
 	
+	/**
+	 * Informa o login do funcionario
+	 * 
+	 * @return log		login
+	 * 
+	 * @see Login
+	 */
 	public Login getLog() {
 		return log;
 	}
 
+	/**
+	 * Altera o login do funcionario, ou cadastra um se o funcionario nao possuir
+	 * 
+	 * @param log		novo login
+	 * 
+	 * @see Login
+	 */
 	public void setLog(Login log) {
 		this.log = log;
 	}
 
+	/**
+	 * Informa o cargo atual do funcionario
+	 * 
+	 * @return cargo
+	 */
 	public String getCargo(){
 		return cargo;
 	}	
 	
+	/**
+	 * Altera ou adiciona um cargo ao funcionario
+	 * 
+	 * @param cargo			novo cargo
+	 */
 	public void setCargo(String cargo){
 		this.cargo = cargo;
 	}	
 	
-	
+	/**
+	 * Altera ou adiciona um salario ao funcionario
+	 * 
+	 * @param salario		novo salario
+	 */
 	public void setSalario(double salario){
 		this.salario = salario;
 	}	
 	
+	/**
+	 * Informa o atual salario do funcionario
+	 * 
+	 * @return salario 		atual salario
+	 */
 	public double getSalario(){
 		return this.salario;
 	}	
 	
+	/**
+	 * Informa o dia de entrada na empresa
+	 * 
+	 * @return 				uma string no formato yyyy/mm/dd 
+	 */
 	public String getEntrada(){
 		return String.format("%d/%d/%d", entrada.getYear(), entrada.getMonthValue(), entrada.getYear());
 	}	
 	
+	/**
+	 * Informa todos os dados do funcionario
+	 * 
+	 * @return res		contem cargo, salario, entrada, login e senha
+	 * 
+	 * @see Endereco
+	 * @see Login
+	 */
 	@Override
 	public String toString(){
 		String res = super.toString();
-		res += "\nCargo: "+this.cargo+"\nSal�rio: "+this.salario+"\nEntrada: "+this.entrada + "\nLogin: " + this.log.getLogin() + "\nSenha: " + this.log.getSenha();
+		res += "\nCargo: "+this.cargo+"\nSal�rio: "+this.salario+
+				"\nEntrada: "+this.entrada + "\nLogin: " + 
+				this.log.getLogin() + "\nSenha: " + this.log.getSenha();
 		return res;
 	
 	}

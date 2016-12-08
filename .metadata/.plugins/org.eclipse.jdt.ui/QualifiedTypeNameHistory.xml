@@ -4,4 +4,14 @@
 <fullyQualifiedTypeName name="br.ufrpe.negocios.IControladorPessoa"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioPessoa"/>
 <fullyQualifiedTypeName name="br.ufrpe.excecoes.CodigoNaoExisteException"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Endereco"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Pessoa"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ErroAoSalvarException"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ErroAoRemoverException"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.PessoaNaoExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ErroAoAtualizarException"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Cliente"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Login"/>
 </qualifiedTypeNameHistroy>

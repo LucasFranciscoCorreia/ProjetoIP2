@@ -1,7 +1,0 @@
-package br.ufrpe.repositorios;
-
-public class IndiceOutofBoundsException {
-
-	private int indiceOut;
-
-}
