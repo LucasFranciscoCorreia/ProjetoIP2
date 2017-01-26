@@ -11,6 +11,7 @@
 package br.ufrpe.repositorios;
 import java.util.ArrayList;
 
+import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
@@ -19,13 +20,27 @@ import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.PessoaNaoExisteException;
+import br.ufrpe.negocios.ControladorPessoa;
+
+/**
+ * Interface do RepositorioPessoa
+ * 
+ * @author Maria Fernanda
+ *
+ * @see Pessoa
+ * @see Animal
+ * @see Cliente
+ * @see Funcionario
+ * @see Login
+ * @see RepositorioPessoa
+ * @exception ErroAoAtualizarException
+ * @exception ErroAoRemoverException
+ * @exception ErroAoSalvarException
+ * @exception PessoaNaoExisteException
+ */
 
 public interface IRepositorioPessoa {
 	
-	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
-	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
-	void remover(String cpf) throws ErroAoRemoverException;
-	void atualizar(Pessoa p) throws PessoaNaoExisteException, ErroAoAtualizarException;
 	int size();
 	int sizeFuncionario();
 	int sizeCliente();
@@ -33,4 +48,8 @@ public interface IRepositorioPessoa {
 	ArrayList<Funcionario> listarFuncionario();
 	ArrayList<Cliente> listarCliente();
 	boolean checarLogin(Login log);
+	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
+	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
+	void remover(String cpf) throws ErroAoRemoverException;
+	void atualizar(Pessoa p) throws PessoaNaoExisteException, ErroAoAtualizarException;
 }

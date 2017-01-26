@@ -9,6 +9,7 @@
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.negocios;
+import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
@@ -16,6 +17,20 @@ import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.PessoaJaCadastradaException;
 import br.ufrpe.excecoes.PessoaNaoExisteException;
 
+/**
+ * Esta é a interface do ControladorPessoa
+ * 
+ * @author Maria Fernanda
+ * 
+ * @see Pessoa
+ * @see Animal
+ * @see ControladorPessoa
+ * @exception ErroAoAtualizarException
+ * @exception ErroAoRemoverException
+ * @exception ErroAoSalvarException
+ * @exception PessoaJaCadastradaException
+ * @exception PessoaNaoExisteException
+ */
 public interface IControladorPessoa {
 	
 	void cadastrar(Pessoa novo) throws PessoaNaoExisteException, ErroAoSalvarException, PessoaJaCadastradaException;

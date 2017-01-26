@@ -10,6 +10,8 @@
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.beans;
+
+
 import java.time.LocalDate;
 
 /**

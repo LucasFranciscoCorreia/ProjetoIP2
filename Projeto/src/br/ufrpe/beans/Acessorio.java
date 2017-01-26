@@ -13,12 +13,15 @@
 package br.ufrpe.beans;
 
 import java.time.LocalDate;
+
+
 /**
  * Esta classe representa produtos do tipo acessorio que possivelmente serão cadastrados no petshop.
  * Ela possui informações padrões que produtos devem ter.
  * 
- * Exemplo de uso: Quando for cadastrar coleira, roupa, sapato, frauda, cama, gaiola,
- * entre outros tipos de produtos considerados acessorios. 
+ * Exemplo de uso: 
+ * Acessorio acessorio = new Acessorio(54.99f, "Casa para cachorro", 
+ * 										"Casa", "1234FG567", 10, "Variado", null, null);
  * 
  * Lembrete: Alguns produtos podem ser cadastrados com a validade igual a nulo. 
  * 

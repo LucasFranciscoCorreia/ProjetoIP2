@@ -14,6 +14,8 @@ package br.ufrpe.beans;
  * em caso de aparecer algum imprevisto é muito importanto. No caso de clientes, chega a ser mais importante, principalmente,
  * quando esse cliente deixou algum animal na clinica. 
  * 
+ * Lembrete: Pessoas podem ser cadastradas com endereço null, mas é preferivel que não esteja null. 
+ * 
  * @author Lucas Correia
  */
 public class Endereco {

@@ -12,7 +12,6 @@
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
-
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
@@ -24,27 +23,42 @@ import br.ufrpe.excecoes.PessoaNaoExisteException;
 
 /**
  * RepositorioPessoa armazena todas as pessoas, independentes do tipo, 
- * em um ArrayList. Nessa classe tambem ocorrem alguns verificações basicas,
- * com intuito de evitar erros e inscosistencia de dados.
+ * em um ArrayList. Além do armazenamento, é possivel pesquisar, remover
+ * e atualizar as informações cadastradas da pessoa. Nessa classe tambem 
+ * ocorrem alguns verificações basicas, com intuito de evitar erros e 
+ * inconsistência de dados. 
+ * 
+ * @author Maria Fernanda
  * 
  * @see Funcionario
  * @see Cliente
  * @see Pessoa
- * 
- * @author Maria Fernanda
+ * @see IRepositorioPessoa
+ * @exception PessoaNaoExisteException
+ * @exception ErroAoSalvarException
+ * @exception ErroAoAtualizarException
+ * @exception ErroAoRemoverException
  */
-
 public class RepositorioPessoa implements IRepositorioPessoa{
 	private ArrayList<Pessoa> repositorio;
 	private static IRepositorioPessoa unicInstanc;
 	
 	/**
-	 * Construtor privado
+	 * Contrutor privado de RepositorioPessoa
+	 * 
+	 * @param repositorio
 	 */
 	private RepositorioPessoa(){
 		repositorio = new ArrayList<>();
 	}
 	
+	/**
+	 * Construtor publico de RepositorioPessoa, seguindo o padrão singleton
+	 * 
+	 * @param unicInstanc   Padrão singleton
+	 * 
+	 * @return unicInstanc
+	 */
 	public static IRepositorioPessoa getInstance(){
 		if(unicInstanc == null){
 			unicInstanc = new RepositorioPessoa();
@@ -55,8 +69,8 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Busca no array usando o cpf
 	 * 
-	 * @param cpf			cpf da pessoa
-	 * @return				indice equivalente ao cpf,
+	 * @param cpf		
+	 * @return  indice equivalente ao cpf,
 	 *  -1 significa pessoa nao encontrada
 	 */
 	private int buscarIndice(String cpf){
@@ -71,7 +85,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Cadastra uma pessoa
 	 * 
-	 * @param pessoa			pessoa que sera cadastrada
+	 * @param pessoa	
 	 * 
 	 * @exception ErroAoSalvarException		Exception levantada quando
 	 *  o repositorio.add retorna falso. 
@@ -89,7 +103,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Remove uma pessoa
 	 * 
-	 * @param cpf			cpf da pessoa que sera removida
+	 * @param cpf	
 	 * 
 	 * @exception ErroAoRemoverException		Exception levantada quando
 	 * o metodo buscar nao encontra a pessoa 
@@ -116,7 +130,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * @exception PessoaNaoExisteException			Exception levantada quando
 	 * o metodo buscar nao encontra a pessoa no array.
 	 * 
-	 * @return repositorio.get(indice)				Pessoa com o cpf informado
+	 * @return 	Pessoa com o cpf informado
 	 */
 	public Pessoa buscar(String cpf) throws PessoaNaoExisteException{
 		if(cpf == null){
@@ -135,7 +149,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Quantidade de funcionarios no sistema.
 	 * 
-	 * @return funcionario		quantidade total de funcionarios ativos
+	 * @return quantidade total de funcionarios ativos
 	 * 
 	 * @see Funcionario
 	 */
@@ -152,7 +166,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Quantidade de clientes no sistema
 	 * 
-	 * @return cliente			quantidade de clientes ativos
+	 * @return quantidade de clientes ativos
 	 * 
 	 * @see Cliente
 	 */
@@ -169,7 +183,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Quantidade de Pessoas, independente se sejao clientes ou funcionarios
 	 * 
-	 * @return repositorio.size()
+	 * @return quantidade total de pessoas cadastradas
 	 */
 	public int size(){
 		return repositorio.size();
@@ -178,7 +192,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * ArrayList com todos os clientes cadastrados
 	 * 
-	 * @return clientes 			array com todos os clientes
+	 * @return array com todos os clientes
 	 * 
 	 * @see Cliente
 	 */
@@ -195,7 +209,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * ArrayList com todos os funcionarios cadastrados
 	 * 
-	 * @return funcionario			array com todos os funcionarios
+	 * @return array com todos os funcionarios
 	 * 
 	 * @see Funcionario
 	 */
@@ -212,7 +226,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Lista com todas as pessoas ativas
 	 * 
-	 * @return res				todas as pessoas listadas, um abaixo da outra
+	 * @return todas as pessoas listadas, um abaixo da outra
 	 */
 	public String listar(){
 		String res = "";
@@ -225,6 +239,8 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	/**
 	 * Atualiza informaçoes especificas de uma Pessoa
 	 * 
+	 * Metodo ainda incompleto, Cliente não consegue ser atualizado
+	 * 
 	 * @param pessoa				Pessoa que tera seus dados atualizados
 	 * 
 	 * @exception PessoaNaoExisteException			Exception levantada quando
@@ -235,8 +251,6 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * @see Cliente
 	 * @see Funcionario
 	 */
-	
-	//INCOMPLETO codigo
 	public void atualizar(Pessoa pessoa) throws PessoaNaoExisteException, 
 			ErroAoAtualizarException{
 		if(pessoa == null){
@@ -269,7 +283,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * 
 	 * @param l				login que sera analisado
 	 * 
-	 * @return ok			boolean que confirma se é valido ou nao
+	 * @return boolean que confirma se é valido ou nao
 	 * 
 	 * @see Login
 	 */

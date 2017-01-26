@@ -18,6 +18,19 @@ import br.ufrpe.excecoes.AnimalJaExisteException;
 import br.ufrpe.excecoes.AnimalNaoExisteException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 
+/**
+ * Está classe é utilizada para armazenar futuros animais cadastrados no sistema, nela
+ * você pode tanto alterar, remover, cadastrar ou pesquisar por animais, independente do tipo
+ * de animal (produto ou cliente).
+ * 
+ * @author Raissa Camelo
+ *
+ * @see Animal
+ * @see IRepositorioAnimal
+ * @exception AnimalJaExisteException
+ * @exception AnimalNaoExisteException
+ * @exception CodigoNaoExisteException
+ */
 public class RepositorioAnimal implements IRepositorioAnimal {
 	private ArrayList<Animal> rep;
 	private ArrayList<Animal> lixeira;

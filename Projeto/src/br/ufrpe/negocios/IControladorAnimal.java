@@ -11,10 +11,22 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Animal;
+import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.AnimalNaoExisteException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.AnimalJaExisteException;
 
+/**
+ * Esta é a interface do ControladorAnimal
+ * 
+ * @author Raissa Camelo
+ * 
+ * @see Animal
+ * @see ControladorAnimal
+ * @exception AnimalJaExisteException
+ * @exception AnimalNaoExisteException
+ * @exception CodigoNaoExisteException
+ */
 public interface IControladorAnimal {
 	
 	void cadastrar(Animal novo)throws AnimalJaExisteException, AnimalJaExisteException;

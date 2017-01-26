@@ -11,7 +11,18 @@
 package br.ufrpe.repositorios;
 
 import br.ufrpe.beans.Produto;
+import br.ufrpe.negocios.ControladorProduto;
 
+/**
+ * Interface do RepositorioProduto
+ * 
+ * Lembrete: Como o RepositorioProduto não está finalizado, a interface também não está
+ * 
+ * @author Diego
+ *
+ * @see Produto
+ * @see ControladorProduto
+ */
 public interface IRepositorioProduto {
 	
 	public int Size();

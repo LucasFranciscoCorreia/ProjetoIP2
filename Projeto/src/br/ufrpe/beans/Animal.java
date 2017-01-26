@@ -11,6 +11,8 @@
  */
 
 package br.ufrpe.beans;
+
+
 /**
  * Esta classe fo criada afim de possibilitar o cadastro de "animais" na CRUD gerida 
  * pelo programa, como o projeto se trata de um gestor de pet-shop, essa classe se mostra 
@@ -21,7 +23,7 @@ package br.ufrpe.beans;
  * consequentemente pelo "super") serão inválidos.
  * 
  * Exemplo de uso:
- *	Animal a = Animal(True,Cachorro(Canis Familiares), Vira-Lata, Alexandre G.,5, 100, Dede, codigo);/
+ *	Animal a = Animal(True,Cachorro(Canis Familiares), Vira-Lata, Alexandre G.,5, 100, Dede, codigo);
  *  (Esse foi um exemplo de um cadastratamento de um animal "pet", um cliente da clínica)
  *   Foi usado o primeiro construtor
  * Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo);

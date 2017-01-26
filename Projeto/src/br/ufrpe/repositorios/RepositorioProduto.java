@@ -14,6 +14,16 @@ package br.ufrpe.repositorios;
 import java.util.ArrayList;
 import br.ufrpe.beans.Produto;
 
+/**
+ * Este repositorio armazena dados sobre os produtos existentes na loja.
+ * 
+ * Lembrete: Repositorio incompleto, não foi feito a implementação de exceções
+ * 
+ * @author Diego
+ * 
+ * @see Produto
+ * @see IRepositorioProduto
+ */
 public class RepositorioProduto implements IRepositorioProduto {
 	private  ArrayList<Produto> repositorio;
 	private static IRepositorioProduto unicInstanc;

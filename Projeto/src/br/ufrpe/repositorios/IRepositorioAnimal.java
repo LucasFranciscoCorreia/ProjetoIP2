@@ -15,19 +15,28 @@ import br.ufrpe.excecoes.AnimalJaExisteException;
 import br.ufrpe.excecoes.AnimalNaoExisteException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 
+/**
+ * Interface do RepositorioAnimal
+ * 
+ * @author Raissa Camelo
+ * 
+ * @see Animal
+ * @see RepositorioAnimal
+ * @exception AnimalJaExisteException
+ * @exception AnimalNaoExisteException
+ * @exception CodigoNaoExisteException
+ *
+ */
 public interface IRepositorioAnimal {
 	
-	 void adicionar(Animal novo)throws AnimalJaExisteException;
-	 int buscarIndice(Animal bus) throws AnimalNaoExisteException;
-	 int buscarIndice(String codigo) throws CodigoNaoExisteException;
-	 Animal getPet(int i);
-	 boolean remover(Animal antigo) throws AnimalNaoExisteException;
-	 boolean atualizar(Animal antigo, Animal novo) throws AnimalNaoExisteException, AnimalJaExisteException;
-	 Animal buscar(String codigo) throws CodigoNaoExisteException;
-	 boolean remover(String codigo)throws CodigoNaoExisteException;
-	 Animal recuperar(String cpf, String raca);
-	 int size();
-	
-	
-	
+	int buscarIndice(Animal bus) throws AnimalNaoExisteException;
+	int buscarIndice(String codigo) throws CodigoNaoExisteException;
+	int size();
+	boolean remover(Animal antigo) throws AnimalNaoExisteException;
+	boolean atualizar(Animal antigo, Animal novo) throws AnimalNaoExisteException, AnimalJaExisteException;
+	boolean remover(String codigo)throws CodigoNaoExisteException;
+	void adicionar(Animal novo)throws AnimalJaExisteException;
+	Animal getPet(int i);
+	Animal buscar(String codigo) throws CodigoNaoExisteException;
+	Animal recuperar(String cpf, String raca);	
 }

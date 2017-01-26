@@ -12,6 +12,16 @@ package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Produto;
 
+/**
+ * Interface do ControladorProduto
+ * 
+ * Lembrete: Como o ControladorProduto não está finalizado, a interface também não está
+ * 
+ * @author Diego
+ *
+ * @see Produto
+ * @see ControladorProduto
+ */
 public interface IControladorProduto {
 	
 	void cadastrar(Produto produto);
