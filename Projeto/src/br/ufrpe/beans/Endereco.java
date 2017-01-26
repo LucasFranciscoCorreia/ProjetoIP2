@@ -1,16 +1,36 @@
+/*
+ * Projeto PetShop
+ * 
+ * Tipo: Endereco
+ * 
+ *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
+ *Introdução a Programação II, lecionada no período 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
+ */
 package br.ufrpe.beans;
+/**
+ * Está classe é essencial no controle tanto de funcionario, quanto de cliente. Saber onde o funcionario reside,
+ * em caso de aparecer algum imprevisto é muito importanto. No caso de clientes, chega a ser mais importante, principalmente,
+ * quando esse cliente deixou algum animal na clinica. 
+ * 
+ * @author Lucas Correia
+ */
 public class Endereco {
+	
 	private String rua;
 	private String complemento;
 	private short numero;
 	private String cep;
 	private String cidadeUF;
+	
 	public Endereco(){
 		rua = "";
 		complemento = "";
 		cep = "";
 		cidadeUF = "";
 	}
+	
 	public Endereco(String rua, String complemento, short numero, String cep, String cidadeUF) {
 		this.rua = rua;
 		this.complemento = complemento;
@@ -39,19 +59,24 @@ public class Endereco {
 	public String getCep() {
 		return cep;
 	}
+	
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
 	public String getCidadeUF() {
 		return cidadeUF;
 	}
+	
 	public void setCidadeUF(String cidadeUF) {
 		this.cidadeUF = cidadeUF;
 	}
+	
 	public String toString(){
 		String res = String.format("\nCidade-UF: %s\nRua: %s\nNumero: %d\nCEP: %s\nComplemento : %s", cidadeUF, rua, numero, cep, complemento);
 		return res;
 	}
+	
 	public boolean equals(Endereco outro){
 		boolean res = false;
 		if(this.rua.equals(outro.getRua())

@@ -1,5 +1,26 @@
+/*
+ * Projeto PetShop
+ * 
+ * Tipo: Remedio
+ * Tipo 2: Produto, descrição: abstract
+ * 
+ *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
+ *Introdução a Programação II, lecionada no período 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
+ */
 package br.ufrpe.beans;
 
+/**
+ * Esta classe representa produtos do tipo remedio, foi nescessario criar uma classe separada para remedio, 
+ * pois esse tipo de produto nescessita de informações um pouco diferentes dos outros tipos de produto.
+ * 
+ * Lembrete: Não se tem certeza, se a classe esta funcionando perfeitamente
+ * 
+ * @see Produto
+ * 
+ * @author Raissa Camelo
+ */
 public class Remedio extends Produto{
 	
 	private String bula;

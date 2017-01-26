@@ -1,14 +1,38 @@
+/*
+ * Projeto PetShop
+ * 
+ * Tipo: Acessorio
+ * Tipo 2: Produto, descrição: abstract
+ * 
+ *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
+ *Introdução a Programação II, lecionada no período 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
+ */
+
 package br.ufrpe.beans;
 
 import java.time.LocalDate;
-
+/**
+ * Esta classe representa produtos do tipo acessorio que possivelmente serão cadastrados no petshop.
+ * Ela possui informações padrões que produtos devem ter.
+ * 
+ * Exemplo de uso: Quando for cadastrar coleira, roupa, sapato, frauda, cama, gaiola,
+ * entre outros tipos de produtos considerados acessorios. 
+ * 
+ * Lembrete: Alguns produtos podem ser cadastrados com a validade igual a nulo. 
+ * 
+ * @author Raissa Camelo
+ * @see Produto 
+ */
 public class Acessorio extends Produto{
      
 	private String cor;
 	private double tamanho;
 	private LocalDate validade;
     
-	public Acessorio(float preco, String nome, String tipo, String codigo, int estoque, String cor ,double tamanho, LocalDate validade) {
+	public Acessorio(float preco, String nome, String tipo, String codigo, int estoque, String cor ,double tamanho, 
+			LocalDate validade) {
 		super(preco, nome, tipo, codigo, estoque);
 		this.cor = cor;
 		this.tamanho = tamanho;

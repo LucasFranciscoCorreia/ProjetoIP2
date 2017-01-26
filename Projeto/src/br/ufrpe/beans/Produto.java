@@ -1,10 +1,28 @@
+/*
+ * Projeto PetShop
+ * 
+ * Tipo: Produto
+ * 
+ *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
+ *Introdução a Programação II, lecionada no período 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
+ */
 package br.ufrpe.beans;
+
+/**
+ * Esta classe representa o basico de um produto, ela é do tipo abstrata, por que não é preciso instanciar um produto
+ * em si, mas sim, seu tipo, por exemplo, acessorio. 
+ * 
+ * @author Diego 
+ */
 public abstract class Produto {
 	private float preco;
 	private String nome;
 	private String tipo;
 	private String codigo;
 	private int estoque;	//De cada item
+	
 	public Produto(float preco, String nome, String tipo, String codigo, int estoque) {
 		this.preco = preco;
 		this.nome = nome;
@@ -12,7 +30,7 @@ public abstract class Produto {
 		this.codigo = codigo;
 		this.estoque = estoque;
 	}	
-	public Produto(String nome, String codigo){ //Pro Animal que nao eh vendivel :)
+	public Produto(String nome, String codigo){ //Pro Animal que nao eh vendivel
 		this.nome = nome;
 	}
 	public void addEstoque(int qtd){

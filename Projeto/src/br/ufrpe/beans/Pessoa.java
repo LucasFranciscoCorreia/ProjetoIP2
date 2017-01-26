@@ -1,49 +1,26 @@
 /*
- * Classe Pessoa
+ * Projeto PetShop
  * 
- * Vers√£o 0.0.1
- * 
- * 4 de Dezembro de 2016
- * 
- * Copyright
+ * Tipo: Pessoa
+ *  
+ *Este software foi criado para fins acadÍmicos, visando a aprovaÁ„o na disciplina
+ *IntroduÁ„o a ProgramaÁ„o II, lecionada no perÌodo 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
  */
- 
-/*
- 	*
- 	*Vers√£o: 0.0.1
- 	*Data de Cria√ß√£o: -/-/2016
- 	*Copyright (c) 2016 DEINFO/UFRPE
- 	*Departamento de Estat√≠stca e Inform√°tica 
-  ()
-    * UFRPE - 
-    * M√≥dulo <>
-    * Todos od direitos reservados.
-  *
-  * Este software foi criado para fins acad√™micos, visando a aprova√ß√£o na disciplina 
-  * Introdu√ß√£o a Programa√ß√£o II, lecionada no per√≠odo 2016.2, 
-  * pelo professor PhD. Leandro Marques.
-  */
-/*
- * Descria√ß√£o da Classe
- * 
- * Exemplo de uso:
- * 
- * > algum c√≥digo aqui <
- * 
- * Limita√ß√µes:
- * 
- * 
- * Autor: >n√£o sei se √© pra colocar o nome de todos, ou s√≥ de quem fez.<
- * Vers√£o: 0.0.1
- */
-	/*
-	 * >Listagem dos m√©todos e o que cada um faz aqui<
-	 */
-
 package br.ufrpe.beans;
 
 import java.time.LocalDate;
 
+/**
+ * Est· classe È a base para uma futura implementaÁ„o de Cliente e Funcionario,
+ * ela È a representaÁ„o basica de uma pessoa, n„o importando qual o seu tipo. 
+ * 
+ * @author Maria Fernanda
+ * @author Lucas Correia (DataAniversario)
+ * 
+ * @see LocalDate
+ */
 public abstract class Pessoa {
 	
 	private String cpf, nome;

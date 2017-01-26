@@ -1,8 +1,15 @@
 /*
- * Projeto: PetShop, grupo 42
+ * Projeto PetShop
  * 
  * Tipo: Funcionario
+ * Tipo 2: Pessoa, descrição: abstract
+ * 
+ *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
+ *Introdução a Programação II, lecionada no período 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
  */
+
 package br.ufrpe.beans;
 
 import java.time.LocalDate;
@@ -12,10 +19,11 @@ import java.time.LocalDate;
  * data de entrada na empresa e um login de acesso ao sistema.
  * 
  * @author Maria Fernanda
+ * @author Lucas Correia (login)
  * 
  * @see Pessoa
+ * @see Login
  */
-
 public class Funcionario extends Pessoa{
 	
 	private double salario;

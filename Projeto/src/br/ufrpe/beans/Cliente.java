@@ -1,6 +1,27 @@
+/*
+ * Projeto PetShop
+ * 
+ * Tipo: Cliente
+ * Tipo 2: Pessoa, descrição: abstract
+ * 
+ *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
+ *Introdução a Programação II, lecionada no período 2016.2, 
+ *na UFRPE (Universidade Federal Rural de Pernambuco),
+ *pelo professor PhD. Leandro Marques. 
+ */
 package br.ufrpe.beans;
 import java.time.LocalDate;
 
+/**
+ * Esta classe representa pessoas do tipo cliente, para melhor controle de venda foi desenvolvido essa classe,
+ * onde se tera mais informações sobre os clientes. Além da vendo, outro fator importante de ser lembrado, é 
+ * o controle de animais existentes no petshop, saber se aquele animal residente é um produto ou cliente. 
+ * 
+ * Lembrete: Verificar se a classe está em perfeito estado
+ * 
+ * @author Lucas Correia
+ * @see Pessoa
+ */
 public class Cliente extends Pessoa {
 
 	private Animal pets[];
