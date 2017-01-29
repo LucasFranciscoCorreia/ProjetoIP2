@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo: Animal
- * Tipo 2: Produto, descrição: abstract
+ * Tipo 2: Produto, descriï¿½ï¿½o: abstract
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -46,6 +46,18 @@ public class Animal extends Produto{
 	private double tamanho;
 	private String categoria;
 	
+	/**
+	 * Construtor da classe Animal
+	 * 
+	 * @param isAlive
+	 * @param especie
+	 * @param raca
+	 * @param dono
+	 * @param peso
+	 * @param tamanho
+	 * @param nome
+	 * @param codigo
+	 */
 	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo) {
 		
 		super(nome,codigo);

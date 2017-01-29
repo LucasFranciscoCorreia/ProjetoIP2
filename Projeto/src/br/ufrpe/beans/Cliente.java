@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo: Cliente
- * Tipo 2: Pessoa, descrição: abstract
+ * Tipo 2: Pessoa, descriï¿½ï¿½o: abstract
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -16,10 +16,10 @@ import java.time.LocalDate;
 
 /**
  * Esta classe representa pessoas do tipo cliente, para melhor controle de venda foi desenvolvido essa classe,
- * onde se tera mais informações sobre os clientes. Além da vendo, outro fator importante de ser lembrado, é 
- * o controle de animais existentes no petshop, saber se aquele animal residente é um produto ou cliente. 
+ * onde se tera mais informaï¿½ï¿½es sobre os clientes. Alï¿½m da vendo, outro fator importante de ser lembrado, ï¿½ 
+ * o controle de animais existentes no petshop, saber se aquele animal residente ï¿½ um produto ou cliente. 
  * 
- * Lembrete: Verificar se a classe está em perfeito estado
+ * Lembrete: Verificar se a classe estï¿½ em perfeito estado
  * 
  * @author Lucas Correia
  * @see Pessoa
@@ -32,6 +32,15 @@ public class Cliente extends Pessoa {
 	public Animal[] getPets() {
 		return pets;
 	}
+	
+	/**
+	 * Construtor da classe cliente 
+	 * 
+	 * @param cpf
+	 * @param nascimento
+	 * @param nome
+	 * @param end
+	 */
 	public Cliente(String cpf, LocalDate nascimento, String nome, Endereco end) {
 
 		super(cpf, nascimento,nome,end);
