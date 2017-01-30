@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
+import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
@@ -270,6 +271,16 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 						((Funcionario) repositorio.get(indice)).setSalario(((Funcionario) pessoa).getSalario());			
 					}
 				}else if(pessoa instanceof Cliente){
+					if (((Cliente) pessoa).getPets() != null){
+						int qtd = (((Cliente) pessoa).getPets()).length;
+						Animal[] pets = ((Cliente) pessoa).getPets();
+						
+						for(int i = 0; i < qtd; i++){
+							((Cliente) repositorio.get(indice)).addPet(pets[i]);
+						}
+					}if(pessoa.getEnd() != null){
+						repositorio.get(indice).setEnd(pessoa.getEnd());
+					}
 					//repositorio.get(indice) = pessoa;
 				}else{
 					throw new ErroAoAtualizarException();
