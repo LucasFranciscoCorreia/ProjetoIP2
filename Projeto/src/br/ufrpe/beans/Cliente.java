@@ -29,9 +29,6 @@ public class Cliente extends Pessoa {
 	private Animal pets[];
 	private int qntPets;
 	
-	public Animal[] getPets() {
-		return pets;
-	}
 	
 	/**
 	 * Construtor da classe cliente 
@@ -47,7 +44,15 @@ public class Cliente extends Pessoa {
 		this.pets = new Animal[1];
 		this.qntPets = 0;
 	}
-
+	
+	/**
+	* Cadastra um pet em uma quantidade indefinida que um cliente pode possuir
+	* 
+	* @param pets		Todos os pets cadastrados pelo usuario
+	* @param qntPets	Quantidade de pets cadastrados pelo usuario
+	* 
+	* @see Animal
+	*/
 	public void addPet(Animal novo){
 		pets[qntPets] = novo;
 		qntPets++;
@@ -55,6 +60,21 @@ public class Cliente extends Pessoa {
 			duplicarArray();
 		}
 	}
+	/**
+	 * Retorna os pets cadastrados pelo usuario
+	 * 
+	 * @return pets			atual pets
+	 * 
+	 * @see Animal
+	 */
+	public Animal[] getPets() {
+		return pets;
+	}
+	/**
+	 * Aumenta a capacidade de pets para armazenamento por cliente
+	 * 
+	 * @param pets		novo pets
+	 */
 	private void duplicarArray() {
 		Animal[] novo = new Animal[pets.length*2];
 		for (int i = 0; i < pets.length; i++) {
@@ -62,7 +82,15 @@ public class Cliente extends Pessoa {
 		}
 		this.pets = novo;
 	}
-	
+	/**
+	 * Informa todos os dados do cliente
+	 * 
+	 * @return res		contem nome, cpf, aniversario, endereço, pets cadastrados
+	 * 
+	 * @see Endereço
+	 * @see Pessoa
+	 * @see Animal
+	 */
 	@Override
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario(), this.getEnd());

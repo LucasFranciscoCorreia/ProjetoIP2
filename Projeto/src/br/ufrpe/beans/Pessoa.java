@@ -3,8 +3,8 @@
  * 
  * Tipo: Pessoa
  *  
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -13,8 +13,8 @@ package br.ufrpe.beans;
 import java.time.LocalDate;
 
 /**
- * Está classe é a base para uma futura implementação de Cliente e Funcionario,
- * ela é a representação basica de uma pessoa, não importando qual o seu tipo. 
+ * Estï¿½ classe ï¿½ a base para uma futura implementaï¿½ï¿½o de Cliente e Funcionario,
+ * ela ï¿½ a representaï¿½ï¿½o basica de uma pessoa, nï¿½o importando qual o seu tipo. 
  * 
  * @author Maria Fernanda
  * @author Lucas Correia (DataAniversario)
@@ -86,9 +86,9 @@ public abstract class Pessoa {
 	}
 	
 	/**
-	 * retorna o endereço da pessoa
+	 * retorna o endereï¿½o da pessoa
 	 * 
-	 * @return endereço
+	 * @return endereï¿½o
 	 * 
 	 * @see Endereco
 	 */
@@ -97,9 +97,9 @@ public abstract class Pessoa {
 	}
 
 	/**
-	 * Recebe o endereço da pessoa
+	 * Recebe o endereï¿½o da pessoa
 	 *
-	 * @param end      Endereço da pessoa, do tipo Endereco
+	 * @param end      Endereï¿½o da pessoa, do tipo Endereco
 	 * 
 	 * @see Endereco
 	 */
@@ -108,7 +108,7 @@ public abstract class Pessoa {
 	}
 	
 	/**
-	 * Retorna a data de aniversario da pessoa, já no formato de String (xx/xx/xxxx)
+	 * Retorna a data de aniversario da pessoa, jï¿½ no formato de String (xx/xx/xxxx)
 	 * 
 	 * @return xx/xx/xxxx
 	 */
@@ -121,9 +121,9 @@ public abstract class Pessoa {
 	}
 	
 	/**
-	 * Retorna Nome, CPF, Data de nascimento e endereço, formatada uma abaixo da outra
+	 * Retorna Nome, CPF, Data de nascimento e endereï¿½o, formatada uma abaixo da outra
 	 * 
-	 * @return informações basicas daquela pessoa
+	 * @return informaï¿½ï¿½es basicas daquela pessoa
 	 */
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", nome, cpf, this.DataAniversario(), end);
@@ -131,12 +131,15 @@ public abstract class Pessoa {
 	}
 	
 	/**
-	 * Faz comparações utilizando o CPF
+	 * Faz comparaï¿½ï¿½es utilizando o CPF
 	 * 
 	 * @return  True ou False
 	 */
-	public boolean equals(Pessoa outro){
-		return (cpf.equals(outro.getCpf()));
+	public boolean equals(Object outro){
+		if(outro instanceof Cliente || outro instanceof Funcionario){
+			return (cpf.equals(((Pessoa) outro).getCpf()));			
+		}
+		return false;
 	}
 
 }

@@ -45,7 +45,7 @@ public class Animal extends Produto{
 	private double peso;
 	private double tamanho;
 	private String categoria;
-	
+
 	/**
 	 * Construtor da classe Animal
 	 * 
@@ -59,7 +59,7 @@ public class Animal extends Produto{
 	 * @param codigo
 	 */
 	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo) {
-		
+
 		super(nome,codigo);
 		this.isAlive = isAlive;
 		this.especie = especie;
@@ -69,9 +69,9 @@ public class Animal extends Produto{
 		this.tamanho = tamanho;
 		this.categoria = "Paciente";
 	}
-	
+
 	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho){
-		
+
 		super(preco,nome,tipo,codigo,estoque);
 		this.isAlive = isAlive;
 		this.especie = especie;
@@ -124,7 +124,7 @@ public class Animal extends Produto{
 	public String getDonoNome() {
 		return this.dono.getNome();
 	}
-	
+
 	public String getCategoria() {
 		return categoria;
 	}
@@ -141,13 +141,15 @@ public class Animal extends Produto{
 	public void setDono(Cliente dono){
 		this.dono = dono;
 	}
-	public boolean equals(Animal outro){
+	public boolean equals(Object  outro){
 		boolean res = false;
-		if(dono.getCpf() == outro.getDonoCPF()
-				&& raca == outro.getRaca()
-				&& especie == outro.getEspecie()
-				&& isAlive == outro.getIsAlive()){
-			res = true;
+		if(outro instanceof Animal){
+			if(dono.getCpf() == ((Animal)outro).getDonoCPF()
+					&& raca == ((Animal)outro).getRaca()
+					&& especie == ((Animal)outro).getEspecie()
+					&& isAlive == ((Animal)outro).getIsAlive()){
+				res = true;
+			}
 		}
 		return res;
 	}
