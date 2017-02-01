@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo: ControladorPessoa
- * Tipo 2: IControladorPessoa, descrição: interface
+ * Tipo 2: IControladorPessoa, descriï¿½ï¿½o: interface
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -42,9 +42,9 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * 
 	 * @param cpf
 	 * 
-	 * @return      Pessoa que está sendo procurada
+	 * @return      Pessoa que estï¿½ sendo procurada
 	 * 
-	 * @exception PessoaNaoExisteException     Pessoa não se encontra no sistema
+	 * @exception PessoaNaoExisteException     Pessoa nï¿½o se encontra no sistema
 	 * 
 	 * @see Pessoa
 	 */
@@ -64,7 +64,7 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * 
 	 * @exception PessoaNaoExisteException					Utilizado para verificar se ja existe aquela pessoa no sistema  
 	 * @exception ErroAoSalvarException						Possiveis erros de escrita
-	 * @exception PessoaJaCadastradaException				Pessoa já se encontra no sistema
+	 * @exception PessoaJaCadastradaException				Pessoa jï¿½ se encontra no sistema
 	 */
 	public void cadastrar(Pessoa novo) throws PessoaNaoExisteException, ErroAoSalvarException, PessoaJaCadastradaException{
 		if(novo == null){
@@ -82,11 +82,11 @@ public class ControladorPessoa implements IControladorPessoa {
 	}
 	
 	/**
-	 * Remove uma pessoa por vez do sistema, utilizando o cpf da pessoa que será removida
+	 * Remove uma pessoa por vez do sistema, utilizando o cpf da pessoa que serï¿½ removida
 	 * 
 	 * @param cpf
 	 * 
-	 * @exception PessoaNaoExisteException				Pessoa não existe no sistema
+	 * @exception PessoaNaoExisteException				Pessoa nï¿½o existe no sistema
 	 * @exception ErroAoRemoverException				Erro ao remover
 	 */
 	public void remover(String cpf) throws PessoaNaoExisteException, ErroAoRemoverException{
@@ -137,11 +137,11 @@ public class ControladorPessoa implements IControladorPessoa {
 	/**
 	 * Lista todas as pessoas no sistema
 	 * 
-	 * @return Todas as pessoas no sistema, n importando se são clientes ou funcionarios
+	 * @return Todas as pessoas no sistema, n importando se sï¿½o clientes ou funcionarios
 	 */
 	public String listar(){
 		if(size() == 0){
-			return "Nãoo existem pessoas cadastradas no sistema!";
+			return "NÃ£o existem pessoas cadastradas no sistema!";
 		}else{
 			return repositorio.listar();
 		}
@@ -157,9 +157,9 @@ public class ControladorPessoa implements IControladorPessoa {
 	}
 	
 	/**
-	 * Atualiza informações de uma pessoa
+	 * Atualiza informaï¿½ï¿½es de uma pessoa
 	 * 
-	 * @exception PessoaNaoExisteException				Pessoa não está no sistema, impossivel fazer alteração
+	 * @exception PessoaNaoExisteException				Pessoa nï¿½o estï¿½ no sistema, impossivel fazer alteraï¿½ï¿½o
 	 * @exception ErroAoAtualizarException				
 	 */
 	public void atualizar(Pessoa novo) throws PessoaNaoExisteException, ErroAoAtualizarException{
