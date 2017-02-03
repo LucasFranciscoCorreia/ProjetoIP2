@@ -35,7 +35,7 @@ public class Principal {
 			DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			data = LocalDate.parse(d, DATE_FORMAT);
 		}catch(DateTimeParseException e){
-			System.out.print("Digite uma data correspondente ao formato \"dia-mÃªs-ano\": ");
+			System.out.print("Digite uma data correspondente ao formato \"dia-mês-ano\": ");
 			data = getData(scanner);
 		}finally{
 			return data;

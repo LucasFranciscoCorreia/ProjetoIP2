@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo: Remedio
- * Tipo 2: Produto, descrição: abstract
+ * Tipo 2: Produto, descriÃ§Ã£o: abstract
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *IntroduÃ§Ã£o a ProgramaÃ§Ã£o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -13,9 +13,9 @@ package br.ufrpe.beans;
 
 /**
  * Esta classe representa produtos do tipo remedio, foi nescessario criar uma classe separada para remedio, 
- * pois esse tipo de produto nescessita de informações um pouco diferentes dos outros tipos de produto.
+ * pois esse tipo de produto nescessita de informaï¿½ï¿½es um pouco diferentes dos outros tipos de produto.
  * 
- * Lembrete: Não se tem certeza, se a classe esta funcionando perfeitamente
+ * Lembrete: Nï¿½o se tem certeza, se a classe esta funcionando perfeitamente
  * 
  * @see Produto
  * 

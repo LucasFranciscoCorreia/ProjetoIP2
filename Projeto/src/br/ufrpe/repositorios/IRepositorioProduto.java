@@ -25,10 +25,10 @@ import br.ufrpe.negocios.ControladorProduto;
  */
 public interface IRepositorioProduto {
 	
-	public int Size();
-	public void cadastrar(Produto novo);
-	public Produto buscar(String codigo);
-	public void remover(String codigo);
-	public void atualizarEstoque(Produto novo);
+	int Size();
+	void cadastrar(Produto novo);
+	Produto buscar(String codigo);
+	void remover(String codigo);
+	void atualizarEstoque(Produto novo);
 	
 }

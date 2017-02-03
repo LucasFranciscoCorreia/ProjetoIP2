@@ -134,7 +134,7 @@ public class Animal extends Produto{
 	}
 
 	public String toString(){
-		String res = String.format("Dono: %s\nCPF do dono: %s\nRaÃ§a: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
+		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
 		res+="Is Alive? " + isAlive +"\nCategoria: "+categoria;
 		return res;
 	}
