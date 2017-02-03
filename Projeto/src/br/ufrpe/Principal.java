@@ -75,7 +75,7 @@ public class Principal {
 		try{
 			i = Integer.parseInt(scanner.nextLine());	
 		}catch(NumberFormatException e){
-			System.out.print("Digite um numero");
+			System.out.print("Digite um numero: ");
 			i = getInt(scanner);
 		}finally{
 			return i;			
@@ -982,7 +982,13 @@ public class Principal {
 		ControladorProduto produtoControlador = new ControladorProduto(RepositorioProduto.getInstance());
 		ControladorPessoa pessoaControlador = new ControladorPessoa(RepositorioPessoa.getInstance());
 		Pessoa lucas = new Funcionario("Lucas", "101.575.184-93",new Endereco(), 3500, LocalDate.of(1996, 7, 26), "Balconista");
+		Pessoa diego = new Funcionario("Diego", "108.332.834-48",new Endereco(), 3500, LocalDate.of(1997, 4, 24), "Balconista");
+		Pessoa fernanda = new Funcionario("Fernanda", "xxx.xxx.xxx-yy",new Endereco(), 3500, LocalDate.of(1997, 4, 25), "Balconista");
+		Pessoa raissa = new Funcionario("Raissa", "xxx.xxx.xxx-yx",new Endereco(), 3500, LocalDate.of(1998, 4,22), "Balconista");
+		pessoaControlador.cadastrar(fernanda);
 		pessoaControlador.cadastrar(lucas);
+		pessoaControlador.cadastrar(diego);
+		pessoaControlador.cadastrar(raissa);
 		boolean ok = true;
 		do{
 			ok = login(pessoaControlador, scanner);

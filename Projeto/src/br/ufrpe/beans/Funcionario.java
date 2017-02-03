@@ -54,6 +54,9 @@ public class Funcionario extends Pessoa{
 	 * 
 	 * @see Pessoa
 	 * @see Endereco
+	 * 
+	 * obs.: O login é o nome do funcionario
+	 * obs.2:: A senha é a data de anivesario do funcionario
 	 */
 	public Funcionario(String nome, String cpf, Endereco endereco, 
 			double salario, LocalDate aniversario, String cargo){
