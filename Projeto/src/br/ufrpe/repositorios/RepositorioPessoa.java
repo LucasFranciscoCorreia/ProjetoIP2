@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo 1: RepositorioPessoa
- * Tipo 2: IRepositorioPessoa, descriçãp: interface
+ * Tipo 2: IRepositorioPessoa, descriï¿½ï¿½p: interface
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -24,10 +24,10 @@ import br.ufrpe.excecoes.PessoaNaoExisteException;
 
 /**
  * RepositorioPessoa armazena todas as pessoas, independentes do tipo, 
- * em um ArrayList. Além do armazenamento, é possivel pesquisar, remover
- * e atualizar as informações cadastradas da pessoa. Nessa classe tambem 
- * ocorrem alguns verificações basicas, com intuito de evitar erros e 
- * inconsistência de dados. 
+ * em um ArrayList. Alï¿½m do armazenamento, ï¿½ possivel pesquisar, remover
+ * e atualizar as informaï¿½ï¿½es cadastradas da pessoa. Nessa classe tambem 
+ * ocorrem alguns verificaï¿½ï¿½es basicas, com intuito de evitar erros e 
+ * inconsistï¿½ncia de dados. 
  * 
  * @author Maria Fernanda
  * 
@@ -54,9 +54,9 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	}
 	
 	/**
-	 * Construtor publico de RepositorioPessoa, seguindo o padrão singleton
+	 * Construtor publico de RepositorioPessoa, seguindo o padrï¿½o singleton
 	 * 
-	 * @param unicInstanc   Padrão singleton
+	 * @param unicInstanc   Padrï¿½o singleton
 	 * 
 	 * @return unicInstanc
 	 */
@@ -111,7 +111,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 */
 	public void remover(String cpf) throws ErroAoRemoverException{
 		if(cpf == null){
-			throw new IllegalArgumentException("CPF invï¿½lido!");
+			throw new IllegalArgumentException("CPF invÃ¡lido!");
 		}else{
 			int indice = buscarIndice(cpf);
 			
@@ -135,7 +135,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 */
 	public Pessoa buscar(String cpf) throws PessoaNaoExisteException{
 		if(cpf == null){
-			throw new IllegalArgumentException("CPF invï¿½lido!");
+			throw new IllegalArgumentException("CPF invÃ¡lido!");
 		}else{
 			int indice = buscarIndice(cpf);
 			
@@ -238,9 +238,9 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	}
 	
 	/**
-	 * Atualiza informaçoes especificas de uma Pessoa
+	 * Atualiza informaï¿½oes especificas de uma Pessoa
 	 * 
-	 * Metodo ainda incompleto, Cliente não consegue ser atualizado
+	 * Metodo ainda incompleto, Cliente nÃ£o consegue ser atualizado
 	 * 
 	 * @param pessoa				Pessoa que tera seus dados atualizados
 	 * 
@@ -294,7 +294,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * 
 	 * @param l				login que sera analisado
 	 * 
-	 * @return boolean que confirma se é valido ou nao
+	 * @return boolean que confirma se ï¿½ valido ou nao
 	 * 
 	 * @see Login
 	 */

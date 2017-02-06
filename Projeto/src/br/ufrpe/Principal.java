@@ -19,6 +19,8 @@ import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.PessoaJaCadastradaException;
 import br.ufrpe.excecoes.PessoaNaoExisteException;
+import br.ufrpe.excecoes.ProdutoJaCadastradoException;
+import br.ufrpe.excecoes.ProdutoNaoExisteException;
 import br.ufrpe.negocios.ControladorAnimal;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
@@ -35,7 +37,7 @@ public class Principal {
 			DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			data = LocalDate.parse(d, DATE_FORMAT);
 		}catch(DateTimeParseException e){
-			System.out.print("Digite uma data correspondente ao formato \"dia-mês-ano\": ");
+			System.out.print("Digite uma data correspondente ao formato \"dia-mï¿½s-ano\": ");
 			data = getData(scanner);
 		}finally{
 			return data;
@@ -443,10 +445,15 @@ public class Principal {
 		 */
 		System.out.println("Informe o codigo: ");
 		codigo = scanner.nextLine();			
-		produto = produtoControlador.pesquisar(codigo);
-		if(produto != null){
-			System.out.println("\n" + produto + "\n");
+		try {
+			produto = produtoControlador.pesquisar(codigo);
+			if(produto != null){
+				System.out.println("\n" + produto + "\n");
+			}
+		} catch (ProdutoNaoExisteException e) {
+			System.out.println(e.getMessage());
 		}
+		
 	}
 
 	private static void atualizarProduto(Scanner scanner, ControladorProduto produtoControlador) {
@@ -462,20 +469,25 @@ public class Principal {
 
 		System.out.println("Informe o codigo: ");
 		codigo = scanner.nextLine();						
-		produto = produtoControlador.pesquisar(codigo);
-		if(produto != null){
-			nome = produto.getNome();
-			System.out.println(nome);
-			tipo = produto.getTipo();
-			System.out.println(tipo);
-			System.out.println("Informe o preco: ");
-			preco = Float.parseFloat(scanner.nextLine());
-			System.out.println("Informe a quantidade em estoque: ");
-			estoque = getInt(scanner);
+		try {
+			produto = produtoControlador.pesquisar(codigo);
+			if(produto != null){
+				nome = produto.getNome();
+				System.out.println(nome);
+				tipo = produto.getTipo();
+				System.out.println(tipo);
+				System.out.println("Informe o preco: ");
+				preco = Float.parseFloat(scanner.nextLine());
+				System.out.println("Informe a quantidade em estoque: ");
+				estoque = getInt(scanner);
 
-			Produto produtoNovo = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
-			produtoControlador.atualizar(produtoNovo);
-		}else{System.out.println("\n----------Produto nao existe----------\n");}
+				Produto produtoNovo = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
+				produtoControlador.atualizar(produtoNovo);
+			}
+		} catch (ProdutoNaoExisteException | ErroAoAtualizarException e) {
+	        System.out.println(e.getMessage());
+		}
+		
 	}
 
 	private static void removerProduto(Scanner scanner, ControladorProduto produtoControlador) {
@@ -486,7 +498,11 @@ public class Principal {
 		System.out.println("Informe o codigo: ");
 		codigo = scanner.nextLine();				
 
-		produtoControlador.remover(codigo);
+		try {
+			produtoControlador.remover(codigo);
+		} catch (ProdutoNaoExisteException | ErroAoRemoverException e) {
+          System.out.println(e.getMessage());
+		}
 	}
 
 	private static void cadastrarProduto(Scanner scanner, ControladorProduto produtoControlador) {
@@ -513,7 +529,11 @@ public class Principal {
 
 		produto = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
 
-		produtoControlador.cadastrar(produto);;
+		try {
+			produtoControlador.cadastrar(produto);
+		} catch (ProdutoJaCadastradoException | ErroAoSalvarException e) {
+			System.out.println(e.getMessage());
+		};
 	}
 
 	private static void menuAnimal(Scanner scanner, ControladorPessoa pessoaControlador,

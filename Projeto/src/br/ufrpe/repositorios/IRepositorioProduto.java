@@ -3,20 +3,27 @@
  * 
  * Tipo 1: IRepositorioProduto
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.repositorios;
 
+import java.util.ArrayList;
+
 import br.ufrpe.beans.Produto;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ProdutoJaCadastradoException;
+import br.ufrpe.excecoes.ProdutoNaoExisteException;
 import br.ufrpe.negocios.ControladorProduto;
 
 /**
  * Interface do RepositorioProduto
  * 
- * Lembrete: Como o RepositorioProduto não está finalizado, a interface também não está
+ * Lembrete: Como o RepositorioProduto nï¿½o estï¿½ finalizado, a interface tambï¿½m nï¿½o estï¿½
  * 
  * @author Diego
  *
@@ -26,9 +33,10 @@ import br.ufrpe.negocios.ControladorProduto;
 public interface IRepositorioProduto {
 	
 	int Size();
-	void cadastrar(Produto novo);
-	Produto buscar(String codigo);
-	void remover(String codigo);
-	void atualizarEstoque(Produto novo);
+	void cadastrar(Produto novo) throws ErroAoSalvarException, ProdutoJaCadastradoException;
+	Produto buscar(String codigo) throws ProdutoNaoExisteException;
+	void remover(String codigo) throws ErroAoRemoverException;
+	void atualizar(Produto novo) throws ProdutoNaoExisteException, ErroAoAtualizarException;
+	ArrayList<Produto> listarProduto();
 	
 }

@@ -2,22 +2,29 @@
  * Projeto PetShop
  * 
  * Tipo 1: RepositorioProduto
- * Tipo 2: IRepositorioProduto, descriçãp: interface
+ * Tipo 2: IRepositorioProduto, descriï¿½ï¿½p: interface
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.repositorios;
 
 import java.util.ArrayList;
+
+import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ProdutoJaCadastradoException;
+import br.ufrpe.excecoes.ProdutoNaoExisteException;
 
 /**
  * Este repositorio armazena dados sobre os produtos existentes na loja.
  * 
- * Lembrete: Repositorio incompleto, não foi feito a implementação de exceções
+ * Lembrete: Repositorio incompleto, nï¿½o foi feito a implementaï¿½ï¿½o de exceï¿½ï¿½es
  * 
  * @author Diego
  * 
@@ -32,7 +39,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		 repositorio = new ArrayList<>();
 	}
 	
-	public static synchronized IRepositorioProduto getInstance(){
+	public static IRepositorioProduto getInstance(){
 		if(unicInstanc == null){
 			unicInstanc = new RepositorioProduto();
 		}
@@ -53,28 +60,78 @@ public class RepositorioProduto implements IRepositorioProduto {
 		return -1;
 	}
 	
-	public void cadastrar(Produto novo){
-		repositorio.add(novo);
+	public void cadastrar(Produto novo) throws ErroAoSalvarException, ProdutoJaCadastradoException{
+		
+			boolean ok = true;
+			for(int i=0; i<this.repositorio.size();i++){
+				if(this.repositorio.get(i).equals(novo)){
+					ok = false;
+					break;
+				}
+			}
+			
+				if(!ok){
+					throw new ProdutoJaCadastradoException();
+				}
+				else if (!this.repositorio.add(novo)) {
+					throw new ErroAoSalvarException(novo);
+				}
+										
 	}
 	
-	public Produto buscar(String codigo){
+	public Produto buscar(String codigo) throws ProdutoNaoExisteException {
+		
 		int i = buscarI(codigo);
 		
 		if(i != -1){
 			return repositorio.get(i);			
-		}else{return null;}
+		}else{throw new ProdutoNaoExisteException();}
+	  
 	}
 	
-	public void remover(String codigo){
-		int i = buscarI(codigo);
+	public void remover(String codigo) throws ErroAoRemoverException{
 		
-		repositorio.remove(i);
+		
+		int i = buscarI(codigo);
+		if (i != -1){
+			repositorio.remove(i);
+		}
+		else{
+			throw new ErroAoRemoverException();
+		  }
+		
 	}
 	
-	public void atualizarEstoque(Produto novo){
+	public void atualizar(Produto novo) throws ProdutoNaoExisteException, ErroAoAtualizarException{
+		if(novo == null){
+			throw new ErroAoAtualizarException();
+		}
+		else{
 		int i = buscarI(novo.getCodigo());
-	
-		repositorio.get(i).setEstoque(novo.getEstoque());
-		repositorio.get(i).setPreco(novo.getPreco());
+	    if(i == -1){
+	    	throw new ProdutoNaoExisteException();
+	    }
+	    else{
+	    	repositorio.get(i).setNome(novo.getNome());
+			repositorio.get(i).setEstoque(novo.getEstoque());
+			repositorio.get(i).setPreco(novo.getPreco());
+	    	
+	    }
+	    
+		}
 	}
+	
+	public ArrayList<Produto> listarProduto(){
+		ArrayList<Produto> produtos = new ArrayList<>();
+		for(int i = 0; i < this.Size(); i++){
+			if(repositorio.get(i) != null){
+				produtos.add(repositorio.get(i));
+			}
+			
+		}
+		return produtos;
+	}
+	
+	
+	
 }

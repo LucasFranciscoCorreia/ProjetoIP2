@@ -3,15 +3,15 @@
  * 
  * Tipo: Produto
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.beans;
 
 /**
- * Esta classe representa o basico de um produto, ela é do tipo abstrata, por que não é preciso instanciar um produto
+ * Esta classe representa o basico de um produto, ela Ã© do tipo abstrata, por que nÃ£o Ã© preciso instanciar um produto
  * em si, mas sim, seu tipo, por exemplo, acessorio. 
  * 
  * @author Diego 
@@ -66,7 +66,7 @@ public abstract class Produto {
 		this.estoque = estoque;
 	}	
 	public String toString(){
-		String prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
+		String prod = String.format("Nome: %s \nPreÃ§o: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
 		return prod;  
 	}
 

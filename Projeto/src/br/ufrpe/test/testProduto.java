@@ -5,6 +5,10 @@ import java.time.LocalDate;
 import br.ufrpe.beans.Acessorio;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Remedio;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ProdutoJaCadastradoException;
+import br.ufrpe.excecoes.ProdutoNaoExisteException;
 import br.ufrpe.negocios.ControladorProduto;
 import br.ufrpe.repositorios.RepositorioProduto;
 
@@ -28,12 +32,21 @@ public class testProduto {
 		
 		System.out.println("--------------------------------------");
 		System.out.println("Cadastrar: ");
+		try{
 		controladorProduto.cadastrar(a);
 		controladorProduto.cadastrar(b);
 		controladorProduto.cadastrar(c);
+		}
+		catch(ErroAoSalvarException | ProdutoJaCadastradoException e){
+			
+		}
 		System.out.println("----------------------------------------");
 		System.out.println("Remover: ");
-		controladorProduto.remover("1234-5");
+		try {
+			controladorProduto.remover("1234-5");
+		} catch (ProdutoNaoExisteException | ErroAoRemoverException e) {
+			
+		}
 		System.out.println("----------------------------------------");
 		
 	}	

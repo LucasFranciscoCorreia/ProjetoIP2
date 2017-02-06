@@ -82,7 +82,7 @@ public class ControladorPessoa implements IControladorPessoa {
 	}
 	
 	/**
-	 * Remove uma pessoa por vez do sistema, utilizando o cpf da pessoa que ser� removida
+	 * Remove uma pessoa por vez do sistema, utilizando o cpf da pessoa que será removida
 	 * 
 	 * @param cpf
 	 * 

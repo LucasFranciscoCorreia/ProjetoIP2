@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo: ControladorProduto
- * Tipo 2: IControladorProduto, descrição: interface
+ * Tipo 2: IControladorProduto, descriï¿½ï¿½o: interface
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -13,7 +13,16 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.repositorios.IRepositorioProduto;
+
+import java.util.ArrayList;
+
+import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ProdutoJaCadastradoException;
+import br.ufrpe.excecoes.ProdutoNaoExisteException;
 
 public class ControladorProduto implements IControladorProduto{
 	private IRepositorioProduto repositorioProduto;
@@ -22,40 +31,70 @@ public class ControladorProduto implements IControladorProduto{
 		repositorioProduto = instance;
 	}
 	
-	public void cadastrar(Produto produto){
+	public void cadastrar(Produto produto) throws ProdutoJaCadastradoException, ErroAoSalvarException{
 		if(produto != null){
+			try {
 			if(repositorioProduto.buscar(produto.getCodigo()) == null){
-				repositorioProduto.cadastrar(produto);
+						
+			}else{throw new ProdutoJaCadastradoException();}}
+			catch (ProdutoNaoExisteException e) {
 				System.out.println("\t*****Produto cadastrado com sucesso*****");
-			}else{System.out.println("\t*****Produto ja cadastrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida*****");}
+				repositorioProduto.cadastrar(produto); }			
+			
+		}else{throw new ErroAoSalvarException(produto);}
 	}
 	
-	public void remover(String codigo){
+	public void remover(String codigo) throws ProdutoNaoExisteException, ErroAoRemoverException{
 		if(codigo != null){
-			if(repositorioProduto.buscar(codigo) != null){
+			
+				if(repositorioProduto.buscar(codigo) != null){
 				repositorioProduto.remover(codigo);
 				System.out.println("\t*****Produto removido com sucesso*****");
-			}else{System.out.println("\t*****Produto nao encontrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida*****");}
+				}
+			
+			
+		}else{throw new ErroAoRemoverException();}
 	}
+
 	
-	public Produto pesquisar(String codigo){
+	public Produto pesquisar(String codigo) throws ProdutoNaoExisteException{
 		if(codigo != null){
-			if(repositorioProduto.buscar(codigo) != null){
-				return repositorioProduto.buscar(codigo);
-			}else{System.out.println("\t*****Produto nao encontrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida*****");}
+			
+				if(repositorioProduto.buscar(codigo) != null){
+					return repositorioProduto.buscar(codigo);
+				
+			}
+				
+					
+		}else{throw new ProdutoNaoExisteException();}
 		return null;
 	}
 	
-	public void atualizar(Produto produto){
+	public void atualizar(Produto produto) throws ProdutoNaoExisteException, ErroAoAtualizarException{
 		if(produto != null){
 			String codigo = produto.getCodigo();
+			
 			if(repositorioProduto.buscar(codigo) != null){
-				repositorioProduto.atualizarEstoque(produto);
+				repositorioProduto.atualizar(produto);
 				System.out.println("\t*****Produto atualizado com sucesso*****");
-			}else{System.out.println("\t*****Produto nao encontrado*****");}
-		}else{System.out.println("\t*****Entrada Invalida*****");}
+			   }
+			
+			
+		}else{throw new ErroAoAtualizarException();}
 	}
+	
+	public String listarProduto(){
+		ArrayList<Produto> produtos = repositorioProduto.listarProduto();
+		if(repositorioProduto.Size() == 0){
+			return "Nao existem produtos cadastrados no sistema!";
+		}else{
+			String resultado = "";
+			for(int i = 0; i < repositorioProduto.Size(); i++){
+				resultado += produtos.get(i).toString() + "\n\n";
+			}
+			return resultado;
+		}
+	}
+	
+	
 }
