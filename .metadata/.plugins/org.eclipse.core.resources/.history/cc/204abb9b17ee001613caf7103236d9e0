@@ -1,0 +1,19 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.repositorios.IRepositorioAnimal;
+import br.ufrpe.repositorios.IRepositorioProduto;
+import br.ufrpe.repositorios.*;
+/* Facade */
+
+public class FachadaControlador {
+	private ControladorAnimal controladorAnimal;
+	private ControladorPessoa controladorPessoa;
+	private ControladorProduto controladorProduto;
+	
+	public FachadaControlador(IRepositorioAnimal instanceAnimal, IRepositorioProduto instanceProduto, IRepositorioPessoa instancePessoa ){
+		this.controladorAnimal = new ControladorAnimal(instanceAnimal);
+		this.controladorProduto = new ControladorProduto(instanceProduto );
+		this.controladorPessoa = new ControladorPessoa(instancePessoa);
+	}
+
+}
