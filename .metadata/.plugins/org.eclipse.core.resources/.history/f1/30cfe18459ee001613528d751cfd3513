@@ -13,7 +13,6 @@ import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.AnimalJaExisteException;
-import br.ufrpe.excecoes.CaracterInvalidoException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;

@@ -1,0 +1,13 @@
+package br.ufrpe.beans;
+import br.ufrpe.beans.Produto;
+import java.util.ArrayList;
+public class Carrinho {
+	private ArrayList <Produto> arrayDeProdutos;
+	private ArrayList <Integer> arrayDeQuantidade;
+	public Carrinho(){
+		
+		this.arrayDeProdutos = new ArrayList<Produto>();
+	}
+	
+	public 
+}

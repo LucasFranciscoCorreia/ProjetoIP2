@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 0 elements to &apos;Projeto/src/br.ufrpe.excecoes&apos;&#x0A;- Destination element: &apos;Projeto/src/br.ufrpe.excecoes&apos;&#x0A;- Update references to refactored element" description="Move compilation units" destination="=Projeto/src&lt;br.ufrpe.excecoes" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1486597893043" units="0" version="1.0"/>
+</session>

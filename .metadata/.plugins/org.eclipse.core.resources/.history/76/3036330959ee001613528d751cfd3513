@@ -14,14 +14,8 @@ public class Carrinho {
 		this.arrayDeQuantidade = new ArrayList<Integer>();
 	}
 	
-	public void adicionarAoCarrinho(int quantidade, Produto produto){
+	public void AdicionarAoCarrinho(int quantidade, Produto produto){
 		this.arrayDeProdutos.add(produto);
 		this.arrayDeQuantidade.add(quantidade);
 	}
-	
-	public void removerDoCarrinho(Produto produto){
-		this.arrayDeProdutos.remove(produto);
-		this.arrayDeQuantidade.remove(this.arrayDeProdutos.indexOf(produto));
-	}
-
 }
