@@ -16,4 +16,11 @@ public class Loja {
 	}
 	
 	
+		// TODO RealizarCompra(AL produto, AL quantidade)
+		/**
+		 * repositorioProduto.remove
+		 * caixa.addDinheiro
+		 */
+
+	
 }
