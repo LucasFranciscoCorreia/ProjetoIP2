@@ -1,3 +1,4 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\n<messages>\n<message>Loja &quot;come\u00E7ada&quot;</message>\n<message>Carrinho em SIngleton</message>\n<message>Carrinho posto em SIngleton, com erro que n\u00E3o compreendo.</message>\n<message>Coment\u00E1rios do Carrinho</message>\n<message>Mudei uma exeption que estava fora do package pra dentro.</message>\n<message>Mudei uma exeption que tava fora do package pra dentro</message>\n<message>Carrinho come\u00E7ado</message>\n<message>Atualiza\u00E7\u00E3o </message>\n</messages>
 eclipse.preferences.version=1
 resourcehistory_graph_split=500,500
 resourcehistory_rev_split=700,300

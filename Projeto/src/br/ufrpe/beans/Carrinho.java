@@ -30,10 +30,10 @@ public class Carrinho {
 		this.arrayDeQuantidade = new ArrayList<Integer>();
 	}
 	public static Carrinho  getInstance(){
-		if(this.carrinho == null){
-			this.carrinho = new Carrinho();
+		if(carrinho == null){
+			carrinho = new Carrinho();
 		}
-		return this.Carrinho();
+		return carrinho;
 		
 	}
 	/**
