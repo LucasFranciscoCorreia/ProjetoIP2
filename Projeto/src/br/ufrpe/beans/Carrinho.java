@@ -11,19 +11,30 @@ import java.util.ArrayList;
 public class Carrinho {
 	// Um array de produto e outro pra quantidade?
 	//Carrinho deve ser singleton?
-	
+	//Carrinho pode ser protected (construtor)?
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;
+	private static Carrinho carrinho;
+	
 	/**
-	 * Construtor de Carrinho, apenas iinicializa os dois ArrayLists
+	 * Construtor de Carrinho, apenas inicializa os dois ArrayLists
+	 * caso não haja um carrinho inicializado.
+	 * Singleton
 	 * 
 	 * @param arrayDeProdutos
 	 * @param arrayDeQuantidade
 	 */
-	public Carrinho(){
+	private Carrinho(){
 		
 		this.arrayDeProdutos = new ArrayList<Produto>();
 		this.arrayDeQuantidade = new ArrayList<Integer>();
+	}
+	public static Carrinho  getInstance(){
+		if(this.carrinho == null){
+			this.carrinho = new Carrinho();
+		}
+		return this.Carrinho();
+		
 	}
 	/**
 	 * Este método adicona o produto selecionado do ArrayList de Produtos no carrinho
