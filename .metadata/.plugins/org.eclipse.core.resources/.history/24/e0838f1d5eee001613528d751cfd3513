@@ -14,7 +14,7 @@ public class Carrinho {
 	//Carrinho pode ser protected (construtor)?
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;
-	private static Carrinho carrinho;
+	private  Carrinho carrinho;
 	
 	/**
 	 * Construtor de Carrinho, apenas inicializa os dois ArrayLists
@@ -30,10 +30,10 @@ public class Carrinho {
 		this.arrayDeQuantidade = new ArrayList<Integer>();
 	}
 	public static Carrinho  getInstance(){
-		if(carrinho == null){
-			carrinho = new Carrinho();
+		if(this.carrinho == null){
+			this.carrinho = new Carrinho();
 		}
-		return carrinho;
+		return this.Carrinho();
 		
 	}
 	/**

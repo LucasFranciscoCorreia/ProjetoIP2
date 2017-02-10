@@ -29,11 +29,11 @@ public class Carrinho {
 		this.arrayDeProdutos = new ArrayList<Produto>();
 		this.arrayDeQuantidade = new ArrayList<Integer>();
 	}
-	public static Carrinho  getInstance(){
-		if(carrinho == null){
-			carrinho = new Carrinho();
+	public static Carrinho  Carrinho(){
+		if(this.carrinho == null){
+			this.carrinho = new Carrinho();
 		}
-		return carrinho;
+		return this.Carrinho();
 		
 	}
 	/**

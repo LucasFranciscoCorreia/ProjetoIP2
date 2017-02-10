@@ -1,6 +1,6 @@
 package br.ufrpe.beans;
 import br.ufrpe.beans.Carrinho;
-
+import br.ufrpe.repositorios.RepositorioProduto;
 /**
  * Esta Classe representa a loja (serviço) fornecida pelo sistema da petShop.
  * Nela o usuário pode efetuar as compras feitas pelos clientes, armazenar as compras realizadas e creditar no caixa.
@@ -14,13 +14,4 @@ public class Loja {
 	public Loja(){
 		this.carrinho = carrinho.getInstance(); 
 	}
-	
-	
-		// TODO RealizarCompra(AL produto, AL quantidade)
-		/**
-		 * repositorioProduto.remove
-		 * caixa.addDinheiro
-		 */
-
-	
 }

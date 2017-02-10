@@ -14,13 +14,4 @@ public class Loja {
 	public Loja(){
 		this.carrinho = carrinho.getInstance(); 
 	}
-	
-	
-		// TODO RealizarCompra(AL produto, AL quantidade)
-		/**
-		 * repositorioProduto.remove
-		 * caixa.addDinheiro
-		 */
-
-	
 }

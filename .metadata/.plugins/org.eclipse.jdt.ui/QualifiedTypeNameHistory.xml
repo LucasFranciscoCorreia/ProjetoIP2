@@ -14,5 +14,12 @@
 <fullyQualifiedTypeName name="br.ufrpe.beans.Cliente"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Login"/>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="javafx.scene.control.Label"/>
+=======
+<fullyQualifiedTypeName name="br.ufrpe.beans.Produto"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioProduto"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Carrinho"/>
+>>>>>>> master
 </qualifiedTypeNameHistroy>
