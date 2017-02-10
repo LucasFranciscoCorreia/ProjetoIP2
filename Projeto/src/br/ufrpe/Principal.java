@@ -252,8 +252,6 @@ public class Principal {
 			System.out.print("Informe o CPF: ");
 			cpf = scanner.nextLine();
 			
-			Pessoa testeDeVerificacao = pessoaControlador.buscar(cpf);
-			
 			funcionario = new Funcionario(cpf);
 			
 			System.out.print("\n1.Atualizar Endereco\n"
@@ -1023,6 +1021,7 @@ public class Principal {
 		System.out.print("Digite a senha: ");
 		int senha = getInt(scanner);
 		boolean ok = pessoaControlador.login(login, senha);
+		System.out.println(pessoaControlador.login(login, senha));
 		if(ok == true){
 			System.out.println("Bem vindo " + login);
 		}else{

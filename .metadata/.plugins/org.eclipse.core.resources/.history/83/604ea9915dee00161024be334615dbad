@@ -1,0 +1,16 @@
+package br.ufrpe.GUI.model;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class LoginController extends Application {
+
+	@Override
+	public void start(Stage primaryStage) {
+		
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

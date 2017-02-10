@@ -1,0 +1,15 @@
+package br.ufrpe.GUI.model;
+
+import br.ufrpe.GUI.PrincipalGui;
+import javafx.application.Application;
+
+public class MenuController {
+	private PrincipalGui main;
+	
+	private void inicialize(){
+		
+	}
+	public void setMain(PrincipalGui main){
+		this.main = main;
+	}
+}

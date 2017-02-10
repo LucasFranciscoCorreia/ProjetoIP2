@@ -1,0 +1,52 @@
+package br.ufrpe.GUI.model;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+
+import br.ufrpe.beans.Endereco;
+import br.ufrpe.beans.Funcionario;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.negocios.ControladorPessoa;
+import br.ufrpe.repositorios.RepositorioPessoa;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+public class LoginController implements Initializable{
+	@FXML
+	private JFXPasswordField password;
+	@FXML
+	private JFXTextField login;
+	@FXML
+	private JFXButton okButton;
+	
+	public LoginController(){
+		
+	}
+	@FXML
+	public void realizarLogin(ActionEvent evt){
+		ControladorPessoa p = new ControladorPessoa(RepositorioPessoa.getInstance());
+		Pessoa lucas = new Funcionario("Lucas", "101.575.184-93",new Endereco(), 3500, LocalDate.of(1996, 7, 26), "Balconista");
+		Pessoa diego = new Funcionario("Diego", "108.332.834-48",new Endereco(), 3500, LocalDate.of(1997, 4, 24), "Balconista");
+		Pessoa fernanda = new Funcionario("Fernanda", "xxx.xxx.xxx-yy",new Endereco(), 3500, LocalDate.of(1997, 4, 25), "Balconista");
+		Pessoa raissa = new Funcionario("Raissa", "xxx.xxx.xxx-yx",new Endereco(), 3500, LocalDate.of(1998, 4,22), "Balconista");
+		boolean ok = true;
+		do{
+			ok = p.login(login.getText(), Integer.parseInt(password.getText()));
+		}while(ok);
+		JOptionPane.showMessageDialog(null, "OK");
+		System.exit(0);
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+	}
+	
+}

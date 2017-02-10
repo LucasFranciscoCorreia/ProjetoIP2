@@ -1,0 +1,18 @@
+package br.ufrpe.GUI.model;
+import javafx.application.Application;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+public class ErrorMessageController extends Application {
+	private Label ErrorMessage;
+	@Override
+	public void start(Stage primaryStage) {
+		
+	}
+	public ErrorMessageController(String txt){
+		ErrorMessage.setText(txt);
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

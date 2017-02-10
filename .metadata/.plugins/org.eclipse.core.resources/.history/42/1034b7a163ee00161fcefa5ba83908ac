@@ -1,0 +1,34 @@
+package br.ufrpe.GUI.model;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+public class LoginController implements Initializable{
+	@FXML
+	private JFXPasswordField password;
+	@FXML
+	private JFXTextField login;
+	@FXML
+	private JFXButton okButton;
+	
+	public LoginController(){
+		
+	}
+	@FXML
+	public void realizarLogin(ActionEvent evt){
+		if(login)
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+	}
+	
+}

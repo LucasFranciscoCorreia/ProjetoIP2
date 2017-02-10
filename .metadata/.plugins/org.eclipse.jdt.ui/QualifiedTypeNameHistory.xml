@@ -14,4 +14,5 @@
 <fullyQualifiedTypeName name="br.ufrpe.beans.Cliente"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Login"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Label"/>
 </qualifiedTypeNameHistroy>

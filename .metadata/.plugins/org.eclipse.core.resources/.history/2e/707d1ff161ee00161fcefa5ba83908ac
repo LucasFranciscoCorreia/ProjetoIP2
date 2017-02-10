@@ -1,0 +1,10 @@
+package br.ufrpe.GUI.model;
+
+import br.ufrpe.GUI.PrincipalGui;
+import javafx.application.Application;
+
+public class MenuController extends Application {
+	private PrincipalGui main;
+	
+	
+}
