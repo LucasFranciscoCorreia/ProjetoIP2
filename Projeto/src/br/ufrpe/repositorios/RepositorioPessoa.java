@@ -28,7 +28,7 @@ import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * RepositorioPessoa armazena todas as pessoas, independentes do tipo, 
@@ -189,12 +189,12 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	 * 
 	 * @param cpf
 	 * 
-	 * @exception ObjectoNaoExisteException		Exception levantada quando
+	 * @exception ObjectNaoExisteException		Exception levantada quando
 	 * o metodo buscar nao encontra a pessoa no array.
 	 * 
 	 * @return 	Pessoa com o cpf informado
 	 */
-	public Pessoa buscar(String cpf) throws ObjectoNaoExisteException{
+	public Pessoa buscar(String cpf) throws ObjectNaoExisteException{
 		if(cpf == null){
 			throw new IllegalArgumentException("CPF inválido!");
 		}else{
@@ -203,7 +203,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			if(indice != -1){
 				return this.repositorio.get(indice);
 			}else{
-				throw new ObjectoNaoExisteException();
+				throw new ObjectNaoExisteException();
 			}
 		}		
 	}
@@ -305,7 +305,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	 * 
 	 * @param pessoa				Pessoa que tera seus dados atualizados
 	 * 
-	 * @exception ObjectoNaoExisteException			Exception levantada quando
+	 * @exception ObjectNaoExisteException			Exception levantada quando
 	 * o metodo de pesquisa retorna -1
 	 * @exception ErroAoAtualizarException			Exception levantada se a Pessoa
 	 * nao for Cliente e nem Funcionario
@@ -313,7 +313,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	 * @see Cliente
 	 * @see Funcionario
 	 */
-	public void atualizar(Pessoa pessoa) throws ObjectoNaoExisteException, 
+	public void atualizar(Pessoa pessoa) throws ObjectNaoExisteException, 
 			ErroAoAtualizarException{
 		if(pessoa == null){
 			throw new IllegalArgumentException("Erro ao atualizar!");
@@ -321,7 +321,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			int indice = buscarIndice(pessoa.getCpf());
 			
 			if(indice == -1){
-				throw new ObjectoNaoExisteException();
+				throw new ObjectNaoExisteException();
 			}else{
 				if(pessoa instanceof Funcionario){
 					if(((Funcionario) pessoa).getCargo() != null){

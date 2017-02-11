@@ -12,8 +12,8 @@ package br.ufrpe.repositorios;
 
 import br.ufrpe.beans.Animal;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * Interface do RepositorioAnimal
@@ -29,13 +29,13 @@ import br.ufrpe.excecoes.ObjectoNaoExisteException;
  */
 public interface IRepositorioAnimal {
 	
-	int buscarIndice(Animal bus) throws ObjectoJaExisteException;
+	int buscarIndice(Animal bus) throws ObjectJaExisteException;
 	int buscarIndice(String codigo) throws CodigoNaoExisteException;
 	int size();
-	boolean remover(Animal antigo) throws ObjectoNaoExisteException;
-	boolean atualizar(Animal antigo, Animal novo) throws ObjectoNaoExisteException, ObjectoJaExisteException;
+	boolean remover(Animal antigo) throws ObjectNaoExisteException;
+	boolean atualizar(Animal antigo, Animal novo) throws ObjectNaoExisteException, ObjectJaExisteException;
 	boolean remover(String codigo)throws CodigoNaoExisteException;
-	void adicionar(Animal novo)throws ObjectoJaExisteException;
+	void adicionar(Animal novo)throws ObjectJaExisteException;
 	Animal getPet(int i);
 	Animal buscar(String codigo) throws CodigoNaoExisteException;
 	Animal recuperar(String cpf, String raca);	

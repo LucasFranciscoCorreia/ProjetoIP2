@@ -8,8 +8,8 @@ import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.*;
 /* Facade */
 
@@ -24,7 +24,7 @@ public class FachadaControlador {
 		this.controladorPessoa = new ControladorPessoa(instancePessoa);
 	}
 
-	public void cadastrar(Animal novo) throws ObjectoJaExisteException {
+	public void cadastrar(Animal novo) throws ObjectJaExisteException {
 		controladorAnimal.cadastrar(novo);
 	}
 
@@ -32,7 +32,7 @@ public class FachadaControlador {
 		controladorAnimal.remover(codigo);
 	}
 
-	public void atualizar(Animal novo, Animal antigo) throws ObjectoJaExisteException, ObjectoNaoExisteException {
+	public void atualizar(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException {
 		controladorAnimal.atualizar(novo, antigo);
 	}
 
@@ -53,7 +53,7 @@ public class FachadaControlador {
 	}
 
 	public void cadastrar(Pessoa novo)
-			throws ObjectoNaoExisteException, ErroAoSalvarException, ObjectoJaExisteException {
+			throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException {
 		controladorPessoa.cadastrar(novo);
 	}
 
@@ -73,7 +73,7 @@ public class FachadaControlador {
 		return controladorPessoa.size();
 	}
 
-	public void atualizar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoAtualizarException {
+	public void atualizar(Pessoa novo) throws ObjectNaoExisteException, ErroAoAtualizarException {
 		controladorPessoa.atualizar(novo);
 	}
 
@@ -89,11 +89,11 @@ public class FachadaControlador {
 		return controladorPessoa.login(login, senha);
 	}
 
-	public void cadastrar(Produto produto) throws ObjectoJaExisteException, ErroAoSalvarException {
+	public void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException {
 		controladorProduto.cadastrar(produto);
 	}
 
-	public void atualizar(Produto produto) throws ObjectoNaoExisteException, ErroAoAtualizarException {
+	public void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException {
 		controladorProduto.atualizar(produto);
 	}
 

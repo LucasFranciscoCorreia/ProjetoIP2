@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import br.ufrpe.repositorios.IRepositorioAnimal;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * Est� classe � utilizada para armazenar futuros animais cadastrados no sistema, nela
@@ -108,14 +108,14 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		}
 	}
 	
-	public int buscarIndice(Animal bus) throws ObjectoJaExisteException{
+	public int buscarIndice(Animal bus) throws ObjectJaExisteException{
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i).equals(bus)){ //Duvida: deve-se manter esse return dentro do laço?
 				return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
 			}				//usar um if depois dele (if i > -1)
 		}				//Como fiz no metodo abaixo:
 		String m = "Animal nao existe: "+bus.toString();
-		throw new ObjectoJaExisteException();
+		throw new ObjectJaExisteException();
 		
 	}
 	public int buscarIndice(String codigo) throws CodigoNaoExisteException{
@@ -137,7 +137,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		return rep.size();
 	}
 	
-	public void adicionar(Animal novo) throws ObjectoJaExisteException{
+	public void adicionar(Animal novo) throws ObjectJaExisteException{
 		boolean ok = false;
 		if (novo != null) {
 			ok = true;
@@ -156,7 +156,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 			}
 			else{
 				String m = "Animal Ja Existente: "+novo.getCodigo();
-				throw new ObjectoJaExisteException();
+				throw new ObjectJaExisteException();
 			}
 		}
 		
@@ -169,13 +169,13 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		return null;
 	}
 	
-	public boolean remover(Animal antigo) throws ObjectoNaoExisteException{
+	public boolean remover(Animal antigo) throws ObjectNaoExisteException{
 		boolean ok = false;
 		int i = -1;
 		
 		try {
 			i = buscarIndice(antigo);
-		} catch (ObjectoJaExisteException e) {
+		} catch (ObjectJaExisteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -193,7 +193,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 			this.rep.add(novo);
 		}
 	}
-	public boolean atualizar(Animal antigo, Animal novo) throws ObjectoJaExisteException, ObjectoNaoExisteException{
+	public boolean atualizar(Animal antigo, Animal novo) throws ObjectJaExisteException, ObjectNaoExisteException{
 		boolean ok = false;
 		int i = this.buscarIndice(antigo);
 		if(i != -1){

@@ -19,8 +19,8 @@ import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.IRepositorioPessoa;
 
 public class ControladorPessoa implements IControladorPessoa {
@@ -48,7 +48,7 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * 
 	 * @see Pessoa
 	 */
-	public Pessoa buscar(String cpf) throws ObjectoNaoExisteException{
+	public Pessoa buscar(String cpf) throws ObjectNaoExisteException{
 		if(cpf == null){
 			throw new IllegalArgumentException("CPF invalido!");
 		}else{
@@ -66,16 +66,16 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * @exception ErroAoSalvarException						Possiveis erros de escrita
 	 * @exception PessoaJaCadastradaException				Pessoa j� se encontra no sistema
 	 */
-	public void cadastrar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoSalvarException, ObjectoJaExisteException{
+	public void cadastrar(Pessoa novo) throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException{
 		if(novo == null){
 			throw new IllegalArgumentException("Pessoa invalida!");
 		}else{
 			try{
 				Pessoa pesquisado = repositorio.buscar(novo.getCpf());
 				if(pesquisado != null){
-					throw new ObjectoJaExisteException();					
+					throw new ObjectJaExisteException();					
 				}
-			}catch(ObjectoNaoExisteException E){
+			}catch(ObjectNaoExisteException E){
 				repositorio.cadastrar(novo);
 			}		
 		}
@@ -89,7 +89,7 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * @exception PessoaNaoExisteException				Pessoa n�o existe no sistema
 	 * @exception ErroAoRemoverException				Erro ao remover
 	 */
-	public void remover(String cpf) throws ObjectoNaoExisteException, ErroAoRemoverException{
+	public void remover(String cpf) throws ObjectNaoExisteException, ErroAoRemoverException{
 		if(cpf == null){
 			throw new IllegalArgumentException("CPF invalido!");
 		}else{
@@ -159,10 +159,10 @@ public class ControladorPessoa implements IControladorPessoa {
 	/**
 	 * Atualiza informa��es de uma pessoa
 	 * 
-	 * @exception ObjectoNaoExisteException				Pessoa n�o est� no sistema, impossivel fazer altera��o
+	 * @exception ObjectNaoExisteException				Pessoa n�o est� no sistema, impossivel fazer altera��o
 	 * @exception ErroAoAtualizarException				
 	 */
-	public void atualizar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoAtualizarException{
+	public void atualizar(Pessoa novo) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		if(novo == null){
 			throw new IllegalArgumentException("Pessoa invalida!");
 		}else{

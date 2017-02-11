@@ -14,8 +14,8 @@ import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * Esta � a interface do ControladorPessoa
@@ -33,14 +33,14 @@ import br.ufrpe.excecoes.ObjectoNaoExisteException;
  */
 public interface IControladorPessoa {
 	
-	void cadastrar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoSalvarException, ObjectoJaExisteException;
-	public Pessoa buscar(String cpf) throws ObjectoNaoExisteException; 
-	void atualizar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoAtualizarException;
+	void cadastrar(Pessoa novo) throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException;
+	public Pessoa buscar(String cpf) throws ObjectNaoExisteException; 
+	void atualizar(Pessoa novo) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	String listar();
 	String listarFuncionario();
 	String listarCLiente();
 	int size();
 	int sizeCliente();
 	int sizeFuncionario();
-	void remover(String cpf) throws ObjectoNaoExisteException, ErroAoRemoverException;
+	void remover(String cpf) throws ObjectNaoExisteException, ErroAoRemoverException;
 }

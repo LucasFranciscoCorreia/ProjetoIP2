@@ -19,7 +19,7 @@ import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.ControladorPessoa;
 
 /**
@@ -49,8 +49,8 @@ public interface IRepositorioPessoa {
 	ArrayList<Cliente> listarCliente();
 	boolean checarLogin(Login log);
 	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
-	Pessoa buscar(String cpf) throws ObjectoNaoExisteException;
+	Pessoa buscar(String cpf) throws ObjectNaoExisteException;
 	void remover(String cpf) throws ErroAoRemoverException;
-	void atualizar(Pessoa p) throws ObjectoNaoExisteException, ErroAoAtualizarException;
+	void atualizar(Pessoa p) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	void salvarNoArquivo();
 }

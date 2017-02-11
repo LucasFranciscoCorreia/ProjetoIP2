@@ -12,15 +12,13 @@ import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.excecoes.CaracterInvalidoException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.PessoaJaCadastradaException;
-import br.ufrpe.excecoes.PessoaNaoExisteException;
-import br.ufrpe.excecoes.ProdutoJaCadastradoException;
-import br.ufrpe.excecoes.ProdutoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.ControladorAnimal;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.ControladorProduto;
@@ -99,7 +97,7 @@ public class Principal {
 
 	private static void menu(Scanner scanner, ControladorAnimal animalControlador, 
 			ControladorProduto produtoControlador,ControladorPessoa pessoaControlador) 
-					throws PessoaNaoExisteException, PessoaJaCadastradaException, 
+					throws ObjectNaoExisteException, ObjectJaExisteException, 
 					ErroAoRemoverException, ErroAoSalvarException, ErroAoAtualizarException{
 		char op;
 		do {
@@ -146,7 +144,7 @@ public class Principal {
 	private static void menuPetShop(Scanner scanner) {
 		
 	}
-	private static void menuPessoa(Scanner scanner, ControladorPessoa pessoaControlador) throws PessoaNaoExisteException {
+	private static void menuPessoa(Scanner scanner, ControladorPessoa pessoaControlador) throws ObjectNaoExisteException {
 		char op;
 		do{
 			System.out.print("########################## MENU ##########################\n");
@@ -178,17 +176,17 @@ public class Principal {
 		System.out.println(pessoaControlador.listar());
 	}
 
-	private static void pesquisarPessoa(String cpf, ControladorPessoa pessoaControlador) throws PessoaNaoExisteException{
+	private static void pesquisarPessoa(String cpf, ControladorPessoa pessoaControlador) throws ObjectNaoExisteException{
 		try{
 			Pessoa pessoa = pessoaControlador.buscar(cpf);
 			System.out.println(pessoa.toString());
-		}catch(PessoaNaoExisteException E){
+		}catch(ObjectNaoExisteException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
-	private static void menuFuncionario(Scanner scanner, ControladorPessoa pessoaControlador) throws PessoaNaoExisteException,
-	ErroAoRemoverException, ErroAoSalvarException, ErroAoAtualizarException, PessoaJaCadastradaException{
+	private static void menuFuncionario(Scanner scanner, ControladorPessoa pessoaControlador) throws ObjectNaoExisteException,
+	ErroAoRemoverException, ErroAoSalvarException, ErroAoAtualizarException, ObjectJaExisteException{
 		char op2;
 		do{
 			System.out.println("\n########################## Funcionario ##########################");
@@ -229,7 +227,7 @@ public class Principal {
 	}
 
 	private static void pesquisarFuncionario(Scanner scanner, ControladorPessoa pessoaControlador)
-		throws PessoaNaoExisteException{
+		throws ObjectNaoExisteException{
 		String cpf;
 		try{
 			System.out.println("Informe o cpf: ");
@@ -237,13 +235,13 @@ public class Principal {
 			
 			Pessoa funcionario = pessoaControlador.buscar(cpf); 
 			System.out.println("\n\n" + ((Funcionario) funcionario) + "\n");			
-		}catch(IllegalArgumentException | PessoaNaoExisteException I){
+		}catch(IllegalArgumentException | ObjectNaoExisteException I){
 			System.out.println(I.getMessage());
 		}
 	}
 
 	private static void atualizarFuncionario(Scanner scanner, ControladorPessoa pessoaControlador) 
-			throws ErroAoAtualizarException, PessoaNaoExisteException{
+			throws ErroAoAtualizarException, ObjectNaoExisteException{
 		char op3;
 		String cpf;
 		Pessoa funcionario;
@@ -275,13 +273,13 @@ public class Principal {
 				System.out.println("\n\n----------Opcao Invalida----------\n");
 				break;							
 			}			
-		}catch(IllegalArgumentException | PessoaNaoExisteException E){
+		}catch(IllegalArgumentException | ObjectNaoExisteException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void atualizarSalarioFuncionario(Scanner scanner, ControladorPessoa pessoaControlador,
-			Pessoa funcionario) throws PessoaNaoExisteException, ErroAoAtualizarException{
+			Pessoa funcionario) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		double salario;
 		try{
 			System.out.println("Informe o salario: ");
@@ -289,13 +287,13 @@ public class Principal {
 			((Funcionario) funcionario).setSalario(salario);
 			
 			pessoaControlador.atualizar(funcionario);
-		}catch(IllegalArgumentException | PessoaNaoExisteException | ErroAoAtualizarException E){
+		}catch(IllegalArgumentException | ObjectNaoExisteException | ErroAoAtualizarException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void atualizarCargoFuncionario(Scanner scanner, ControladorPessoa pessoaControlador,
-			Pessoa funcionario) throws PessoaNaoExisteException, ErroAoAtualizarException{
+			Pessoa funcionario) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		String cargo;
 		try{
 			System.out.println("Informe o cargo: ");
@@ -303,13 +301,13 @@ public class Principal {
 			((Funcionario) funcionario).setCargo(cargo);
 			
 			pessoaControlador.atualizar(funcionario);
-		}catch(IllegalArgumentException | PessoaNaoExisteException | ErroAoAtualizarException E){
+		}catch(IllegalArgumentException | ObjectNaoExisteException | ErroAoAtualizarException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void atualizarEnderecoFuncionario(Scanner scanner, ControladorPessoa pessoaControlador, 
-			Pessoa funcionario) throws ErroAoAtualizarException, PessoaNaoExisteException{
+			Pessoa funcionario) throws ErroAoAtualizarException, ObjectNaoExisteException{
 		String rua;
 		String complemento;
 		String cidadeUF;
@@ -331,13 +329,13 @@ public class Principal {
 			end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 			((Funcionario) funcionario).setEnd(end);
 			pessoaControlador.atualizar(funcionario);
-		}catch(IllegalArgumentException | PessoaNaoExisteException | ErroAoAtualizarException E){
+		}catch(IllegalArgumentException | ObjectNaoExisteException | ErroAoAtualizarException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void removerFuncionario(Scanner scanner, ControladorPessoa pessoaControlador) 
-			throws ErroAoRemoverException, PessoaNaoExisteException{
+			throws ErroAoRemoverException, ObjectNaoExisteException{
 		String cpf;
 		try{
 			System.out.print("Informe o CPF: ");
@@ -345,14 +343,14 @@ public class Principal {
 			
 			pessoaControlador.remover(cpf);
 			System.out.println("Pessoa removida com sucesso!");
-		}catch(ErroAoRemoverException | IllegalArgumentException | PessoaNaoExisteException E){
+		}catch(ErroAoRemoverException | IllegalArgumentException | ObjectNaoExisteException E){
 			System.out.println(E.getMessage());
 		}
 
 	}
 
 	private static void cadastrarFuncionario(Scanner scanner, 
-			ControladorPessoa pessoaControlador) throws ErroAoSalvarException, PessoaNaoExisteException, PessoaJaCadastradaException {
+			ControladorPessoa pessoaControlador) throws ErroAoSalvarException, ObjectNaoExisteException, ObjectJaExisteException {
 		String cpf;
 		String nome;
 		String rua;
@@ -393,7 +391,7 @@ public class Principal {
 			
 			pessoaControlador.cadastrar((Funcionario) funcionario);
 			System.out.println("Pessoa cadastrada com sucesso!");
-		}catch(ErroAoSalvarException | IllegalArgumentException | PessoaJaCadastradaException E){
+		}catch(ErroAoSalvarException | IllegalArgumentException | ObjectJaExisteException E){
 			System.out.println(E.getMessage());
 		}
 	}
@@ -450,7 +448,7 @@ public class Principal {
 			if(produto != null){
 				System.out.println("\n" + produto + "\n");
 			}
-		} catch (ProdutoNaoExisteException e) {
+		} catch (ObjectNaoExisteException e) {
 			System.out.println(e.getMessage());
 		}
 		
@@ -484,7 +482,7 @@ public class Principal {
 				Produto produtoNovo = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
 				produtoControlador.atualizar(produtoNovo);
 			}
-		} catch (ProdutoNaoExisteException | ErroAoAtualizarException e) {
+		} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
 	        System.out.println(e.getMessage());
 		}
 		
@@ -500,7 +498,7 @@ public class Principal {
 
 		try {
 			produtoControlador.remover(codigo);
-		} catch (ProdutoNaoExisteException | ErroAoRemoverException e) {
+		} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
           System.out.println(e.getMessage());
 		}
 	}
@@ -531,13 +529,13 @@ public class Principal {
 
 		try {
 			produtoControlador.cadastrar(produto);
-		} catch (ProdutoJaCadastradoException | ErroAoSalvarException e) {
+		} catch (ObjectJaExisteException | ErroAoSalvarException e) {
 			System.out.println(e.getMessage());
 		};
 	}
 
 	private static void menuAnimal(Scanner scanner, ControladorPessoa pessoaControlador,
-			ControladorAnimal animalControlador) throws PessoaNaoExisteException {
+			ControladorAnimal animalControlador) throws ObjectNaoExisteException {
 		char op2;
 		do{
 			/*
@@ -594,7 +592,7 @@ public class Principal {
 	}
 
 	private static void atualizarAnimal(Scanner scanner, ControladorPessoa pessoaControlador,
-			ControladorAnimal animalControlador) throws PessoaNaoExisteException{
+			ControladorAnimal animalControlador) throws ObjectNaoExisteException{
 		char op3;
 		String cpf;
 		String codigo;
@@ -621,7 +619,7 @@ public class Principal {
 						cpf = scanner.nextLine();
 						Pessoa c = pessoaControlador.buscar(cpf);
 						a.setDono((Cliente) c);
-					}catch(PessoaNaoExisteException | IllegalArgumentException E){
+					}catch(ObjectNaoExisteException | IllegalArgumentException E){
 						System.out.println(E.getMessage());
 					}
 				}else{
@@ -680,7 +678,7 @@ public class Principal {
 	}
 
 	private static void cadastrarAnimal(Scanner scanner, ControladorPessoa pessoaControlador, 
-			ControladorAnimal animalControlador) throws PessoaNaoExisteException{
+			ControladorAnimal animalControlador) throws ObjectNaoExisteException{
 		char op3;
 		String raca;
 		String especie;
@@ -715,10 +713,10 @@ public class Principal {
 				Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
 				try {
 					animalControlador.cadastrar(novo);
-				} catch (ObjectoJaExisteException e) {
+				} catch (ObjectJaExisteException e) {
 					System.out.println(e.getMessage());
 				}
-			}catch(PessoaNaoExisteException | IllegalArgumentException I){
+			}catch(ObjectNaoExisteException | IllegalArgumentException I){
 				System.out.println(I.getMessage());
 			}
 			
@@ -740,7 +738,7 @@ public class Principal {
 			try{
 				animalControlador.cadastrar(novo);
 			}
-			catch(ObjectoJaExisteException e){
+			catch(ObjectJaExisteException e){
 				System.out.println(e.getMessage());
 			}
 		}
@@ -749,7 +747,7 @@ public class Principal {
 
 	private static void menuCliente(Scanner scanner, ControladorAnimal animalControlador, 
 			ControladorPessoa pessoaControlador) throws ErroAoRemoverException, ErroAoSalvarException,
-			PessoaNaoExisteException, PessoaJaCadastradaException, ErroAoAtualizarException{
+			ObjectNaoExisteException, ObjectJaExisteException, ErroAoAtualizarException{
 		char op2;
 		do{
 			System.out.println("\n########################## Cliente ##########################");
@@ -798,20 +796,20 @@ public class Principal {
 	}
 
 	private static void pesquisarCliente(Scanner scanner, ControladorPessoa pessoaControlador) 
-		throws PessoaNaoExisteException{
+		throws ObjectNaoExisteException{
 		String cpf;
 		System.out.print("Informe o CPF: ");
 		cpf = scanner.nextLine();
 		try{
 			Pessoa cliente = pessoaControlador.buscar(cpf);			
 			System.out.println(((Cliente) cliente).toString());
-		}catch(PessoaNaoExisteException | IllegalArgumentException E){
+		}catch(ObjectNaoExisteException | IllegalArgumentException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void atualizarCliente(Scanner scanner, ControladorPessoa pessoaControlador,
-			ControladorAnimal animalControlador) throws PessoaNaoExisteException, ErroAoAtualizarException{
+			ControladorAnimal animalControlador) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		char op3;
 		String cpf;
 		String rua;
@@ -858,7 +856,7 @@ public class Principal {
 
 					try {
 						animalControlador.cadastrar(novo);
-					} catch (ObjectoJaExisteException e) {
+					} catch (ObjectJaExisteException e) {
 						System.out.println(e.getMessage());
 					}
 					((Cliente) cliente).addPet(novo);
@@ -895,25 +893,25 @@ public class Principal {
 				System.out.println("Opcao invalida\n");
 				break;
 			}
-		}catch(PessoaNaoExisteException | IllegalArgumentException E){
+		}catch(ObjectNaoExisteException | IllegalArgumentException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void removerCliente(Scanner scanner, ControladorPessoa pessoaControlador)
-		throws PessoaNaoExisteException, ErroAoRemoverException{
+		throws ObjectNaoExisteException, ErroAoRemoverException{
 		String cpf;
 		try{
 			System.out.print("Digite o cpf do cliente: ");
 			cpf = scanner.nextLine();
 			pessoaControlador.remover(cpf);
-		}catch(IllegalArgumentException | PessoaNaoExisteException | ErroAoRemoverException E){
+		}catch(IllegalArgumentException | ObjectNaoExisteException | ErroAoRemoverException E){
 			System.out.println(E.getMessage());
 		}
 	}
 
 	private static void cadastrarCliente(Scanner scanner,ControladorAnimal animalControlador, 
-			ControladorPessoa pessoaControlador) throws PessoaNaoExisteException, PessoaJaCadastradaException, ErroAoSalvarException {
+			ControladorPessoa pessoaControlador) throws ObjectNaoExisteException, ObjectJaExisteException, ErroAoSalvarException {
 		char op3;
 		String cpf;
 		String nome;
@@ -981,7 +979,7 @@ public class Principal {
 				Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
 				try {
 					animalControlador.cadastrar(novo);
-				} catch (ObjectoJaExisteException e) {
+				} catch (ObjectJaExisteException e) {
 					System.out.println(e.getMessage());
 				}
 				
@@ -990,7 +988,7 @@ public class Principal {
 		}
 		try{
 			pessoaControlador.cadastrar(cliente);
-		}catch(IllegalArgumentException | ErroAoSalvarException | PessoaJaCadastradaException E){
+		}catch(IllegalArgumentException | ErroAoSalvarException | ObjectJaExisteException E){
 			System.out.println(E.getMessage());
 		}
 	}

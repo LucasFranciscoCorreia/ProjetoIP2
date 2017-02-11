@@ -25,8 +25,8 @@ import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * Este repositorio armazena dados sobre os produtos existentes na loja.
@@ -120,7 +120,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 		return -1;
 	}
 	
-	public void cadastrar(Produto novo) throws ErroAoSalvarException, ObjectoJaExisteException{
+	public void cadastrar(Produto novo) throws ErroAoSalvarException, ObjectJaExisteException{
 		
 			boolean ok = true;
 			for(int i=0; i<this.repositorio.size();i++){
@@ -131,7 +131,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 			}
 			
 				if(!ok){
-					throw new ObjectoJaExisteException();
+					throw new ObjectJaExisteException();
 				}
 				else if (!this.repositorio.add(novo)) {
 					throw new ErroAoSalvarException(novo);
@@ -139,13 +139,13 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 										
 	}
 	
-	public Produto buscar(String codigo) throws ObjectoNaoExisteException {
+	public Produto buscar(String codigo) throws ObjectNaoExisteException {
 		
 		int i = buscarI(codigo);
 		
 		if(i != -1){
 			return repositorio.get(i);			
-		}else{throw new ObjectoNaoExisteException();}
+		}else{throw new ObjectNaoExisteException();}
 	  
 	}
 	
@@ -162,14 +162,14 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 		
 	}
 	
-	public void atualizar(Produto novo) throws ObjectoNaoExisteException, ErroAoAtualizarException{
+	public void atualizar(Produto novo) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		if(novo == null){
 			throw new ErroAoAtualizarException();
 		}
 		else{
 		int i = buscarI(novo.getCodigo());
 	    if(i == -1){
-	    	throw new ObjectoNaoExisteException();
+	    	throw new ObjectNaoExisteException();
 	    }
 	    else{
 	    	repositorio.get(i).setNome(novo.getNome());

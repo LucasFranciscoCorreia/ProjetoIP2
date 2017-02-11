@@ -13,8 +13,8 @@ package br.ufrpe.negocios;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * Esta � a interface do ControladorAnimal
@@ -29,8 +29,8 @@ import br.ufrpe.excecoes.ObjectoNaoExisteException;
  */
 public interface IControladorAnimal {
 	
-	void cadastrar(Animal novo)throws ObjectoJaExisteException;
+	void cadastrar(Animal novo)throws ObjectJaExisteException;
 	void remover(String codigo)throws CodigoNaoExisteException;
-	void atualizar(Animal novo, Animal antigo) throws ObjectoJaExisteException, ObjectoNaoExisteException;
+	void atualizar(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException;
 	Animal buscar(String codigo)throws CodigoNaoExisteException;
 }

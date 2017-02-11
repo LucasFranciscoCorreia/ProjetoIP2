@@ -13,8 +13,8 @@
 package br.ufrpe.negocios;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.ObjectoJaExisteException;
-import br.ufrpe.excecoes.ObjectoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.IRepositorioAnimal;
 public class ControladorAnimal implements IControladorAnimal{
 	
@@ -24,7 +24,7 @@ public class ControladorAnimal implements IControladorAnimal{
 		repositorioAnimal = instance;
 	}
 	
-	public void cadastrar(Animal novo) throws ObjectoJaExisteException{
+	public void cadastrar(Animal novo) throws ObjectJaExisteException{
 		if (novo != null) {
 			 repositorioAnimal.adicionar(novo);
 		}
@@ -48,7 +48,7 @@ public class ControladorAnimal implements IControladorAnimal{
 		}
 	}
 	
-	public void atualizar(Animal novo, Animal antigo)throws ObjectoJaExisteException, ObjectoNaoExisteException{
+	public void atualizar(Animal novo, Animal antigo)throws ObjectJaExisteException, ObjectNaoExisteException{
 		
 		if(novo != null && antigo != null){
 			boolean check = repositorioAnimal.atualizar(antigo, novo);
