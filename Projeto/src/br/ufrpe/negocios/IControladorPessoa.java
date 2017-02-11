@@ -3,8 +3,8 @@
  * 
  * Tipo 1: IControladorPessoa
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -14,11 +14,11 @@ import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.PessoaJaCadastradaException;
-import br.ufrpe.excecoes.PessoaNaoExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 
 /**
- * Esta é a interface do ControladorPessoa
+ * Esta ï¿½ a interface do ControladorPessoa
  * 
  * @author Maria Fernanda
  * 
@@ -33,14 +33,14 @@ import br.ufrpe.excecoes.PessoaNaoExisteException;
  */
 public interface IControladorPessoa {
 	
-	void cadastrar(Pessoa novo) throws PessoaNaoExisteException, ErroAoSalvarException, PessoaJaCadastradaException;
-	public Pessoa buscar(String cpf) throws PessoaNaoExisteException; 
-	void atualizar(Pessoa novo) throws PessoaNaoExisteException, ErroAoAtualizarException;
+	void cadastrar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoSalvarException, ObjectoJaExisteException;
+	public Pessoa buscar(String cpf) throws ObjectoNaoExisteException; 
+	void atualizar(Pessoa novo) throws ObjectoNaoExisteException, ErroAoAtualizarException;
 	String listar();
 	String listarFuncionario();
 	String listarCLiente();
 	int size();
 	int sizeCliente();
 	int sizeFuncionario();
-	void remover(String cpf) throws PessoaNaoExisteException, ErroAoRemoverException;
+	void remover(String cpf) throws ObjectoNaoExisteException, ErroAoRemoverException;
 }

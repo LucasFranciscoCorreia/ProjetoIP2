@@ -12,12 +12,11 @@ import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
-import br.ufrpe.excecoes.AnimalJaExisteException;
-import br.ufrpe.excecoes.CaracterInvalidoException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
 import br.ufrpe.excecoes.PessoaJaCadastradaException;
 import br.ufrpe.excecoes.PessoaNaoExisteException;
 import br.ufrpe.excecoes.ProdutoJaCadastradoException;
@@ -251,6 +250,8 @@ public class Principal {
 		try{
 			System.out.print("Informe o CPF: ");
 			cpf = scanner.nextLine();
+			
+			Pessoa testeDeVerificacao = pessoaControlador.buscar(cpf);
 			
 			funcionario = new Funcionario(cpf);
 			
@@ -714,7 +715,7 @@ public class Principal {
 				Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
 				try {
 					animalControlador.cadastrar(novo);
-				} catch (AnimalJaExisteException e) {
+				} catch (ObjectoJaExisteException e) {
 					System.out.println(e.getMessage());
 				}
 			}catch(PessoaNaoExisteException | IllegalArgumentException I){
@@ -739,7 +740,7 @@ public class Principal {
 			try{
 				animalControlador.cadastrar(novo);
 			}
-			catch(AnimalJaExisteException e){
+			catch(ObjectoJaExisteException e){
 				System.out.println(e.getMessage());
 			}
 		}
@@ -857,7 +858,7 @@ public class Principal {
 
 					try {
 						animalControlador.cadastrar(novo);
-					} catch (AnimalJaExisteException e) {
+					} catch (ObjectoJaExisteException e) {
 						System.out.println(e.getMessage());
 					}
 					((Cliente) cliente).addPet(novo);
@@ -950,7 +951,7 @@ public class Principal {
 
 		end = new Endereco(rua, complemento, numero, cep, cidadeUF);
 		cliente = new Cliente(cpf, data, nome,end);
-		System.out.println(cliente);
+		System.out.println("\n" + cliente);
 
 		System.out.print("Deseja cadastrar um PET agora? "
 				+ "\n\t1.Sim"
@@ -980,7 +981,7 @@ public class Principal {
 				Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
 				try {
 					animalControlador.cadastrar(novo);
-				} catch (AnimalJaExisteException e) {
+				} catch (ObjectoJaExisteException e) {
 					System.out.println(e.getMessage());
 				}
 				
@@ -1021,7 +1022,6 @@ public class Principal {
 		System.out.print("Digite a senha: ");
 		int senha = getInt(scanner);
 		boolean ok = pessoaControlador.login(login, senha);
-		System.out.println(pessoaControlador.login(login, senha));
 		if(ok == true){
 			System.out.println("Bem vindo " + login);
 		}else{

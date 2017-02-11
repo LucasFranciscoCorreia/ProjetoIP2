@@ -11,12 +11,19 @@
  */
 package br.ufrpe.repositorios;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import br.ufrpe.repositorios.IRepositorioAnimal;
 import br.ufrpe.beans.Animal;
-import br.ufrpe.excecoes.AnimalJaExisteException;
-import br.ufrpe.excecoes.AnimalNaoExisteException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 
 /**
  * Est� classe � utilizada para armazenar futuros animais cadastrados no sistema, nela
@@ -31,10 +38,10 @@ import br.ufrpe.excecoes.CodigoNaoExisteException;
  * @exception AnimalNaoExisteException
  * @exception CodigoNaoExisteException
  */
-public class RepositorioAnimal implements IRepositorioAnimal {
+public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 	private ArrayList<Animal> rep;
 	private ArrayList<Animal> lixeira;
-	private static IRepositorioAnimal repo;
+	private static IRepositorioAnimal unicInstanc;
 	
 	private RepositorioAnimal(){
 		rep = new ArrayList<>();
@@ -42,19 +49,73 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 	}
 	
 	public static IRepositorioAnimal getInstance(){
-		if (repo == null) {
-			repo = new RepositorioAnimal();
+		if (unicInstanc == null) {
+			unicInstanc = lerDoArquivo();
 		}
-		return repo;
+		return unicInstanc;
 	}
-	public int buscarIndice(Animal bus) throws AnimalNaoExisteException{
+	
+	private static RepositorioAnimal lerDoArquivo(){
+		RepositorioAnimal unicInstanc = null;
+		
+		File in = new File("/Arquivos/Animal.data");
+		FileInputStream fi = null;
+		ObjectInputStream oi = null;
+		
+		try {
+			fi = new FileInputStream(in);
+			oi = new ObjectInputStream(fi);
+			Object obj = oi.readObject();
+			
+			unicInstanc = (RepositorioAnimal) obj;
+		} catch (Exception e) {
+			unicInstanc = new RepositorioAnimal();
+		} finally {
+			if(oi != null){
+				try {
+					oi.close();
+				} catch (IOException e){
+				}
+			}
+		}
+		
+		return unicInstanc;
+	}
+	
+	public void salvarNoArquivo() {
+		if (unicInstanc == null){
+			return;
+		}
+		
+		File out = new File("/Arquivos/Animal.data");
+		FileOutputStream fo = null;
+		ObjectOutputStream oos = null;
+		
+		try {
+			fo = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fo);
+			
+			oos.writeObject(unicInstanc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (oos != null){
+				try {
+					oos.close();
+				} catch (IOException e){
+				}
+			}
+		}
+	}
+	
+	public int buscarIndice(Animal bus) throws ObjectoJaExisteException{
 		for(int i = 0; i < rep.size();i++){
 			if(rep.get(i).equals(bus)){ //Duvida: deve-se manter esse return dentro do laço?
 				return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
 			}				//usar um if depois dele (if i > -1)
 		}				//Como fiz no metodo abaixo:
 		String m = "Animal nao existe: "+bus.toString();
-		throw new AnimalNaoExisteException(bus, m);
+		throw new ObjectoJaExisteException();
 		
 	}
 	public int buscarIndice(String codigo) throws CodigoNaoExisteException{
@@ -71,10 +132,12 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 		}
 		return result;
 	}
+	
 	public int size(){
 		return rep.size();
 	}
-	public void adicionar(Animal novo) throws AnimalJaExisteException{
+	
+	public void adicionar(Animal novo) throws ObjectoJaExisteException{
 		boolean ok = false;
 		if (novo != null) {
 			ok = true;
@@ -93,25 +156,36 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 			}
 			else{
 				String m = "Animal Ja Existente: "+novo.getCodigo();
-				throw new AnimalJaExisteException(novo,m);
+				throw new ObjectoJaExisteException();
 			}
 		}
 		
 	}
+	
 	public Animal getPet(int i){
 		if(i >=0 && i < rep.size()){
 			return this.rep.get(i);			
 		}
 		return null;
 	}
-	public boolean remover(Animal antigo) throws AnimalNaoExisteException{
+	
+	public boolean remover(Animal antigo) throws ObjectoNaoExisteException{
 		boolean ok = false;
-		int i = buscarIndice(antigo);
-		if(i != -1){
-			lixeira.add(antigo);
-			rep.remove(i);		
-			ok = true;
+		int i = -1;
+		
+		try {
+			i = buscarIndice(antigo);
+		} catch (ObjectoJaExisteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(i != -1){
+				lixeira.add(antigo);
+				rep.remove(i);		
+				ok = true;
+			}			
 		}
+		
 		return ok;
 	}
 	private void adicionarDireto(Animal novo){
@@ -119,7 +193,7 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 			this.rep.add(novo);
 		}
 	}
-	public boolean atualizar(Animal antigo, Animal novo) throws AnimalJaExisteException, AnimalNaoExisteException{
+	public boolean atualizar(Animal antigo, Animal novo) throws ObjectoJaExisteException, ObjectoNaoExisteException{
 		boolean ok = false;
 		int i = this.buscarIndice(antigo);
 		if(i != -1){

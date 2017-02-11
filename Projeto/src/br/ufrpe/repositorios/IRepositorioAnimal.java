@@ -3,17 +3,17 @@
  * 
  * Tipo 1: IRepositorioAnimal
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.repositorios;
 
 import br.ufrpe.beans.Animal;
-import br.ufrpe.excecoes.AnimalJaExisteException;
-import br.ufrpe.excecoes.AnimalNaoExisteException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 
 /**
  * Interface do RepositorioAnimal
@@ -29,14 +29,15 @@ import br.ufrpe.excecoes.CodigoNaoExisteException;
  */
 public interface IRepositorioAnimal {
 	
-	int buscarIndice(Animal bus) throws AnimalNaoExisteException;
+	int buscarIndice(Animal bus) throws ObjectoJaExisteException;
 	int buscarIndice(String codigo) throws CodigoNaoExisteException;
 	int size();
-	boolean remover(Animal antigo) throws AnimalNaoExisteException;
-	boolean atualizar(Animal antigo, Animal novo) throws AnimalNaoExisteException, AnimalJaExisteException;
+	boolean remover(Animal antigo) throws ObjectoNaoExisteException;
+	boolean atualizar(Animal antigo, Animal novo) throws ObjectoNaoExisteException, ObjectoJaExisteException;
 	boolean remover(String codigo)throws CodigoNaoExisteException;
-	void adicionar(Animal novo)throws AnimalJaExisteException;
+	void adicionar(Animal novo)throws ObjectoJaExisteException;
 	Animal getPet(int i);
 	Animal buscar(String codigo) throws CodigoNaoExisteException;
 	Animal recuperar(String cpf, String raca);	
+	void salvarNoArquivo();
 }

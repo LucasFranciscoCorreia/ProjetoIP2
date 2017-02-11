@@ -2,19 +2,19 @@
  * Projeto PetShop
  * 
  * Tipo: ControladorAnimal
- * Tipo 2: IControladorAnimal, descrição: interface
+ * Tipo 2: IControladorAnimal, descriï¿½ï¿½o: interface
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
 
 package br.ufrpe.negocios;
 import br.ufrpe.beans.Animal;
-import br.ufrpe.excecoes.AnimalNaoExisteException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.AnimalJaExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 import br.ufrpe.repositorios.IRepositorioAnimal;
 public class ControladorAnimal implements IControladorAnimal{
 	
@@ -24,7 +24,7 @@ public class ControladorAnimal implements IControladorAnimal{
 		repositorioAnimal = instance;
 	}
 	
-	public void cadastrar(Animal novo) throws AnimalJaExisteException{
+	public void cadastrar(Animal novo) throws ObjectoJaExisteException{
 		if (novo != null) {
 			 repositorioAnimal.adicionar(novo);
 		}
@@ -48,7 +48,7 @@ public class ControladorAnimal implements IControladorAnimal{
 		}
 	}
 	
-	public void atualizar(Animal novo, Animal antigo)throws AnimalJaExisteException, AnimalNaoExisteException{
+	public void atualizar(Animal novo, Animal antigo)throws ObjectoJaExisteException, ObjectoNaoExisteException{
 		
 		if(novo != null && antigo != null){
 			boolean check = repositorioAnimal.atualizar(antigo, novo);

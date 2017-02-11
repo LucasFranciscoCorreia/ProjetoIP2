@@ -12,6 +12,7 @@
 
 package br.ufrpe.beans;
 
+import java.io.Serializable;
 
 /**
  * Esta classe fo criada afim de possibilitar o cadastro de "animais" na CRUD gerida 
@@ -36,7 +37,7 @@ package br.ufrpe.beans;
  * @author Raissa Camelo
  * @see Produto
  */
-public class Animal extends Produto{
+public class Animal extends Produto implements Serializable{
 
 	private boolean isAlive;
 	private String especie;
@@ -134,7 +135,7 @@ public class Animal extends Produto{
 	}
 
 	public String toString(){
-		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
+		String res = String.format("Dono: %s\nCPF do dono: %s\nRaï¿½a: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
 		res+="Is Alive? " + isAlive +"\nCategoria: "+categoria;
 		return res;
 	}

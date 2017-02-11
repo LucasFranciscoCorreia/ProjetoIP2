@@ -11,6 +11,14 @@
  */
 package br.ufrpe.repositorios;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
@@ -20,7 +28,7 @@ import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.PessoaNaoExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 
 /**
  * RepositorioPessoa armazena todas as pessoas, independentes do tipo, 
@@ -40,7 +48,7 @@ import br.ufrpe.excecoes.PessoaNaoExisteException;
  * @exception ErroAoAtualizarException
  * @exception ErroAoRemoverException
  */
-public class RepositorioPessoa implements IRepositorioPessoa{
+public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	private ArrayList<Pessoa> repositorio;
 	private static IRepositorioPessoa unicInstanc;
 	
@@ -62,9 +70,62 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 */
 	public static IRepositorioPessoa getInstance(){
 		if(unicInstanc == null){
-			unicInstanc = new RepositorioPessoa();
+			unicInstanc = lerDoArquivo();
 		}
 		return unicInstanc;
+	}
+
+	private static RepositorioPessoa lerDoArquivo(){
+		RepositorioPessoa unicInstanc = null;
+		
+		File in = new File("/Arquivos/Pessoa.data");
+		FileInputStream fi = null;
+		ObjectInputStream oi = null;
+		
+		try {
+			fi = new FileInputStream(in);
+			oi = new ObjectInputStream(fi);
+			Object obj = oi.readObject();
+			
+			unicInstanc = (RepositorioPessoa) obj;
+		} catch (Exception e) {
+			unicInstanc = new RepositorioPessoa();
+		} finally {
+			if(oi != null){
+				try {
+					oi.close();
+				} catch (IOException e){
+				}
+			}
+		}
+		
+		return unicInstanc;
+	}
+	
+	public void salvarNoArquivo() {
+		if (unicInstanc == null){
+			return;
+		}
+		
+		File out = new File("/Arquivos/Pessoa.data");
+		FileOutputStream fo = null;
+		ObjectOutputStream oos = null;
+		
+		try {
+			fo = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fo);
+			
+			oos.writeObject(unicInstanc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (oos != null){
+				try {
+					oos.close();
+				} catch (IOException e){
+				}
+			}
+		}
 	}
 	
 	/**
@@ -128,12 +189,12 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * 
 	 * @param cpf
 	 * 
-	 * @exception PessoaNaoExisteException			Exception levantada quando
+	 * @exception ObjectoNaoExisteException		Exception levantada quando
 	 * o metodo buscar nao encontra a pessoa no array.
 	 * 
 	 * @return 	Pessoa com o cpf informado
 	 */
-	public Pessoa buscar(String cpf) throws PessoaNaoExisteException{
+	public Pessoa buscar(String cpf) throws ObjectoNaoExisteException{
 		if(cpf == null){
 			throw new IllegalArgumentException("CPF inválido!");
 		}else{
@@ -142,7 +203,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 			if(indice != -1){
 				return this.repositorio.get(indice);
 			}else{
-				throw new PessoaNaoExisteException();
+				throw new ObjectoNaoExisteException();
 			}
 		}		
 	}
@@ -244,7 +305,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * 
 	 * @param pessoa				Pessoa que tera seus dados atualizados
 	 * 
-	 * @exception PessoaNaoExisteException			Exception levantada quando
+	 * @exception ObjectoNaoExisteException			Exception levantada quando
 	 * o metodo de pesquisa retorna -1
 	 * @exception ErroAoAtualizarException			Exception levantada se a Pessoa
 	 * nao for Cliente e nem Funcionario
@@ -252,7 +313,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	 * @see Cliente
 	 * @see Funcionario
 	 */
-	public void atualizar(Pessoa pessoa) throws PessoaNaoExisteException, 
+	public void atualizar(Pessoa pessoa) throws ObjectoNaoExisteException, 
 			ErroAoAtualizarException{
 		if(pessoa == null){
 			throw new IllegalArgumentException("Erro ao atualizar!");
@@ -260,7 +321,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 			int indice = buscarIndice(pessoa.getCpf());
 			
 			if(indice == -1){
-				throw new PessoaNaoExisteException();
+				throw new ObjectoNaoExisteException();
 			}else{
 				if(pessoa instanceof Funcionario){
 					if(((Funcionario) pessoa).getCargo() != null){

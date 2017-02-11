@@ -10,13 +10,15 @@
  */
 package br.ufrpe.beans;
 
+import java.io.Serializable;
+
 /**
  * Esta classe representa o basico de um produto, ela é do tipo abstrata, por que não é preciso instanciar um produto
  * em si, mas sim, seu tipo, por exemplo, acessorio. 
  * 
  * @author Diego 
  */
-public abstract class Produto {
+public abstract class Produto implements Serializable{
 	private float preco;
 	private String nome;
 	private String tipo;

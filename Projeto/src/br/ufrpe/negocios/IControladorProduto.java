@@ -14,8 +14,8 @@ import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ProdutoJaCadastradoException;
-import br.ufrpe.excecoes.ProdutoNaoExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 
 /**
  * Interface do ControladorProduto
@@ -29,8 +29,8 @@ import br.ufrpe.excecoes.ProdutoNaoExisteException;
  */
 public interface IControladorProduto {
 	
-	void cadastrar(Produto produto) throws ProdutoJaCadastradoException, ErroAoSalvarException;
-	void remover(String codigo) throws ProdutoNaoExisteException, ErroAoRemoverException;
-	Produto pesquisar(String codigo) throws ProdutoNaoExisteException;
-	void atualizar(Produto produto) throws ProdutoNaoExisteException, ErroAoAtualizarException;
+	void cadastrar(Produto produto) throws ObjectoJaExisteException, ErroAoSalvarException;
+	void remover(String codigo) throws ObjectoNaoExisteException, ErroAoRemoverException;
+	Produto pesquisar(String codigo) throws ObjectoNaoExisteException;
+	void atualizar(Produto produto) throws ObjectoNaoExisteException, ErroAoAtualizarException;
 }

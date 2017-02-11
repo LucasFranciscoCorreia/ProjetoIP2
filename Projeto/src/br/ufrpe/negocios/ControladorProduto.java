@@ -21,8 +21,8 @@ import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ProdutoJaCadastradoException;
-import br.ufrpe.excecoes.ProdutoNaoExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 
 public class ControladorProduto implements IControladorProduto{
 	private IRepositorioProduto repositorioProduto;
@@ -31,20 +31,20 @@ public class ControladorProduto implements IControladorProduto{
 		repositorioProduto = instance;
 	}
 	
-	public void cadastrar(Produto produto) throws ProdutoJaCadastradoException, ErroAoSalvarException{
+	public void cadastrar(Produto produto) throws ObjectoJaExisteException, ErroAoSalvarException{
 		if(produto != null){
 			try {
 			if(repositorioProduto.buscar(produto.getCodigo()) == null){
 						
-			}else{throw new ProdutoJaCadastradoException();}}
-			catch (ProdutoNaoExisteException e) {
+			}else{throw new ObjectoJaExisteException();}}
+			catch (ObjectoNaoExisteException e) {
 				System.out.println("\t*****Produto cadastrado com sucesso*****");
 				repositorioProduto.cadastrar(produto); }			
 			
 		}else{throw new ErroAoSalvarException(produto);}
 	}
 	
-	public void remover(String codigo) throws ProdutoNaoExisteException, ErroAoRemoverException{
+	public void remover(String codigo) throws ObjectoNaoExisteException, ErroAoRemoverException{
 		if(codigo != null){
 			
 				if(repositorioProduto.buscar(codigo) != null){
@@ -57,7 +57,7 @@ public class ControladorProduto implements IControladorProduto{
 	}
 
 	
-	public Produto pesquisar(String codigo) throws ProdutoNaoExisteException{
+	public Produto pesquisar(String codigo) throws ObjectoNaoExisteException{
 		if(codigo != null){
 			
 				if(repositorioProduto.buscar(codigo) != null){
@@ -66,11 +66,11 @@ public class ControladorProduto implements IControladorProduto{
 			}
 				
 					
-		}else{throw new ProdutoNaoExisteException();}
+		}else{throw new ObjectoNaoExisteException();}
 		return null;
 	}
 	
-	public void atualizar(Produto produto) throws ProdutoNaoExisteException, ErroAoAtualizarException{
+	public void atualizar(Produto produto) throws ObjectoNaoExisteException, ErroAoAtualizarException{
 		if(produto != null){
 			String codigo = produto.getCodigo();
 			

@@ -10,6 +10,7 @@
  */
 package br.ufrpe.beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -21,7 +22,7 @@ import java.time.LocalDate;
  * 
  * @see LocalDate
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
 	
 	private String cpf, nome;
 	private LocalDate nascimento;

@@ -16,8 +16,8 @@ import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ProdutoJaCadastradoException;
-import br.ufrpe.excecoes.ProdutoNaoExisteException;
+import br.ufrpe.excecoes.ObjectoJaExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 import br.ufrpe.negocios.ControladorProduto;
 
 /**
@@ -33,10 +33,11 @@ import br.ufrpe.negocios.ControladorProduto;
 public interface IRepositorioProduto {
 	
 	int Size();
-	void cadastrar(Produto novo) throws ErroAoSalvarException, ProdutoJaCadastradoException;
-	Produto buscar(String codigo) throws ProdutoNaoExisteException;
+	void cadastrar(Produto novo) throws ErroAoSalvarException, ObjectoJaExisteException;
+	Produto buscar(String codigo) throws ObjectoNaoExisteException;
 	void remover(String codigo) throws ErroAoRemoverException;
-	void atualizar(Produto novo) throws ProdutoNaoExisteException, ErroAoAtualizarException;
+	void atualizar(Produto novo) throws ObjectoNaoExisteException, ErroAoAtualizarException;
 	ArrayList<Produto> listarProduto();
+	void salvarNoArquivo();
 	
 }

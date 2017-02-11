@@ -3,8 +3,8 @@
  * 
  * Tipo 1: IRepositorioPessoa
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -19,7 +19,7 @@ import br.ufrpe.beans.Login;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.PessoaNaoExisteException;
+import br.ufrpe.excecoes.ObjectoNaoExisteException;
 import br.ufrpe.negocios.ControladorPessoa;
 
 /**
@@ -49,7 +49,8 @@ public interface IRepositorioPessoa {
 	ArrayList<Cliente> listarCliente();
 	boolean checarLogin(Login log);
 	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
-	Pessoa buscar(String cpf) throws PessoaNaoExisteException;
+	Pessoa buscar(String cpf) throws ObjectoNaoExisteException;
 	void remover(String cpf) throws ErroAoRemoverException;
-	void atualizar(Pessoa p) throws PessoaNaoExisteException, ErroAoAtualizarException;
+	void atualizar(Pessoa p) throws ObjectoNaoExisteException, ErroAoAtualizarException;
+	void salvarNoArquivo();
 }

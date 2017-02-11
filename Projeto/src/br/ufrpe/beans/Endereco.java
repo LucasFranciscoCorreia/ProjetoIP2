@@ -3,22 +3,25 @@
  * 
  * Tipo: Endereco
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.beans;
+
+import java.io.Serializable;
+
 /**
- * Está classe é essencial no controle tanto de funcionario, quanto de cliente. Saber onde o funcionario reside,
- * em caso de aparecer algum imprevisto é muito importanto. No caso de clientes, chega a ser mais importante, principalmente,
+ * Estï¿½ classe ï¿½ essencial no controle tanto de funcionario, quanto de cliente. Saber onde o funcionario reside,
+ * em caso de aparecer algum imprevisto ï¿½ muito importanto. No caso de clientes, chega a ser mais importante, principalmente,
  * quando esse cliente deixou algum animal na clinica. 
  * 
- * Lembrete: Pessoas podem ser cadastradas com endereço null, mas é preferivel que não esteja null. 
+ * Lembrete: Pessoas podem ser cadastradas com endereï¿½o null, mas ï¿½ preferivel que nï¿½o esteja null. 
  * 
  * @author Lucas Correia
  */
-public class Endereco {
+public class Endereco implements Serializable{
 	
 	private String rua;
 	private String complemento;
