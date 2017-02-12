@@ -28,11 +28,32 @@ public class PrincipalGui extends Application{
 			rootLayout = (AnchorPane) loader.load();
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Login");
 			primaryStage.show();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}		
 	}
+	
+	/**
+	 * Telinha de cadastro de funcionario
+	 * 
+	 */
+	private void initRootFuncionarioCadastro() {
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PrincipalGui.class.getResource("view/FuncionarioCadastrar.fxml"));
+			rootLayout = (AnchorPane) loader.load();
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Cadastro de Funcionario");
+			primaryStage.show();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}	
+	}
+	
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
