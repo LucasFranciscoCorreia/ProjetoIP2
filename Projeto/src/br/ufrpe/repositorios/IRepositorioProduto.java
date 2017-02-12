@@ -1,4 +1,5 @@
 /*
+ /*
  * Projeto PetShop
  * 
  * Tipo 1: IRepositorioProduto
@@ -16,8 +17,8 @@ import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ObjectJaExisteException;
-import br.ufrpe.excecoes.ObjectNaoExisteException;
+import br.ufrpe.excecoes.ProdutoJaCadastradoException;
+import br.ufrpe.excecoes.ProdutoNaoExisteException;
 import br.ufrpe.negocios.ControladorProduto;
 
 /**
@@ -26,18 +27,20 @@ import br.ufrpe.negocios.ControladorProduto;
  * Lembrete: Como o RepositorioProduto n�o est� finalizado, a interface tamb�m n�o est�
  * 
  * @author Diego
- *
+ * @author Raissa
  * @see Produto
  * @see ControladorProduto
  */
 public interface IRepositorioProduto {
 	
 	int Size();
-	void cadastrar(Produto novo) throws ErroAoSalvarException, ObjectJaExisteException;
-	Produto buscar(String codigo) throws ObjectNaoExisteException;
+	void cadastrar(Produto novo) throws ErroAoSalvarException, ProdutoJaCadastradoException;
+	Produto buscar(String codigo) throws ProdutoNaoExisteException;
 	void remover(String codigo) throws ErroAoRemoverException;
-	void atualizar(Produto novo) throws ObjectNaoExisteException, ErroAoAtualizarException;
+	void atualizar(Produto novo) throws ProdutoNaoExisteException, ErroAoAtualizarException;
+	public Produto buscarP(Produto produto) throws ProdutoNaoExisteException;
+	public void alterarDoEstoque(Produto produto, int quantidade) throws ProdutoNaoExisteException;
+	public int buscarProduto(Produto produto);
 	ArrayList<Produto> listarProduto();
-	void salvarNoArquivo();
 	
 }

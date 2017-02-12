@@ -1,0 +1,39 @@
+package br.ufrpe.beans;
+
+import java.time.*;
+import java.util.ArrayList;
+public class NotaFiscal {
+
+	private Cliente cliente;
+	private LocalDate dataDaCompra;
+	private Carrinho carrinho;
+	private String servico;
+	private Animal pet;
+	
+	/**
+	 * Construtor para a nota gerada na Loja
+	 * @param cliente
+	 * @param dataDaCompra
+	 */
+	public notaFiscal(Cliente cliente, LocalDate dataDaCompra, Carrinho carrinho){
+		
+		this.cliente = cliente;
+		this.dataDaCompra = dataDaCompra;
+		this.carrinho = carrinho;
+		
+	}
+	/**
+	 * Construtor para a nota gerada no PetCare
+	 * @param cliente
+	 * @param dataDaCompra
+	 * @param pet
+	 * @param servico
+	 */
+	public notaFiscal(Cliente cliente, LocalDate dataDaCompra, Animal pet, String servico){
+		//TODO Serviço será uma classe
+		this.cliente = cliente;
+		this.dataDaCompra = dataDaCompra;
+		this.pet = pet;
+		this.servico = servico;
+	}
+}
