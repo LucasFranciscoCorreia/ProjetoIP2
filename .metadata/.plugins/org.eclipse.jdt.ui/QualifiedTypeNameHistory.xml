@@ -1,25 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioAnimal"/>
-<fullyQualifiedTypeName name="br.ufrpe.negocios.IControladorPessoa"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioPessoa"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.CodigoNaoExisteException"/>
-<fullyQualifiedTypeName name="java.time.LocalDate"/>
-<fullyQualifiedTypeName name="br.ufrpe.beans.Endereco"/>
-<fullyQualifiedTypeName name="br.ufrpe.beans.Pessoa"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.ErroAoSalvarException"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.ErroAoRemoverException"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.PessoaNaoExisteException"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.ErroAoAtualizarException"/>
-<fullyQualifiedTypeName name="br.ufrpe.beans.Cliente"/>
-<fullyQualifiedTypeName name="br.ufrpe.beans.Funcionario"/>
-<fullyQualifiedTypeName name="br.ufrpe.beans.Login"/>
-<<<<<<< HEAD
-<fullyQualifiedTypeName name="javafx.scene.control.Label"/>
-=======
-<fullyQualifiedTypeName name="br.ufrpe.beans.Produto"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioProduto"/>
-<fullyQualifiedTypeName name="br.ufrpe.beans.Carrinho"/>
->>>>>>> master
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

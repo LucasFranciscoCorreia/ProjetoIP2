@@ -152,7 +152,7 @@ public class Funcionario extends Pessoa{
 	@Override
 	public String toString(){
 		String res = super.toString();
-		res += "\nCargo: "+this.cargo+"\nSal�rio: "+this.salario+
+		res += "\nCargo: "+this.cargo+"\nSalário: "+this.salario+
 				"\nEntrada: "+this.entrada + "\nLogin: " + 
 				this.log.getLogin() + "\nSenha: " + this.log.getSenha();
 		return res;

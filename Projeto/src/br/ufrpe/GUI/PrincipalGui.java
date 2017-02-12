@@ -39,7 +39,8 @@ public class PrincipalGui extends Application{
 	 * Telinha de cadastro de funcionario
 	 * 
 	 */
-	private void initRootFuncionarioCadastro() {
+	//TODO
+	private void initRootFuncionario() {
 		try{
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(PrincipalGui.class.getResource("view/FuncionarioCadastrar.fxml"));

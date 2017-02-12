@@ -36,7 +36,8 @@ public class Endereco implements Serializable{
 		cidadeUF = "";
 	}
 	
-	public Endereco(String rua, String complemento, short numero, String cep, String cidadeUF) {
+	public Endereco(String rua, String complemento, short numero, 
+			String cep, String cidadeUF) {
 		this.rua = rua;
 		this.complemento = complemento;
 		this.numero = numero;
