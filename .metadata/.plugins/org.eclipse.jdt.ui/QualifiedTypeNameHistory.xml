@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectJaExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectNaoExisteException"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Label"/>
+<fullyQualifiedTypeName name="javafx.scene.Node"/>
+</qualifiedTypeNameHistroy>
