@@ -33,4 +33,5 @@ public interface IControladorProduto {
 	void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException;
 	Produto pesquisar(String codigo) throws ObjectNaoExisteException;
 	void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException;
+	void salvarNoArquivo();
 }

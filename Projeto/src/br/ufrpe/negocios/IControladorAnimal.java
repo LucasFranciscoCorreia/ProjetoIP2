@@ -33,4 +33,5 @@ public interface IControladorAnimal {
 	void remover(String codigo)throws CodigoNaoExisteException;
 	void atualizar(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException;
 	Animal buscar(String codigo)throws CodigoNaoExisteException;
+	void salvarNoArquivo();
 }

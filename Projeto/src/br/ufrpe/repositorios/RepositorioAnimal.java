@@ -58,7 +58,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 	private static RepositorioAnimal lerDoArquivo(){
 		RepositorioAnimal unicInstanc = null;
 		
-		File in = new File("/Arquivos/Animal.data");
+		File in = new File("Arquivos/Animal.data");
 		FileInputStream fi = null;
 		ObjectInputStream oi = null;
 		
@@ -87,7 +87,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 			return;
 		}
 		
-		File out = new File("/Arquivos/Animal.data");
+		File out = new File("Arquivos/Animal.data");
 		FileOutputStream fo = null;
 		ObjectOutputStream oos = null;
 		

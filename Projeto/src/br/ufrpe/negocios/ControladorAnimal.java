@@ -24,6 +24,10 @@ public class ControladorAnimal implements IControladorAnimal{
 		repositorioAnimal = instance;
 	}
 	
+	public void salvarNoArquivo(){
+		repositorioAnimal.salvarNoArquivo();
+	}
+	
 	public void cadastrar(Animal novo) throws ObjectJaExisteException{
 		if (novo != null) {
 			 repositorioAnimal.adicionar(novo);

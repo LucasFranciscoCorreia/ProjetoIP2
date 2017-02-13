@@ -39,6 +39,7 @@ public interface IControladorPessoa {
 	String listar();
 	String listarFuncionario();
 	String listarCLiente();
+	void salvarNoArquivo();
 	int size();
 	int sizeCliente();
 	int sizeFuncionario();

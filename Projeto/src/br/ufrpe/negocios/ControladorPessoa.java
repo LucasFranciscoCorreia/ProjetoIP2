@@ -37,6 +37,10 @@ public class ControladorPessoa implements IControladorPessoa {
 		repositorio = instance;
 	}
 	
+	public void salvarNoArquivo(){
+		repositorio.salvarNoArquivo();
+	}
+	
 	/**
 	 * Faz o procedimento de busca
 	 * 

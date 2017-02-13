@@ -20,7 +20,6 @@ import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
-import br.ufrpe.negocios.ControladorPessoa;
 
 /**
  * Interface do RepositorioPessoa

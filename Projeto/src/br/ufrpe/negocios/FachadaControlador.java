@@ -23,7 +23,11 @@ public class FachadaControlador {
 		this.controladorProduto = new ControladorProduto(instanceProduto );
 		this.controladorPessoa = new ControladorPessoa(instancePessoa);
 	}
-
+	
+	public void salvarNoArquivoAnimal(){
+		controladorAnimal.salvarNoArquivo();
+	}
+	
 	public void cadastrar(Animal novo) throws ObjectJaExisteException {
 		controladorAnimal.cadastrar(novo);
 	}
@@ -51,7 +55,11 @@ public class FachadaControlador {
 	public String toString() {
 		return controladorAnimal.toString();
 	}
-
+	
+	public void salvarNoArquivoPessoa(){
+		controladorPessoa.salvarNoArquivo();
+	}
+	
 	public void cadastrar(Pessoa novo)
 			throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException {
 		controladorPessoa.cadastrar(novo);
@@ -87,6 +95,10 @@ public class FachadaControlador {
 
 	public boolean login(String login, int senha) {
 		return controladorPessoa.login(login, senha);
+	}
+	
+	public void salvarNoArquivoProduto(){
+		controladorProduto.salvarNoArquivo();
 	}
 
 	public void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException {

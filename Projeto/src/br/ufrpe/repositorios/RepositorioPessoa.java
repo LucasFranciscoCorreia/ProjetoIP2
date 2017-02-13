@@ -78,7 +78,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	private static RepositorioPessoa lerDoArquivo(){
 		RepositorioPessoa unicInstanc = null;
 		
-		File in = new File("/Arquivos/Pessoa.data");
+		File in = new File("Arquivos/Pessoa.data");
 		FileInputStream fi = null;
 		ObjectInputStream oi = null;
 		
@@ -107,7 +107,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			return;
 		}
 		
-		File out = new File("/Arquivos/Pessoa.data");
+		File out = new File("Arquivos/Pessoa.data");
 		FileOutputStream fo = null;
 		ObjectOutputStream oos = null;
 		

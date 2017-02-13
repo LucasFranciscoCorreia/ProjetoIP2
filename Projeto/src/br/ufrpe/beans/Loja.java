@@ -1,6 +1,6 @@
 package br.ufrpe.beans;
 import br.ufrpe.beans.Carrinho;
-import br.ufrpe.excecoes.ProdutoNaoExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.*;
 import java.time.*;
 
@@ -78,7 +78,7 @@ public class Loja {
 	 * @throws ProdutoNaoExisteException
 	 */
 	
-	public void realizarCompra()throws ProdutoNaoExisteException{
+	public void realizarCompra()throws ObjectNaoExisteException{
 		
 		//TODO saber que antes d chamar <realizarCompra> o cliente deve ser perguntado se quer colocar o CPF
 		//Caso não cadastrado
@@ -91,7 +91,7 @@ public class Loja {
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				//TODO caixa
 				//TODO gerar nota fiscal
-			}else{throw new ProdutoNaoExisteException();}
+			}else{throw new ObjectNaoExisteException();}
 		}
 	}
 	

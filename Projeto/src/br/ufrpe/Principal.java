@@ -129,6 +129,9 @@ public class Principal {
 				menuPessoa(scanner, pessoaControlador);
 				break;
 			case '7':
+				pessoaControlador.salvarNoArquivo();
+				animalControlador.salvarNoArquivo();
+				produtoControlador.salvarNoArquivo();
 				System.exit(0);
 				break;
 			case '1':
@@ -425,10 +428,11 @@ public class Principal {
 			case '4':
 				pesquisarProduto(scanner, produtoControlador);
 				break;
-			case '5':						
+			case '5':	
 				break;
 			default:
 				System.out.println("\n----------Opcao Invalida----------");
+				produtoControlador.salvarNoArquivo();
 				break;
 			}
 
@@ -767,7 +771,7 @@ public class Principal {
 				break;
 
 			case '2':
-				removerCliente(scanner, pessoaControlador);					
+				removerCliente(scanner, pessoaControlador);	
 				break;
 			case '3':
 				atualizarCliente(scanner, pessoaControlador, animalControlador);
@@ -782,7 +786,6 @@ public class Principal {
 				break;
 
 			case '6': 
-
 				break;
 			default:
 				System.out.println("Opcao Invalida\n");
@@ -1012,6 +1015,7 @@ public class Principal {
 			ok = login(pessoaControlador, scanner);
 		}while(ok);
 		menu(scanner, animalControlador, produtoControlador, pessoaControlador);
+		
 		scanner.close();
 	}
 	private static boolean login(ControladorPessoa pessoaControlador, Scanner scanner) {

@@ -65,6 +65,15 @@ public abstract class Pessoa implements Serializable{
 	public String getCpf() {
 		return cpf;
 	}
+	
+	/**
+	 * Recebe o cpf da pessoa
+	 * 
+	 * @param cpf
+	 */
+	public void setCpf(String cpf){
+		this.cpf = cpf;
+	}
 
 	/**
 	 * Retprma a data de nascimento da pessoa

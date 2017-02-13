@@ -31,6 +31,10 @@ public class ControladorProduto implements IControladorProduto{
 		repositorioProduto = instance;
 	}
 	
+	public void salvarNoArquivo(){
+		repositorioProduto.salvarNoArquivo();
+	}
+	
 	public void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException{
 		if(produto != null){
 			try {

@@ -11,14 +11,21 @@
  */
 package br.ufrpe.repositorios;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
-import br.ufrpe.excecoes.ProdutoJaCadastradoException;
-import br.ufrpe.excecoes.ProdutoNaoExisteException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 /**
  * Este repositorio armazena dados sobre os produtos existentes na loja.
@@ -30,7 +37,7 @@ import br.ufrpe.excecoes.ProdutoNaoExisteException;
  * @see Produto
  * @see IRepositorioProduto
  */
-public class RepositorioProduto implements IRepositorioProduto {
+public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	private  ArrayList<Produto> repositorio;
 	private static IRepositorioProduto unicInstanc;
 	
@@ -40,10 +47,63 @@ public class RepositorioProduto implements IRepositorioProduto {
 	
 	public static IRepositorioProduto getInstance(){
 		if(unicInstanc == null){
-			unicInstanc = new RepositorioProduto();
+			unicInstanc = lerDoArquivo();
 		}
 		
 		return unicInstanc;
+	}
+	
+	private static RepositorioProduto lerDoArquivo(){
+		RepositorioProduto unicInstanc = null;
+		
+		File in = new File("Arquivos/Produto.data");
+		FileInputStream fi = null;
+		ObjectInputStream oi = null;
+		
+		try {
+			fi = new FileInputStream(in);
+			oi = new ObjectInputStream(fi);
+			Object obj = oi.readObject();
+			
+			unicInstanc = (RepositorioProduto) obj;
+		} catch (Exception e) {
+			unicInstanc = new RepositorioProduto();
+		} finally {
+			if(oi != null){
+				try {
+					oi.close();
+				} catch (IOException e){
+				}
+			}
+		}
+		
+		return unicInstanc;
+	}
+	
+	public void salvarNoArquivo() {
+		if (unicInstanc == null){
+			return;
+		}
+		
+		File out = new File("Arquivos/Produto.data");
+		FileOutputStream fo = null;
+		ObjectOutputStream oos = null;
+		
+		try {
+			fo = new FileOutputStream(out);
+			oos = new ObjectOutputStream(fo);
+			
+			oos.writeObject(unicInstanc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (oos != null){
+				try {
+					oos.close();
+				} catch (IOException e){
+				}
+			}
+		}
 	}
 	
 	public int Size(){
@@ -62,22 +122,22 @@ public class RepositorioProduto implements IRepositorioProduto {
 		return -1;
 	}
 	
-	public Produto buscarP(Produto produto) throws ProdutoNaoExisteException {
+	public Produto buscarP(Produto produto) throws ObjectNaoExisteException {
 		
 		int i = buscarProduto(produto);
 		
 		if(i != -1){
 			return repositorio.get(i);			
-		}else{throw new ProdutoNaoExisteException();}
+		}else{throw new ObjectNaoExisteException();}
 	  
 	}
 	
-	public void alterarDoEstoque(Produto produto, int quantidade) throws ProdutoNaoExisteException{
+	public void alterarDoEstoque(Produto produto, int quantidade) throws ObjectNaoExisteException{
 		int index = this.buscarProduto(produto);
 		if(index != -1){
 			
 			this.repositorio.get(index).setEstoque(quantidade);;
-		}else{throw new ProdutoNaoExisteException();}
+		}else{throw new ObjectNaoExisteException();}
 	}
 		
 	private int buscarI(String bus){
@@ -89,7 +149,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		return -1;
 	}
 	
-	public void cadastrar(Produto novo) throws ErroAoSalvarException, ProdutoJaCadastradoException{
+	public void cadastrar(Produto novo) throws ErroAoSalvarException, ObjectJaExisteException{
 		
 			boolean ok = true;
 			for(int i=0; i<this.repositorio.size();i++){
@@ -100,7 +160,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			}
 			
 				if(!ok){
-					throw new ProdutoJaCadastradoException();
+					throw new ObjectJaExisteException();
 				}
 				else if (!this.repositorio.add(novo)) {
 					throw new ErroAoSalvarException(novo);
@@ -108,13 +168,13 @@ public class RepositorioProduto implements IRepositorioProduto {
 										
 	}
 	
-	public Produto buscar(String codigo) throws ProdutoNaoExisteException {
+	public Produto buscar(String codigo) throws ObjectNaoExisteException {
 		
 		int i = buscarI(codigo);
 		
 		if(i != -1){
 			return repositorio.get(i);			
-		}else{throw new ProdutoNaoExisteException();}
+		}else{throw new ObjectNaoExisteException();}
 	  
 	}
 	
@@ -131,14 +191,14 @@ public class RepositorioProduto implements IRepositorioProduto {
 		
 	}
 	
-	public void atualizar(Produto novo) throws ProdutoNaoExisteException, ErroAoAtualizarException{
+	public void atualizar(Produto novo) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		if(novo == null){
 			throw new ErroAoAtualizarException();
 		}
 		else{
 		int i = buscarI(novo.getCodigo());
 	    if(i == -1){
-	    	throw new ProdutoNaoExisteException();
+	    	throw new ObjectNaoExisteException();
 	    }
 	    else{
 	    	repositorio.get(i).setNome(novo.getNome());
