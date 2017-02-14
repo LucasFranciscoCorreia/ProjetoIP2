@@ -1,0 +1,16 @@
+package br.ufrpe.beans;
+
+public class PetCare {
+	private Servico servico;
+	private Cliente cliente;
+	private Funcionario funcionario;
+	
+	public PetCare(Servico servico, Cliente cliente, Funcionario funcionario) {
+		
+		this.servico = servico;
+		this.cliente = cliente;
+		this.funcionario = funcionario;
+	}
+	
+	
+}

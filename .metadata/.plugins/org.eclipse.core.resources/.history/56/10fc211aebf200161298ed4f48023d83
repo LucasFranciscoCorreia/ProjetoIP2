@@ -1,0 +1,83 @@
+package br.ufrpe.beans;
+
+import java.time.LocalDate;
+/**
+ * Esta classe representa o "PetCare" espécie de loja onde serão adicionados os serviços prestados
+ * aos animais (banho, tosa, etc).
+ * 
+ * @author srtacamelo
+ *
+ */
+public class PetCare {
+	
+	private Servico servico;
+	private Cliente cliente;
+	private Animal pet;
+	private Funcionario funcionario;
+	private LocalDate dataComeco;
+	private LocalDate dataFim;
+	
+	/**
+	 * Construtor vázio padrão.
+	 */
+	public PetCare() {
+		
+	}
+
+	/**
+	 * Construtor de PetCare
+	 * @param servico
+	 * @param cliente
+	 * @param funcionario
+	 */
+	public PetCare(Servico servico, Cliente cliente, Funcionario funcionario,Animal pet) {
+		
+		this.servico = servico;
+		this.cliente = cliente;
+		this.funcionario = funcionario;
+		this.pet = pet;
+	}
+	//TODO: Pegar hora do PC
+	/**
+	 * Inicializa o serviço
+	 */
+	public void comecarServico(){
+		//this.dataComeco = datadopc;
+	}
+	//TODO: Pegar data do PC
+	public void terminarServico(){
+		//this.dataFim = datadopc;
+	}
+	
+	/**
+	 * Getters and Setters
+	 * @return
+	 */
+	public Servico getServico() {
+		return servico;
+	}
+
+	public void setServico(Servico servico) {
+		this.servico = servico;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	
+	
+	
+	
+}

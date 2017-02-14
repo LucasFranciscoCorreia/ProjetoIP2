@@ -1,0 +1,31 @@
+package br.ufrpe.beans;
+
+/**
+ * Esta classe representa o "PetCare" espécie de loja onde serão adicionados os serviços prestados
+ * aos animais (banho, tosa, etc).
+ * 
+ * @author srtacamelo
+ *
+ */
+public class PetCare {
+	private Servico servico;
+	private Cliente cliente;
+	private Funcionario funcionario;
+	
+	
+	public PetCare() {
+		
+	}
+
+
+	public PetCare(Servico servico, Cliente cliente, Funcionario funcionario) {
+		
+		this.servico = servico;
+		this.cliente = cliente;
+		this.funcionario = funcionario;
+	}
+	
+	
+	
+	
+}
