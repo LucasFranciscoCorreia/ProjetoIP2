@@ -61,6 +61,10 @@ public class ControladorPessoa implements IControladorPessoa {
 		}
 	}
 	
+	public Pessoa buscar(Login log) throws ObjectNaoExisteException{
+		return repositorio.buscar(log);
+	}
+	
 	/**
 	 * Cadastra uma nova pessoa no sistema
 	 * 

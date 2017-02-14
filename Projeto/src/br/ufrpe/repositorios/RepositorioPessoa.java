@@ -51,7 +51,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	private ArrayList<Pessoa> repositorio;
 	private static IRepositorioPessoa unicInstanc;
-	
+
 	/**
 	 * Contrutor privado de RepositorioPessoa
 	 * 
@@ -60,7 +60,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	private RepositorioPessoa(){
 		repositorio = new ArrayList<>();
 	}
-	
+
 	/**
 	 * Construtor publico de RepositorioPessoa, seguindo o padr�o singleton
 	 * 
@@ -77,16 +77,16 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 
 	private static RepositorioPessoa lerDoArquivo(){
 		RepositorioPessoa unicInstanc = null;
-		
+
 		File in = new File("Arquivos/Pessoa.data");
 		FileInputStream fi = null;
 		ObjectInputStream oi = null;
-		
+
 		try {
 			fi = new FileInputStream(in);
 			oi = new ObjectInputStream(fi);
 			Object obj = oi.readObject();
-			
+
 			unicInstanc = (RepositorioPessoa) obj;
 		} catch (Exception e) {
 			unicInstanc = new RepositorioPessoa();
@@ -98,23 +98,23 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 				}
 			}
 		}
-		
+
 		return unicInstanc;
 	}
-	
+
 	public void salvarNoArquivo() {
 		if (unicInstanc == null){
 			return;
 		}
-		
+
 		File out = new File("Arquivos/Pessoa.data");
 		FileOutputStream fo = null;
 		ObjectOutputStream oos = null;
-		
+
 		try {
 			fo = new FileOutputStream(out);
 			oos = new ObjectOutputStream(fo);
-			
+
 			oos.writeObject(unicInstanc);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -127,7 +127,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			}
 		}
 	}
-	
+
 	/**
 	 * Busca no array usando o cpf
 	 * 
@@ -143,7 +143,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * Cadastra uma pessoa
 	 * 
@@ -161,7 +161,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			}
 		}
 	}
-	
+
 	/**
 	 * Remove uma pessoa
 	 * 
@@ -175,7 +175,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			throw new IllegalArgumentException("CPF inválido!");
 		}else{
 			int indice = buscarIndice(cpf);
-			
+
 			if(indice != -1){
 				this.repositorio.remove(indice);
 			}else{
@@ -183,7 +183,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			}
 		}
 	}
-	
+
 	/**
 	 * Busca por uma pessoa
 	 * 
@@ -199,7 +199,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			throw new IllegalArgumentException("CPF inválido!");
 		}else{
 			int indice = buscarIndice(cpf);
-			
+
 			if(indice != -1){
 				return this.repositorio.get(indice);
 			}else{
@@ -207,7 +207,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			}
 		}		
 	}
-	
+
 	/**
 	 * Quantidade de funcionarios no sistema.
 	 * 
@@ -224,7 +224,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 		}
 		return funcionario;
 	}
-	
+
 	/**
 	 * Quantidade de clientes no sistema
 	 * 
@@ -241,7 +241,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 		}
 		return cliente;
 	}
-	
+
 	/**
 	 * Quantidade de Pessoas, independente se sejao clientes ou funcionarios
 	 * 
@@ -250,7 +250,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	public int size(){
 		return repositorio.size();
 	}
-	
+
 	/**
 	 * ArrayList com todos os clientes cadastrados
 	 * 
@@ -267,7 +267,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 		}
 		return clientes;
 	}
-	
+
 	/**
 	 * ArrayList com todos os funcionarios cadastrados
 	 * 
@@ -284,7 +284,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 		}
 		return funcionarios;
 	}
-	
+
 	/**
 	 * Lista com todas as pessoas ativas
 	 * 
@@ -297,7 +297,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 		}
 		return res;
 	}
-	
+
 	/**
 	 * Atualiza informa�oes especificas de uma Pessoa
 	 * 
@@ -314,12 +314,12 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	 * @see Funcionario
 	 */
 	public void atualizar(Pessoa pessoa) throws ObjectNaoExisteException, 
-			ErroAoAtualizarException{
+	ErroAoAtualizarException{
 		if(pessoa == null){
 			throw new IllegalArgumentException("Erro ao atualizar!");
 		}else{
 			int indice = buscarIndice(pessoa.getCpf());
-			
+
 			if(indice == -1){
 				throw new ObjectNaoExisteException();
 			}else{
@@ -335,7 +335,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 					if (((Cliente) pessoa).getPets() != null){
 						int qtd = (((Cliente) pessoa).getPets()).length;
 						Animal[] pets = ((Cliente) pessoa).getPets();
-						
+
 						for(int i = 0; i < qtd; i++){
 							((Cliente) repositorio.get(indice)).addPet(pets[i]);
 						}
@@ -349,7 +349,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			}
 		}
 	}
-	
+
 	/**
 	 * Checa se o login for valido
 	 * 
@@ -370,5 +370,21 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 			}
 		}
 		return ok;
+	}
+
+	@Override
+	public Pessoa buscar(Login log) throws ObjectNaoExisteException {
+		if(log == null){
+			throw new IllegalArgumentException("Login nao encontrado");
+		}else{
+			for(int i = 0; i < repositorio.size();i++){
+				if(repositorio.get(i) instanceof Funcionario){
+					if(((Funcionario) repositorio.get(i)).getLog().equals(log)){
+						return repositorio.get(i);
+					}
+				}
+			}
+		}
+		return null;
 	}
 }

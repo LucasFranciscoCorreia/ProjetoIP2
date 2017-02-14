@@ -49,6 +49,7 @@ public interface IRepositorioPessoa {
 	boolean checarLogin(Login log);
 	void cadastrar(Pessoa pessoa) throws ErroAoSalvarException;
 	Pessoa buscar(String cpf) throws ObjectNaoExisteException;
+	Pessoa buscar(Login log) throws ObjectNaoExisteException;
 	void remover(String cpf) throws ErroAoRemoverException;
 	void atualizar(Pessoa p) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	void salvarNoArquivo();
