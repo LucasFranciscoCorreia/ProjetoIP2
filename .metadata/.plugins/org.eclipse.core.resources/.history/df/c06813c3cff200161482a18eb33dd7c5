@@ -39,17 +39,26 @@ public class NotaFiscal {
 	}
 	/**
 	 * Constrytor para Serviço <Compra>
-	 * 
 	 * @param funcionario
 	 * @param cliente
+	 * @param dataComeco
+	 * @param preco
 	 * @param carrinho
 	 */
-	public NotaFiscal(Funcionario funcionario, Cliente cliente, Carrinho carrinho) {
+	public NotaFiscal(Funcionario funcionario, Cliente cliente, String preco,
+			Carrinho carrinho) {
 		
 		this.funcionario = funcionario;
 		this.cliente = cliente;
-		this.carrinho = carrinho;
+		this.preco = preco;
+		this.produtos = produtos;
+		this.quantidades = quantidades;
 	}
+	
+	
+	
+	
+	
 	
 	/**
 	 * Métodos Getters and Settters
@@ -74,5 +83,16 @@ public class NotaFiscal {
 	public void setPet(Animal pet) {
 		this.pet = pet;
 	}
-	
+	public LocalDate getDataComeco() {
+		return dataComeco;
+	}
+	public void setDataComeco(LocalDate dataComeco) {
+		this.dataComeco = dataComeco;
+	}
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
 }

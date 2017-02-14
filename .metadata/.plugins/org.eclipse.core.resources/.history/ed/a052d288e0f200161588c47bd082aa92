@@ -74,5 +74,16 @@ public class NotaFiscal {
 	public void setPet(Animal pet) {
 		this.pet = pet;
 	}
-	
+	public LocalDate getDataComeco() {
+		return dataComeco;
+	}
+	public void setDataComeco(LocalDate dataComeco) {
+		this.dataComeco = dataComeco;
+	}
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
 }
