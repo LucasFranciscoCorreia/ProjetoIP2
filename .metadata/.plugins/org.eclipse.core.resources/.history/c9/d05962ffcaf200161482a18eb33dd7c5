@@ -3,12 +3,10 @@ package br.ufrpe.negocios;
 import br.ufrpe.repositorios.IRepositorioAnimal;
 import br.ufrpe.repositorios.IRepositorioProduto;
 import br.ufrpe.beans.Animal;
-import br.ufrpe.beans.Login;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
-import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
@@ -17,7 +15,6 @@ import br.ufrpe.repositorios.*;
 /**
  * Esta classe representa a fachada do sistema, pela qual os controladores
  * e repositórios são instanciados.
- * 
  * @author srtacamelo
  *
  */
@@ -53,64 +50,23 @@ public class FachadaControlador {
 	public void salvarNoArquivoAnimal(){
 		controladorAnimal.salvarNoArquivo();
 	}
-	/**
-	 * Cadastrar novo animal.
-	 * 
-	 * @param novo
-	 * @throws ObjectJaExisteException
-	 */
+	
 	public void cadastrar(Animal novo) throws ObjectJaExisteException {
 		controladorAnimal.cadastrar(novo);
 	}
-	/**
-	 * Remover animal do repositório
-	 * @param codigo
-	 * @throws CodigoNaoExisteException
-	 */
-	public void removerAnimal(String codigo) throws CodigoNaoExisteException {
+
+	public void remover(String codigo) throws CodigoNaoExisteException {
 		controladorAnimal.remover(codigo);
 	}
-	/**
-	 * Atualizar animal já existente no repositório.
-	 * @param novo
-	 * @param antigo
-	 * @throws ObjectJaExisteException
-	 * @throws ObjectNaoExisteException
-	 */
-	public void atualizarAnimal(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException {
+
+	public void atualizar(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException {
 		controladorAnimal.atualizar(novo, antigo);
 	}
-	/**
-	 * Buscar um animal no repositório
-	 * @param codigo
-	 * @return
-	 * @throws CodigoNaoExisteException
-	 */
-	public Animal buscarAnimal(String codigo) throws CodigoNaoExisteException {
+
+	public Animal buscar(String codigo) throws CodigoNaoExisteException {
 		return controladorAnimal.buscar(codigo);
 	}
-	/**
-	 * Buscar uma pessoa no repositório.
-	 * 
-	 * @param cpf
-	 * @return
-	 * @throws ObjectNaoExisteException
-	 */
-	public Pessoa buscarPessoa(String cpf) throws ObjectNaoExisteException {
-		return controladorPessoa.buscar(cpf);
-	}
-	public Pessoa buscar(Login log) throws ObjectNaoExisteException {
-		return controladorPessoa.buscar(log);
-	}
-	public void salvarNoArquivo() {
-		controladorProduto.salvarNoArquivo();
-	}
-	public void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException {
-		controladorProduto.remover(codigo);
-	}
-	public Produto pesquisar(String codigo) throws ObjectNaoExisteException {
-		return controladorProduto.pesquisar(codigo);
-	}
+
 	public boolean equals(Object arg0) {
 		return controladorAnimal.equals(arg0);
 	}
