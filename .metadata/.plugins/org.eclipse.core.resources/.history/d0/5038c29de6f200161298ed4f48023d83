@@ -1,0 +1,16 @@
+package br.ufrpe.beans;
+
+public class Servico {
+	
+	private String nome;
+	private double preco;
+	
+	public Servico(String nome, double preco) {
+		super();
+		this.nome = nome;
+		this.preco = preco;
+	}
+	
+	
+
+}

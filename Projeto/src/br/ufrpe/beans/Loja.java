@@ -20,7 +20,7 @@ public class Loja {
 	 */
 	public Loja(){
 		this.carrinho = new Carrinho();
-		this.cliente.setCpf("no-informed");
+		this.cliente.setCpf("not-informed");
 	}
 	/*
 	 * Construtor do cliente já cadastrado

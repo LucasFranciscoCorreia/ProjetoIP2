@@ -1,0 +1,8 @@
+package br.ufrpe.beans;
+
+public class Servico {
+	
+	private String nome;
+	private double preco;
+
+}

@@ -1,6 +1,6 @@
 package br.ufrpe.beans;
-import br.ufrpe.beans.Produto;
-import java.util.Date;
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 /**
