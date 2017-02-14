@@ -1,0 +1,179 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.repositorios.IRepositorioAnimal;
+import br.ufrpe.repositorios.IRepositorioProduto;
+import br.ufrpe.beans.Animal;
+import br.ufrpe.beans.Login;
+import br.ufrpe.beans.Pessoa;
+import br.ufrpe.beans.Produto;
+import br.ufrpe.excecoes.CodigoNaoExisteException;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
+import br.ufrpe.repositorios.*;
+/* Facade */
+/**
+ * Esta classe representa a fachada do sistema, pela qual os controladores
+ * e repositórios são instanciados.
+ * 
+ * @author srtacamelo
+ *
+ */
+
+public class FachadaControlador {
+	private ControladorAnimal controladorAnimal;
+	private ControladorPessoa controladorPessoa;
+	private ControladorProduto controladorProduto;
+	private static FachadaControlador instance;
+	
+	/**
+	 * Construtor da Classe Fachada
+	 */
+	//void?
+	private void FachadaControlador(){
+		this.controladorAnimal = new ControladorAnimal(RepositorioAnimal.getInstance());
+		this.controladorProduto = new ControladorProduto(RepositorioProduto.getInstance());
+		this.controladorPessoa = new ControladorPessoa(RepositorioPessoa.getInstance());
+	}
+	/**
+	 * Método getInstance, para garantir a unicidade da classe.
+	 * @return
+	 */
+	public FachadaControlador getInstance(){
+		if (this.instance == null){
+			FachadaControlador();
+		}
+		return this.instance;
+	}
+	/**
+	 * Salvar os objetos dos repositórios nos arquivos
+	 */
+	public void salvarNoArquivoAnimal(){
+		controladorAnimal.salvarNoArquivo();
+	}
+	/**
+	 * Cadastrar novo animal.
+	 * 
+	 * @param novo
+	 * @throws ObjectJaExisteException
+	 */
+	public void cadastrar(Animal novo) throws ObjectJaExisteException {
+		controladorAnimal.cadastrar(novo);
+	}
+	/**
+	 * Remover animal do repositório
+	 * @param codigo
+	 * @throws CodigoNaoExisteException
+	 */
+	public void removerAnimal(String codigo) throws CodigoNaoExisteException {
+		controladorAnimal.remover(codigo);
+	}
+	/**
+	 * Atualizar animal já existente no repositório.
+	 * @param novo
+	 * @param antigo
+	 * @throws ObjectJaExisteException
+	 * @throws ObjectNaoExisteException
+	 */
+	public void atualizarAnimal(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException {
+		controladorAnimal.atualizar(novo, antigo);
+	}
+	/**
+	 * Buscar um animal no repositório
+	 * @param codigo
+	 * @return
+	 * @throws CodigoNaoExisteException
+	 */
+	public Animal buscarAnimal(String codigo) throws CodigoNaoExisteException {
+		return controladorAnimal.buscar(codigo);
+	}
+
+	public Pessoa buscar(String cpf) throws ObjectNaoExisteException {
+		return controladorPessoa.buscar(cpf);
+	}
+	public Pessoa buscar(Login log) throws ObjectNaoExisteException {
+		return controladorPessoa.buscar(log);
+	}
+	public void salvarNoArquivo() {
+		controladorProduto.salvarNoArquivo();
+	}
+	public void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException {
+		controladorProduto.remover(codigo);
+	}
+	public Produto pesquisar(String codigo) throws ObjectNaoExisteException {
+		return controladorProduto.pesquisar(codigo);
+	}
+	public boolean equals(Object arg0) {
+		return controladorAnimal.equals(arg0);
+	}
+
+	public int hashCode() {
+		return controladorAnimal.hashCode();
+	}
+
+	public String toString() {
+		return controladorAnimal.toString();
+	}
+	
+	public void salvarNoArquivoPessoa(){
+		controladorPessoa.salvarNoArquivo();
+	}
+	
+	public void cadastrar(Pessoa novo)
+			throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException {
+		controladorPessoa.cadastrar(novo);
+	}
+
+	public String listarCLiente() {
+		return controladorPessoa.listarCLiente();
+	}
+
+	public String listarFuncionario() {
+		return controladorPessoa.listarFuncionario();
+	}
+
+	public String listar() {
+		return controladorPessoa.listar();
+	}
+
+	public int size() {
+		return controladorPessoa.size();
+	}
+
+	public void atualizar(Pessoa novo) throws ObjectNaoExisteException, ErroAoAtualizarException {
+		controladorPessoa.atualizar(novo);
+	}
+
+	public int sizeCliente() {
+		return controladorPessoa.sizeCliente();
+	}
+
+	public int sizeFuncionario() {
+		return controladorPessoa.sizeFuncionario();
+	}
+
+	public boolean login(String login, int senha) {
+		return controladorPessoa.login(login, senha);
+	}
+	
+	public void salvarNoArquivoProduto(){
+		controladorProduto.salvarNoArquivo();
+	}
+
+	public void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException {
+		controladorProduto.cadastrar(produto);
+	}
+
+	public void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException {
+		controladorProduto.atualizar(produto);
+	}
+
+	public String listarProduto() {
+		return controladorProduto.listarProduto();
+	}
+	
+	
+
+}

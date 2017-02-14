@@ -1,5 +1,7 @@
 package br.ufrpe.beans;
 import br.ufrpe.beans.Produto;
+import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  * Esta classe representa o carrinho de produtos utilizado na loja.
@@ -15,7 +17,7 @@ public class Carrinho {
 	
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;
-	
+	private LocalDate dataCompra;
 	/**
 	 * Construtor de Carrinho, apenas inicializa os dois ArrayLists
 	 * caso não haja um carrinho inicializado.
@@ -28,6 +30,7 @@ public class Carrinho {
 		
 		this.arrayDeProdutos = new ArrayList<Produto>();
 		this.arrayDeQuantidade = new ArrayList<Integer>();
+		//TODO:this.dataCompra = data do pc
 	}
 	/**
 	 * Getters and Setters
