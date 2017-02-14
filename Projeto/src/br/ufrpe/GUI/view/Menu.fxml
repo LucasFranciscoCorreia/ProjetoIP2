@@ -1,10 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
-   <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
-   </left>
-</BorderPane>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="250.0" prefHeight="600.0" prefWidth="300.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" text="CLIENTE">
+               <graphic>
+                  <ImageView fitHeight="138.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../Pictures/clienteMenu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" text="ANIMAL">
+               <graphic>
+                  <ImageView fitHeight="131.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../Pictures/animalMenu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" text="PRODUTO">
+               <graphic>
+                  <ImageView fitHeight="127.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../Pictures/produtoMenu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" text="FUNCIONÁRIO">
+               <graphic>
+                  <ImageView fitHeight="128.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../Pictures/funcionarioMenu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <ImageView fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/petshop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="250.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/petshop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="250.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/petshop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="250.0" layoutX="550.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/petshop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="250.0" layoutX="550.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/petshop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="250.0" layoutX="550.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/petshop.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
