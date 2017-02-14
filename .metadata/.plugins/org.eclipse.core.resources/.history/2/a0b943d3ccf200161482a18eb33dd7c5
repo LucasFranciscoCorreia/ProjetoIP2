@@ -1,0 +1,14 @@
+package br.ufrpe.beans;
+
+import java.time.LocalDate;
+import java.util.Date;;
+public class Servico {
+
+	private Funcionario funcionario;
+	private Cliente cliente;
+	private Animal pet;
+	private LocalDate dataComeco;
+	private LocalDate dataFim;
+	
+	public Servico( Funcionario funcionario, Cliente cliente,Animal pet,LocalDate dataComeco,LocalDate dataFim)
+}

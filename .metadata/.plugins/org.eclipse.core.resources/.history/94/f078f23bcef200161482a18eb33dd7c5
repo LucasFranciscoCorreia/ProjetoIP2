@@ -2,7 +2,7 @@ package br.ufrpe.beans;
 
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.ArrayList;
+
 /**
  * Esta Classe representa a nota fiscal gerada do servico realizado (Compra ou Serviço PetCare) 
  * @author srtacamelo
@@ -14,7 +14,10 @@ public class NotaFiscal {
 	private Funcionario funcionario;
 	private Cliente cliente;
 	private Animal pet;
-	private Carrinho carrinho;
+	private LocalDate dataComeco;
+	private LocalDate dataFim;
+	private String preco;
+
 	/**
 	 * Construtor vazio padrão.
 	 */
@@ -22,40 +25,28 @@ public class NotaFiscal {
 		
 	}
 	/**
-	 * Construtor para Nota Fiacal de serviço realizado no PetCare
+	 * Construtor para Serviço realizado no PetCare
 	 * 
 	 * @param funcionario
 	 * @param cliente
 	 * @param pet
-	 * @param servico
+	 * @param dataComeco
+	 * @param dataFim
 	 */
-	public NotaFiscal(Funcionario funcionario, Cliente cliente, Animal pet, Servico servico) {
+	public NotaFiscal(Funcionario funcionario, Cliente cliente, Animal pet, LocalDate dataComeco, LocalDate dataFim, Servico servico) {
 	
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.pet = pet;
+		this.dataComeco = dataComeco;
 		this.servico = servico;
 
 	}
-	/**
-	 * Constrytor para Serviço <Compra>
-	 * 
-	 * @param funcionario
-	 * @param cliente
-	 * @param carrinho
-	 */
-	public NotaFiscal(Funcionario funcionario, Cliente cliente, Carrinho carrinho) {
-		
-		this.funcionario = funcionario;
-		this.cliente = cliente;
-		this.carrinho = carrinho;
-	}
 	
-	/**
-	 * Métodos Getters and Settters
-	 * @return
-	 * @void
-	 */
+	public void terminarServico(){
+		//this.dataFim = 
+		//TODO: Pegar a data do PC
+	}
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}

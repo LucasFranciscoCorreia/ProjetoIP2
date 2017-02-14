@@ -1,2 +1,4 @@
 1486948674157	Extract method 'carregarFuncionarios'
 1486948747571	Extract method 'abrirMenu'
+1487087518378	Delete element
+1487087545992	Rename type 'Servico'

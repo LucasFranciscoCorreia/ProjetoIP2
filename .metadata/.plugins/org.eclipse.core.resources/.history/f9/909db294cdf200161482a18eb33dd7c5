@@ -1,0 +1,59 @@
+package br.ufrpe.beans;
+
+import java.time.LocalDate;
+import java.util.Date;;
+public class Servico {
+
+	private Funcionario funcionario;
+	private Cliente cliente;
+	private Animal pet;
+	private LocalDate dataComeco;
+	private LocalDate dataFim;
+
+	public Servico(){
+		
+	}
+	public Servico(Funcionario funcionario, Cliente cliente, Animal pet, LocalDate dataComeco, LocalDate dataFim) {
+	
+		this.funcionario = funcionario;
+		this.cliente = cliente;
+		this.pet = pet;
+		this.dataComeco = dataComeco;
+
+	}
+	
+	public void terminarServico(){
+		//this.dataFim = 
+		//TODO: Pegar a data do PC
+	}
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Animal getPet() {
+		return pet;
+	}
+	public void setPet(Animal pet) {
+		this.pet = pet;
+	}
+	public LocalDate getDataComeco() {
+		return dataComeco;
+	}
+	public void setDataComeco(LocalDate dataComeco) {
+		this.dataComeco = dataComeco;
+	}
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+}

@@ -14,7 +14,11 @@ public class NotaFiscal {
 	private Funcionario funcionario;
 	private Cliente cliente;
 	private Animal pet;
-	private Carrinho carrinho;
+	private LocalDate dataCompra;
+	private String preco;
+	private ArrayList<Produto> produtos;
+	private ArrayList<Integer> quantidades;
+
 	/**
 	 * Construtor vazio padrão.
 	 */
@@ -27,29 +31,44 @@ public class NotaFiscal {
 	 * @param funcionario
 	 * @param cliente
 	 * @param pet
+	 * @param dataComeco
+	 * @param dataFim
 	 * @param servico
 	 */
-	public NotaFiscal(Funcionario funcionario, Cliente cliente, Animal pet, Servico servico) {
+	public NotaFiscal(Funcionario funcionario, Cliente cliente, Animal pet,
+			LocalDate dataComeco, LocalDate dataFim, Servico servico) {
 	
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.pet = pet;
+		this.dataComeco = dataComeco;
 		this.servico = servico;
 
 	}
 	/**
 	 * Constrytor para Serviço <Compra>
-	 * 
 	 * @param funcionario
 	 * @param cliente
-	 * @param carrinho
+	 * @param dataComeco
+	 * @param preco
+	 * @param produtos
+	 * @param quantidades
 	 */
-	public NotaFiscal(Funcionario funcionario, Cliente cliente, Carrinho carrinho) {
+	public NotaFiscal(Funcionario funcionario, Cliente cliente, LocalDate dataComeco, String preco,
+			ArrayList<Produto> produtos, ArrayList<Integer> quantidades) {
 		
 		this.funcionario = funcionario;
 		this.cliente = cliente;
-		this.carrinho = carrinho;
+		this.dataComeco = dataComeco;
+		this.preco = preco;
+		this.produtos = produtos;
+		this.quantidades = quantidades;
 	}
+	
+	
+	
+	
+	
 	
 	/**
 	 * Métodos Getters and Settters

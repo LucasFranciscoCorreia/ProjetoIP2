@@ -1,0 +1,10 @@
+package br.ufrpe.beans;
+
+import java.util.Date;;
+public class Servico {
+
+	private Funcionario funcionario;
+	private Cliente cliente;
+	private Animal pet;
+	private Local
+}
