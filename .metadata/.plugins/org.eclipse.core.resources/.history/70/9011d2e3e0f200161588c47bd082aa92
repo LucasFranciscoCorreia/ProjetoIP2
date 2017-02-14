@@ -16,7 +16,6 @@ public class NotaFiscal {
 	private Animal pet;
 	private Carrinho carrinho;
 	private String tipo;
-	
 	/**
 	 * Construtor vazio padrão.
 	 */
@@ -37,7 +36,6 @@ public class NotaFiscal {
 		this.cliente = cliente;
 		this.pet = pet;
 		this.servico = servico;
-		this.tipo = "PetCare";
 
 	}
 	/**
@@ -52,7 +50,6 @@ public class NotaFiscal {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.carrinho = carrinho;
-		this.tipo = "Compra";
 	}
 	
 	/**

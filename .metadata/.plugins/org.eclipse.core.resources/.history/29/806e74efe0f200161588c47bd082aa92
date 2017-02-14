@@ -52,7 +52,6 @@ public class NotaFiscal {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.carrinho = carrinho;
-		this.tipo = "Compra";
 	}
 	
 	/**
