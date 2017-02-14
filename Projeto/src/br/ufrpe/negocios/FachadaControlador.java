@@ -12,18 +12,42 @@ import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.*;
 /* Facade */
+/**
+ * Esta classe representa a fachada do sistema, pela qual os controladores
+ * e repositórios são instanciados.
+ * 
+ * @author srtacamelo
+ *
+ */
 
 public class FachadaControlador {
 	private ControladorAnimal controladorAnimal;
 	private ControladorPessoa controladorPessoa;
 	private ControladorProduto controladorProduto;
+	private static FachadaControlador instance;
 	
-	public FachadaControlador(IRepositorioAnimal instanceAnimal, IRepositorioProduto instanceProduto, IRepositorioPessoa instancePessoa ){
-		this.controladorAnimal = new ControladorAnimal(instanceAnimal);
-		this.controladorProduto = new ControladorProduto(instanceProduto );
-		this.controladorPessoa = new ControladorPessoa(instancePessoa);
+	/**
+	 * Construtor da Classe Fachada
+	 */
+	//void?
+	private void FachadaControlador(){
+		this.controladorAnimal = new ControladorAnimal(RepositorioAnimal.getInstance());
+		this.controladorProduto = new ControladorProduto(RepositorioProduto.getInstance());
+		this.controladorPessoa = new ControladorPessoa(RepositorioPessoa.getInstance());
 	}
-	
+	/**
+	 * Método getInstance, para garantir a unicidade da classe.
+	 * @return
+	 */
+	public FachadaControlador getInstance(){
+		if (this.instance == null){
+			FachadaControlador();
+		}
+		return this.instance;
+	}
+	/**
+	 * Salvar os objetos dos repositórios nos arquivos
+	 */
 	public void salvarNoArquivoAnimal(){
 		controladorAnimal.salvarNoArquivo();
 	}

@@ -19,7 +19,7 @@ import br.ufrpe.repositorios.IRepositorioAnimal;
 public class ControladorAnimal implements IControladorAnimal{
 	
 	private IRepositorioAnimal repositorioAnimal;
-	
+
 	public ControladorAnimal(IRepositorioAnimal instance){
 		repositorioAnimal = instance;
 	}
