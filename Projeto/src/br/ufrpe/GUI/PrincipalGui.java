@@ -45,6 +45,17 @@ public class PrincipalGui extends Application implements Initializable{
 	private Scene scene;
 	@FXML
 	private Button buttonCliente;
+	private static Funcionario logado;
+	
+	@FXML
+	public void voltarMenu(ActionEvent evt){
+		if(logado.getCargo().equalsIgnoreCase("Gerente") ||
+				logado.getCargo().equalsIgnoreCase("Administrador")){
+			abrirMenu(evt);
+		}else{
+			abrirMenuFuncionario(evt);
+		}
+	}
 	
 	@FXML
 	public void menuCliente(ActionEvent evt){
@@ -75,9 +86,9 @@ public class PrincipalGui extends Application implements Initializable{
 		}
 		if(p.login(login, password)){
 			try {
-				Funcionario adm =(Funcionario) p.buscar(new Login(login, password));
-				if(adm.getCargo().equalsIgnoreCase("Gerente") ||
-						adm.getCargo().equalsIgnoreCase("Administrador")){
+				logado = (Funcionario) p.buscar(new Login(login, password));
+				if(logado.getCargo().equalsIgnoreCase("Gerente") ||
+						logado.getCargo().equalsIgnoreCase("Administrador")){
 					abrirMenu(evt);
 				}else{
 					abrirMenuFuncionario(evt);
@@ -108,7 +119,8 @@ public class PrincipalGui extends Application implements Initializable{
 	}
 	@FXML
 	private void abrirMenu(ActionEvent evt) {
-		((Node) (evt.getSource())).getScene().getWindow().hide();
+		primaryStage.close();
+		primaryStage = null;
 		FXMLLoader menu = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
 		AnchorPane rootMenu = null;
 		try {
@@ -146,9 +158,9 @@ public class PrincipalGui extends Application implements Initializable{
 			loader.setLocation(PrincipalGui.class.getResource("view/Login.fxml"));
 			rootLayout = (AnchorPane) loader.load();
 			scene = new Scene(rootLayout);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.show();
+			primaryStage = new Stage();
+			primaryStage.setScene(scene);
+			primaryStage.show();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}

@@ -76,7 +76,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonVoltar" prefHeight="60.0" prefWidth="95.0" text="Voltar">
+            <JFXButton fx:id="buttonVoltar" onAction="#voltarMenu" prefHeight="60.0" prefWidth="95.0" text="Voltar">
                <VBox.margin>
                   <Insets right="1.0" />
                </VBox.margin>
