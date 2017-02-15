@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
@@ -31,7 +32,7 @@
    <center>
       <VBox prefHeight="600.0" prefWidth="279.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="buttonAddCliente" prefHeight="110.0" prefWidth="306.0" text="Cadastrar">
+            <JFXButton fx:id="buttonAddCliente" lineSpacing="1.0" onAction="#cadastroCliente" prefHeight="110.0" prefWidth="306.0" style="-fx-border-color: black;" text="Cadastrar">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0">
                      <image>
@@ -40,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonRemoverCliente" prefHeight="110.0" prefWidth="364.0" text="Remover">
+            <JFXButton fx:id="buttonRemoverCliente" onAction="#removerCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0">
                      <image>
@@ -49,7 +50,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonAtualizarCliente" prefHeight="110.0" prefWidth="357.0" text="Atualizar">
+            <JFXButton fx:id="buttonAtualizarCliente" prefHeight="110.0" prefWidth="357.0" style="-fx-border-color: black;" text="Atualizar">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0">
                      <image>
@@ -58,7 +59,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonPesquisarCliente" prefHeight="110.0" prefWidth="312.0" text="Pesquisar">
+            <JFXButton fx:id="buttonPesquisarCliente" prefHeight="110.0" prefWidth="312.0" style="-fx-border-color: black;" text="Pesquisar">
                <graphic>
                   <ImageView fitHeight="99.0" fitWidth="100.0">
                      <image>
@@ -67,16 +68,16 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonListarClientes" prefHeight="110.0" prefWidth="386.0" text="Listar">
+            <JFXButton fx:id="buttonListarClientes" prefHeight="110.0" prefWidth="386.0" style="-fx-border-color: black;" text="Listar">
                <graphic>
-                  <ImageView fitHeight="90.0" fitWidth="90.0">
+                  <ImageView fitHeight="90.0" fitWidth="90.0" style="-fx-border-color: black;">
                      <image>
                         <Image url="@../../../../../lib/Imgs/editor-grid-view-block-glyph-128.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonVoltar" onAction="#voltarMenu" prefHeight="60.0" prefWidth="95.0" text="Voltar">
+            <JFXButton fx:id="buttonVoltar" onAction="#voltarMenu" prefHeight="60.0" prefWidth="95.0" style="-fx-border-color: black;" text="Voltar" textAlignment="CENTER">
                <VBox.margin>
                   <Insets right="1.0" />
                </VBox.margin>

@@ -998,7 +998,6 @@ public class Principal {
 
 	public static void main(String[] args) throws Exception {
 		Scanner scanner = new Scanner(System.in);
-
 		ControladorAnimal animalControlador = new ControladorAnimal(RepositorioAnimal.getInstance());
 		ControladorProduto produtoControlador = new ControladorProduto(RepositorioProduto.getInstance());
 		ControladorPessoa pessoaControlador = new ControladorPessoa(RepositorioPessoa.getInstance());
@@ -1006,8 +1005,7 @@ public class Principal {
 		do{
 			ok = login(pessoaControlador, scanner);
 		}while(ok);
-		menu(scanner, animalControlador, produtoControlador, pessoaControlador);
-		
+		menu(scanner, animalControlador, produtoControlador, pessoaControlador);		
 		scanner.close();
 	}
 	private static boolean login(ControladorPessoa pessoaControlador, Scanner scanner) {

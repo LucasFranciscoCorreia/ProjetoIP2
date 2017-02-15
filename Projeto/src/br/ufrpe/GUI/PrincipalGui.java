@@ -3,12 +3,15 @@ package br.ufrpe.GUI;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Login;
@@ -27,6 +30,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -34,19 +38,117 @@ import javafx.stage.Stage;
 public class PrincipalGui extends Application implements Initializable{
 	@FXML
 	private JFXPasswordField password;
+	
 	@FXML
 	private JFXTextField login;
+	
 	@FXML
-	private JFXButton okButton, buttonAddCliente, buttonRemoverCliente, buttonListarCliente, buttonPesquisarCliente, buttonAtualizarCliente;
+	private JFXButton okButton, buttonAddCliente, buttonRemoverCliente, buttonListarCliente, buttonPesquisarCliente, buttonAtualizarCliente, buttonCancelar;
+	
 	@FXML
-	private Label Aviso;
+	private Label Aviso, AvisoCadastroCliente, clienteEncontrado, ClienteDeletado ;
+	
 	private Stage primaryStage;
+	
 	private AnchorPane rootLayout;
+	
 	private Scene scene;
+	
 	@FXML
-	private Button buttonCliente;
+	private Button buttonCliente, buttonCadastrarCliente, buttonCancelarCadastroCliente, buttonCadastrarNovoCliente, buttonProcurar, buttonDeletar	;
+	
 	private static Funcionario logado;
 	
+	@FXML	
+	private TextField nome, cpf, aniversario, cep, rua, numero, complemento, cidadeUF, buscaRemover;
+	
+	@FXML
+	public void removerCliente(ActionEvent evt){
+		((Node) (evt.getSource())).getScene().getWindow().hide();
+		FXMLLoader menuRemover = new FXMLLoader(PrincipalGui.class.getResource("view/ClienteRemover.fxml"));
+		AnchorPane rootRemoverCliente = null;
+		try{
+			rootRemoverCliente = (AnchorPane) menuRemover.load();
+		}catch(IOException e){
+			System.out.println(e.getMessage());
+		}
+		scene = new Scene(rootRemoverCliente);			
+		primaryStage.setTitle("Remover Cliente");
+		primaryStage.setResizable(false);
+		primaryStage.setScene(scene);
+	}	
+	@FXML
+	public void cadastrarCliente(ActionEvent evt){
+		if(nome.getText().isEmpty() || cpf.getText().isEmpty() || aniversario.getText().isEmpty() || cep.getText().isEmpty() || rua.getText().isEmpty() || numero.getText().isEmpty() || complemento.getText().isEmpty() || cidadeUF.getText().isEmpty()){
+			AvisoCadastroCliente.setText("Todos os campos devem ser preenchidos");
+		}else{
+			if(dataOk(aniversario.getText())){
+				ControladorPessoa p = carregarCadastros();
+				Pessoa novo = null;
+				boolean ok = true;
+				try{					
+					Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
+					DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+					LocalDate aniversario = LocalDate.parse(this.aniversario.getText(), DATE_FORMAT);
+					novo = new Cliente(cpf.getText(),aniversario, nome.getText(), end);
+				}catch(NumberFormatException e){
+					AvisoCadastroCliente.setText("Numero de residencia deve ser um numero");
+				}
+				try {
+					p.cadastrar(novo);
+				} catch (ObjectNaoExisteException | ErroAoSalvarException | ObjectJaExisteException e) {
+					AvisoCadastroCliente.setText(e.getMessage());
+					ok = false;
+				}
+				if(ok){
+					AvisoCadastroCliente.setText("Cliente cadastrado com sucesso");
+					buttonCadastrarCliente.setVisible(false);
+					buttonCadastrarCliente.setDisable(true);
+					buttonCadastrarNovoCliente.setVisible(true);
+					buttonCadastrarNovoCliente.setDisable(false);
+					buttonCancelarCadastroCliente.setText("Voltar");
+				}
+			}else{
+				AvisoCadastroCliente.setText("Data invalida ou escrita num formato invalido(\"dia-mes-ano\")");
+			}
+		}
+	}
+	
+	@SuppressWarnings("finally")
+	public boolean dataOk(String data){
+		boolean ok = false;
+		try{
+			DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate dataok = LocalDate.parse(data, DATE_FORMAT);
+			ok = true;
+		}catch(DateTimeParseException e){
+			AvisoCadastroCliente.setText("Data deve ser escrita no formato: \"dia-mes-ano\"");
+		}finally{
+			return ok;			
+		}
+	}
+	
+	@FXML
+	public void cadastroCliente(ActionEvent evt){
+		((Node) (evt.getSource())).getScene().getWindow().hide();
+		//FXMLLoader cadastrarCliente = FXMLLoader menu = new FXMLLoader(PrincipalGui.class.getResource("view/MenuCliente.fxml"));
+		AnchorPane rootCadastrarCliente = null;
+		try {
+			rootCadastrarCliente = (AnchorPane) FXMLLoader.load(PrincipalGui.class.getResource("view/MenuCliente.fxml"));
+		} catch (IOException e) {	
+			System.out.println(e.getMessage());
+		};
+		//try {
+		///	rootCadastrarCliente = (AnchorPane) cadastrarCliente.load();
+		//} catch (IOException e) {
+		//	System.out.println(e.getMessage());
+		//}
+		Scene scene = new Scene(rootCadastrarCliente);
+		primaryStage.setTitle("Cadastrar Cliente");
+		primaryStage.setResizable(false);
+		primaryStage.setScene(scene);
+	}
+
 	@FXML
 	public void voltarMenu(ActionEvent evt){
 		if(logado.getCargo().equalsIgnoreCase("Gerente") ||
@@ -56,7 +158,7 @@ public class PrincipalGui extends Application implements Initializable{
 			abrirMenuFuncionario(evt);
 		}
 	}
-	
+
 	@FXML
 	public void menuCliente(ActionEvent evt){
 		((Node) (evt.getSource())).getScene().getWindow().hide();
@@ -67,14 +169,15 @@ public class PrincipalGui extends Application implements Initializable{
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		Scene scene = new Scene(rootMenuCliente);
-		Stage stage = new Stage();
-		stage.setScene(scene);
-		stage.show();
+		scene = new Scene(rootMenuCliente);
+		primaryStage.setTitle("Cliente");
+		primaryStage.setResizable(false);
+		primaryStage.setScene(scene);		
 	}
+	
 	@FXML
 	public void realizarLogin(ActionEvent evt){
-		ControladorPessoa p = carregarFuncionarios();
+		ControladorPessoa p = carregarCadastros();
 		String login = this.login.getText();
 		int password = 0;
 		boolean warn = true;
@@ -102,6 +205,7 @@ public class PrincipalGui extends Application implements Initializable{
 			}
 		}
 	}
+	
 	private void abrirMenuFuncionario(ActionEvent evt) {
 		((Node) (evt.getSource())).getScene().getWindow().hide();
 		FXMLLoader menu = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
@@ -112,15 +216,13 @@ public class PrincipalGui extends Application implements Initializable{
 			Aviso.setText(e.getMessage());
 		}
 		//Scene scene = new Scene(rootMenu);
-		//primaryStage = new Stage();
 		//primaryStage.setScene(scene);
-		//primaryStage.setTitle("Menu");
-		//primaryStage.show();
+		//primaryStage.setTitle("Menu");	
 	}
+	
 	@FXML
 	private void abrirMenu(ActionEvent evt) {
-		primaryStage.close();
-		primaryStage = null;
+		((Node) (evt.getSource())).getScene().getWindow().hide();
 		FXMLLoader menu = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
 		AnchorPane rootMenu = null;
 		try {
@@ -129,22 +231,24 @@ public class PrincipalGui extends Application implements Initializable{
 			Aviso.setText(e.getMessage());
 		}
 		scene = new Scene(rootMenu);
-		primaryStage = new Stage();
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Menu");
-		primaryStage.show();
+		this.primaryStage.setScene(scene);
+		this.primaryStage.setTitle("Menu");
+		this.primaryStage.setResizable(false);
 	}
-	private ControladorPessoa carregarFuncionarios() {
+	
+	private ControladorPessoa carregarCadastros() {
 		ControladorPessoa p = new ControladorPessoa(RepositorioPessoa.getInstance());
 		return p;
 	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			this.primaryStage = new Stage();
+			this.primaryStage = primaryStage;
 			this.primaryStage.setTitle("Pet42");
 			this.primaryStage.setResizable(false);
 			initRootLayout();
@@ -152,21 +256,23 @@ public class PrincipalGui extends Application implements Initializable{
 			System.out.println(e);
 		}
 	}
+	
 	private void initRootLayout(){
 		try{	
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(PrincipalGui.class.getResource("view/Login.fxml"));
 			rootLayout = (AnchorPane) loader.load();
 			scene = new Scene(rootLayout);
-			primaryStage = new Stage();
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
 			primaryStage.show();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 	}
+	
 	public static void main(String[] args) {
-		launch(new String[0]);
+		launch(args);
 	}
 
 }
