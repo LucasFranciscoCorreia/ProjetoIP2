@@ -483,7 +483,7 @@ public class Principal {
 				System.out.println("Informe a quantidade em estoque: ");
 				estoque = getInt(scanner);
 
-				Produto produtoNovo = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
+				Produto produtoNovo = new Remedio(preco, nome, tipo, estoque,"asd","dsa");
 				produtoControlador.atualizar(produtoNovo);
 			}
 		} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
@@ -510,7 +510,6 @@ public class Principal {
 	private static void cadastrarProduto(Scanner scanner, ControladorProduto produtoControlador) {
 		String nome;
 		String tipo;
-		String codigo;
 		int estoque;
 		float preco;
 		Produto produto;
@@ -521,15 +520,13 @@ public class Principal {
 		nome = scanner.nextLine();
 		System.out.println("Informe o tipo: ");
 		tipo = scanner.nextLine();
-		System.out.println("Informe o codigo: ");
-		codigo = scanner.nextLine();
 		System.out.println("Informe o preco: ");
 		preco = Float.parseFloat(scanner.nextLine());
 		System.out.println("Informe a quantidade em estoque: ");
 		estoque = getInt(scanner);
 
 
-		produto = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
+		produto = new Remedio(preco, nome, tipo, estoque,"asd","dsa");
 
 		try {
 			produtoControlador.cadastrar(produto);
@@ -713,6 +710,7 @@ public class Principal {
 				String nomePet = scanner.nextLine();
 				System.out.println("Digite o codigo do pet");
 				String codigoPet = scanner.nextLine();
+	
 				
 				Animal novo = new Animal(true, especie, raca, dono, peso, h, nomePet,codigoPet);
 				try {
@@ -735,8 +733,9 @@ public class Principal {
 			h = Float.parseFloat(scanner.nextLine());
 			System.out.print("Digite o nome do animal: ");
 			String nomePet = scanner.nextLine();
-			System.out.print("Digite o codigo do pet: ");
+			System.out.println("Digite o codigo do pet");
 			String codigoPet = scanner.nextLine();
+			
 			
 			Animal novo = new Animal(true, especie, raca, null, peso, h, nomePet,codigoPet);
 			try{
@@ -855,6 +854,7 @@ public class Principal {
 					String nomePet = scanner.nextLine();
 					System.out.println("Digite o codigo do pet");
 					String codigoPet = scanner.nextLine();
+					
 					Animal novo = new Animal(true, especie, raca, cliente, peso, h, nomePet,codigoPet);
 
 					try {
@@ -975,9 +975,9 @@ public class Principal {
 				h = Float.parseFloat(scanner.nextLine());
 				System.out.print("Digite o nome do pet: ");
 				String nomePet = scanner.nextLine();
-
-				System.out.print("Digite o codigo do pet");
+				System.out.println("Digite o codigo do pet");
 				String codigoPet = scanner.nextLine();
+
 		
 				Animal novo = new Animal(true, especie, raca, (Cliente) cliente, peso, h, nomePet,codigoPet);
 				try {

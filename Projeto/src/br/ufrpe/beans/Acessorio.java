@@ -2,10 +2,10 @@
  * Projeto PetShop
  * 
  * Tipo: Acessorio
- * Tipo 2: Produto, descrição: abstract
+ * Tipo 2: Produto, descriï¿½ï¿½o: abstract
  * 
- *Este software foi criado para fins acadêmicos, visando a aprovação na disciplina
- *Introdução a Programação II, lecionada no período 2016.2, 
+ *Este software foi criado para fins acadï¿½micos, visando a aprovaï¿½ï¿½o na disciplina
+ *Introduï¿½ï¿½o a Programaï¿½ï¿½o II, lecionada no perï¿½odo 2016.2, 
  *na UFRPE (Universidade Federal Rural de Pernambuco),
  *pelo professor PhD. Leandro Marques. 
  */
@@ -16,8 +16,8 @@ import java.time.LocalDate;
 
 
 /**
- * Esta classe representa produtos do tipo acessorio que possivelmente serão cadastrados no petshop.
- * Ela possui informações padrões que produtos devem ter.
+ * Esta classe representa produtos do tipo acessorio que possivelmente serï¿½o cadastrados no petshop.
+ * Ela possui informaï¿½ï¿½es padrï¿½es que produtos devem ter.
  * 
  * Exemplo de uso: 
  * Acessorio acessorio = new Acessorio(54.99f, "Casa para cachorro", 
@@ -34,9 +34,9 @@ public class Acessorio extends Produto{
 	private double tamanho;
 	private LocalDate validade;
     
-	public Acessorio(float preco, String nome, String tipo, String codigo, int estoque, String cor ,double tamanho, 
+	public Acessorio(float preco, String nome, String tipo, int estoque, String cor ,double tamanho, 
 			LocalDate validade) {
-		super(preco, nome, tipo, codigo, estoque);
+		super(preco, nome, tipo, estoque);
 		this.cor = cor;
 		this.tamanho = tamanho;
 		this.validade = validade;

@@ -25,15 +25,16 @@ public abstract class Produto implements Serializable{
 	private String codigo;
 	private int estoque;	//De cada item
 	
-	public Produto(float preco, String nome, String tipo, String codigo, int estoque) {
+	public Produto(float preco, String nome, String tipo, int estoque) {
 		this.preco = preco;
 		this.nome = nome;
 		this.tipo = tipo;
-		this.codigo = codigo;
 		this.estoque = estoque;
 	}	
+	
 	public Produto(String nome, String codigo){ //Pro Animal que nao eh vendivel
 		this.nome = nome;
+		this.codigo = codigo;
 	}
 	public void addEstoque(int qtd){
 		int x = this.getEstoque();
@@ -58,6 +59,9 @@ public abstract class Produto implements Serializable{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	public String getCodigo() {
 		return codigo;
 	}
@@ -71,7 +75,8 @@ public abstract class Produto implements Serializable{
 		String prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
 		return prod;  
 	}
-
+	
+	
 	public boolean equals(Produto prod) {
 		
 		boolean resultado = false;

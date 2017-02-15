@@ -26,9 +26,9 @@ public class Remedio extends Produto{
 	private String bula;
 	private String tarja;
 
-	public Remedio(float preco, String nome, String tipo, String codigo, int estoque,String bula, String tarja){
+	public Remedio(float preco, String nome, String tipo, int estoque,String bula, String tarja){
 		
-		super(preco,nome,tipo,codigo,estoque);
+		super(preco,nome,tipo,estoque);
 		this.bula = bula;
 		this.tarja = tarja;
 	}
