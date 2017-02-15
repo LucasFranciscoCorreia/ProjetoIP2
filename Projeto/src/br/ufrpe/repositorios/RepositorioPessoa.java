@@ -13,18 +13,18 @@ package br.ufrpe.repositorios;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
-import br.ufrpe.beans.Pessoa;
-import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Login;
+import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;

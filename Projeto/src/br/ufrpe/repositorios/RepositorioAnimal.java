@@ -114,7 +114,6 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 				return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
 			}				//usar um if depois dele (if i > -1)
 		}				//Como fiz no metodo abaixo:
-		String m = "Animal nao existe: "+bus.toString();
 		throw new ObjectJaExisteException();
 		
 	}
@@ -155,7 +154,6 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 				}
 			}
 			else{
-				String m = "Animal Ja Existente: "+novo.getCodigo();
 				throw new ObjectJaExisteException();
 			}
 		}

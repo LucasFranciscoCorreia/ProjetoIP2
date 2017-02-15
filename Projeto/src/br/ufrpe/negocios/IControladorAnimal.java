@@ -11,7 +11,6 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.Animal;
-import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;

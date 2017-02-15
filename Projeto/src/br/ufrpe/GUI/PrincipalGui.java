@@ -25,8 +25,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class PrincipalGui extends Application implements Initializable{
@@ -35,12 +37,30 @@ public class PrincipalGui extends Application implements Initializable{
 	@FXML
 	private JFXTextField login;
 	@FXML
-	private JFXButton okButton;
+	private JFXButton okButton, buttonAddCliente, buttonRemoverCliente, buttonListarCliente, buttonPesquisarCliente, buttonAtualizarCliente;
 	@FXML
 	private Label Aviso;
 	private Stage primaryStage;
 	private AnchorPane rootLayout;
 	private Scene scene;
+	@FXML
+	private Button buttonCliente;
+	
+	@FXML
+	public void menuCliente(ActionEvent evt){
+		((Node) (evt.getSource())).getScene().getWindow().hide();
+		FXMLLoader menu = new FXMLLoader(PrincipalGui.class.getResource("view/MenuCliente.fxml"));
+		BorderPane rootMenuCliente = null;
+		try {
+			rootMenuCliente = (BorderPane) menu.load();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		Scene scene = new Scene(rootMenuCliente);
+		Stage stage = new Stage();
+		stage.setScene(scene);
+		stage.show();
+	}
 	@FXML
 	public void realizarLogin(ActionEvent evt){
 		ControladorPessoa p = carregarFuncionarios();
@@ -86,6 +106,7 @@ public class PrincipalGui extends Application implements Initializable{
 		//primaryStage.setTitle("Menu");
 		//primaryStage.show();
 	}
+	@FXML
 	private void abrirMenu(ActionEvent evt) {
 		((Node) (evt.getSource())).getScene().getWindow().hide();
 		FXMLLoader menu = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
@@ -95,7 +116,7 @@ public class PrincipalGui extends Application implements Initializable{
 		} catch (IOException e) {
 			Aviso.setText(e.getMessage());
 		}
-		Scene scene = new Scene(rootMenu);
+		scene = new Scene(rootMenu);
 		primaryStage = new Stage();
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Menu");
@@ -103,18 +124,6 @@ public class PrincipalGui extends Application implements Initializable{
 	}
 	private ControladorPessoa carregarFuncionarios() {
 		ControladorPessoa p = new ControladorPessoa(RepositorioPessoa.getInstance());
-		Pessoa lucas = new Funcionario("Lucas", "101.575.184-93",new Endereco(), 3500, LocalDate.of(1996, 7, 26), "Gerente");
-		Pessoa diego = new Funcionario("Diego", "108.332.834-48",new Endereco(), 3500, LocalDate.of(1997, 4, 24), "Balconista");
-		Pessoa fernanda = new Funcionario("Fernanda", "xxx.xxx.xxx-yy",new Endereco(), 3500, LocalDate.of(1997, 4, 25), "Balconista");
-		Pessoa raissa = new Funcionario("Raissa", "xxx.xxx.xxx-yx",new Endereco(), 3500, LocalDate.of(1998, 4,22), "Balconista");
-		try {
-			p.cadastrar(lucas);
-			p.cadastrar(diego);
-			p.cadastrar(fernanda);
-			p.cadastrar(raissa);
-		} catch (ObjectNaoExisteException |ErroAoSalvarException | ObjectJaExisteException e) {
-			Aviso.setText(e.getMessage());
-		}
 		return p;
 	}
 	@Override

@@ -1,6 +1,5 @@
 package br.ufrpe.beans;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 /**
  * Esta classe representa o "PetCare" espécie de loja onde serão adicionados os serviços prestados

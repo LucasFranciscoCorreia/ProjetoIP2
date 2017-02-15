@@ -59,7 +59,7 @@ public class Animal extends Produto implements Serializable{
 	 * @param nome
 	 * @param codigo
 	 */
-	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome, String codigo) {
+	public Animal(boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho,String nome,String codigo) {
 
 		super(nome,codigo);
 		this.isAlive = isAlive;
@@ -71,9 +71,9 @@ public class Animal extends Produto implements Serializable{
 		this.categoria = "Paciente";
 	}
 
-	public Animal(float preco, String nome, String tipo, int estoque,boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho){
+	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho){
 
-		super(preco,nome,tipo,estoque);
+		super(preco,nome,tipo,codigo,estoque);
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;
