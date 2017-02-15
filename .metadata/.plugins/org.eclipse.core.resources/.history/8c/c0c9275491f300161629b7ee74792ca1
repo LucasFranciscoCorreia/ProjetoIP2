@@ -48,7 +48,8 @@ public class Animal extends Produto implements Serializable{
 	private boolean vendivel;
 
 	/**
-	 * Construtor de animal Pet.
+	 * Construtor da classe Animal
+	 * 
 	 * @param isAlive
 	 * @param especie
 	 * @param raca
@@ -67,37 +68,20 @@ public class Animal extends Produto implements Serializable{
 		this.dono = (Cliente) dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
-		this.vendivel = false;
+		this.categoria = "Paciente";
 	}
-	/**
-	 * Construtor de animal vendível (produto)
-	 * @param preco
-	 * @param nome
-	 * @param tipo
-	 * @param codigo
-	 * @param estoque
-	 * @param isAlive
-	 * @param especie
-	 * @param raca
-	 * @param dono
-	 * @param peso
-	 * @param tamanho
-	 */
+
 	public Animal(float preco, String nome, String tipo, String codigo, int estoque,boolean isAlive, String especie, String raca, Pessoa dono, double peso, double tamanho){
 
-		super(preco,nome,"Animal",codigo,estoque);
+		super(preco,nome,tipo,codigo,estoque);
 		this.isAlive = isAlive;
 		this.especie = especie;
 		this.raca = raca;
 		this.dono = (Cliente) dono;
 		this.peso = peso;
 		this.tamanho = tamanho;
-		this.vendivel = true;
+		this.categoria = "Produto";
 	}
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
 	public boolean getIsAlive() {
 		return isAlive;
 	}

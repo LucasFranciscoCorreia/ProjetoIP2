@@ -94,10 +94,6 @@ public class Animal extends Produto implements Serializable{
 		this.tamanho = tamanho;
 		this.vendivel = true;
 	}
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
 	public boolean getIsAlive() {
 		return isAlive;
 	}
