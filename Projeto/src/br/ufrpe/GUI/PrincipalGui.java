@@ -48,12 +48,6 @@ public class PrincipalGui extends Application implements Initializable{
 	@FXML
 	private Label Aviso, AvisoCadastroCliente, clienteEncontrado, ClienteDeletado ;
 	
-	private Stage primaryStage;
-	
-	private AnchorPane rootLayout;
-	
-	private Scene scene;
-	
 	@FXML
 	private Button buttonCliente, buttonCadastrarCliente, buttonCancelarCadastroCliente, buttonCadastrarNovoCliente, buttonProcurar, buttonDeletar	;
 	
@@ -64,19 +58,9 @@ public class PrincipalGui extends Application implements Initializable{
 	
 	@FXML
 	public void removerCliente(ActionEvent evt){
-		((Node) (evt.getSource())).getScene().getWindow().hide();
-		FXMLLoader menuRemover = new FXMLLoader(PrincipalGui.class.getResource("view/ClienteRemover.fxml"));
-		AnchorPane rootRemoverCliente = null;
-		try{
-			rootRemoverCliente = (AnchorPane) menuRemover.load();
-		}catch(IOException e){
-			System.out.println(e.getMessage());
-		}
-		scene = new Scene(rootRemoverCliente);			
-		primaryStage.setTitle("Remover Cliente");
-		primaryStage.setResizable(false);
-		primaryStage.setScene(scene);
-	}	
+		ScreenManager.getInstance().showClienteRemover();
+	}
+	
 	@FXML
 	public void cadastrarCliente(ActionEvent evt){
 		if(nome.getText().isEmpty() || cpf.getText().isEmpty() || aniversario.getText().isEmpty() || cep.getText().isEmpty() || rua.getText().isEmpty() || numero.getText().isEmpty() || complemento.getText().isEmpty() || cidadeUF.getText().isEmpty()){
@@ -130,23 +114,7 @@ public class PrincipalGui extends Application implements Initializable{
 	
 	@FXML
 	public void cadastroCliente(ActionEvent evt){
-		((Node) (evt.getSource())).getScene().getWindow().hide();
-		//FXMLLoader cadastrarCliente = FXMLLoader menu = new FXMLLoader(PrincipalGui.class.getResource("view/MenuCliente.fxml"));
-		AnchorPane rootCadastrarCliente = null;
-		try {
-			rootCadastrarCliente = (AnchorPane) FXMLLoader.load(PrincipalGui.class.getResource("view/MenuCliente.fxml"));
-		} catch (IOException e) {	
-			System.out.println(e.getMessage());
-		};
-		//try {
-		///	rootCadastrarCliente = (AnchorPane) cadastrarCliente.load();
-		//} catch (IOException e) {
-		//	System.out.println(e.getMessage());
-		//}
-		Scene scene = new Scene(rootCadastrarCliente);
-		primaryStage.setTitle("Cadastrar Cliente");
-		primaryStage.setResizable(false);
-		primaryStage.setScene(scene);
+		ScreenManager.getInstance().showMenuCliente();
 	}
 
 	@FXML
@@ -159,21 +127,12 @@ public class PrincipalGui extends Application implements Initializable{
 		}
 	}
 
+	
 	@FXML
 	public void menuCliente(ActionEvent evt){
-		((Node) (evt.getSource())).getScene().getWindow().hide();
-		FXMLLoader menu = new FXMLLoader(PrincipalGui.class.getResource("view/MenuCliente.fxml"));
-		BorderPane rootMenuCliente = null;
-		try {
-			rootMenuCliente = (BorderPane) menu.load();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		scene = new Scene(rootMenuCliente);
-		primaryStage.setTitle("Cliente");
-		primaryStage.setResizable(false);
-		primaryStage.setScene(scene);		
+		ScreenManager.getInstance().showMenuCliente();	
 	}
+	
 	
 	@FXML
 	public void realizarLogin(ActionEvent evt){
@@ -206,35 +165,17 @@ public class PrincipalGui extends Application implements Initializable{
 		}
 	}
 	
+	
 	private void abrirMenuFuncionario(ActionEvent evt) {
-		((Node) (evt.getSource())).getScene().getWindow().hide();
-		FXMLLoader menu = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
-		AnchorPane rootMenu = null;
-		try {
-			rootMenu = (AnchorPane) menu.load();
-		} catch (IOException e) {
-			Aviso.setText(e.getMessage());
-		}
-		//Scene scene = new Scene(rootMenu);
-		//primaryStage.setScene(scene);
-		//primaryStage.setTitle("Menu");	
+		ScreenManager.getInstance().showMenu();
 	}
+	
 	
 	@FXML
 	private void abrirMenu(ActionEvent evt) {
-		((Node) (evt.getSource())).getScene().getWindow().hide();
-		FXMLLoader menu = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
-		AnchorPane rootMenu = null;
-		try {
-			rootMenu = (AnchorPane) menu.load();
-		} catch (IOException e) {
-			Aviso.setText(e.getMessage());
-		}
-		scene = new Scene(rootMenu);
-		this.primaryStage.setScene(scene);
-		this.primaryStage.setTitle("Menu");
-		this.primaryStage.setResizable(false);
+		ScreenManager.getInstance().showMenu();
 	}
+	
 	
 	private ControladorPessoa carregarCadastros() {
 		ControladorPessoa p = new ControladorPessoa(RepositorioPessoa.getInstance());
@@ -245,32 +186,15 @@ public class PrincipalGui extends Application implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-			this.primaryStage = primaryStage;
-			this.primaryStage.setTitle("Pet42");
-			this.primaryStage.setResizable(false);
-			initRootLayout();
+			ScreenManager.getInstance().showLogin();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
-	
-	private void initRootLayout(){
-		try{	
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PrincipalGui.class.getResource("view/Login.fxml"));
-			rootLayout = (AnchorPane) loader.load();
-			scene = new Scene(rootLayout);
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-	}
-	
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="GUI.model.FuncionarioController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
@@ -21,7 +20,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/home-512.png" />
+                        <Image url="@../../../../../lib/Imgs/home-512.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -30,7 +29,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/add-128.png" />
+                        <Image url="@../../../../../lib/Imgs/add-128.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -42,7 +41,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/lixeira.png" />
+                        <Image url="@../../../../../lib/Imgs/lixeira.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -54,7 +53,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/1380118359_new-24.png" />
+                        <Image url="@../../../../../lib/Imgs/mudar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -66,7 +65,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/editor-grid-view-block-glyph-128.png" />
+                        <Image url="@../../../../../lib/Imgs/editor-grid-view-block-glyph-128.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -17,7 +17,7 @@ public class ScreenManager {
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, menuCliente, errorMessage;
+	private Scene login, menu, menuCaixa, menuCliente, errorMessage, menuFuncionario;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	
 	public static ScreenManager getInstance(){
@@ -97,6 +97,10 @@ public class ScreenManager {
 			BorderPane menuCliente = FXMLLoader.load(getClass().getResource(
 		              "view/MenuCliente.fxml"));
 			this.menuCliente = new Scene(menuCliente);
+			
+			BorderPane menuFuncionario = FXMLLoader.load(getClass().getResource(
+		              "view/MenuFuncionario.fxml"));
+			this.menuFuncionario = new Scene(menuFuncionario);
 			
 			
 			

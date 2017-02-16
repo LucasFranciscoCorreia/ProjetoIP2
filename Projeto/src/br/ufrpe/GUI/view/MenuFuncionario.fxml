@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+         <left>
+            <VBox prefHeight="600.0" prefWidth="252.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="600.0" prefWidth="279.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton lineSpacing="1.0" onAction="#cadastroCliente" prefHeight="110.0" prefWidth="306.0" style="-fx-border-color: black;" text="Cadastrar">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/addPeople.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#removerCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/lixeira.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton prefHeight="110.0" prefWidth="357.0" style="-fx-border-color: black;" text="Atualizar">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/mudar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton prefHeight="110.0" prefWidth="312.0" style="-fx-border-color: black;" text="Pesquisar">
+                     <graphic>
+                        <ImageView fitHeight="99.0" fitWidth="100.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/busca.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton prefHeight="110.0" prefWidth="386.0" style="-fx-border-color: black;" text="Listar">
+                     <graphic>
+                        <ImageView fitHeight="90.0" fitWidth="90.0" style="-fx-border-color: black;">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/editor-grid-view-block-glyph-128.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="buttonVoltar" onAction="#voltarMenu" prefHeight="60.0" prefWidth="95.0" style="-fx-border-color: black;" text="Voltar" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets right="1.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <VBox prefHeight="600.0" prefWidth="251.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
