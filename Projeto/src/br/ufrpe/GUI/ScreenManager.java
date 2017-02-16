@@ -31,55 +31,55 @@ public class ScreenManager {
 	private ScreenManager(){
 		try {
 			// CLIENTE TELAS:
-			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
-		              "view/ClienteRemover.fxml"));
-			this.clienteAtualizar = new Scene(clienteAtualizar);
+//			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
+//		              "view/ClienteRemover.fxml"));
+//			this.clienteAtualizar = new Scene(clienteAtualizar);
 			
 			AnchorPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrar.fxml"));
 			this.clienteCadastrar = new Scene(clienteCadastrar);
 			
-			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
-		              "view/ClienteListar.fxml"));
-			this.clienteListar = new Scene(clienteListar);
-			
-			AnchorPane clientePesquisar = FXMLLoader.load(getClass().getResource(
-		              "view/ClientePesquisar.fxml"));
-			this.clientePesquisar = new Scene(clientePesquisar);
-			
-			AnchorPane clienteRemover = FXMLLoader.load(getClass().getResource(
-		              "view/ClienteRemover.fxml"));
-			this.clienteRemover = new Scene(clienteRemover);
+//			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
+//		              "view/ClienteListar.fxml"));
+//			this.clienteListar = new Scene(clienteListar);
+//			
+//			AnchorPane clientePesquisar = FXMLLoader.load(getClass().getResource(
+//		              "view/ClientePesquisar.fxml"));
+//			this.clientePesquisar = new Scene(clientePesquisar);
+//			
+//			AnchorPane clienteRemover = FXMLLoader.load(getClass().getResource(
+//		              "view/ClienteRemover.fxml"));
+//			this.clienteRemover = new Scene(clienteRemover);
 			
 			
 			
 			// FUNCIONARIO TELAS:
-			AnchorPane funcionarioAtualizar = FXMLLoader.load(getClass().getResource(
-		              "view/FuncionarioAtualizar.fxml"));
-			this.funcionarioAtualizar = new Scene(funcionarioAtualizar);
-			
-			StackPane funcionarioCadastar =  FXMLLoader.load(getClass().getResource(
-		              "view/FuncionarioCadastrar.fxml"));
-			this.funcionarioCadastrar = new Scene(funcionarioCadastar);
-			
-			AnchorPane funcionarioListar = FXMLLoader.load(getClass().getResource(
-		              "view/FuncionarioListar.fxml"));
-			this.funcionarioListar = new Scene(funcionarioListar);
-			
-			AnchorPane funcionarioPesquisar = FXMLLoader.load(getClass().getResource(
-		              "view/FuncionarioPesquisar.fxml"));
-			this.funcionarioPesquisar = new Scene(funcionarioPesquisar);
-			
-			AnchorPane funcionarioRemover = FXMLLoader.load(getClass().getResource(
-		              "view/FuncionarioRemover.fxml"));
-			this.funcionarioRemover = new Scene(funcionarioRemover);
+//			AnchorPane funcionarioAtualizar = FXMLLoader.load(getClass().getResource(
+//		              "view/FuncionarioAtualizar.fxml"));
+//			this.funcionarioAtualizar = new Scene(funcionarioAtualizar);
+//			
+//			StackPane funcionarioCadastar =  FXMLLoader.load(getClass().getResource(
+//		              "view/FuncionarioCadastrar.fxml"));
+//			this.funcionarioCadastrar = new Scene(funcionarioCadastar);
+//			
+//			AnchorPane funcionarioListar = FXMLLoader.load(getClass().getResource(
+//		              "view/FuncionarioListar.fxml"));
+//			this.funcionarioListar = new Scene(funcionarioListar);
+//			
+//			AnchorPane funcionarioPesquisar = FXMLLoader.load(getClass().getResource(
+//		              "view/FuncionarioPesquisar.fxml"));
+//			this.funcionarioPesquisar = new Scene(funcionarioPesquisar);
+//			
+//			AnchorPane funcionarioRemover = FXMLLoader.load(getClass().getResource(
+//		              "view/FuncionarioRemover.fxml"));
+//			this.funcionarioRemover = new Scene(funcionarioRemover);
 			
 			
 			
 			// OUTRAS TELAS:
-			Pane errorMessage = FXMLLoader.load(getClass().getResource(
-		              "view/ErrorMessage.fxml"));
-			this.errorMessage = new Scene(errorMessage);
+//			Pane errorMessage = FXMLLoader.load(getClass().getResource(
+//		              "view/ErrorMessage.fxml"));
+//			this.errorMessage = new Scene(errorMessage);
 			
 			AnchorPane login = FXMLLoader.load(getClass().getResource(
 		              "view/Login.fxml"));
@@ -98,32 +98,32 @@ public class ScreenManager {
 		              "view/MenuCliente.fxml"));
 			this.menuCliente = new Scene(menuCliente);
 			
-			BorderPane menuFuncionario = FXMLLoader.load(getClass().getResource(
-		              "view/MenuFuncionario.fxml"));
-			this.menuFuncionario = new Scene(menuFuncionario);
+//			BorderPane menuFuncionario = FXMLLoader.load(getClass().getResource(
+//		              "view/MenuFuncionario.fxml"));
+//			this.menuFuncionario = new Scene(menuFuncionario);
 			
 			
 			
 			// PRODUTO TELAS:
-			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
-		              "view/ProdutoAtualizar.fxml"));
-			this.produtoAtualizar = new Scene(produtoAtualizar);
-			
-			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
-		              "view/ProdutoCadastrar.fxml"));
-			this.produtoCadastrar = new Scene(produtoCadastrar);
-			
-			AnchorPane produtoListar = FXMLLoader.load(getClass().getResource(
-		              "view/ProdutoListar.fxml"));
-			this.produtoListar = new Scene(produtoListar);
-			
-			AnchorPane produtoPesquisar = FXMLLoader.load(getClass().getResource(
-		              "view/ProdutoPesquisar.fxml"));
-			this.produtoPesquisar = new Scene(produtoPesquisar);
-			
-			AnchorPane produtoRemover = FXMLLoader.load(getClass().getResource(
-		              "view/ProdutoRemover.fxml"));
-			this.produtoRemover = new Scene(produtoRemover);
+//			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
+//		              "view/ProdutoAtualizar.fxml"));
+//			this.produtoAtualizar = new Scene(produtoAtualizar);
+//			
+//			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
+//		              "view/ProdutoCadastrar.fxml"));
+//			this.produtoCadastrar = new Scene(produtoCadastrar);
+//			
+//			AnchorPane produtoListar = FXMLLoader.load(getClass().getResource(
+//		              "view/ProdutoListar.fxml"));
+//			this.produtoListar = new Scene(produtoListar);
+//			
+//			AnchorPane produtoPesquisar = FXMLLoader.load(getClass().getResource(
+//		              "view/ProdutoPesquisar.fxml"));
+//			this.produtoPesquisar = new Scene(produtoPesquisar);
+//			
+//			AnchorPane produtoRemover = FXMLLoader.load(getClass().getResource(
+//		              "view/ProdutoRemover.fxml"));
+//			this.produtoRemover = new Scene(produtoRemover);
 			
 			
 			

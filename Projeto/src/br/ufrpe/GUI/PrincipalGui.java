@@ -188,12 +188,9 @@ public class PrincipalGui extends Application implements Initializable{
 	
 	
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		try {
-			ScreenManager.getInstance().showLogin();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	public void start(Stage primaryStage) {
+		ScreenManager.getInstance().setMainStage(primaryStage);
+		ScreenManager.getInstance().showLogin();
 	}
 	public static void main(String[] args) {
 		launch(args);
