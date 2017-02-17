@@ -1,0 +1,5 @@
+package br.ufrpe.repositorios;
+import br.ufrpe.beans.*;
+public interface IRepositorioServico {
+
+}

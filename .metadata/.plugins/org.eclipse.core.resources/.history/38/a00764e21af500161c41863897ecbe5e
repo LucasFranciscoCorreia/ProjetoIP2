@@ -176,6 +176,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		try {
 			i = buscarIndice(antigo);
 		} catch (ObjectJaExisteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			if(i != -1){
@@ -198,7 +199,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		if(i != -1){
 			ok = true;
 			this.remover(antigo); 
-			adicionarDireto(novo);	
+			adicionarDireto(novo);	// o antigo e o novo tem o mesmo codigo, isso nao esta certo
 		}
 		
 		return ok;

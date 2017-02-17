@@ -18,7 +18,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 /**
  * Interface do RepositorioAnimal
  * 
- * @author Raissa Camelo srtacamelo
+ * @author Raissa Camelo
  * 
  * @see Animal
  * @see RepositorioAnimal
