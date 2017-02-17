@@ -25,7 +25,7 @@ public abstract class Produto implements Serializable{
 	private String codigo;
 	private int estoque;	
 	/**
-	 * Costrutor do produto (inclui animal vendível)
+	 * Costrutor do produto
 	 * @param preco
 	 * @param nome
 	 * @param tipo
@@ -40,26 +40,18 @@ public abstract class Produto implements Serializable{
 		this.estoque = estoque;
 	}	
 	/**
-	 * Construtor pro animal não vendível
+	 * Construtor pro animal
 	 * @param nome
 	 * @param codigo
 	 */
 	public Produto(String nome, String codigo){ 
 		this.nome = nome;
 	}
-	/**
-	 * Adiciona nova quantidade de determinado produto ao estoque
-	 * @param qtd
-	 */
 	public void addEstoque(int qtd){
 		int x = this.getEstoque();
 		x += qtd;
 		this.setEstoque(x);
 	}	
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
 	public float getPreco() {
 		return preco;
 	}	

@@ -29,7 +29,7 @@ public class Endereco implements Serializable{
 	private String cep;
 	private String cidadeUF;
 	/**
-	 * Construtor vázio
+	 * Construtor
 	 */
 	public Endereco(){
 		rua = "";
@@ -37,14 +37,7 @@ public class Endereco implements Serializable{
 		cep = "";
 		cidadeUF = "";
 	}
-	/**
-	 * Construtor 
-	 * @param rua
-	 * @param complemento
-	 * @param numero
-	 * @param cep
-	 * @param cidadeUF
-	 */
+	
 	public Endereco(String rua, String complemento, short numero, 
 			String cep, String cidadeUF) {
 		this.rua = rua;

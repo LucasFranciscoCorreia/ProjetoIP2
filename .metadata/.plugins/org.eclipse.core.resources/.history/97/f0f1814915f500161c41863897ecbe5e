@@ -15,6 +15,7 @@ package br.ufrpe.beans;
  * Esta classe representa produtos do tipo remedio, foi nescessario criar uma classe separada para remedio, 
  * pois esse tipo de produto nescessita de informa��es um pouco diferentes dos outros tipos de produto.
  * 
+ * Lembrete: N�o se tem certeza, se a classe esta funcionando perfeitamente
  * 
  * @see Produto
  * 
@@ -41,10 +42,7 @@ public class Remedio extends Produto{
 		this.bula = bula;
 		this.tarja = tarja;
 	}
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
+	
 	public String getBula(){
 		return this.bula;
 	}
@@ -58,9 +56,7 @@ public class Remedio extends Produto{
 	public void setTarja(String tarja){
 		this.tarja = tarja;
 	}
-	/**
-	 * Método to String
-	 */
+	
 	public String toString(){
 		return super.toString()+" Bula: "+this.bula+"\nTarja: "+this.tarja;
 	}

@@ -12,29 +12,15 @@
 package br.ufrpe.beans;
 
 import java.io.Serializable;
-/**
- * Esta classe representa a estrutura para realizar o Login no
- * sistema da Pet shop
- * @author Lucas
- *
- */
+
 public class Login implements Serializable{
 	private String login;
 	private int senha;
 
-	/**
-	 * Construtor
-	 * @param login
-	 * @param senha
-	 */
 	public Login(String login, int senha) {
 		this.login = login;
 		this.senha = senha;
 	}
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
 	public String getLogin() {
 		return login;
 	}

@@ -56,10 +56,6 @@ public abstract class Produto implements Serializable{
 		x += qtd;
 		this.setEstoque(x);
 	}	
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
 	public float getPreco() {
 		return preco;
 	}	

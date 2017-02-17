@@ -58,9 +58,7 @@ public class Remedio extends Produto{
 	public void setTarja(String tarja){
 		this.tarja = tarja;
 	}
-	/**
-	 * Método to String
-	 */
+	
 	public String toString(){
 		return super.toString()+" Bula: "+this.bula+"\nTarja: "+this.tarja;
 	}

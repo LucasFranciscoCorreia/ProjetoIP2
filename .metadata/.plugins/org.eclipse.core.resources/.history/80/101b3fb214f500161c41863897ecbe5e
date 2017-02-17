@@ -22,19 +22,10 @@ public class Login implements Serializable{
 	private String login;
 	private int senha;
 
-	/**
-	 * Construtor
-	 * @param login
-	 * @param senha
-	 */
 	public Login(String login, int senha) {
 		this.login = login;
 		this.senha = senha;
 	}
-	/**
-	 * Getters and Setters
-	 * @return
-	 */
 	public String getLogin() {
 		return login;
 	}
