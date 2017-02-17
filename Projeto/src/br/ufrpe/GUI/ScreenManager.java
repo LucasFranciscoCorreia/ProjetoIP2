@@ -141,122 +141,112 @@ public class ScreenManager {
 	
 	public void setMainStage(Stage mainStage){
 		this.mainStage = mainStage;
-		
 		mainStage.setWidth(800);
 		mainStage.setHeight(600);
-		
 		mainStage.setTitle("PET SHOP GROUP 42");
 	}
-	
 	
 	// CHAMADA DE TELAS CLIENTE:
 	public void showClienteAtualizar(){
 		this.mainStage.setScene(this.clienteAtualizar);
-		this.mainStage.show();
 	}
 	
 	public void showClienteCadastrar(){
 		this.mainStage.setScene(this.clienteCadastrar);
-		this.mainStage.show();
 	}
 	
 	public void showClienteListar(){
 		this.mainStage.setScene(this.clienteListar);
-		this.mainStage.show();
 	}
 	
 	public void showClientePesquisar(){
 		this.mainStage.setScene(this.clientePesquisar);
-		this.mainStage.show();
 	}
 	
 	public void showClienteRemover(){
 		this.mainStage.setScene(this.clienteRemover);
-		this.mainStage.show();
 	}
 	
 	
 	// CHAMADA DA TELA DE ERRO:
 	public void showErrorMessage(){
 		this.mainStage.setScene(this.errorMessage);
-		this.mainStage.show();
 	}
-	
-	
+	private static Stage loginStage;
 	// CHAMADA DA TELA DE MENU:
 	public void showMenu(){
+		loginStage.close();
 		this.mainStage.setScene(this.menu);
+		this.mainStage.centerOnScreen();
+		this.mainStage.setWidth(800);
+		this.mainStage.setHeight(626);
 		this.mainStage.show();
 	}
 	
 	public void showMenuCaixa(){
 		this.mainStage.setScene(this.menuCaixa);
+		this.mainStage.centerOnScreen();
+		this.mainStage.setWidth(800);
+		this.mainStage.setHeight(626);
 		this.mainStage.show();
 	}
 	
 	public void showMenuCliente(){
 		this.mainStage.setScene(this.menuCliente);
-		this.mainStage.show();
 	}
 	
 	
 	// CHAMADA DA TELA DE LOGIN:
 	public void showLogin(){
-		this.mainStage.setScene(this.login);
-		this.mainStage.show();
+		loginStage = new Stage();
+		loginStage.setScene(this.login);
+		loginStage.setWidth(350);
+		loginStage.setHeight(275);
+		loginStage.setResizable(false);
+		loginStage.show();
 	}
 	
 	
 	// CHAMADA DA TELA DE FUNCIONARIO:
 	public void showFuncionarioAtualizar(){
 		this.mainStage.setScene(this.funcionarioAtualizar);
-		this.mainStage.show();
 	}
 	
 	public void showFuncionarioCadastrar(){
 		this.mainStage.setScene(this.funcionarioCadastrar);
-		this.mainStage.show();
 	}
 	
 	public void showFuncionarioListar(){
 		this.mainStage.setScene(this.funcionarioListar);
-		this.mainStage.show();
 	}
 	
 	public void showFuncionarioPesquisar(){
 		this.mainStage.setScene(this.funcionarioPesquisar);
-		this.mainStage.show();
 	}
 	
 	public void showFuncionarioRemover(){
 		this.mainStage.setScene(this.funcionarioRemover);
-		this.mainStage.show();
 	}
 	
 	
 	// CHAMADA DA TELA PRODUTO: 
 	public void showProdutoAtualizar(){
 		this.mainStage.setScene(this.produtoAtualizar);
-		this.mainStage.show();
 	}
 	
 	public void showProdutoCadastrar(){
 		this.mainStage.setScene(this.produtoCadastrar);
-		this.mainStage.show();
 	}
 	
 	public void showProdutoListar(){
 		this.mainStage.setScene(this.produtoListar);
-		this.mainStage.show();
 	}
 	
 	public void showProdutoPesquisar(){
 		this.mainStage.setScene(this.produtoPesquisar);
-		this.mainStage.show();
 	}
 	
 	public void showProdutoRemover(){
 		this.mainStage.setScene(this.produtoRemover);
-		this.mainStage.show();
 	}
 }

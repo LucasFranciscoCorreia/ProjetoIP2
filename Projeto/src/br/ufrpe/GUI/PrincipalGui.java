@@ -56,10 +56,10 @@ public class PrincipalGui extends Application implements Initializable{
 	@FXML	
 	private TextField nome, cpf, aniversario, cep, rua, numero, complemento, cidadeUF, buscaRemover;
 	
-	@FXML
+	/*@FXML
 	public void removerCliente(ActionEvent evt){
 		ScreenManager.getInstance().showClienteRemover();
-	}
+	}*/
 	
 	@FXML
 	public void cadastrarCliente(ActionEvent evt){

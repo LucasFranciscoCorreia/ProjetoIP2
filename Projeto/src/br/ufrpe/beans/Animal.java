@@ -142,17 +142,9 @@ public class Animal extends Produto implements Serializable{
 		return this.dono.getNome();
 	}
 
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-
 	public String toString(){
 		String res = String.format("Dono: %s\nCPF do dono: %s\nRa�a: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
-		res+="Is Alive? " + isAlive +"\nCategoria: "+categoria;
+		res+="Is Alive? " + isAlive +"\nCategoria: Animal";
 		return res;
 	}
 	public void setDono(Cliente dono){

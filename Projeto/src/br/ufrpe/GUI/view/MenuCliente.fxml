@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonRemoverCliente" onAction="#removerCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
+            <JFXButton fx:id="buttonRemoverCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0">
                      <image>
