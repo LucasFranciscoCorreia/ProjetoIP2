@@ -9,7 +9,11 @@
  *pelo professor PhD. Leandro Marques. 
  */
 package br.ufrpe.negocios;
+import java.util.ArrayList;
+
 import br.ufrpe.beans.Animal;
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
@@ -36,9 +40,8 @@ public interface IControladorPessoa {
 	void cadastrar(Pessoa novo) throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException;
 	public Pessoa buscar(String cpf) throws ObjectNaoExisteException; 
 	void atualizar(Pessoa novo) throws ObjectNaoExisteException, ErroAoAtualizarException;
-	String listar();
-	String listarFuncionario();
-	String listarCLiente();
+	ArrayList<Funcionario> listarFuncionario();
+	ArrayList<Cliente> listarCLiente();
 	void salvarNoArquivo();
 	int size();
 	int sizeCliente();

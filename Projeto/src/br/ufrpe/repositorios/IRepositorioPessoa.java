@@ -43,7 +43,6 @@ public interface IRepositorioPessoa {
 	int size();
 	int sizeFuncionario();
 	int sizeCliente();
-	String listar();
 	ArrayList<Funcionario> listarFuncionario();
 	ArrayList<Cliente> listarCliente();
 	boolean checarLogin(Login log);

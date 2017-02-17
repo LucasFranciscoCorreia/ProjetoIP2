@@ -286,19 +286,6 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	}
 
 	/**
-	 * Lista com todas as pessoas ativas
-	 * 
-	 * @return todas as pessoas listadas, um abaixo da outra
-	 */
-	public String listar(){
-		String res = "";
-		for(int i = 0; i < repositorio.size();i++){
-			res += repositorio.get(i) + "\n\n";
-		}
-		return res;
-	}
-
-	/**
 	 * Atualiza informa�oes especificas de uma Pessoa
 	 * 
 	 * Metodo ainda incompleto, Cliente não consegue ser atualizado

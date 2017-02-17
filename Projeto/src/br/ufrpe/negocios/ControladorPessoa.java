@@ -111,17 +111,8 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * 
 	 * @return String com todos os clientes
 	 */
-	public String listarCLiente(){
-		ArrayList<Cliente> clientes = repositorio.listarCliente();
-		if(repositorio.sizeCliente() == 0){
-			return "Nao existem clientes cadastrados no sistema!";
-		}else{
-			String resultado = "";
-			for(int i = 0; i < repositorio.sizeCliente(); i++){
-				resultado += clientes.get(i).toString() + "\n\n";
-			}
-			return resultado;
-		}
+	public ArrayList<Cliente> listarCLiente(){
+		return repositorio.listarCliente();
 	}
 	
 	/**
@@ -129,30 +120,8 @@ public class ControladorPessoa implements IControladorPessoa {
 	 * 
 	 * @return String com todos os funcionarios
 	 */
-	public String listarFuncionario(){
-		ArrayList<Funcionario> funcionarios = repositorio.listarFuncionario();
-		if(repositorio.sizeFuncionario() == 0){
-			return "Nao existem funcionarios cadastrados no sistema!";
-		}else{
-			String resultado = "";
-			for(int i = 0; i < repositorio.sizeFuncionario(); i++){
-				resultado += funcionarios.get(i).toString() + "\n\n";
-			}
-			return resultado;
-		}
-	}
-	
-	/**
-	 * Lista todas as pessoas no sistema
-	 * 
-	 * @return Todas as pessoas no sistema, n importando se s�o clientes ou funcionarios
-	 */
-	public String listar(){
-		if(size() == 0){
-			return "Não existem pessoas cadastradas no sistema!";
-		}else{
-			return repositorio.listar();
-		}
+	public ArrayList<Funcionario> listarFuncionario(){
+		return repositorio.listarFuncionario();
 	}
 	
 	/**
