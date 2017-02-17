@@ -110,19 +110,14 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		}
 	}
 	
-	public int buscarIndice(Animal bus) throws ObjectNaoExisteException{
-		if(bus != null){
-			for(int i = 0; i < rep.size();i++){
-				if(rep.get(i).equals(bus)){ //Duvida: deve-se manter esse return dentro do laço?
-					return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
+	public int buscarIndice(Animal bus) {
+		for(int i = 0; i < rep.size();i++){
+			if(rep.get(i).equals(bus)){ //Duvida: deve-se manter esse return dentro do laço?
+				return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
 			}				//usar um if depois dele (if i > -1)
 		}				//Como fiz no metodo abaixo:
 		return -1;
-		}
-		
-		else{
-			throw new ObjectNaoExisteException();
-		}
+
 	}
 	public int buscarIndice(String codigo) throws CodigoNaoExisteException{
 		int result = -1;
@@ -180,7 +175,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		
 		try {
 			i = buscarIndice(antigo);
-		} catch (ObjectNaoExisteException e) {
+		} catch (ObjecNaoExisteException e) {
 			e.printStackTrace();
 		} finally {
 			if(i != -1){

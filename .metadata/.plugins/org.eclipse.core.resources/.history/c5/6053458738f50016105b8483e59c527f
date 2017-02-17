@@ -180,7 +180,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		
 		try {
 			i = buscarIndice(antigo);
-		} catch (ObjectNaoExisteException e) {
+		} catch (ObjecNaoExisteException e) {
 			e.printStackTrace();
 		} finally {
 			if(i != -1){

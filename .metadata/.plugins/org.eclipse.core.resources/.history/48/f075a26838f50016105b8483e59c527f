@@ -119,10 +119,6 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		}				//Como fiz no metodo abaixo:
 		return -1;
 		}
-		
-		else{
-			throw new ObjectNaoExisteException();
-		}
 	}
 	public int buscarIndice(String codigo) throws CodigoNaoExisteException{
 		int result = -1;
@@ -180,7 +176,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 		
 		try {
 			i = buscarIndice(antigo);
-		} catch (ObjectNaoExisteException e) {
+		} catch (ObjecNaoExisteException e) {
 			e.printStackTrace();
 		} finally {
 			if(i != -1){

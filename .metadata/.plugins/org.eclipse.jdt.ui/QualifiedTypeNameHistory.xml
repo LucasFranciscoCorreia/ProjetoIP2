@@ -9,6 +9,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioServico"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioServico"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectNaoExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectJaExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectNaoExisteException"/>
 </qualifiedTypeNameHistroy>

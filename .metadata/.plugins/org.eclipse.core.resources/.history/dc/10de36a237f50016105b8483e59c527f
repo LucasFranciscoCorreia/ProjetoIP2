@@ -29,10 +29,10 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
  */
 public interface IRepositorioAnimal {
 	
-	int buscarIndice(Animal bus) throws ObjectNaoExisteException;
+	int buscarIndice(Animal bus);
 	int buscarIndice(String codigo) throws CodigoNaoExisteException;
 	int size();
-	boolean remover(Animal antigo) throws ObjectNaoExisteException;
+	boolean remover(Animal antigo) throws ObjectJaExisteException;
 	boolean atualizar(Animal antigo, Animal novo) throws ObjectNaoExisteException, ObjectJaExisteException;
 	boolean remover(String codigo)throws CodigoNaoExisteException;
 	void adicionar(Animal novo)throws ObjectJaExisteException;
