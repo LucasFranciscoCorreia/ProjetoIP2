@@ -2,7 +2,12 @@ package br.ufrpe.negocios;
 
 import br.ufrpe.repositorios.IRepositorioAnimal;
 import br.ufrpe.repositorios.IRepositorioProduto;
+
+import java.util.ArrayList;
+
 import br.ufrpe.beans.Animal;
+import br.ufrpe.beans.Cliente;
+import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Login;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
@@ -23,16 +28,15 @@ import br.ufrpe.repositorios.*;
  */
 
 public class FachadaControlador {
-	private ControladorAnimal controladorAnimal;
-	private ControladorPessoa controladorPessoa;
-	private ControladorProduto controladorProduto;
+	private IControladorAnimal controladorAnimal;
+	private IControladorPessoa controladorPessoa;
+	private IControladorProduto controladorProduto;
 	private static FachadaControlador instance;
 	
 	/**
 	 * Construtor da Classe Fachada
 	 */
-	//void?
-	private void FachadaControlador(){
+	private FachadaControlador(){
 		this.controladorAnimal = new ControladorAnimal(RepositorioAnimal.getInstance());
 		this.controladorProduto = new ControladorProduto(RepositorioProduto.getInstance());
 		this.controladorPessoa = new ControladorPessoa(RepositorioPessoa.getInstance());
@@ -129,18 +133,13 @@ public class FachadaControlador {
 		controladorPessoa.cadastrar(novo);;
 	}
 
-	public String listarCLiente() {
+	public ArrayList<Cliente> listarCLiente() {
 		return controladorPessoa.listarCLiente();
 	}
 
-	public String listarFuncionario() {
+	public ArrayList<Funcionario> listarFuncionario() {
 		return controladorPessoa.listarFuncionario();
 	}
-
-	public String listar() {
-		return controladorPessoa.listar();
-	}
-
 	public int size() {
 		return controladorPessoa.size();
 	}
