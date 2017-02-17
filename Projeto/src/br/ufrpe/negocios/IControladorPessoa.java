@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.beans.Login;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
@@ -38,10 +39,13 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 public interface IControladorPessoa {
 	
 	void cadastrar(Pessoa novo) throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException;
-	public Pessoa buscar(String cpf) throws ObjectNaoExisteException; 
+	Pessoa buscar(String cpf) throws ObjectNaoExisteException;
+	Pessoa buscar(Login log) throws ObjectNaoExisteException;
+	public boolean login(String login, int senha);
 	void atualizar(Pessoa novo) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	ArrayList<Funcionario> listarFuncionario();
 	ArrayList<Cliente> listarCLiente();
+	
 	void salvarNoArquivo();
 	int size();
 	int sizeCliente();

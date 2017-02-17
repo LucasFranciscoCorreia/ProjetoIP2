@@ -31,6 +31,7 @@ public interface IControladorProduto {
 	
 	void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException;
 	void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException;
+	String listarProduto();
 	Produto pesquisar(String codigo) throws ObjectNaoExisteException;
 	void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	void salvarNoArquivo();
