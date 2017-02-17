@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.FuncionarioController">
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
@@ -77,10 +77,10 @@
       </VBox>
       <TableView fx:id="tableFuncionario" prefHeight="600.0" prefWidth="620.0">
         <columns>
-          <TableColumn fx:id="nomeFuncionario" prefWidth="244.0" text="Nome" />
-          <TableColumn fx:id="cpfFuncionario" prefWidth="139.0" text="CPF" />
-            <TableColumn fx:id="salarioFuncionario" prefWidth="100.0" text="Salário" />
-            <TableColumn fx:id="cargoFuncionario" prefWidth="136.0" text="Cargo" />
+          <TableColumn fx:id="nomeTab" prefWidth="244.0" text="Nome" />
+          <TableColumn fx:id="cpfTab" prefWidth="139.0" text="CPF" />
+            <TableColumn fx:id="salarioTab" prefWidth="100.0" text="Salário" />
+            <TableColumn fx:id="cargoTab" prefWidth="136.0" text="Cargo" />
         </columns>
       </TableView>
    </children>

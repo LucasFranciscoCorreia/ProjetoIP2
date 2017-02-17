@@ -107,6 +107,10 @@ public class FachadaControlador {
 		return controladorPessoa.buscar(log);
 	}
 	
+	public void removerPessoa(String cpf) throws ObjectNaoExisteException, ErroAoRemoverException{
+		controladorPessoa.remover(cpf);
+	}
+	
 	public void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException {
 		controladorProduto.remover(codigo);
 	}

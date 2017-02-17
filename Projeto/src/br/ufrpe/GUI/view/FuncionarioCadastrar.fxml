@@ -10,20 +10,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.FuncionarioController">
    <children>
       <AnchorPane prefHeight="602.0" prefWidth="800.0">
          <children>
             <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioListar" prefHeight="120.0" prefWidth="200.0" text="Voltar" textAlignment="RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../lib/Imgs/home-512.png" />
+                              <Image url="@../../../../../lib/Imgs/funcionarioMenu.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -187,7 +187,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="AvisoCadastro" alignment="CENTER" layoutX="41.0" layoutY="491.0" prefHeight="46.0" prefWidth="466.0">
+            <Label fx:id="avisoCadastro" alignment="CENTER" layoutX="41.0" layoutY="491.0" prefHeight="46.0" prefWidth="466.0">
                <font>
                   <Font size="18.0" />
                </font>

@@ -2,9 +2,22 @@ package br.ufrpe.GUI.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ResourceBundle;
 
+import javax.print.DocFlavor.URL;
+
+import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
+import br.ufrpe.excecoes.ErroAoRemoverException;
+import br.ufrpe.excecoes.ErroAoSalvarException;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
+import br.ufrpe.negocios.ControladorPessoa;
+import br.ufrpe.negocios.FachadaControlador;
+import br.ufrpe.repositorios.RepositorioPessoa;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,17 +31,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FuncionarioController {
 	@FXML
-	private TextField nomeFuncionario, cpfFuncionario, dataFuncionario;
+	private TextField nome, cpf, aniversario;
 	@FXML
-	private TextField ruaFuncionario, complementoFuncionario, numeroFuncionario;
+	private TextField rua, complemento, numero;
 	@FXML
-	private TextField cepFuncionario, cidadeFuncionario, salarioFuncionario, salarioNovo;
-	@FXML
-	private TextField cargoFuncionario, cargoNovo;
+	private TextField cep, cidadeUF, salario, cargo;
 	@FXML 
-	private Label label, label2, funcionarioToString;
+	private Label avisoCadastro, avisoRemover, avisoAtualizar, aviso, funcionarioToString;
 	@FXML
-	private TableView<Funcionario> funcionarios;
+	private TableView<Funcionario> tableFuncionario;
 	@FXML
 	private TableColumn<Funcionario, String> nomeTab;
 	@FXML
@@ -40,146 +51,217 @@ public class FuncionarioController {
 	// Variavel usada para ter certeza que o funcionario foi encontrado no sistema
 	boolean confirmar = false;
 	
-	@FXML
-	private void buttonSalvarCadastrarFuncionario(ActionEvent event){
-		if(ruaFuncionario.getText().isEmpty() || complementoFuncionario.getText().isEmpty()
-				|| numeroFuncionario.getText().isEmpty() || cepFuncionario.getText().isEmpty()
-				|| cidadeFuncionario.getText().isEmpty() || cpfFuncionario.getText().isEmpty()
-				|| nomeFuncionario.getText().isEmpty() || dataFuncionario.getText().isEmpty()
-				|| salarioFuncionario.getText().isEmpty() || cargoFuncionario.getText().isEmpty()){
-			label.setText("Dado Inválido!! Tente novamente");
-		}else{
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
-			LocalDate date = LocalDate.parse(dataFuncionario.getText(), formatter);
-			
-			Endereco end = new Endereco(ruaFuncionario.getText(), complementoFuncionario.getText(), 
-					Short.valueOf(numeroFuncionario.getText()), cepFuncionario.getText(), 
-					cidadeFuncionario.getText());
-			
-			Funcionario funcionario = new Funcionario(nomeFuncionario.getText(), cpfFuncionario.getText(), 
-					end, Double.parseDouble(salarioFuncionario.getText()), date, 
-					cargoFuncionario.getText());
-			
-			//TODO : cadastrar o funcionario no sistema, verificar as possiveis exceptions
-			
-			label.setText("Funcionario cadastrado no sistema!!");
-		}
-		
-	}
-	
-	@FXML
-	private void buttonSalvarAtualizarFuncionario(ActionEvent event){
-		Endereco end = null;
-		
-		if(ruaFuncionario.getText().isEmpty() || complementoFuncionario.getText().isEmpty()
-				|| numeroFuncionario.getText().isEmpty() || cepFuncionario.getText().isEmpty()
-				|| cidadeFuncionario.getText().isEmpty()){
-			label2.setText("Dado Inválido, tente novamente");
-		}else{
-			end = new Endereco(ruaFuncionario.getText(), complementoFuncionario.getText(), 
-					Short.valueOf(numeroFuncionario.getText()), cepFuncionario.getText(), 
-					cidadeFuncionario.getText());			
-		}
-		
-		//TODO atualizar informações 
-		
-		if(!cargoNovo.getText().isEmpty()){
-			
-			label2.setText("Alterações salvas!!");
-		}else if (!salarioNovo.getText().isEmpty()) {
-			label2.setText("Alterações salvas!!");
-		}else if (end != null){
-			label2.setText("Alterações salvas!!");
-		}else{
-			label2.setText("Dado inválido!! Tente novamente");
-		}
-	}
-	
-	@FXML
-	private void buttonPesquisarFuncionario(ActionEvent event){
-		if(cpfFuncionario.getText().isEmpty()){
-			label.setText("Dado Inválido, tente novamente");
-		}else {
-			/* Se o funcionario existir:
-			*  funcionarioToString.setText(funcionario.toString());
-			*/
-			
-			//mensagem.setText("Funcionario " + );
-			//TODO pesquisar funcionario
-		}
-	}
-	
-	@FXML
-	private void buttonPesquisarFuncionarioNoSistema (ActionEvent event){
-		if(cpfFuncionario.getText().isEmpty()){
-			label.setText("Dado Inválido, tente novamente");
-		}else {
-			
-			//mensagem.setText("Funcionario " + );
-			//TODO pesquisar funcionario
-		}
-	}
-	
-	@FXML
-	private void buttonRemoverFuncionario (ActionEvent event){
-		if(confirmar == true){
-			//TODO implementar a remoção de funcionario
-		}else{
-			label2.setText("Funcionario não pode ser removido!!");
-		}
-	}
-	
-	@FXML
-	private void buttonMenuAction (ActionEvent  event){
-		//Limpar a tela anterior
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		
-		//TODO 
-	}
-	
-	@FXML
-	private void buttonAdicionarAction (ActionEvent event){
-		//Limpar a tela anterior
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		//TODO
-	}
-	
-	@FXML
-	private void buttonAtualizarAction (ActionEvent event){
-		//Limpar a tela anterior
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		//TODO
-	}
-	
-	@FXML
-	private void buttonRemoverAction (ActionEvent event){
-		//Limpar a tela anterior
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		//TODO
-	}
-	
-	public ObservableList<Funcionario> getFuncionario(){
+	public ObservableList<Funcionario> getFuncionarios(){
 		ObservableList<Funcionario> funcionarios = FXCollections.observableArrayList();
-		//TODO adicionar funcionarios na lista:
-		// funcionarios.add(arg0);
+		
+		funcionarios.addAll(FachadaControlador.getInstance().listarFuncionario());
+		
 		return funcionarios;
 	}
-	@FXML
-	private void buttonListarAction (ActionEvent event){
-		//Limpar a tela anterior
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		//TODO
-		nomeTab.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		cpfTab.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-		salarioTab.setCellValueFactory(new PropertyValueFactory<>("salario"));
-		cargoTab.setCellValueFactory(new PropertyValueFactory<>("cargo"));
-		funcionarios.setItems(getFuncionario());
+	
+	@SuppressWarnings("finally")
+	public boolean dataOk(String data){
+		boolean ok = false;
+		try{
+			DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			LocalDate dataok = LocalDate.parse(data, DATE_FORMAT);
+			ok = true;
+		}catch(DateTimeParseException e){
+			avisoCadastro.setText("Data deve ser escrita no formato: \"dia-mes-ano\"");
+		}finally{
+			return ok;			
+		}
 	}
 	
 	@FXML
-	private void buttonPesquisarAction (ActionEvent event){
-		//Limpar a tela anterior
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		//TODO
+	public void voltarMenu(ActionEvent evt){
+		ScreenManager.getInstance().showMenu();
+	}
+	
+	@FXML
+	public void abrirFuncionarioCadastrar(ActionEvent evento){
+		ScreenManager.getInstance().showFuncionarioCadastrar();
+	}
+	
+	@FXML
+	public void abrirFuncionarioPesquisar(ActionEvent evento){
+		ScreenManager.getInstance().showFuncionarioPesquisar();
+	}
+	
+	@FXML
+	public void abrirFuncionarioRemover(ActionEvent event){
+		ScreenManager.getInstance().showFuncionarioRemover();
+	}
+	
+	@FXML
+	public void abrirFuncionarioAtualizar(ActionEvent evento){
+		ScreenManager.getInstance().showFuncionarioAtualizar();
+	}
+	
+	@FXML
+	public void abrirFuncionarioListar(ActionEvent evento){
+		ScreenManager.getInstance().showFuncionarioListar();
+		tableFuncionario.setPlaceholder(new Label("Nenhum funcionário foi encontrado."));
+		tableFuncionario.setItems(getFuncionarios());
+		
+		//TODO está incompleto
+	}
+	
+	@FXML
+	public void buttonVoltarMenuFuncionario(ActionEvent evento){
+		ScreenManager.getInstance().showFuncionarioListar();
+	}
+	
+	@FXML
+	public void buttonSalvarCadastrarFuncionario(ActionEvent evento) throws ObjectNaoExisteException{
+		if(rua.getText().isEmpty() || numero.getText().isEmpty() || cep.getText().isEmpty()
+				|| cidadeUF.getText().isEmpty() || cpf.getText().isEmpty()
+				|| nome.getText().isEmpty() || aniversario.getText().isEmpty()
+				|| salario.getText().isEmpty() || cargo.getText().isEmpty()){
+			avisoCadastro.setText("Dado Inválido!! Tente novamente");
+		
+		}else{
+			if(dataOk(aniversario.getText())){
+				try {
+					System.out.println("entrou no try");
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+					LocalDate date = LocalDate.parse(this.aniversario.getText(), formatter);
+					
+					Endereco end = new Endereco(rua.getText(), complemento.getText(), 
+							Short.valueOf(numero.getText()), cep.getText(), 
+							cidadeUF.getText());
+					
+					Funcionario funcionario = new Funcionario(nome.getText(), cpf.getText(), 
+							end, Double.parseDouble(salario.getText()), date, 
+							cargo.getText());	
+					
+					FachadaControlador.getInstance().cadastrar(funcionario);
+					FachadaControlador.getInstance().salvarNoArquivoPessoa();
+					
+					avisoCadastro.setText(nome.getText() + " cadastrado(a) com sucesso no sistema");
+				} catch (NumberFormatException e) {
+					avisoCadastro.setText("Numero de residencia deve ser um numero");
+				} catch (ErroAoSalvarException | ObjectJaExisteException e) {
+					avisoCadastro.setText(e.getMessage());
+				} 
+			}				
+		}
+
+		if(!rua.getText().isEmpty() || !numero.getText().isEmpty() || !cep.getText().isEmpty()
+				|| !cidadeUF.getText().isEmpty() || !cpf.getText().isEmpty()
+				|| !nome.getText().isEmpty() || !aniversario.getText().isEmpty()
+				|| !salario.getText().isEmpty() || !cargo.getText().isEmpty()){
+			
+			rua.setText("");
+			numero.setText("");
+			complemento.setText("");
+			cep.setText("");
+			cidadeUF.setText("");
+			cpf.setText("");
+			nome.setText("");
+			aniversario.setText("");
+			salario.setText("");
+			cargo.setText("");
+			
+		} else if (!avisoCadastro.getText().isEmpty()) {
+			avisoCadastro.setText("");
+		}
+	}
+	
+	@FXML
+	public void buttonPesquisarFuncionario(ActionEvent event){
+		if(!funcionarioToString.getText().isEmpty()){
+			funcionarioToString.setText("");
+		}else if (!aviso.getText().isEmpty()) {
+			aviso.setText("");
+		}
+		
+		
+		if(cpf.getText().isEmpty()){
+			aviso.setText("Informe um CPF valido!!!");
+		}else{
+			try {
+				Funcionario achada = null;
+				
+				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				aviso.setText("Funcionario(a) encontrado no sistema!!!");
+				funcionarioToString.setText(achada.toString());
+			} catch (ObjectNaoExisteException e) {
+				aviso.setText(e.getMessage());
+			}
+		}
+	}
+	
+	
+	@FXML
+	public void buttonFuncionarioRemover(ActionEvent event) {
+		if(!cpf.getText().isEmpty()){
+			try {
+				FachadaControlador.getInstance().removerPessoa(cpf.getText());
+				FachadaControlador.getInstance().salvarNoArquivoPessoa();
+				
+				avisoRemover.setText("Funcionario removido do sistema!!!");
+			} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
+				avisoRemover.setText(e.getMessage());
+			}
+		}else{
+			avisoRemover.setText("Dado invalido!!!");
+		}
+
+		if(!avisoRemover.getText().isEmpty() || !aviso.getText().isEmpty() 
+				|| !funcionarioToString.getText().isEmpty()){
+			avisoRemover.setText("");
+			aviso.setText("");
+			funcionarioToString.setText("");
+		}
+	}
+	
+	@FXML
+	public void buttonAtualizarFuncionario(ActionEvent evento){
+		//TODO está incompleto
+		boolean salvar = false;
+		if(!cpf.getText().isEmpty()){
+			Funcionario novo = new Funcionario(cpf.getText());
+
+			if(!cargo.getText().isEmpty()){
+				novo.setCargo(cargo.getText());
+				salvar = true;
+			} if (!salario.getText().isEmpty()) {
+				novo.setSalario(Double.parseDouble(salario.getText()));
+				salvar = true;
+			} if (!rua.getText().isEmpty() || !numero.getText().isEmpty() || !cep.getText().isEmpty()
+				|| !cidadeUF.getText().isEmpty() || !cpf.getText().isEmpty()
+				|| !nome.getText().isEmpty() || !aniversario.getText().isEmpty()
+				|| !salario.getText().isEmpty() || !cargo.getText().isEmpty()) {
+				Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.valueOf(numero.getText()), 
+						cep.getText(), cidadeUF.getText());
+				novo.setEnd(end);
+				salvar = true;
+			}
+			
+			if(salvar){
+				try {
+					FachadaControlador.getInstance().atualizar(novo);
+					FachadaControlador.getInstance().salvarNoArquivoPessoa();
+					
+					avisoAtualizar.setText("Informações atualizadas");
+					
+				} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
+					avisoAtualizar.setText(e.getMessage());
+				}				
+			}else{
+				avisoAtualizar.setText("Dados incompletos!!!");
+			}
+			
+		}else{
+			avisoAtualizar.setText("Dados inválidos!!!");
+		}
+	}
+	
+	public void initialize (URL url, ResourceBundle rb){
+		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
+		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
+		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
+		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
 	}
 }

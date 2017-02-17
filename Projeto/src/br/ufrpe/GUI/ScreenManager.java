@@ -17,7 +17,8 @@ public class ScreenManager {
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, menuCliente, errorMessage, menuFuncionario;
+	private Scene login, menu, menuCaixa, menuCliente, errorMessage, menuFuncionario, telaCaixa;
+	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	
 	public static ScreenManager getInstance(){
@@ -98,9 +99,9 @@ public class ScreenManager {
 		              "view/MenuCliente.fxml"));
 			this.menuCliente = new Scene(menuCliente);
 			
-			AnchorPane menuFuncionario = FXMLLoader.load(getClass().getResource(
-		              "view/MenuFuncionario.fxml"));
-			this.menuFuncionario = new Scene(menuFuncionario);
+//			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
+//		              "view/TelaCaixa.fxml"));
+//			this.telaCaixa = new Scene(telaCaixa);
 			
 			
 			
@@ -128,6 +129,13 @@ public class ScreenManager {
 			
 			
 			// ANIMAL TELAS:
+//			AnchorPane  animalCadastrar = FXMLLoader.load(getClass().getResource(
+//		              "view/AnimalCadastrar.fxml"));
+//			this.animalCadastrar = new Scene(animalCadastrar);
+//			
+//			AnchorPane  animalRemover = FXMLLoader.load(getClass().getResource(
+//		              "view/AnimalRemover.fxml"));
+//			this.animalRemover = new Scene(animalRemover);
 			
 			
 		} catch (IOException e) {
