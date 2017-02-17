@@ -1,20 +1,26 @@
 package br.ufrpe.repositorios;
 import br.ufrpe.beans.*;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 
+/**
+ * Interface do Repositório de Serviços
+ * 
+ * @author srtacamelo
+ * @see Servico
+ * @exception ObjetcJaExisteException
+ * @exception ObjectNaoExisteException
+ * @exception CodigoNaoExisteException
+ * 
+ */
 public interface IRepositorioServico {
 	
-	/**
-	 * Interface do Repositório de Serviços
-	 * 
-	 * @author srtacamelo
-	 * @see Servico
-	 * @exception ObjetcJaExisteException
-	 * @exception ObjectNaoExisteException
-	 * @exception CodigoNaoExisteException
-	 * 
-	 */
+	public void addAoRepositorio(Servico servico) throws ObjectNaoExisteException, ObjectJaExisteException;
+	public void removeDoRepositorio(Servico servico)throws ObjectNaoExisteException;
+	public void removerDoRepositorioNome(String nome);
+	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException;
+	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException;
 	
-	public IRepositorioServico{
-		
-	}
+	
+	
 }

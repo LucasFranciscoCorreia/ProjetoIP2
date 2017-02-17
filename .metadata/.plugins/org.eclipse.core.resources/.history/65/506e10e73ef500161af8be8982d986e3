@@ -1,0 +1,20 @@
+package br.ufrpe.repositorios;
+import br.ufrpe.beans.*;
+
+/**
+ * Interface do Repositório de Serviços
+ * 
+ * @author srtacamelo
+ * @see Servico
+ * @exception ObjetcJaExisteException
+ * @exception ObjectNaoExisteException
+ * @exception CodigoNaoExisteException
+ * 
+ */
+public interface IRepositorioServico {
+	
+	
+	
+	
+	}
+}
