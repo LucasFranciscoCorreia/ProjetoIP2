@@ -336,7 +336,9 @@ public class PrincipalGui extends Application implements Initializable{
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
+		tableFuncionario.setPlaceholder(new Label("Nenhum funcionário foi encontrado."));
 		tableFuncionario.setItems(getFuncionarios());
+		
 		//TODO está incompleto
 	}
 	
