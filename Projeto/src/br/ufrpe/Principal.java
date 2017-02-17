@@ -3,15 +3,16 @@ package br.ufrpe;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import br.ufrpe.beans.Remedio;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Remedio;
 import br.ufrpe.excecoes.CaracterInvalidoException;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
@@ -176,7 +177,11 @@ public class Principal {
 	}
 
 	private static void listarPessoa(ControladorPessoa pessoaControlador) {
-		System.out.println(pessoaControlador.listar());
+		ArrayList<Funcionario> array= pessoaControlador.listarFuncionario();
+		System.out.println(array.size());
+		for(int i = 0; i < array.size();i++){
+			System.out.println(array.get(i));
+		}
 	}
 
 	private static void pesquisarPessoa(String cpf, ControladorPessoa pessoaControlador) throws ObjectNaoExisteException{
@@ -1002,9 +1007,9 @@ public class Principal {
 		ControladorProduto produtoControlador = new ControladorProduto(RepositorioProduto.getInstance());
 		ControladorPessoa pessoaControlador = new ControladorPessoa(RepositorioPessoa.getInstance());
 		boolean ok = true;
-		do{
+		/*do{
 			ok = login(pessoaControlador, scanner);
-		}while(ok);
+		}while(ok);*/
 		menu(scanner, animalControlador, produtoControlador, pessoaControlador);		
 		scanner.close();
 	}

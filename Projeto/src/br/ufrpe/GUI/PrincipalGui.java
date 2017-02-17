@@ -382,8 +382,6 @@ public class PrincipalGui extends Application implements Initializable{
 		}
 	}
 	
-	
-	
 	private void abrirMenuFuncionario(ActionEvent evt) {
 		ScreenManager.getInstance().showMenu();
 	}

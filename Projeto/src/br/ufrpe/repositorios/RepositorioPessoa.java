@@ -98,7 +98,6 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 				}
 			}
 		}
-
 		return unicInstanc;
 	}
 
