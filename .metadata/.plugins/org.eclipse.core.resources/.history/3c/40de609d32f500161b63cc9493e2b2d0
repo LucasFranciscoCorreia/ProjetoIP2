@@ -153,8 +153,8 @@ public class RepositorioServico implements IRepositorioServico{
     
 	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException{
 		
-		Servico servico = pesquisarNomeNoRepositorioS(nome);
-		return this.ArrayDeServicos.indexOf(servico);
+		Servico servico = pesquisarNoRepositorio(nome);
+		return servico.get
 	}
 
 }

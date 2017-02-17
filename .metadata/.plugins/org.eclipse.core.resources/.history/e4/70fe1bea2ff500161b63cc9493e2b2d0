@@ -78,7 +78,13 @@ public class Carrinho {
 	 * Este método altera a quantidade de determinado item no carrinho, aumentando
 	 * @param produto
 	 * @param quantidade
-	 */	
+	 */
+	//TODO Dúvida: está certo colocar o index do arraylist de produtos?
+	// Dado que o indice é o mesmo do arrayDeQuantidade pro mesmo produto
+	//
+	//Ao invés de ter duas funções (addMaisAoCarrinho e removeMaisDoCarrinho
+	//poderia ter uma única função que alterasse o valor da quantidade (somando),
+	//passando como parametro um número negativo ou positivo para remover e acrescentar, respectivamente
 	
 	//Se eu fizer um botão pra diminuir e aumentar a quantidade de um produto, como passo a informação
 	//pra modificar a quantidade, e quando? (ao confirmar a compra, antes de remover do estoque)?

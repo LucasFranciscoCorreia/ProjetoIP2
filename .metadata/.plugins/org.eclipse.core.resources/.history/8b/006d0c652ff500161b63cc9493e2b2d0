@@ -116,7 +116,7 @@ public class RepositorioAnimal implements IRepositorioAnimal, Serializable{
 				return i;              //Ou eh melhor declarar a variavel i antes do for(-1), e
 			}				//usar um if depois dele (if i > -1)
 		}				//Como fiz no metodo abaixo:
-		return -1;
+		
 
 	}
 	public int buscarIndice(String codigo) throws CodigoNaoExisteException{

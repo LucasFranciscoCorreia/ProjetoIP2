@@ -134,7 +134,7 @@ public class RepositorioServico implements IRepositorioServico{
 		}
 	}
 	
-	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException{
+	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException{
 		
 		if(nome != null){
 			
@@ -150,11 +150,6 @@ public class RepositorioServico implements IRepositorioServico{
 			throw new ObjectNaoExisteException();
 		}
 	}
-    
-	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException{
-		
-		Servico servico = pesquisarNomeNoRepositorioS(nome);
-		return this.ArrayDeServicos.indexOf(servico);
-	}
+	
 
 }

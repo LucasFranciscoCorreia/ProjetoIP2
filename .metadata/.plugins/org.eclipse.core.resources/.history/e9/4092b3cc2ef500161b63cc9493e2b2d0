@@ -63,7 +63,7 @@ public class RepositorioServico implements IRepositorioServico{
 	}
 	
 	public void salvarNoArquivo() {
-		if (unicInstance == null){
+		if (this.unicInstance == null){
 			return;
 		}
 		
@@ -106,55 +106,9 @@ public class RepositorioServico implements IRepositorioServico{
 		}
 	}
 	
-	public void removeDoRepositorio(Servico servico)throws ObjectNaoExisteException{
+	public void removeDoRepositorio(){
 		
-		if(servico != null){
-			
-			for (Servico servicoA : ArrayDeServicos) {
-				
-				if(servicoA.equals(servico)){
-					this.ArrayDeServicos.remove(servicoA);
-				}
-			}
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
 	}
 	
-	public void removerDoRepositorioNome(String nome){
-		
-		if(nome != null){
-			
-			for (Servico servico : ArrayDeServicos) {
-				if(servico.equals(servico.getNome())){
-					this.ArrayDeServicos.remove(servico);
-				}
-			}
-		}
-	}
-	
-	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException{
-		
-		if(nome != null){
-			
-			for (Servico servico : ArrayDeServicos) {
-				
-				if(nome.equals(servico.getNome())){
-					return servico;
-				}
-			}
-			return null;
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
-	}
-    
-	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException{
-		
-		Servico servico = pesquisarNomeNoRepositorioS(nome);
-		return this.ArrayDeServicos.indexOf(servico);
-	}
 
 }

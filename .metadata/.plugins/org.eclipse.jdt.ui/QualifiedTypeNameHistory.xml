@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectJaExisteException"/>
-<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectNaoExisteException"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Label"/>
 <fullyQualifiedTypeName name="javafx.scene.Node"/>
 <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Login"/>
+<fullyQualifiedTypeName name="br.ufrpe.beans.Servico"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioAnimal"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioServico"/>
+<fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioServico"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectNaoExisteException"/>
+<fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectJaExisteException"/>
 </qualifiedTypeNameHistroy>
