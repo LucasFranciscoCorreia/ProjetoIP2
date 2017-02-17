@@ -15,7 +15,7 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonMenuAction" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -27,7 +27,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonCadastarAction" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioCadastrar" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +39,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonRemoverAction" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioRemover" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +51,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonPesquisarAction" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioPesquisar" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,7 +63,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonListarAction" prefHeight="120.0" prefWidth="200.0" text="Listar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioListar" prefHeight="120.0" prefWidth="200.0" text="Listar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,16 +82,16 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="cpfFuncionario" layoutX="14.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
+      <TextField fx:id="cpf" layoutX="14.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Button layoutX="14.0" layoutY="88.0" mnemonicParsing="false" onAction="#buttonPesquisarFuncionarioNoSistema" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
+      <Button layoutX="14.0" layoutY="88.0" mnemonicParsing="false" onAction="#buttonPesquisarFuncionario" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="label" layoutX="14.0" layoutY="137.0" prefHeight="34.0" prefWidth="315.0" textAlignment="CENTER">
+      <Label fx:id="Aviso" layoutX="8.0" layoutY="131.0" prefHeight="59.0" prefWidth="194.0" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -101,7 +101,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TabPane layoutX="-4.0" layoutY="235.0" prefHeight="366.0" prefWidth="623.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="-4.0" layoutY="340.0" prefHeight="261.0" prefWidth="623.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cargo">
             <content>
@@ -112,25 +112,11 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cargoFuncionario" layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="289.0" promptText="Cargo">
+                        <TextField fx:id="cargo" layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="289.0" promptText="Cargo">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button contentDisplay="TOP" layoutX="278.0" layoutY="169.0" mnemonicParsing="false" onAction="#buttonSalvarAtualizarFuncionario" text="Salvar">
-                           <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../lib/Imgs/save-file.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Label fx:id="label2" alignment="CENTER" layoutX="177.0" layoutY="261.0" prefHeight="30.0" prefWidth="289.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -143,25 +129,11 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="salarioFuncionario" layoutX="14.0" layoutY="49.0" prefHeight="30.0" prefWidth="137.0" promptText="xxx.xx">
+                        <TextField fx:id="salario" layoutX="14.0" layoutY="49.0" prefHeight="30.0" prefWidth="137.0" promptText="xxx.xx">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button contentDisplay="TOP" layoutX="278.0" layoutY="185.0" mnemonicParsing="false" onAction="#buttonSalvarAtualizarFuncionario" text="Salvar">
-                           <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../../../Pictures/save-file.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Label fx:id="label2" alignment="CENTER" layoutX="167.0" layoutY="266.0" prefHeight="30.0" prefWidth="289.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -174,7 +146,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="ruaFuncionario" layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="541.0" promptText="Rua">
+                        <TextField fx:id="rua" layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="541.0" promptText="Rua">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -184,7 +156,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="complementoFuncionario" layoutX="14.0" layoutY="113.0" prefHeight="30.0" prefWidth="246.0" promptText="Complemento">
+                        <TextField fx:id="complemento" layoutX="14.0" layoutY="113.0" prefHeight="30.0" prefWidth="246.0" promptText="Complemento">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -194,7 +166,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="numeroFuncionario" layoutX="285.0" layoutY="113.0" prefHeight="30.0" prefWidth="103.0" promptText="Número">
+                        <TextField fx:id="numero" layoutX="285.0" layoutY="113.0" prefHeight="30.0" prefWidth="103.0" promptText="Número">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -204,7 +176,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cepFuncionario" layoutX="428.0" layoutY="113.0" prefHeight="25.0" prefWidth="143.0" promptText="xxxxx-xxx">
+                        <TextField fx:id="cep" layoutX="428.0" layoutY="113.0" prefHeight="25.0" prefWidth="143.0" promptText="xxxxx-xxx">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -214,32 +186,33 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cidadeFuncionario" layoutX="14.0" layoutY="182.0" prefHeight="30.0" prefWidth="204.0" promptText="Recife-PE">
+                        <TextField fx:id="cidade" layoutX="14.0" layoutY="182.0" prefHeight="30.0" prefWidth="204.0" promptText="Recife-PE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button contentDisplay="TOP" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" onAction="#buttonSalvarAtualizarFuncionario" text="Salvar">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../../../Pictures/save-file.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Label fx:id="label2" alignment="CENTER" layoutX="154.0" layoutY="295.0" prefHeight="20.0" prefWidth="315.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
                      </children></AnchorPane>
                </content>
             </Tab>
         </tabs>
       </TabPane>
+      <Label fx:id="funcionarioToString" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="214.0" layoutY="11.0" prefHeight="325.0" prefWidth="389.0" textAlignment="CENTER">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Button contentDisplay="TOP" layoutX="14.0" layoutY="240.0" mnemonicParsing="false" onAction="#buttonAtualizarFuncionario" text="Salvar">
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../lib/Imgs/save-file.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="AvisoAtualizar" layoutX="91.0" layoutY="281.0" prefHeight="36.0" prefWidth="253.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>

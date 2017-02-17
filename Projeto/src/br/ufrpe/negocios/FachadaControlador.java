@@ -41,11 +41,11 @@ public class FachadaControlador {
 	 * Método getInstance, para garantir a unicidade da classe.
 	 * @return
 	 */
-	public FachadaControlador getInstance(){
-		if (this.instance == null){
-			FachadaControlador();
+	public static FachadaControlador getInstance(){
+		if (instance == null){
+			instance = new FachadaControlador();
 		}
-		return this.instance;
+		return instance;
 	}
 	/**
 	 * Salvar os objetos dos repositórios nos arquivos
@@ -102,9 +102,7 @@ public class FachadaControlador {
 	public Pessoa buscar(Login log) throws ObjectNaoExisteException {
 		return controladorPessoa.buscar(log);
 	}
-	public void salvarNoArquivo() {
-		controladorProduto.salvarNoArquivo();
-	}
+	
 	public void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException {
 		controladorProduto.remover(codigo);
 	}
@@ -127,9 +125,8 @@ public class FachadaControlador {
 		controladorPessoa.salvarNoArquivo();
 	}
 	
-	public void cadastrar(Pessoa novo)
-			throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException {
-		controladorPessoa.cadastrar(novo);
+	public void cadastrar(Pessoa novo) throws ObjectNaoExisteException, ErroAoSalvarException, ObjectJaExisteException {
+		controladorPessoa.cadastrar(novo);;
 	}
 
 	public String listarCLiente() {

@@ -54,25 +54,25 @@ public class ScreenManager {
 			
 			
 			// FUNCIONARIO TELAS:
-//			AnchorPane funcionarioAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/FuncionarioAtualizar.fxml"));
-//			this.funcionarioAtualizar = new Scene(funcionarioAtualizar);
-//			
-//			StackPane funcionarioCadastar =  FXMLLoader.load(getClass().getResource(
-//		              "view/FuncionarioCadastrar.fxml"));
-//			this.funcionarioCadastrar = new Scene(funcionarioCadastar);
-//			
-//			AnchorPane funcionarioListar = FXMLLoader.load(getClass().getResource(
-//		              "view/FuncionarioListar.fxml"));
-//			this.funcionarioListar = new Scene(funcionarioListar);
-//			
-//			AnchorPane funcionarioPesquisar = FXMLLoader.load(getClass().getResource(
-//		              "view/FuncionarioPesquisar.fxml"));
-//			this.funcionarioPesquisar = new Scene(funcionarioPesquisar);
-//			
-//			AnchorPane funcionarioRemover = FXMLLoader.load(getClass().getResource(
-//		              "view/FuncionarioRemover.fxml"));
-//			this.funcionarioRemover = new Scene(funcionarioRemover);
+			AnchorPane funcionarioAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/FuncionarioAtualizar.fxml"));
+			this.funcionarioAtualizar = new Scene(funcionarioAtualizar);
+			
+			StackPane funcionarioCadastar =  FXMLLoader.load(getClass().getResource(
+		              "view/FuncionarioCadastrar.fxml"));
+			this.funcionarioCadastrar = new Scene(funcionarioCadastar);
+			
+			AnchorPane funcionarioListar = FXMLLoader.load(getClass().getResource(
+		              "view/FuncionarioListar.fxml"));
+			this.funcionarioListar = new Scene(funcionarioListar);
+			
+			AnchorPane funcionarioPesquisar = FXMLLoader.load(getClass().getResource(
+		              "view/FuncionarioPesquisar.fxml"));
+			this.funcionarioPesquisar = new Scene(funcionarioPesquisar);
+			
+			AnchorPane funcionarioRemover = FXMLLoader.load(getClass().getResource(
+		              "view/FuncionarioRemover.fxml"));
+			this.funcionarioRemover = new Scene(funcionarioRemover);
 			
 			
 			
@@ -98,9 +98,9 @@ public class ScreenManager {
 		              "view/MenuCliente.fxml"));
 			this.menuCliente = new Scene(menuCliente);
 			
-//			BorderPane menuFuncionario = FXMLLoader.load(getClass().getResource(
-//		              "view/MenuFuncionario.fxml"));
-//			this.menuFuncionario = new Scene(menuFuncionario);
+			AnchorPane menuFuncionario = FXMLLoader.load(getClass().getResource(
+		              "view/MenuFuncionario.fxml"));
+			this.menuFuncionario = new Scene(menuFuncionario);
 			
 			
 			
@@ -193,6 +193,10 @@ public class ScreenManager {
 	
 	public void showMenuCliente(){
 		this.mainStage.setScene(this.menuCliente);
+	}
+	
+	public void showMenuFuncionario(){
+		this.mainStage.setScene(this.menuFuncionario);
 	}
 	
 	

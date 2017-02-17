@@ -13,7 +13,7 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonMenuAction" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,7 +25,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAtualizarAction" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioAtualizar" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonRemoverAction" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioRemover" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +49,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonPesquisarAction" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioPesquisar" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +61,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAdicionarAction" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioCadastrar" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -75,12 +75,12 @@
             </Button>
          </children>
       </VBox>
-      <TableView prefHeight="600.0" prefWidth="620.0">
+      <TableView fx:id="tableFuncionario" prefHeight="600.0" prefWidth="620.0">
         <columns>
-          <TableColumn fx:id="nome" prefWidth="244.0" text="Nome" />
-          <TableColumn fx:id="cpf" prefWidth="139.0" text="CPF" />
-            <TableColumn fx:id="salario" prefWidth="100.0" text="Salário" />
-            <TableColumn fx:id="cargo" prefWidth="136.0" text="Cargo" />
+          <TableColumn fx:id="nomeFuncionario" prefWidth="244.0" text="Nome" />
+          <TableColumn fx:id="cpfFuncionario" prefWidth="139.0" text="CPF" />
+            <TableColumn fx:id="salarioFuncionario" prefWidth="100.0" text="Salário" />
+            <TableColumn fx:id="cargoFuncionario" prefWidth="136.0" text="Cargo" />
         </columns>
       </TableView>
    </children>

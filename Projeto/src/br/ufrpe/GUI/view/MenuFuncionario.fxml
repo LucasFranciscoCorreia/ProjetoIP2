@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <left>
@@ -36,7 +35,7 @@
          <center>
             <VBox prefHeight="600.0" prefWidth="279.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton lineSpacing="1.0" onAction="#cadastroCliente" prefHeight="110.0" prefWidth="306.0" style="-fx-border-color: black;" text="Cadastrar">
+                  <JFXButton lineSpacing="1.0" onAction="#abrirFuncionarioCadastrar" prefHeight="110.0" prefWidth="306.0" style="-fx-border-color: black;" text="Cadastrar">
                      <graphic>
                         <ImageView fitHeight="100.0" fitWidth="100.0">
                            <image>
@@ -45,7 +44,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton onAction="#removerCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
+                  <JFXButton onAction="#abrirFuncionarioRemover" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
                      <graphic>
                         <ImageView fitHeight="100.0" fitWidth="100.0">
                            <image>
@@ -54,7 +53,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton prefHeight="110.0" prefWidth="357.0" style="-fx-border-color: black;" text="Atualizar">
+                  <JFXButton onAction="#abrirFuncionarioAtualizar" prefHeight="110.0" prefWidth="357.0" style="-fx-border-color: black;" text="Atualizar">
                      <graphic>
                         <ImageView fitHeight="100.0" fitWidth="100.0">
                            <image>
@@ -63,7 +62,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton prefHeight="110.0" prefWidth="312.0" style="-fx-border-color: black;" text="Pesquisar">
+                  <JFXButton onAction="#abrirFuncionarioPesquisar" prefHeight="110.0" prefWidth="312.0" style="-fx-border-color: black;" text="Pesquisar">
                      <graphic>
                         <ImageView fitHeight="99.0" fitWidth="100.0">
                            <image>
@@ -72,7 +71,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton prefHeight="110.0" prefWidth="386.0" style="-fx-border-color: black;" text="Listar">
+                  <JFXButton onAction="#abrirFuncionarioListar" prefHeight="110.0" prefWidth="386.0" style="-fx-border-color: black;" text="Listar">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="90.0" style="-fx-border-color: black;">
                            <image>

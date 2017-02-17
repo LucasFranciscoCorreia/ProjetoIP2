@@ -13,7 +13,7 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonMenuAction" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,7 +25,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAtualizarAction" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioAtualizar" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAdcionarAction" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioCadastrar" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +49,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonPesquisarAction" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioPesquisar" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +61,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonListarAction" prefHeight="120.0" prefWidth="200.0" text="Listar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioListar" prefHeight="120.0" prefWidth="200.0" text="Listar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -80,22 +80,22 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="cpfFuncionario" layoutX="14.0" layoutY="41.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
+      <TextField fx:id="cpf" layoutX="14.0" layoutY="41.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#buttonPesquisarFuncionarioNoSistema" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
+      <Button layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#buttonPesquisarFuncionario" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="label" alignment="CENTER" layoutX="14.0" layoutY="129.0" prefHeight="27.0" prefWidth="277.0">
+      <Label fx:id="funcionarioToString" alignment="CENTER" layoutX="14.0" layoutY="129.0" prefHeight="355.0" prefWidth="522.0">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <Button contentDisplay="TOP" layoutX="28.0" layoutY="199.0" mnemonicParsing="false" onAction="#buttonRemoverFuncionario" prefHeight="30.0" prefWidth="76.0" text="Delete">
+      <Button contentDisplay="TOP" layoutX="28.0" layoutY="490.0" mnemonicParsing="false" onAction="#buttonFuncionarioRemover" prefHeight="30.0" prefWidth="76.0" text="Delete">
          <font>
             <Font size="14.0" />
          </font>
@@ -106,7 +106,12 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label fx:id="label2" contentDisplay="CENTER" layoutX="14.0" layoutY="307.0" prefHeight="30.0" prefWidth="191.0">
+      <Label fx:id="AvisoRemover" contentDisplay="CENTER" layoutX="118.0" layoutY="511.0" prefHeight="55.0" prefWidth="486.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Aviso" layoutX="153.0" layoutY="75.0" prefHeight="55.0" prefWidth="415.0">
          <font>
             <Font size="14.0" />
          </font>
