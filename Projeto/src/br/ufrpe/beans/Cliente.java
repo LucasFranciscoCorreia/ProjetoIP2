@@ -45,6 +45,10 @@ public class Cliente extends Pessoa {
 		this.qntPets = 0;
 	}
 	
+	public Cliente(String cpf){
+		super(cpf, null, null);
+	}
+	
 	/**
 	* Cadastra um pet em uma quantidade indefinida que um cliente pode possuir
 	* 

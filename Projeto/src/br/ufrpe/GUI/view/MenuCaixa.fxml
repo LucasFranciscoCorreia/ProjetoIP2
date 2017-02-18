@@ -35,9 +35,9 @@
          <center>
             <VBox prefHeight="545.0" prefWidth="297.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton lineSpacing="1.0" prefHeight="183.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
+                  <JFXButton lineSpacing="1.0" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
                      <graphic>
-                        <ImageView fitHeight="140.0" fitWidth="140.0">
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
                               <Image url="@../../../../../lib/Imgs/Ecommerce-Cash-Register-icon.png" />
                            </image>
@@ -47,9 +47,9 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="183.0" prefWidth="297.0" style="-fx-border-color: black;" text="Serviços">
+                  <JFXButton prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Serviços">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="150.0">
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
                               <Image url="@../../../../../lib/Imgs/settings_icon-icons.com_72415.png" />
                            </image>
@@ -59,11 +59,35 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="183.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Cadastrar" textAlignment="CENTER" wrapText="true">
+                  <JFXButton onAction="#abrirClienteCadastarCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Cadastrar" textAlignment="CENTER" wrapText="true">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="150.0">
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
                               <Image url="@../../../../../lib/Imgs/clienteMenu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#abrirClienteBuscarCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Pesquisar" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/busca.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#abrirClienteAtualizarCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Atualizar" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/1380118359_new-24.png" />
                            </image>
                         </ImageView>
                      </graphic>

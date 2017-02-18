@@ -80,7 +80,7 @@ public class FuncionarioController implements Initializable{
 				if(i != 3 || i != 7 || i != 11){
 					if(!Character.isDigit(cpfChar[i])){
 						ok = false;
-					}					
+					}
 				}
 			}
 		}else{
@@ -182,16 +182,26 @@ public class FuncionarioController implements Initializable{
 	
 	@FXML
 	public void buttonPesquisarFuncionario(ActionEvent event){		
-		try {				
-			Funcionario achada = null;
-			
-			achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
-			
-			aviso.setText("Funcionario(a) encontrado no sistema!!!");
-			funcionarioToString.setText(achada.toString());
-		} catch (ObjectNaoExisteException e) {
-			aviso.setText(e.getMessage());
-		}		
+		if(!funcionarioToString.getText().isEmpty()){
+			funcionarioToString.setText("");
+		} if(!aviso.getText().isEmpty()){
+			aviso.setText("");
+		}
+		
+		if(!cpf.getText().isEmpty()){
+			try {				
+				Funcionario achada = null;
+				
+				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				
+				aviso.setText("Funcionario(a) encontrado no sistema!!!");
+				funcionarioToString.setText(achada.toString());
+			} catch (ObjectNaoExisteException e) {
+				aviso.setText(e.getMessage());
+			}
+		}else{
+			aviso.setText("CPF invalido");
+		}
 		
 		if(!cpf.getText().isEmpty()){
 			cpf.setText("");
@@ -199,7 +209,7 @@ public class FuncionarioController implements Initializable{
 	}
 	
 	@FXML
-	public void buttonPesquisarFuncionarioRemover(ActionEvent event){
+	public void buttonPesquisarFuncionarioRemover(ActionEvent event){		
 		try {				
 			Funcionario achada = null;
 			
@@ -212,11 +222,6 @@ public class FuncionarioController implements Initializable{
 		} catch (ObjectNaoExisteException e) {
 			aviso.setText(e.getMessage());
 		}		
-		
-		
-		if(!cpf.getText().isEmpty()){
-			cpf.setText("");
-		}
 	}
 	
 	@FXML
@@ -237,18 +242,12 @@ public class FuncionarioController implements Initializable{
 	
 	@FXML
 	public void buttonFuncionarioRemover(ActionEvent event) {
-		if(!avisoRemover.getText().isEmpty() || !aviso.getText().isEmpty() 
-				|| !funcionarioToString.getText().isEmpty()){
-			avisoRemover.setText("");
-			aviso.setText("");
-			funcionarioToString.setText("");
-		} 
-
 		try {
 			FachadaControlador.getInstance().removerPessoa(cpf.getText());
 			FachadaControlador.getInstance().salvarNoArquivoPessoa();
 			
 			avisoRemover.setText("Funcionario removido do sistema!!!");
+			buttonRemover.setVisible(false);
 		} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
 			avisoRemover.setText(e.getMessage());
 		}
@@ -256,6 +255,13 @@ public class FuncionarioController implements Initializable{
 		if(!cpf.getText().isEmpty()){
 			cpf.setText("");
 		}
+
+		if(!avisoRemover.getText().isEmpty() || !aviso.getText().isEmpty() 
+				|| !funcionarioToString.getText().isEmpty()){
+			avisoRemover.setText("");
+			aviso.setText("");
+			funcionarioToString.setText("");
+		} 
 	}
 	
 	@FXML
@@ -288,7 +294,7 @@ public class FuncionarioController implements Initializable{
 					FachadaControlador.getInstance().salvarNoArquivoPessoa();
 					
 					avisoAtualizar.setText("Informações atualizadas");
-					
+					buttonAtualizar.setVisible(false);
 				} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
 					avisoAtualizar.setText(e.getMessage());
 				}				
@@ -303,13 +309,13 @@ public class FuncionarioController implements Initializable{
 
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
-		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();
-		
-		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
-		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
-		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
-		
-		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
+//		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();
+//		
+//		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
+//		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
+//		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
+//		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
+//		
+//		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
 	}
 }

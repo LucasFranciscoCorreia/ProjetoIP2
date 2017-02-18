@@ -18,6 +18,7 @@ public class ScreenManager {
 	private Scene login, menu, menuCaixa, menuCliente, errorMessage, telaCaixa;
 	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
+	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
 	
 	public static ScreenManager getInstance(){
 		if(unicInstanc == null){
@@ -37,6 +38,18 @@ public class ScreenManager {
 			AnchorPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrar.fxml"));
 			this.clienteCadastrar = new Scene(clienteCadastrar);
+			
+			AnchorPane clienteCadastrarCaixa = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteCadastrarCaixa.fxml"));
+			this.clienteCadastrarCaixa = new Scene(clienteCadastrarCaixa);
+			
+			AnchorPane clientePesquisarCaixa = FXMLLoader.load(getClass().getResource(
+		              "view/ClientePesquisarCaixa.fxml"));
+			this.clientePesquisarCaixa = new Scene(clientePesquisarCaixa);
+			
+			AnchorPane clienteAtualizarCaixa = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteAtualizarCaixa.fxml"));
+			this.clienteAtualizarCaixa = new Scene(clienteAtualizarCaixa);
 			
 //			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
 //		              "view/ClienteListar.fxml"));
@@ -153,6 +166,17 @@ public class ScreenManager {
 	}
 	
 	// CHAMADA DE TELAS CLIENTE:
+	public void showClienteAtualizarCaixa(){
+		this.mainStage.setScene(clienteAtualizarCaixa);
+	}
+	public void showClienteCadastrarCaixa(){
+		this.mainStage.setScene(clienteCadastrarCaixa);
+	}
+	
+	public void showClientePesquisarCaixa(){
+		this.mainStage.setScene(clientePesquisarCaixa);
+	}
+	
 	public void showClienteAtualizar(){
 		this.mainStage.setScene(this.clienteAtualizar);
 	}
@@ -191,6 +215,7 @@ public class ScreenManager {
 	}
 	
 	public void showMenuCaixa(){
+		loginStage.close();
 		this.mainStage.setScene(this.menuCaixa);
 		this.mainStage.centerOnScreen();
 		this.mainStage.setWidth(800);
