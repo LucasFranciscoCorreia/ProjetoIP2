@@ -73,21 +73,35 @@ public class FuncionarioController implements Initializable{
 	
 	public boolean cpfOk(String cpf){
 		boolean ok = true;
+		char[] cpfChar = cpf.toCharArray();
 		
-		if(!cpf.isEmpty() && cpf.length() == 14){
-			char[] cpfChar = cpf.toCharArray();
-			for (int i = 0; i < cpf.length(); i++) {
-				if(i != 3 || i != 7 || i != 11){
-					if(!Character.isDigit(cpfChar[i])){
-						ok = false;
-					}
+		if(cpf.length() == 11){
+			for(int i = 0; i < cpf.length(); i++){
+				if(!Character.isDigit(cpfChar[i])){
+					ok = false;
 				}
-			}
+			}			
 		}else{
 			ok = false;
 		}
 		
-		return ok; 
+		return ok;
+	}
+	
+	public String cpfPadronizar(String cpf){
+		String novoCpf = "";
+		char[] cpfChar = cpf.toCharArray();
+		
+		for(int i = 0; i < cpf.length(); i++){
+			novoCpf += cpfChar[i];
+			if(i == 2 || i == 5){
+				novoCpf += ".";
+			}else if(i == 8){
+				novoCpf += "-";
+			}
+		}
+		
+		return novoCpf;
 	}
 	
 	@FXML
@@ -134,8 +148,9 @@ public class FuncionarioController implements Initializable{
 			avisoCadastro.setText("Dado Inválido!! Tente novamente");
 		
 		}else{
-			if(dataOk(aniversario.getText())){
+			if(dataOk(aniversario.getText()) && cpfOk(cpf.getText())){
 				try {
+					String cpfNovo = cpfPadronizar(cpf.getText());
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 					LocalDate date = LocalDate.parse(this.aniversario.getText(), formatter);
 					
@@ -143,7 +158,7 @@ public class FuncionarioController implements Initializable{
 							Short.valueOf(numero.getText()), cep.getText(), 
 							cidadeUF.getText());
 					
-					Funcionario funcionario = new Funcionario(nome.getText(), cpf.getText(), 
+					Funcionario funcionario = new Funcionario(nome.getText(), cpfNovo, 
 							end, Double.parseDouble(salario.getText()), date, 
 							cargo.getText());	
 					
@@ -156,7 +171,9 @@ public class FuncionarioController implements Initializable{
 				} catch (ErroAoSalvarException | ObjectJaExisteException e) {
 					avisoCadastro.setText(e.getMessage());
 				} 
-			}				
+			}else{
+				avisoCadastro.setText("Entre com dados corretos!!");
+			}
 		}
 
 		if(!rua.getText().isEmpty() || !numero.getText().isEmpty() || !cep.getText().isEmpty()
@@ -188,11 +205,12 @@ public class FuncionarioController implements Initializable{
 			aviso.setText("");
 		}
 		
-		if(!cpf.getText().isEmpty()){
+		if(cpfOk(cpf.getText())){
 			try {				
 				Funcionario achada = null;
+				String cpfNovo = cpfPadronizar(cpf.getText());
 				
-				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				
 				aviso.setText("Funcionario(a) encontrado no sistema!!!");
 				funcionarioToString.setText(achada.toString());
@@ -210,46 +228,63 @@ public class FuncionarioController implements Initializable{
 	
 	@FXML
 	public void buttonPesquisarFuncionarioRemover(ActionEvent event){		
-		try {				
-			Funcionario achada = null;
-			
-			achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
-			
-			aviso.setText("Funcionario(a) encontrado no sistema!!!");
-			funcionarioToString.setText(achada.toString());
+		if(cpfOk(cpf.getText())){
+			try {				
+				Funcionario achada = null;
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				
+				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
+				
+				aviso.setText("Funcionario(a) encontrado no sistema!!!");
+				funcionarioToString.setText(achada.toString());
 
-			buttonRemover.setVisible(true);
-		} catch (ObjectNaoExisteException e) {
-			aviso.setText(e.getMessage());
-		}		
+				buttonRemover.setVisible(true);
+			} catch (ObjectNaoExisteException e) {
+				aviso.setText(e.getMessage());
+			}
+		}else{
+			aviso.setText("Informe um CPF válido");
+		}
 	}
 	
 	@FXML
 	public void buttonPesquisarFuncionarioAtualizar(ActionEvent event){
-		try {				
-			Funcionario achada = null;
-			
-			achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
-			
-			aviso.setText("Funcionario(a) encontrado no sistema!!!");
-			funcionarioToString.setText(achada.toString());
-			
-			buttonAtualizar.setVisible(true);
-		} catch (ObjectNaoExisteException e) {
-			aviso.setText(e.getMessage());
-		}				
+		if(cpfOk(cpf.getText())){
+			try {				
+				Funcionario achada = null;
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				
+				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
+				
+				aviso.setText("Funcionario(a) encontrado no sistema!!!");
+				funcionarioToString.setText(achada.toString());
+				
+				buttonAtualizar.setVisible(true);
+			} catch (ObjectNaoExisteException e) {
+				aviso.setText(e.getMessage());
+			}	
+		}else{
+			aviso.setText("Informe um CPF válido!!!");
+		}
+					
 	}
 	
 	@FXML
 	public void buttonFuncionarioRemover(ActionEvent event) {
-		try {
-			FachadaControlador.getInstance().removerPessoa(cpf.getText());
-			FachadaControlador.getInstance().salvarNoArquivoPessoa();
-			
-			avisoRemover.setText("Funcionario removido do sistema!!!");
-			buttonRemover.setVisible(false);
-		} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
-			avisoRemover.setText(e.getMessage());
+		if(cpfOk(cpf.getText())){
+			try {
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				
+				FachadaControlador.getInstance().removerPessoa(cpfNovo);
+				FachadaControlador.getInstance().salvarNoArquivoPessoa();
+				
+				avisoRemover.setText("Funcionario removido do sistema!!!");
+				buttonRemover.setVisible(false);
+			} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
+				avisoRemover.setText(e.getMessage());
+			}			
+		}else{
+			avisoRemover.setText("Informe um CPF válido!!!");
 		}
 
 		if(!cpf.getText().isEmpty()){
@@ -268,8 +303,9 @@ public class FuncionarioController implements Initializable{
 	public void buttonAtualizarFuncionario(ActionEvent evento){
 		boolean salvar = false;
 		
-		if(!cpf.getText().isEmpty()){
-			Funcionario novo = new Funcionario(cpf.getText());
+		if(cpfOk(cpf.getText())){
+			String cpfNovo = cpfPadronizar(cpf.getText());
+			Funcionario novo = new Funcionario(cpfNovo);
 
 			if(!cargo.getText().isEmpty()){
 				novo.setCargo(cargo.getText());
@@ -303,7 +339,7 @@ public class FuncionarioController implements Initializable{
 			}
 			
 		}else{
-			avisoAtualizar.setText("Dados inválidos!!!");
+			avisoAtualizar.setText("Informe um CPF válido!!!");
 		}
 	}
 

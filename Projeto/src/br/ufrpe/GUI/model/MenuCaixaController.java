@@ -45,6 +45,39 @@ public class MenuCaixaController {
 		}
 	}
 	
+	public boolean cpfOk(String cpf){
+		boolean ok = true;
+		char[] cpfChar = cpf.toCharArray();
+		
+		if(cpf.length() == 11){
+			for(int i = 0; i < cpf.length(); i++){
+				if(!Character.isDigit(cpfChar[i])){
+					ok = false;
+				}
+			}			
+		}else{
+			ok = false;
+		}
+		
+		return ok;
+	}
+	
+	public String cpfPadronizar(String cpf){
+		String novoCpf = "";
+		char[] cpfChar = cpf.toCharArray();
+		
+		for(int i = 0; i < cpf.length(); i++){
+			novoCpf += cpfChar[i];
+			if(i == 2 || i == 5){
+				novoCpf += ".";
+			}else if(i == 8){
+				novoCpf += "-";
+			}
+		}
+		
+		return novoCpf;
+	}
+	
 	@FXML
 	public void menuCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showMenuCaixa();
@@ -73,8 +106,10 @@ public class MenuCaixaController {
 			aviso.setText("Dado Inválido!! Tente novamente");
 		
 		}else{
-			if(dataOk(aniversario.getText())){
+			if(dataOk(aniversario.getText()) && cpfOk(cpf.getText())){
 				try {
+					String cpfNovo = cpfPadronizar(cpf.getText());
+					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 					LocalDate date = LocalDate.parse(this.aniversario.getText(), formatter);
 					
@@ -82,7 +117,7 @@ public class MenuCaixaController {
 							Short.valueOf(numero.getText()), cep.getText(), 
 							cidadeUF.getText());
 					
-					Cliente cliente = new Cliente(cpf.getText(), date, nome.getText(), end);
+					Cliente cliente = new Cliente(cpfNovo, date, nome.getText(), end);
 					
 					FachadaControlador.getInstance().cadastrar(cliente);
 					FachadaControlador.getInstance().salvarNoArquivoPessoa();
@@ -93,7 +128,9 @@ public class MenuCaixaController {
 				} catch (ErroAoSalvarException | ObjectJaExisteException e) {
 					aviso.setText(e.getMessage());
 				} 
-			}				
+			}else{
+				aviso.setText("Entre com dados válidos!!!");
+			}
 		}
 
 		if(!rua.getText().isEmpty() || !numero.getText().isEmpty() || !cep.getText().isEmpty()
@@ -121,11 +158,11 @@ public class MenuCaixaController {
 			aviso.setText("");
 		}
 		
-		if(!cpf.getText().isEmpty()){
+		if(cpfOk(cpf.getText())){
 			try {				
 				Cliente achada = null;
-				
-				achada = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				achada = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				
 				aviso.setText("Cliente encontrado no sistema!!!");
 				clienteToString.setText(achada.toString());
@@ -147,11 +184,11 @@ public class MenuCaixaController {
 			aviso.setText("");
 		}
 		
-		if(!cpf.getText().isEmpty()){
+		if(cpfOk(cpf.getText())){
 			try {				
 				Cliente achada = null;
-				
-				achada = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				achada = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				
 				aviso.setText("Cliente encontrado no sistema!!!");
 				buttonAtualizar.setVisible(true);
@@ -171,8 +208,9 @@ public class MenuCaixaController {
 	public void buttonSalvarAtualizarFuncionario(ActionEvent evt) throws NumberFormatException, ObjectNaoExisteException{
 		boolean salvar = false;
 		
-		if(!cpf.getText().isEmpty()){
-			Cliente cliente = new Cliente(cpf.getText());
+		if(cpfOk(cpf.getText())){
+			String cpfNovo = cpfPadronizar(cpf.getText());
+			Cliente cliente = new Cliente(cpfNovo);
 			
 			if(!raca.getText().isEmpty() || !peso.getText().isEmpty()
 					|| !altura.getText().isEmpty() || !especie.getText().isEmpty()
@@ -205,6 +243,8 @@ public class MenuCaixaController {
 			}else{
 				avisoAtualizar.setText("Informe dados válidos!!!");
 			}
+		}else{
+			avisoAtualizar.setText("Informe um CPF válido!!");
 		}
 	}
 }
