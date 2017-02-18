@@ -15,7 +15,7 @@ public class ScreenManager {
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, menuCliente, errorMessage, telaCaixa;
+	private Scene login, menu, menuCaixa, errorMessage, telaCaixa;
 	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
@@ -31,9 +31,9 @@ public class ScreenManager {
 	private ScreenManager(){
 		try {
 			// CLIENTE TELAS:
-			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
-		              "view/ClienteAtualizar.fxml"));
-			this.clienteAtualizar = new Scene(clienteAtualizar);
+//			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
+//		              "view/ClienteAtualizar.fxml"));
+//			this.clienteAtualizar = new Scene(clienteAtualizar);
 			
 			StackPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrar.fxml"));
@@ -51,13 +51,6 @@ public class ScreenManager {
 		              "view/ClienteAtualizarCaixa.fxml"));
 			this.clienteAtualizarCaixa = new Scene(clienteAtualizarCaixa);
 			
-//			AnchorPane clientePesquisar = FXMLLoader.load(getClass().getResource(
-//		              "view/ClientePesquisar.fxml"));
-//			this.clientePesquisar = new Scene(clientePesquisar);
-//			
-//			AnchorPane clienteRemover = FXMLLoader.load(getClass().getResource(
-//		              "view/ClienteRemover.fxml"));
-//			this.clienteRemover = new Scene(clienteRemover);
 			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteListar.fxml"));
 			this.clienteListar = new Scene(clienteListar);
@@ -112,10 +105,6 @@ public class ScreenManager {
 			AnchorPane menuCaixa = FXMLLoader.load(getClass().getResource(
 		              "view/MenuCaixa.fxml"));
 			this.menuCaixa = new Scene(menuCaixa);
-			
-			BorderPane menuCliente = FXMLLoader.load(getClass().getResource(
-		              "view/MenuCliente.fxml"));
-			this.menuCliente = new Scene(menuCliente);
 			
 //			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
 //		              "view/TelaCaixa.fxml"));
@@ -200,6 +189,9 @@ public class ScreenManager {
 		this.mainStage.setScene(this.clienteRemover);
 	}
 	
+	public void showClienteListar(){
+		this.mainStage.setScene(this.clienteListar);
+	}
 	
 	// CHAMADA DA TELA DE ERRO:
 	public void showErrorMessage(){

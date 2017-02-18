@@ -11,7 +11,7 @@
    <children>
       <VBox layoutX="250.0" prefHeight="600.0" prefWidth="300.0">
          <children>
-            <Button fx:id="buttonCliente" mnemonicParsing="false" onAction="#menuCliente" prefHeight="150.0" prefWidth="300.0" text="CLIENTE">
+            <Button fx:id="buttonCliente" mnemonicParsing="false" onAction="#abrirClienteListar" prefHeight="150.0" prefWidth="300.0" text="CLIENTE">
                <font>
                   <Font size="18.0" />
                </font>
