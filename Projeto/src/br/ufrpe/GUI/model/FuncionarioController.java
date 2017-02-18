@@ -6,6 +6,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 import javax.print.DocFlavor.URL;
+import javax.swing.text.MaskFormatter;
 
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Endereco;
@@ -23,6 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,6 +32,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FuncionarioController {
+	@FXML
+	private Button buttonRemover, buttonAtualizar;
 	@FXML
 	private TextField nome, cpf, aniversario;
 	@FXML
@@ -73,6 +77,25 @@ public class FuncionarioController {
 		}
 	}
 	
+	public boolean cpfOk(String cpf){
+		boolean ok = true;
+		
+		if(!cpf.isEmpty() && cpf.length() == 14){
+			char[] cpfChar = cpf.toCharArray();
+			for (int i = 0; i < cpf.length(); i++) {
+				if(i != 3 || i != 7 || i != 11){
+					if(!Character.isDigit(cpfChar[i])){
+						ok = false;
+					}					
+				}
+			}
+		}else{
+			ok = false;
+		}
+		
+		return ok; 
+	}
+	
 	@FXML
 	public void voltarMenu(ActionEvent evt){
 		ScreenManager.getInstance().showMenu();
@@ -101,8 +124,8 @@ public class FuncionarioController {
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
-		tableFuncionario.setPlaceholder(new Label("Nenhum funcionário foi encontrado."));
-		tableFuncionario.setItems(getFuncionarios());
+//		tableFuncionario.setPlaceholder(new Label("Nenhum funcionário foi encontrado."));
+//		tableFuncionario.setItems(getFuncionarios());
 		
 		//TODO está incompleto
 	}
@@ -123,7 +146,6 @@ public class FuncionarioController {
 		}else{
 			if(dataOk(aniversario.getText())){
 				try {
-					System.out.println("entrou no try");
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 					LocalDate date = LocalDate.parse(this.aniversario.getText(), formatter);
 					
@@ -169,50 +191,84 @@ public class FuncionarioController {
 	}
 	
 	@FXML
-	public void buttonPesquisarFuncionario(ActionEvent event){
-		if(!funcionarioToString.getText().isEmpty()){
-			funcionarioToString.setText("");
-		}else if (!aviso.getText().isEmpty()) {
-			aviso.setText("");
-		}
+	public void buttonPesquisarFuncionario(ActionEvent event){		
+		try {				
+			Funcionario achada = null;
+			
+			achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+			
+			aviso.setText("Funcionario(a) encontrado no sistema!!!");
+			funcionarioToString.setText(achada.toString());
+		} catch (ObjectNaoExisteException e) {
+			aviso.setText(e.getMessage());
+		}		
 		
-		
-		if(cpf.getText().isEmpty()){
-			aviso.setText("Informe um CPF valido!!!");
-		}else{
-			try {
-				Funcionario achada = null;
-				
-				achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
-				aviso.setText("Funcionario(a) encontrado no sistema!!!");
-				funcionarioToString.setText(achada.toString());
-			} catch (ObjectNaoExisteException e) {
-				aviso.setText(e.getMessage());
-			}
+		if(!cpf.getText().isEmpty()){
+			cpf.setText("");
 		}
 	}
 	
+	@FXML
+	public void buttonPesquisarFuncionarioRemover(ActionEvent event){
+		try {				
+			Funcionario achada = null;
+			
+			achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+			
+			aviso.setText("Funcionario(a) encontrado no sistema!!!");
+			funcionarioToString.setText(achada.toString());
+
+			buttonRemover.setVisible(true);
+		} catch (ObjectNaoExisteException e) {
+			aviso.setText(e.getMessage());
+		}		
+		
+		
+		if(!cpf.getText().isEmpty()){
+			cpf.setText("");
+		}
+	}
+	
+	@FXML
+	public void buttonPesquisarFuncionarioAtualizar(ActionEvent event){
+		try {				
+			Funcionario achada = null;
+			
+			achada = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+			
+			aviso.setText("Funcionario(a) encontrado no sistema!!!");
+			funcionarioToString.setText(achada.toString());
+			
+			buttonAtualizar.setVisible(true);
+		} catch (ObjectNaoExisteException e) {
+			aviso.setText(e.getMessage());
+		}				
+		
+		if(!cpf.getText().isEmpty()){
+			cpf.setText("");
+		}
+	}
 	
 	@FXML
 	public void buttonFuncionarioRemover(ActionEvent event) {
-		if(!cpf.getText().isEmpty()){
-			try {
-				FachadaControlador.getInstance().removerPessoa(cpf.getText());
-				FachadaControlador.getInstance().salvarNoArquivoPessoa();
-				
-				avisoRemover.setText("Funcionario removido do sistema!!!");
-			} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
-				avisoRemover.setText(e.getMessage());
-			}
-		}else{
-			avisoRemover.setText("Dado invalido!!!");
-		}
-
 		if(!avisoRemover.getText().isEmpty() || !aviso.getText().isEmpty() 
 				|| !funcionarioToString.getText().isEmpty()){
 			avisoRemover.setText("");
 			aviso.setText("");
 			funcionarioToString.setText("");
+		} 
+
+		try {
+			FachadaControlador.getInstance().removerPessoa(cpf.getText());
+			FachadaControlador.getInstance().salvarNoArquivoPessoa();
+			
+			avisoRemover.setText("Funcionario removido do sistema!!!");
+		} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
+			avisoRemover.setText(e.getMessage());
+		}
+
+		if(!cpf.getText().isEmpty()){
+			cpf.setText("");
 		}
 	}
 	
@@ -220,8 +276,10 @@ public class FuncionarioController {
 	public void buttonAtualizarFuncionario(ActionEvent evento){
 		//TODO está incompleto
 		boolean salvar = false;
+		System.out.println("começo");
 		if(!cpf.getText().isEmpty()){
 			Funcionario novo = new Funcionario(cpf.getText());
+			System.out.println("Criou o funcionario novo");
 
 			if(!cargo.getText().isEmpty()){
 				novo.setCargo(cargo.getText());
@@ -233,6 +291,7 @@ public class FuncionarioController {
 				|| !cidadeUF.getText().isEmpty() || !cpf.getText().isEmpty()
 				|| !nome.getText().isEmpty() || !aniversario.getText().isEmpty()
 				|| !salario.getText().isEmpty() || !cargo.getText().isEmpty()) {
+			
 				Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.valueOf(numero.getText()), 
 						cep.getText(), cidadeUF.getText());
 				novo.setEnd(end);
@@ -241,6 +300,7 @@ public class FuncionarioController {
 			
 			if(salvar){
 				try {
+					System.out.println("entrou no try");
 					FachadaControlador.getInstance().atualizar(novo);
 					FachadaControlador.getInstance().salvarNoArquivoPessoa();
 					

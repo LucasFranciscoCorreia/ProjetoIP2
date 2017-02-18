@@ -11,9 +11,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.FuncionarioController">
    <children>
-      <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
+      <VBox layoutX="647.0" prefHeight="600.0" prefWidth="153.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioListar" prefHeight="120.0" prefWidth="200.0" text="Voltar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioListar" prefHeight="150.0" prefWidth="200.0" text="Voltar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,7 +25,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioAtualizar" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioAtualizar" prefHeight="150.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioCadastrar" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioCadastrar" prefHeight="150.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +49,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioPesquisar" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFuncionarioPesquisar" prefHeight="150.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,7 +73,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#buttonPesquisarFuncionario" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
+      <Button layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#buttonPesquisarFuncionarioRemover" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
          <font>
             <Font size="14.0" />
          </font>
@@ -83,7 +83,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button contentDisplay="TOP" layoutX="28.0" layoutY="490.0" mnemonicParsing="false" onAction="#buttonFuncionarioRemover" prefHeight="30.0" prefWidth="76.0" text="Delete">
+      <Button fx:id="buttonRemover" contentDisplay="TOP" layoutX="28.0" layoutY="490.0" mnemonicParsing="false" onAction="#buttonFuncionarioRemover" prefHeight="30.0" prefWidth="76.0" text="Delete" visible="false">
          <font>
             <Font size="14.0" />
          </font>

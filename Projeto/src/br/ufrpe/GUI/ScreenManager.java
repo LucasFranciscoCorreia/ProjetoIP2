@@ -2,12 +2,10 @@ package br.ufrpe.GUI;
 
 import java.io.IOException;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -188,6 +186,7 @@ public class ScreenManager {
 		this.mainStage.centerOnScreen();
 		this.mainStage.setWidth(800);
 		this.mainStage.setHeight(626);
+		mainStage.setResizable(false);
 		this.mainStage.show();
 	}
 	
