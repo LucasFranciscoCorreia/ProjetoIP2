@@ -68,7 +68,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="cpf" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
+      <TextField fx:id="cpf" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="165.0" promptText="Digite apenas números">
          <font>
             <Font size="14.0" />
          </font>

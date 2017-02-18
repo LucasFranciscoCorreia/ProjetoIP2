@@ -13,35 +13,23 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonMenuAction" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonMenuAction" prefHeight="150.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/home-512.png" />
+                        <Image url="@../../../../../lib/Imgs/animalMenu.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAtualizarAction" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAtualizarAction" prefHeight="150.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/1380118359_new-24.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAdcionarAction" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Pictures/add-128.png" />
+                        <Image url="@../../../../../lib/Imgs/1380118359_new-24.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -49,11 +37,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonPesquisarAction" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAdcionarAction" prefHeight="150.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/busca.png" />
+                        <Image url="@../../../../../lib/Imgs/add-128.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -61,11 +49,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonListarAction" prefHeight="120.0" prefWidth="200.0" text="Listar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonPesquisarAction" prefHeight="150.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/editor-grid-view-block-glyph-128.png" />
+                        <Image url="@../../../../../lib/Imgs/busca.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -102,7 +90,7 @@
          <graphic>
             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../Pictures/lixeira.png" />
+                  <Image url="@../../../../../lib/Imgs/lixeira.png" />
                </image>
             </ImageView>
          </graphic></Button>
