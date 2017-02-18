@@ -3,11 +3,7 @@ package br.ufrpe.GUI.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import javax.print.DocFlavor.URL;
-import javax.swing.text.MaskFormatter;
 
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Endereco;
@@ -17,21 +13,15 @@ import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
-import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.FachadaControlador;
-import br.ufrpe.repositorios.RepositorioPessoa;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FuncionarioController implements Initializable{
 	@FXML

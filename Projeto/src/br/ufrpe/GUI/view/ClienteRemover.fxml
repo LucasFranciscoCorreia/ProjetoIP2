@@ -19,7 +19,7 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button fx:id="btnMenu" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -31,7 +31,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#atualizaCliente" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -43,7 +43,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button fx:id="btnCadastrar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#cadastroCliente" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#pesquisaCliente" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>

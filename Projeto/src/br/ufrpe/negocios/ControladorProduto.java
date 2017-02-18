@@ -12,17 +12,15 @@
 
 package br.ufrpe.negocios;
 
-import br.ufrpe.repositorios.IRepositorioProduto;
-
 import java.util.ArrayList;
 
-import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
+import br.ufrpe.repositorios.IRepositorioProduto;
 
 public class ControladorProduto implements IControladorProduto{
 	private IRepositorioProduto repositorioProduto;

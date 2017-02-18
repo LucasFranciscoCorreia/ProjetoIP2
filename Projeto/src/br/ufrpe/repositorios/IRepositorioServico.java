@@ -1,5 +1,6 @@
 package br.ufrpe.repositorios;
-import br.ufrpe.beans.*;
+import br.ufrpe.beans.Servico;
+import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 

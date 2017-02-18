@@ -31,11 +31,11 @@ public class ScreenManager {
 	private ScreenManager(){
 		try {
 			// CLIENTE TELAS:
-//			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ClienteRemover.fxml"));
-//			this.clienteAtualizar = new Scene(clienteAtualizar);
+			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteAtualizar.fxml"));
+			this.clienteAtualizar = new Scene(clienteAtualizar);
 			
-			AnchorPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
+			StackPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrar.fxml"));
 			this.clienteCadastrar = new Scene(clienteCadastrar);
 			
@@ -51,10 +51,6 @@ public class ScreenManager {
 		              "view/ClienteAtualizarCaixa.fxml"));
 			this.clienteAtualizarCaixa = new Scene(clienteAtualizarCaixa);
 			
-//			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
-//		              "view/ClienteListar.fxml"));
-//			this.clienteListar = new Scene(clienteListar);
-//			
 //			AnchorPane clientePesquisar = FXMLLoader.load(getClass().getResource(
 //		              "view/ClientePesquisar.fxml"));
 //			this.clientePesquisar = new Scene(clientePesquisar);
@@ -62,6 +58,17 @@ public class ScreenManager {
 //			AnchorPane clienteRemover = FXMLLoader.load(getClass().getResource(
 //		              "view/ClienteRemover.fxml"));
 //			this.clienteRemover = new Scene(clienteRemover);
+			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteListar.fxml"));
+			this.clienteListar = new Scene(clienteListar);
+			
+			AnchorPane clientePesquisar = FXMLLoader.load(getClass().getResource(
+		              "view/ClientePesquisar.fxml"));
+			this.clientePesquisar = new Scene(clientePesquisar);
+			
+			AnchorPane clienteRemover = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteRemover.fxml"));
+			this.clienteRemover = new Scene(clienteRemover);
 			
 			
 			
@@ -185,10 +192,6 @@ public class ScreenManager {
 		this.mainStage.setScene(this.clienteCadastrar);
 	}
 	
-	public void showClienteListar(){
-		this.mainStage.setScene(this.clienteListar);
-	}
-	
 	public void showClientePesquisar(){
 		this.mainStage.setScene(this.clientePesquisar);
 	}
@@ -224,7 +227,7 @@ public class ScreenManager {
 	}
 	
 	public void showMenuCliente(){
-		this.mainStage.setScene(this.menuCliente);
+		this.mainStage.setScene(this.clienteListar);
 	}
 
 	

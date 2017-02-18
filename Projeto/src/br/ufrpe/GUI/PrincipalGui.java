@@ -1,51 +1,36 @@
 package br.ufrpe.GUI;
 
-import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Login;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
-import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
-
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.FachadaControlador;
-
 import br.ufrpe.repositorios.RepositorioPessoa;
-
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class PrincipalGui extends Application implements Initializable{
@@ -62,21 +47,98 @@ public class PrincipalGui extends Application implements Initializable{
 	private JFXButton okButton, buttonAddCliente, buttonRemoverCliente, buttonListarCliente, buttonPesquisarCliente, buttonAtualizarCliente, buttonCancelar;
 	
 	@FXML
-	private Label aviso, avisoCadastro, clienteEncontrado, clienteDeletado, avisoRemover, avisoAtualizar;
+	private Label aviso, avisoCadastro, clienteEncontrado, clienteDeletado, avisoRemover, avisoAtualizar, syso, erroPesquisa;
 	
 	@FXML
-	private Button buttonCliente, buttonCadastrarCliente, buttonCancelarCadastroCliente, buttonCadastrarNovoCliente, buttonProcurar, buttonDeletar	;
+	private Label avisoAddPetCliente, infDonoPet; 
+	
+	@FXML
+	private Button buttonCliente, buttonCadastrarCliente, buttonCancelarCadastroCliente, buttonCadastrarNovoCliente, buttonProcurar, buttonDeletar, btnPesquisar, salvarPet, salvarEnd	;
 	
 	private static Funcionario logado;
 	
+	private static Pessoa donoPet;
+	
 	@FXML	
-	private TextField nome, cpf, aniversario, cep, rua, numero, complemento, cidadeUF, buscaRemover, salario, cargo;
+	private TextField nome, cpf, aniversario, cep, rua, numero, complemento, cidadeUF, buscaRemover, salario, cargo, cpfDono;
+	
+	@FXML
+	private TextField raça, nomePet, peso, altura, especie;
 	
 	
-	/*@FXML
-	public void removerCliente(ActionEvent evt){
+	@FXML
+	public void procuraDono(ActionEvent evt){
+		if(cpfDono.getText().isEmpty()){
+			infDonoPet.setText("Digite um cpf para busca");
+		}else{
+			try {
+				donoPet = FachadaControlador.getInstance().buscarPessoa(cpfDono.getText());
+				infDonoPet.setText(donoPet.getNome());
+				raça.setDisable(false);
+				nomePet.setDisable(false);
+				peso.setDisable(false);
+				altura.setDisable(false);
+				especie.setDisable(false);
+				rua.setDisable(false);
+				numero.setDisable(false);
+				complemento.setDisable(false);
+				cep.setDisable(false);
+				cidadeUF.setDisable(false);
+				salvarEnd.setDisable(false);
+				salvarPet.setDisable(false);
+			} catch (ObjectNaoExisteException e) {
+				infDonoPet.setText(e.getMessage());
+			}
+		}
+	}
+	@FXML
+	public void adicionarPet(ActionEvent evt){
+		if(raça.getText().isEmpty() || peso.getText().isEmpty() || altura.getText().isEmpty() || especie.getText().isEmpty() || nome.getText().isEmpty()){
+			avisoAddPetCliente.setText("Todos os campos devem ser preenchidos");
+		}else{
+			Animal novo = new Animal(true, especie.getText(), raça.getText(), donoPet, Double.parseDouble(peso.getText()), Double.parseDouble(altura.getText()), nomePet.getText(),null);
+			try {
+				FachadaControlador.getInstance().cadastrar(novo);
+			} catch (ObjectJaExisteException e) {
+				avisoAddPetCliente.setText(e.getMessage());
+			}
+			((Cliente) donoPet).addPet(novo);
+			try {
+				FachadaControlador.getInstance().atualizar(donoPet);
+			} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
+				avisoAddPetCliente.setText(e.getMessage());
+			}
+		}
+		
+	}
+	
+	@FXML
+	public void pesquisarCliente(ActionEvent evt){
+		Pessoa p;
+		try {
+			p = (Cliente) FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
+			if(!(p instanceof Cliente)){
+				throw new ObjectNaoExisteException();
+			}
+			syso.setText(p.toString());
+		} catch (ObjectNaoExisteException e) {
+			erroPesquisa.setText(e.getMessage());
+		}
+	}
+	
+	@FXML
+	public void atualizaCliente(ActionEvent evt){
+		ScreenManager.getInstance().showClienteAtualizar();
+	}
+	@FXML
+	public void pesquisaCliente(ActionEvent evt){
+		ScreenManager.getInstance().showClientePesquisar();
+	}
+	
+	@FXML
+	public void remocaoCliente(ActionEvent evt){
 		ScreenManager.getInstance().showClienteRemover();
-	}*/
+	}
 	
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
@@ -109,11 +171,7 @@ public class PrincipalGui extends Application implements Initializable{
 				}
 				if(ok){
 					avisoCadastro.setText("Cliente cadastrado com sucesso");
-					buttonCadastrarCliente.setVisible(false);
-					buttonCadastrarCliente.setDisable(true);
-					buttonCadastrarNovoCliente.setVisible(true);
-					buttonCadastrarNovoCliente.setDisable(false);
-					buttonCancelarCadastroCliente.setText("Voltar");
+					FachadaControlador.getInstance().salvarNoArquivoPessoa();
 				}
 			}else{
 				avisoCadastro.setText("Data invalida ou escrita num formato invalido(\"dia-mes-ano\")");
