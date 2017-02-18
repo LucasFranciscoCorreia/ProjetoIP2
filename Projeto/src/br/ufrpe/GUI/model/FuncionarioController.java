@@ -24,6 +24,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,7 +33,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class FuncionarioController {
+public class FuncionarioController implements Initializable{
 	@FXML
 	private Button buttonRemover, buttonAtualizar;
 	@FXML
@@ -259,35 +260,30 @@ public class FuncionarioController {
 	
 	@FXML
 	public void buttonAtualizarFuncionario(ActionEvent evento){
-		//TODO está incompleto
 		boolean salvar = false;
 		
 		if(!cpf.getText().isEmpty()){
 			Funcionario novo = new Funcionario(cpf.getText());
-			System.out.println("fez o novo funcionario");
 
 			if(!cargo.getText().isEmpty()){
 				novo.setCargo(cargo.getText());
 				salvar = true;
-				System.out.println("entrou no cargo");
 			} if (!salario.getText().isEmpty()) {
 				novo.setSalario(Double.parseDouble(salario.getText()));
 				salvar = true;
-			} if (!rua.getText().isEmpty() || !numero.getText().isEmpty() || !cep.getText().isEmpty()
-				|| !cidadeUF.getText().isEmpty() || !cpf.getText().isEmpty()
-				|| !nome.getText().isEmpty() || !aniversario.getText().isEmpty()
-				|| !salario.getText().isEmpty() || !cargo.getText().isEmpty()) {
+			} if (!rua.getText().isEmpty() && !numero.getText().isEmpty() && !cep.getText().isEmpty()
+				&& !cidadeUF.getText().isEmpty() && !cpf.getText().isEmpty()
+				&& !nome.getText().isEmpty() && !aniversario.getText().isEmpty()
+				&& !salario.getText().isEmpty() && !cargo.getText().isEmpty()) {
 			
 				Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.valueOf(numero.getText()), 
 						cep.getText(), cidadeUF.getText());
 				novo.setEnd(end);
 				salvar = true;
 			}
-			
-			System.out.println("if a seguir");
+		
 			if(salvar){
 				try {
-					System.out.println("entrou no try");
 					FachadaControlador.getInstance().atualizar(novo);
 					FachadaControlador.getInstance().salvarNoArquivoPessoa();
 					
@@ -304,8 +300,9 @@ public class FuncionarioController {
 			avisoAtualizar.setText("Dados inválidos!!!");
 		}
 	}
-	
-	public void initialize (URL url, ResourceBundle rb){
+
+	@Override
+	public void initialize(java.net.URL location, ResourceBundle resources) {
 		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();
 		
 		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
@@ -313,6 +310,6 @@ public class FuncionarioController {
 		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
 		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
 		
-		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));
+		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
 	}
 }

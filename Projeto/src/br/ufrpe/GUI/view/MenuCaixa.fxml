@@ -1,8 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="br.ufrpe.GUI.model.MenuCaixaController">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="551.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.MenuCaixaController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="800.0">
+         <left>
+            <VBox prefHeight="600.0" prefWidth="252.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="171.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="545.0" prefWidth="297.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton lineSpacing="1.0" prefHeight="183.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
+                     <graphic>
+                        <ImageView fitHeight="140.0" fitWidth="140.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/Ecommerce-Cash-Register-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="183.0" prefWidth="297.0" style="-fx-border-color: black;" text="Serviços">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="150.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/settings_icon-icons.com_72415.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="183.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Cadastrar" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="150.0">
+                           <image>
+                              <Image url="@../../../../../lib/Imgs/clienteMenu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <VBox prefHeight="600.0" prefWidth="251.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="190.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="172.0" fitWidth="250.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/petshop.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
 </AnchorPane>

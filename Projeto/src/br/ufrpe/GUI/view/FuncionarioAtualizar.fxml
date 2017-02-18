@@ -105,15 +105,6 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="buttonAtualizar" contentDisplay="TOP" layoutX="17.0" layoutY="123.0" mnemonicParsing="false" onAction="#buttonAtualizarFuncionario" text="Salvar" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../lib/Imgs/save-file.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -198,9 +189,18 @@
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="avisoAtualizar" layoutX="20.0" layoutY="282.0" prefHeight="36.0" prefWidth="432.0">
+      <Label fx:id="avisoAtualizar" layoutX="81.0" layoutY="282.0" prefHeight="36.0" prefWidth="432.0">
          <font>
             <Font size="14.0" />
          </font></Label>
+      <Button fx:id="buttonAtualizar" contentDisplay="TOP" layoutX="14.0" layoutY="242.0" mnemonicParsing="false" onAction="#buttonAtualizarFuncionario" text="Salvar" visible="false">
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../lib/Imgs/save-file.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
