@@ -1,8 +1,5 @@
 package br.ufrpe.negocios;
 
-import br.ufrpe.repositorios.IRepositorioAnimal;
-import br.ufrpe.repositorios.IRepositorioProduto;
-
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Animal;
@@ -17,7 +14,9 @@ import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
-import br.ufrpe.repositorios.*;
+import br.ufrpe.repositorios.RepositorioAnimal;
+import br.ufrpe.repositorios.RepositorioPessoa;
+import br.ufrpe.repositorios.RepositorioProduto;
 /* Facade */
 /**
  * Esta classe representa a fachada do sistema, pela qual os controladores

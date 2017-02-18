@@ -1,8 +1,8 @@
 package br.ufrpe.beans;
-import br.ufrpe.beans.Carrinho;
+import java.time.LocalDate;
+
 import br.ufrpe.excecoes.ObjectNaoExisteException;
-import br.ufrpe.repositorios.*;
-import java.time.*;
+import br.ufrpe.repositorios.RepositorioProduto;
 
 /**
  * Esta Classe representa a loja (serviço) fornecida pelo sistema da petShop.

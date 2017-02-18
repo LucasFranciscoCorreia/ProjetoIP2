@@ -1,8 +1,5 @@
 package br.ufrpe.beans;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.ArrayList;
 /**
  * Esta Classe representa a nota fiscal gerada do servico realizado (Compra ou Serviço PetCare) 
  * @author srtacamelo

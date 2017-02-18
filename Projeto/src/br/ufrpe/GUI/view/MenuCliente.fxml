@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonRemoverCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
+            <JFXButton fx:id="buttonRemoverCliente" onAction="#remocaoCliente" prefHeight="110.0" prefWidth="364.0" style="-fx-border-color: black;" text="Remover">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0">
                      <image>
@@ -50,7 +50,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonAtualizarCliente" prefHeight="110.0" prefWidth="357.0" style="-fx-border-color: black;" text="Atualizar">
+            <JFXButton fx:id="buttonAtualizarCliente" onAction="#atualizaCliente" prefHeight="110.0" prefWidth="357.0" style="-fx-border-color: black;" text="Atualizar">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="100.0">
                      <image>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="buttonPesquisarCliente" prefHeight="110.0" prefWidth="312.0" style="-fx-border-color: black;" text="Pesquisar">
+            <JFXButton fx:id="buttonPesquisarCliente" onAction="#pesquisaCliente" prefHeight="110.0" prefWidth="312.0" style="-fx-border-color: black;" text="Pesquisar">
                <graphic>
                   <ImageView fitHeight="99.0" fitWidth="100.0">
                      <image>
