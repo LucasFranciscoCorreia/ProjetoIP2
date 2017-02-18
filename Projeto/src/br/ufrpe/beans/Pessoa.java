@@ -13,6 +13,8 @@ package br.ufrpe.beans;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Est� classe � a base para uma futura implementa��o de Cliente e Funcionario,
  * ela � a representa��o basica de uma pessoa, n�o importando qual o seu tipo. 

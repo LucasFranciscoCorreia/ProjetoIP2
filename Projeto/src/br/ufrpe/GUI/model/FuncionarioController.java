@@ -3,6 +3,7 @@ package br.ufrpe.GUI.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.print.DocFlavor.URL;
@@ -52,16 +53,8 @@ public class FuncionarioController {
 	private TableColumn<Funcionario, Double> salarioTab;
 	@FXML
 	private TableColumn<Funcionario, String> cargoTab;
-	// Variavel usada para ter certeza que o funcionario foi encontrado no sistema
 	boolean confirmar = false;
 	
-	public ObservableList<Funcionario> getFuncionarios(){
-		ObservableList<Funcionario> funcionarios = FXCollections.observableArrayList();
-		
-		funcionarios.addAll(FachadaControlador.getInstance().listarFuncionario());
-		
-		return funcionarios;
-	}
 	
 	@SuppressWarnings("finally")
 	public boolean dataOk(String data){
@@ -124,10 +117,6 @@ public class FuncionarioController {
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
-//		tableFuncionario.setPlaceholder(new Label("Nenhum funcionário foi encontrado."));
-//		tableFuncionario.setItems(getFuncionarios());
-		
-		//TODO está incompleto
 	}
 	
 	@FXML
@@ -317,9 +306,13 @@ public class FuncionarioController {
 	}
 	
 	public void initialize (URL url, ResourceBundle rb){
+		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();
+		
 		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
 		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
 		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
 		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
+		
+		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));
 	}
 }

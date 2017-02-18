@@ -78,21 +78,9 @@ public class PrincipalGui extends Application implements Initializable{
 		ScreenManager.getInstance().showClienteRemover();
 	}*/
 	
-	public ObservableList<Funcionario> getFuncionarios(){
-		ObservableList<Funcionario> funcionarios = FXCollections.observableArrayList();
-		
-		funcionarios.addAll(FachadaControlador.getInstance().listarFuncionario());
-		
-		return funcionarios;
-	}
-	
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
-		tableFuncionario.setPlaceholder(new Label("Nenhum funcionário foi encontrado."));
-		tableFuncionario.setItems(getFuncionarios());
-		
-		//TODO está incompleto
 	}
 	
 	

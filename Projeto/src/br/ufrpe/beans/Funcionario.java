@@ -14,6 +14,9 @@ package br.ufrpe.beans;
 
 import java.time.LocalDate;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Esta classe representa um funcionario, com cargo, salario,
  * data de entrada na empresa e um login de acesso ao sistema.
