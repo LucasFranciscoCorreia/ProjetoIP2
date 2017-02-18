@@ -243,10 +243,6 @@ public class FuncionarioController {
 		} catch (ObjectNaoExisteException e) {
 			aviso.setText(e.getMessage());
 		}				
-		
-		if(!cpf.getText().isEmpty()){
-			cpf.setText("");
-		}
 	}
 	
 	@FXML
@@ -276,14 +272,15 @@ public class FuncionarioController {
 	public void buttonAtualizarFuncionario(ActionEvent evento){
 		//TODO está incompleto
 		boolean salvar = false;
-		System.out.println("começo");
+		
 		if(!cpf.getText().isEmpty()){
 			Funcionario novo = new Funcionario(cpf.getText());
-			System.out.println("Criou o funcionario novo");
+			System.out.println("fez o novo funcionario");
 
 			if(!cargo.getText().isEmpty()){
 				novo.setCargo(cargo.getText());
 				salvar = true;
+				System.out.println("entrou no cargo");
 			} if (!salario.getText().isEmpty()) {
 				novo.setSalario(Double.parseDouble(salario.getText()));
 				salvar = true;
@@ -298,6 +295,7 @@ public class FuncionarioController {
 				salvar = true;
 			}
 			
+			System.out.println("if a seguir");
 			if(salvar){
 				try {
 					System.out.println("entrou no try");

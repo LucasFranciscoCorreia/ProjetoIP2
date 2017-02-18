@@ -15,7 +15,7 @@ public class ScreenManager {
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, menuCliente, errorMessage, menuFuncionario, telaCaixa;
+	private Scene login, menu, menuCaixa, menuCliente, errorMessage, telaCaixa;
 	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	
@@ -201,11 +201,7 @@ public class ScreenManager {
 	public void showMenuCliente(){
 		this.mainStage.setScene(this.menuCliente);
 	}
-	
-	public void showMenuFuncionario(){
-		this.mainStage.setScene(this.menuFuncionario);
-	}
-	
+
 	
 	// CHAMADA DA TELA DE LOGIN:
 	public void showLogin(){

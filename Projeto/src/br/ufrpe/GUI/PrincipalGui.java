@@ -167,14 +167,7 @@ public class PrincipalGui extends Application implements Initializable{
 	public void menuCliente(ActionEvent evt){
 		ScreenManager.getInstance().showMenuCliente();	
 	}
-	
-	@FXML
-	public void menuFuncionario(ActionEvent evento){
-		ScreenManager.getInstance().showMenuFuncionario();
-	}
-	
-	
-	
+		
 	
 	@FXML
 	public void realizarLogin(ActionEvent evt){
@@ -208,7 +201,7 @@ public class PrincipalGui extends Application implements Initializable{
 	}
 	
 	private void abrirMenuFuncionario(ActionEvent evt) {
-		ScreenManager.getInstance().showMenu();
+		ScreenManager.getInstance().showMenuCaixa();
 	}
 	
 	
