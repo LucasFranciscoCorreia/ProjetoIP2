@@ -3,6 +3,7 @@ package br.ufrpe.GUI.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import br.ufrpe.GUI.ScreenManager;
@@ -14,6 +15,7 @@ import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.FachadaControlador;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class FuncionarioController implements Initializable{
 	@FXML
@@ -46,6 +49,16 @@ public class FuncionarioController implements Initializable{
 	private TableColumn<Funcionario, String> cargoTab;
 	boolean confirmar = false;
 	
+	public void preencherTabela() {
+		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();
+		
+		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
+		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
+		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
+		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
+		
+		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
+	}
 	
 	@SuppressWarnings("finally")
 	public boolean dataOk(String data){

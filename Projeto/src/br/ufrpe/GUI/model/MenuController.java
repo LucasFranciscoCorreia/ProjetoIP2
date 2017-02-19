@@ -1,16 +1,25 @@
 package br.ufrpe.GUI.model;
 
-import br.ufrpe.GUI.PrincipalGui;
+import br.ufrpe.GUI.ScreenManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class MenuController {
-	private PrincipalGui main;
+
+	@FXML
+	public void abrirFuncionarioListar(ActionEvent evento){
+		ScreenManager.getInstance().showFuncionarioListar();
+		FuncionarioController controlador = ScreenManager.getInstance().getF().getController();
+		controlador.preencherTabela();
+	}
+	
+	@FXML
+	public void abrirClienteListar(ActionEvent evento){
+		ScreenManager.getInstance().showClienteListar();
+	}
 	
 	@FXML
 	private void inicialize(){
 		
-	}
-	public void setMain(PrincipalGui main){
-		this.main = main;
 	}
 }

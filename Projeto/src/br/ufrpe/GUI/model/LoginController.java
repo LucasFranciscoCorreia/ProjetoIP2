@@ -7,37 +7,64 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import br.ufrpe.GUI.ScreenManager;
+import br.ufrpe.beans.Funcionario;
+import br.ufrpe.beans.Login;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.repositorios.RepositorioPessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 public class LoginController implements Initializable{
+	
+	@FXML
+	private Label aviso;
 	@FXML
 	private JFXPasswordField password;
 	@FXML
 	private JFXTextField login;
-	@FXML
-	private JFXButton okButton;
 	
-	public LoginController(){
-		
+	private static Funcionario logado;
+	
+	private ControladorPessoa carregarCadastros() {
+		ControladorPessoa p = new ControladorPessoa(RepositorioPessoa.getInstance());
+		return p;
 	}
+	
 	@FXML
 	public void realizarLogin(ActionEvent evt){
-		ControladorPessoa p = new ControladorPessoa(RepositorioPessoa.getInstance());
+		ControladorPessoa p = carregarCadastros();
 		String login = this.login.getText();
-		System.out.println(login);
-		int Password = Integer.parseInt(this.password.getText());
-		System.out.println(Password);
-		System.out.println(p.login(login, Password));
-		if(p.login(login, Password)){
-			System.out.println("ok");
+		int password = 0;
+		boolean warn = true;
+		try{			
+			password = Integer.parseInt(this.password.getText());
+		}catch(NumberFormatException e){
+			aviso.setText("Senha deve ser escrita em numeros");
+			warn = false;
+		}
+		if(p.login(login, password)){
+			try {
+				logado = (Funcionario) p.buscar(new Login(login, password));
+				if(logado.getCargo().equalsIgnoreCase("Gerente") ||
+						logado.getCargo().equalsIgnoreCase("Administrador")){
+					ScreenManager.getInstance().showMenu();
+				}else{
+					ScreenManager.getInstance().showMenuCaixa();
+				}
+			} catch (ObjectNaoExisteException e) {
+				aviso.setText(e.getMessage());
+			}
 		}else{
-			System.out.println("nao ok");
+			if(warn){
+				aviso.setText("Senha ou login invalido");				
+			}
 		}
 	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
