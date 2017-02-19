@@ -89,10 +89,15 @@ public class Loja {
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				
-				new NotaFiscal();
+				//TODO gerar nota fiscal
 			}else{throw new ObjectNaoExisteException();}
 		}
+	}
+	
+	private void gerarNota(){
+		new NotaFiscal();
 	}		
+	
 
 	
 }
