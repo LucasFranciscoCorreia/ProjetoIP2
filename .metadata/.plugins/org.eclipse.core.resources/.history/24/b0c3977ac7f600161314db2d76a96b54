@@ -14,10 +14,7 @@ public interface IControladorServico {
 
 	void cadastrarServico(Servico novo)throws ObjectJaExisteException;
 	void removerServico(Servico servico)throws CodigoNaoExisteException;
-	void removerServicoNome(String nome)throws ObjectNaoExisteException;
-	Servico buscarServico(String nome)throws ObjectNaoExisteException;
-	int buscarNome(String nome)throws ObjectNaoExisteException;
-	int buscarServico(Servico servico) throws ObjectNaoExisteException;
-	void atualizarServico(Servico novo, Servico antigo)throws ObjectNaoExisteException;
+	void atualizar(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException;
+	Servico buscar(String codigo)throws CodigoNaoExisteException;
 	void salvarNoArquivo();
 }

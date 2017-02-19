@@ -1,0 +1,12 @@
+package br.ufrpe.negocios;
+import br.ufrpe.repositorios.*;
+/**
+ * Esta classe é a interface do controlador de serviço que será comunicado através da fachada
+ * e se comunicará com os repositórios
+ * @author srtacamelo
+ *
+ */
+public interface IControladorServico {
+
+	
+}

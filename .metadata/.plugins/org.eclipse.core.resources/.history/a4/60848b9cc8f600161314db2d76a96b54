@@ -187,7 +187,7 @@ public class RepositorioServico implements IRepositorioServico{
 			}
 		}
 		else{
-			throw new ObjectNaoExisteException();
+			throw new ObjectJaExisteException();
 		}
 	}
 

@@ -18,6 +18,6 @@ public interface IControladorServico {
 	Servico buscarServico(String nome)throws ObjectNaoExisteException;
 	int buscarNome(String nome)throws ObjectNaoExisteException;
 	int buscarServico(Servico servico) throws ObjectNaoExisteException;
-	void atualizarServico(Servico novo, Servico antigo)throws ObjectNaoExisteException;
+	void atualizarServico(Servico novo, Servico antigo)throws ObjectNaoExisteException
 	void salvarNoArquivo();
 }

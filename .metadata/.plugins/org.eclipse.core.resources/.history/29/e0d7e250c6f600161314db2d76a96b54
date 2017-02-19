@@ -1,0 +1,6 @@
+package br.ufrpe.negocios;
+import br.ufrpe.repositorios.*;
+public class ControladorServico {
+
+	private IRepositorioServico unicInstance;
+}
