@@ -7,8 +7,5 @@ public class AnimalController {
 	 * Tela animal Cadastrar
 	 */
 	@FXML
-	private TextField  animalNome, animalTamanho, animalPeso, animalEspecie, animalRaca;
-	@FXML
-	
-	
+	private Label animalNome, animalTamanho, animalPeso, animalEspecie, animalRaca;
 }

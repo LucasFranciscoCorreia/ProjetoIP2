@@ -48,13 +48,24 @@ public class ControladorAnimal implements IControladorAnimal{
 	}
 	
 	public void atualizar(Animal novo, Animal antigo)throws ObjectJaExisteException, ObjectNaoExisteException{
-			repositorioAnimal.atualizar(antigo, novo);
 		
+		if(novo != null && antigo != null){
+			boolean check = repositorioAnimal.atualizar(antigo, novo);
+		}
 	}
 	
 	public Animal buscar(String codigo) throws CodigoNaoExisteException{
+		if (codigo != null) {
 			Animal a = repositorioAnimal.buscar(codigo);
+			if (a != null) {
+				return a;
+			}else{
+				System.out.println("animal nao encontrado");
+			}
+		}else{
+			System.out.println("Codigo incorreto");
+		}
+		return null;
 	}
-		
 
 }

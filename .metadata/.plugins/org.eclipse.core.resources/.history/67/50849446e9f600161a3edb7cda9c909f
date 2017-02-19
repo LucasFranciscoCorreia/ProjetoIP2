@@ -53,8 +53,17 @@ public class ControladorAnimal implements IControladorAnimal{
 	}
 	
 	public Animal buscar(String codigo) throws CodigoNaoExisteException{
+		if (codigo != null) {
 			Animal a = repositorioAnimal.buscar(codigo);
+			if (a != null) {
+				return a;
+			}else{
+				System.out.println("animal nao encontrado");
+			}
+		}else{
+			System.out.println("Codigo incorreto");
+		}
+		return null;
 	}
-		
 
 }
