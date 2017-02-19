@@ -63,39 +63,39 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="28.0" layoutY="30.0" prefHeight="21.0" prefWidth="63.0" text="Nome">
+      <Label fx:id="animalNome" layoutX="28.0" layoutY="30.0" prefHeight="21.0" prefWidth="63.0" text="Nome">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="28.0" layoutY="57.0" prefHeight="25.0" prefWidth="571.0" promptText="Nome">
+      <TextField fx:id="animalNome" layoutX="28.0" layoutY="57.0" prefHeight="25.0" prefWidth="571.0" promptText="Nome">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="28.0" layoutY="134.0" text="Espécie">
+      <Label fx:id="animalEspecie" layoutX="28.0" layoutY="134.0" text="Espécie">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="314.0" layoutY="134.0" text="Raça">
+      <Label fx:id="animalRaca" layoutX="314.0" layoutY="134.0" text="Raça">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="270.0" text="Peso">
+      <Label fx:id="animalPeso" layoutX="28.0" layoutY="270.0" text="Peso">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="309.0" layoutY="270.0" text="Tamanho">
+      <Label fx:id="animalTamanho" layoutX="309.0" layoutY="270.0" text="Tamanho">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="28.0" layoutY="161.0" promptText="Espécie" />
-      <TextField layoutX="312.0" layoutY="161.0" promptText="Raça" />
-      <TextField layoutX="28.0" layoutY="297.0" promptText="Peso" />
-      <TextField layoutX="307.0" layoutY="297.0" promptText="Tamanho" />
+      <TextField fx:id="animalEspecie" layoutX="28.0" layoutY="161.0" promptText="Espécie" />
+      <TextField fx:id="animalRaca" layoutX="312.0" layoutY="161.0" promptText="Raça" />
+      <TextField fx:id="animalPeso" layoutX="28.0" layoutY="297.0" promptText="Peso" />
+      <TextField fx:id="animalTamanho" layoutX="307.0" layoutY="297.0" promptText="Tamanho" />
    </children>
 </AnchorPane>

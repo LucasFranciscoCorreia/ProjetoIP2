@@ -1,0 +1,8 @@
+package br.ufrpe.GUI.model;
+import java.net.URL;
+
+public class AnimalController {
+
+	@FXML
+	private Label animalNome, animalTamanho, animalPeso, animalEspecie, animalRaca;
+}

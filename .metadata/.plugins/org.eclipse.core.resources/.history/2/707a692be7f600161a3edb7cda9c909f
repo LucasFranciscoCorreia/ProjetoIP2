@@ -10,5 +10,4 @@ public class AnimalController {
 	private TextField  animalNome, animalTamanho, animalPeso, animalEspecie, animalRaca;
 	@FXML
 	
-	
 }
