@@ -46,7 +46,9 @@ public abstract class Produto implements Serializable{
 	 */
 	public Produto(String nome, String codigo){ 
 		this.nome = nome;
+		this.codigo = codigo;
 	}
+
 	/**
 	 * Adiciona nova quantidade de determinado produto ao estoque
 	 * @param qtd

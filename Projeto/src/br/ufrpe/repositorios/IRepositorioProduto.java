@@ -43,5 +43,6 @@ public interface IRepositorioProduto {
 	public int buscarProduto(Produto produto);
 	ArrayList<Produto> listarProduto();
 	void salvarNoArquivo();
+	String gerarCodigo();
 	
 }

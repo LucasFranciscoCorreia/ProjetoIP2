@@ -158,13 +158,15 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 					break;
 				}
 			}
-			
-				if(!ok){
-					throw new ObjectJaExisteException();
-				}
-				else if (!this.repositorio.add(novo)) {
-					throw new ErroAoSalvarException(novo);
-				}
+				
+			novo.setCodigo(gerarCodigo());
+		
+			if(!ok){
+				throw new ObjectJaExisteException();
+			}
+			else if (!this.repositorio.add(novo)) {
+				throw new ErroAoSalvarException(novo);
+			}
 										
 	}
 	
@@ -204,6 +206,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	    	repositorio.get(i).setNome(novo.getNome());
 			repositorio.get(i).setEstoque(novo.getEstoque());
 			repositorio.get(i).setPreco(novo.getPreco());
+			repositorio.get(i).setTipo(novo.getTipo());
 	    	
 	    }
 	    
@@ -221,6 +224,18 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 		return produtos;
 	}
 	
-	
+	public String gerarCodigo(){
+		int ger = 1;
+		String codigo = null;
+		for(int i = 0; i< this.Size(); i++){
+			if(Integer.toString(ger) == this.repositorio.get(i).getCodigo()){
+				ger++;
+			}else{
+				codigo = "" + ger;
+			}
+		}
+		
+		return codigo;
+	}
 	
 }
