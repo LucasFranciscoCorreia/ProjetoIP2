@@ -89,5 +89,9 @@ public class ControladorProduto implements IControladorProduto{
 		return repositorioProduto.listarProduto();
 	}
 	
+	public String gerarCodigo(){
+		return repositorioProduto.gerarCodigo();
+	}
+	
 	
 }

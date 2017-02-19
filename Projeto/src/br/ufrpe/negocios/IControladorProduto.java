@@ -37,4 +37,5 @@ public interface IControladorProduto {
 	Produto pesquisar(String codigo) throws ObjectNaoExisteException;
 	void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	void salvarNoArquivo();
+	String gerarCodigo();
 }

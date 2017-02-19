@@ -107,10 +107,12 @@
                      <children>
                         <TableView fx:id="tableAtualizar" layoutX="4.0" prefHeight="50.0" prefWidth="617.0">
                           <columns>
-                            <TableColumn prefWidth="262.0" text="Nome" />
-                            <TableColumn prefWidth="229.0" text="Tipo" />
-                              <TableColumn prefWidth="61.0" text="Preço" />
-                              <TableColumn prefWidth="64.0" text="Estoque" />
+                            <TableColumn prefWidth="103.0" text="Nome" />
+                              <TableColumn prefWidth="95.0" text="Dono" />
+                            <TableColumn prefWidth="103.0" text="Espécie" />
+                              <TableColumn minWidth="0.0" prefWidth="166.0" text="Raça" />
+                              <TableColumn text="Tamanho" />
+                              <TableColumn minWidth="0.0" prefWidth="69.0" text="Peso" />
                           </columns>
                         </TableView>
                      </children>

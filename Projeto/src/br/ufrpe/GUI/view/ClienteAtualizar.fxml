@@ -1,6 +1,5 @@
-A<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -17,11 +16,11 @@ A<?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.ClienteController">
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#menuPrincipal" prefHeight="120.0" prefWidth="181.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -33,7 +32,7 @@ A<?xml version="1.0" encoding="UTF-8"?>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#cadastroCliente" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteCadastrar" prefHeight="120.0" prefWidth="181.0" text="Cadastrar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -45,7 +44,7 @@ A<?xml version="1.0" encoding="UTF-8"?>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#remocaoCliente" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteRemover" prefHeight="120.0" prefWidth="181.0" text="Remover" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -57,7 +56,7 @@ A<?xml version="1.0" encoding="UTF-8"?>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#pesquisaCliente" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClientePesquisar" prefHeight="120.0" prefWidth="181.0" text="Pesquisar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -69,7 +68,7 @@ A<?xml version="1.0" encoding="UTF-8"?>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#menuCliente" prefHeight="120.0" prefWidth="200.0" text="Voltar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="181.0" text="Voltar">
                <font>
                   <Font size="18.0" />
                </font>
@@ -88,17 +87,17 @@ A<?xml version="1.0" encoding="UTF-8"?>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
+      <TextField fx:id="cpfDono" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="165.0" promptText="XXX.XXX.XXX-XX">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#procuraDono" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
+      <Button fx:id="pesquisaCliente" layoutX="14.0" layoutY="95.0" mnemonicParsing="false" onAction="#procuraDono" prefHeight="30.0" prefWidth="103.0" text="Pesquisar">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="14.0" layoutY="149.0" prefHeight="34.0" prefWidth="471.0" text="mensagem que sera mostrada ao usuario, depois deixar aqui em branco" textAlignment="CENTER">
+      <Label fx:id="infDonoPet" layoutX="14.0" layoutY="149.0" prefHeight="34.0" prefWidth="471.0" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -119,31 +118,23 @@ A<?xml version="1.0" encoding="UTF-8"?>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="raça" disable="true" layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="181.0" promptText="Raça">
+                        <TextField fx:id="raca" disable="true" layoutX="14.0" layoutY="41.0" prefHeight="30.0" prefWidth="181.0" promptText="Raça">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
                         <Button fx:id="salvarPet" contentDisplay="TOP" disable="true" layoutX="278.0" layoutY="169.0" mnemonicParsing="false" onAction="#adicionarPet" text="Salvar">
                            <graphic>
-                              <ImageView disable="true" fitHeight="50.0" fitWidth="50.0">
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
                                  <image>
                                     <Image url="@../../../../../lib/Imgs/save-file.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Label fx:id="avisoAddPetCliente" alignment="CENTER" layoutX="21.0" layoutY="261.0" prefHeight="30.0" prefWidth="531.0">
+                        <Label fx:id="avisoAddPetCliente" alignment="CENTER" layoutX="51.0" layoutY="261.0" prefHeight="30.0" prefWidth="514.0" textFill="RED">
                            <font>
                               <Font size="18.0" />
                            </font>
-                           <textFill>
-                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                 <stops>
-                                    <Stop color="BLACK" />
-                                    <Stop color="WHITE" offset="1.0" />
-                                 </stops>
-                              </RadialGradient>
-                           </textFill>
                         </Label>
                         <Label layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="73.0" text="Especie">
                            <font>
@@ -243,7 +234,7 @@ A<?xml version="1.0" encoding="UTF-8"?>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="salvarEnd" contentDisplay="TOP" disable="true" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" text="Salvar">
+                        <Button fx:id="salvarEnd" contentDisplay="TOP" disable="true" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" onAction="#alterarEndereco" text="Salvar">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -255,7 +246,7 @@ A<?xml version="1.0" encoding="UTF-8"?>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="avisoAddPetCliente" alignment="CENTER" layoutX="154.0" layoutY="295.0" prefHeight="36.0" prefWidth="390.0" textFill="RED">
+                        <Label fx:id="avisoClienteAtualizar" alignment="CENTER" layoutX="34.0" layoutY="295.0" prefHeight="36.0" prefWidth="544.0" textFill="RED">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -268,4 +259,3 @@ A<?xml version="1.0" encoding="UTF-8"?>
       </TabPane>
    </children>
 </AnchorPane>
-
