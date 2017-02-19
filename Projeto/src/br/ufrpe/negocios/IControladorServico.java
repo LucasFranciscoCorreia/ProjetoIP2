@@ -1,23 +1,5 @@
 package br.ufrpe.negocios;
-import br.ufrpe.beans.Servico;
-import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.ObjectJaExisteException;
-import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.*;
-/**
- * Esta classe é a interface do controlador de serviço que será comunicado através da fachada
- * e se comunicará com os repositórios
- * @author srtacamelo
- *
- */
 public interface IControladorServico {
 
-	void cadastrarServico(Servico novo)throws ObjectJaExisteException;
-	void removerServico(Servico servico)throws CodigoNaoExisteException;
-	void removerServicoNome(String nome)throws ObjectNaoExisteException;
-	Servico buscarServico(String nome)throws ObjectNaoExisteException;
-	int buscarNome(String nome)throws ObjectNaoExisteException;
-	int buscarServico(Servico servico) throws ObjectNaoExisteException;
-	void atualizarServico(Servico novo, Servico antigo)throws ObjectNaoExisteException;
-	void salvarNoArquivo();
 }
