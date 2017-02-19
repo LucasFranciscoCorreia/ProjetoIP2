@@ -35,6 +35,7 @@ public class NotaFiscal {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.pet = pet;
+		this.servico = servico;
 
 	}
 	/**
