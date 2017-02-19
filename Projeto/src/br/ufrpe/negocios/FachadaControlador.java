@@ -175,7 +175,7 @@ public class FachadaControlador {
 		controladorProduto.atualizar(produto);
 	}
 
-	public String listarProduto() {
+	public ArrayList<Produto> listarProduto() {
 		return controladorProduto.listarProduto();
 	}
 	

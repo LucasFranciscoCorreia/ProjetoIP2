@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Endereco;
@@ -18,7 +17,6 @@ import br.ufrpe.negocios.FachadaControlador;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -26,7 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class FuncionarioController implements Initializable{
+public class FuncionarioController{
 	@FXML
 	private Button buttonRemover, buttonAtualizar;
 	@FXML
@@ -344,17 +342,5 @@ public class FuncionarioController implements Initializable{
 		}else{
 			avisoAtualizar.setText("Informe um CPF válido!!!");
 		}
-	}
-
-	@Override
-	public void initialize(java.net.URL location, ResourceBundle resources) {
-//		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();
-//		
-//		nomeTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-//		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
-//		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
-//		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
-//		
-//		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
 	}
 }

@@ -9,17 +9,19 @@ public class MenuController {
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
-		FuncionarioController controlador = ScreenManager.getInstance().getF().getController();
+		FuncionarioController controlador = ScreenManager.getInstance().getFuncionarios().getController();
+		controlador.preencherTabela();
+	}
+	
+	@FXML
+	public void abrirProdutoListar(ActionEvent evento){
+		ScreenManager.getInstance().showProdutoListar();
+		ProdutoController controlador = ScreenManager.getInstance().getProdutos().getController();
 		controlador.preencherTabela();
 	}
 	
 	@FXML
 	public void abrirClienteListar(ActionEvent evento){
 		ScreenManager.getInstance().showClienteListar();
-	}
-	
-	@FXML
-	private void inicialize(){
-		
 	}
 }

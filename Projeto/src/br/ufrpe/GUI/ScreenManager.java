@@ -13,7 +13,7 @@ public class ScreenManager {
 	private static ScreenManager unicInstanc;
 	private Stage mainStage;
 	
-	private FXMLLoader f;
+	private FXMLLoader funcionarios, produtos;
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
@@ -33,14 +33,6 @@ public class ScreenManager {
 	private ScreenManager(){
 		try {
 			// CLIENTE TELAS:
-//			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ClienteAtualizar.fxml"));
-//			this.clienteAtualizar = new Scene(clienteAtualizar);
-			
-			StackPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
-		              "view/ClienteCadastrar.fxml"));
-			this.clienteCadastrar = new Scene(clienteCadastrar);
-			
 			AnchorPane clienteCadastrarCaixa = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrarCaixa.fxml"));
 			this.clienteCadastrarCaixa = new Scene(clienteCadastrarCaixa);
@@ -52,7 +44,15 @@ public class ScreenManager {
 			AnchorPane clienteAtualizarCaixa = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteAtualizarCaixa.fxml"));
 			this.clienteAtualizarCaixa = new Scene(clienteAtualizarCaixa);
+	
+//			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
+//		              "view/ClienteAtualizar.fxml"));
+//			this.clienteAtualizar = new Scene(clienteAtualizar);
 			
+			StackPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteCadastrar.fxml"));
+			this.clienteCadastrar = new Scene(clienteCadastrar);
+					
 			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteListar.fxml"));
 			this.clienteListar = new Scene(clienteListar);
@@ -76,8 +76,8 @@ public class ScreenManager {
 		              "view/FuncionarioCadastrar.fxml"));
 			this.funcionarioCadastrar = new Scene(funcionarioCadastar);
 			
-			f = new FXMLLoader(this.getClass().getResource("view/FuncionarioListar.fxml"));
-			AnchorPane funcionarioListar = f.load();
+			funcionarios = new FXMLLoader(this.getClass().getResource("view/FuncionarioListar.fxml"));
+			AnchorPane funcionarioListar = funcionarios.load();
 			this.funcionarioListar = new Scene(funcionarioListar);
 			
 			AnchorPane funcionarioPesquisar = FXMLLoader.load(getClass().getResource(
@@ -122,10 +122,10 @@ public class ScreenManager {
 //			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
 //		              "view/ProdutoCadastrar.fxml"));
 //			this.produtoCadastrar = new Scene(produtoCadastrar);
-//			
-//			AnchorPane produtoListar = FXMLLoader.load(getClass().getResource(
-//		              "view/ProdutoListar.fxml"));
-//			this.produtoListar = new Scene(produtoListar);
+			
+			produtos = new FXMLLoader(this.getClass().getResource("view/FuncionarioListar.fxml"));
+			AnchorPane produtoListar = produtos.load();
+			this.funcionarioListar = new Scene(funcionarioListar);
 //			
 //			AnchorPane produtoPesquisar = FXMLLoader.load(getClass().getResource(
 //		              "view/ProdutoPesquisar.fxml"));
@@ -279,7 +279,11 @@ public class ScreenManager {
 		this.mainStage.setScene(this.produtoRemover);
 	}
 	
-	public FXMLLoader getF() {
-		return this.f;
+	public FXMLLoader getFuncionarios() {
+		return this.funcionarios;
+	}
+	
+	public FXMLLoader getProdutos() {
+		return this.produtos;
 	}
 }

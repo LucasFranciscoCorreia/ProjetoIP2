@@ -10,6 +10,8 @@
  */
 package br.ufrpe.negocios;
 
+import java.util.ArrayList;
+
 import br.ufrpe.beans.Produto;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
@@ -31,7 +33,7 @@ public interface IControladorProduto {
 	
 	void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException;
 	void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException;
-	String listarProduto();
+	ArrayList<Produto> listarProduto();
 	Produto pesquisar(String codigo) throws ObjectNaoExisteException;
 	void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	void salvarNoArquivo();

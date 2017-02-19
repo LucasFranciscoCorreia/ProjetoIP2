@@ -85,17 +85,8 @@ public class ControladorProduto implements IControladorProduto{
 		}else{throw new ErroAoAtualizarException();}
 	}
 	
-	public String listarProduto(){
-		ArrayList<Produto> produtos = repositorioProduto.listarProduto();
-		if(repositorioProduto.Size() == 0){
-			return "Nao existem produtos cadastrados no sistema!";
-		}else{
-			String resultado = "";
-			for(int i = 0; i < repositorioProduto.Size(); i++){
-				resultado += produtos.get(i).toString() + "\n\n";
-			}
-			return resultado;
-		}
+	public ArrayList<Produto> listarProduto(){
+		return repositorioProduto.listarProduto();
 	}
 	
 	

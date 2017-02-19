@@ -9,12 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonMenuAction" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -76,13 +75,13 @@
             </Button>
          </children>
       </VBox>
-      <TableView prefHeight="600.0" prefWidth="620.0">
+      <TableView fx:id="tableProduto" prefHeight="600.0" prefWidth="620.0">
         <columns>
-          <TableColumn fx:id="nome" prefWidth="70.0" text="Código" />
-          <TableColumn fx:id="cpf" prefWidth="237.0" text="Nome" />
-            <TableColumn fx:id="salario" prefWidth="176.0" text="Tipo" />
-            <TableColumn fx:id="cargo" minWidth="0.0" prefWidth="60.0" text="Preço" />
-            <TableColumn prefWidth="76.0" text="Estoque" />
+          <TableColumn fx:id="codigo" prefWidth="70.0" text="Código" />
+          <TableColumn fx:id="nome" prefWidth="237.0" text="Nome" />
+            <TableColumn fx:id="tipo" prefWidth="176.0" text="Tipo" />
+            <TableColumn fx:id="preço" minWidth="0.0" prefWidth="60.0" text="Preço" />
+            <TableColumn fx:id="estoque" prefWidth="76.0" text="Estoque" />
         </columns>
       </TableView>
    </children>
