@@ -7,11 +7,6 @@ import javafx.fxml.FXML;
 public class MenuController {
 
 	@FXML
-	public void abrirMenuServicos(ActionEvent evt){
-		ScreenManager.getInstance().showMenuServicos();
-	}
-	
-	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
 		FuncionarioController controlador = ScreenManager.getInstance().getFuncionarios().getController();

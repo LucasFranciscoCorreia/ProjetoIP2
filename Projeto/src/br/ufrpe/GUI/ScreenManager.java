@@ -17,7 +17,7 @@ public class ScreenManager {
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServicos;
+	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa;
 	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
@@ -110,9 +110,6 @@ public class ScreenManager {
 			AnchorPane menuCaixa = FXMLLoader.load(getClass().getResource(
 		              "view/MenuCaixa.fxml"));
 			this.menuCaixa = new Scene(menuCaixa);
-			
-			AnchorPane menuServicos = FXMLLoader.load(getClass().getResource("view/MenuServicos.fxml"));
-			this.menuServicos = new Scene(menuServicos);
 			
 //			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
 //		              "view/TelaCaixa.fxml"));
@@ -234,9 +231,6 @@ public class ScreenManager {
 		this.mainStage.setScene(this.clienteListar);
 	}
 
-	public void showMenuServicos(){
-		this.mainStage.setScene(this.menuServicos);
-	}
 	
 	// CHAMADA DA TELA DE LOGIN:
 	public void showLogin(){
