@@ -23,5 +23,7 @@ public class MenuController {
 	@FXML
 	public void abrirClienteListar(ActionEvent evento){
 		ScreenManager.getInstance().showClienteListar();
+		ClienteController controlador = ScreenManager.getInstance().getClientes().getController();
+		controlador.preencherTabela();
 	}
 }

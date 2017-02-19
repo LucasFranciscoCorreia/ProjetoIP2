@@ -13,14 +13,14 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button fx:id="btnVoltar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="150.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+            <Button fx:id="btnVoltar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="150.0" prefWidth="200.0" text="Voltar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="75.0" fitWidth="75.0">
                      <image>
-                        <Image url="@../../../../../lib/Imgs/home-512.png" />
+                        <Image url="@../../../../../lib/Imgs/clienteMenu.png" />
                      </image>
                   </ImageView>
                </graphic>
