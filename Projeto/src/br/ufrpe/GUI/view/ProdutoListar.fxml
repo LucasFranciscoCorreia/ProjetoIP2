@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.ProdutoController">
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
@@ -20,28 +20,16 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/home-512.png" />
+                        <Image url="@../../../../../lib/Imgs/funcionarioMenu.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAtualizarAction" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/1380118359_new-24.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonRemoverAction" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Pictures/lixeira.png" />
+                        <Image url="@../../../../../lib/Imgs/1380118359_new-24.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -49,11 +37,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonPesquisarAction" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Remover" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/busca.png" />
+                        <Image url="@../../../../../lib/Imgs/lixeira.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -61,11 +49,23 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#buttonAdicionarAction" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Pictures/add-128.png" />
+                        <Image url="@../../../../../lib/Imgs/busca.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/add-128.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -80,7 +80,7 @@
           <TableColumn fx:id="codigo" prefWidth="70.0" text="Código" />
           <TableColumn fx:id="nome" prefWidth="237.0" text="Nome" />
             <TableColumn fx:id="tipo" prefWidth="176.0" text="Tipo" />
-            <TableColumn fx:id="preço" minWidth="0.0" prefWidth="60.0" text="Preço" />
+            <TableColumn fx:id="preco" minWidth="0.0" prefWidth="60.0" text="Preço" />
             <TableColumn fx:id="estoque" prefWidth="76.0" text="Estoque" />
         </columns>
       </TableView>

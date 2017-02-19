@@ -123,9 +123,9 @@ public class ScreenManager {
 //		              "view/ProdutoCadastrar.fxml"));
 //			this.produtoCadastrar = new Scene(produtoCadastrar);
 			
-			produtos = new FXMLLoader(this.getClass().getResource("view/FuncionarioListar.fxml"));
+			produtos = new FXMLLoader(this.getClass().getResource("view/ProdutoListar.fxml"));
 			AnchorPane produtoListar = produtos.load();
-			this.funcionarioListar = new Scene(funcionarioListar);
+			this.produtoListar = new Scene(produtoListar);
 //			
 //			AnchorPane produtoPesquisar = FXMLLoader.load(getClass().getResource(
 //		              "view/ProdutoPesquisar.fxml"));
