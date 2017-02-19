@@ -11,6 +11,9 @@ import java.util.ArrayList;
  * @author srtacamelo
  */
 public class Carrinho {
+	// TODO  Dúvidas: Um array de produto e outro pra quantidade?
+	//Carrinho pode ser protected (construtor)?
+	//Precisa de Get e set pro carrinho? se ja tem adicionar e remover
 	
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;

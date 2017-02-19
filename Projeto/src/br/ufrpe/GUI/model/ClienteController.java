@@ -274,8 +274,55 @@ public class ClienteController implements Initializable{
 				end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
 				donoPet.setEnd(end);
 				avisoClienteAtualizar.setText("Endereço alterado com sucesso");
+				raca.setText("");
+				nomePet.setText("");
+				peso.setText("");
+				altura.setText("");
+				especie.setText("");
+				rua.setText("");
+				numero.setText("");
+				complemento.setText("");
+				cep.setText("");
+				cidadeUF.setText("");
+				raca.setDisable(true);
+				nomePet.setDisable(true);
+				peso.setDisable(true);
+				altura.setDisable(true);
+				especie.setDisable(true);
+				rua.setDisable(true);
+				numero.setDisable(true);
+				complemento.setDisable(true);
+				cep.setDisable(true);
+				cidadeUF.setDisable(true);
+				salvarEnd.setDisable(true);
+				salvarPet.setDisable(true);
 			}catch(NumberFormatException e){
 				avisoClienteAtualizar.setText("Numero deve estar escrito em formato numerico");
+				
+			}catch(Exception e){
+				avisoClienteAtualizar.setText(e.getMessage());
+				raca.setText("");
+				nomePet.setText("");
+				peso.setText("");
+				altura.setText("");
+				especie.setText("");
+				rua.setText("");
+				numero.setText("");
+				complemento.setText("");
+				cep.setText("");
+				cidadeUF.setText("");
+				raca.setDisable(true);
+				nomePet.setDisable(true);
+				peso.setDisable(true);
+				altura.setDisable(true);
+				especie.setDisable(true);
+				rua.setDisable(true);
+				numero.setDisable(true);
+				complemento.setDisable(true);
+				cep.setDisable(true);
+				cidadeUF.setDisable(true);
+				salvarEnd.setDisable(true);
+				salvarPet.setDisable(true);
 			}
 		}
 	}
@@ -285,7 +332,7 @@ public class ClienteController implements Initializable{
 		Pessoa p;
 		try {
 			p = FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
-			if(p instanceof Funcionario){
+			if(p instanceof Funcionario || p == null){
 				throw new ObjectNaoExisteException();
 			}
 			syso.setText(p.toString());

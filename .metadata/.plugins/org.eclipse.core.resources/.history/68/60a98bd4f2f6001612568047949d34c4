@@ -1,7 +1,6 @@
 package br.ufrpe.beans;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  * Esta Classe representa a nota fiscal gerada do servico realizado (Compra ou Serviço PetCare) 
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  */
 public class NotaFiscal {
 
-	private ArrayList<Produto> itens;
+	private Servico servico;
 	private Funcionario funcionario;
 	private Cliente cliente;
 	private Animal pet;
@@ -35,10 +34,11 @@ public class NotaFiscal {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.pet = pet;
+		this.servico = servico;
 
 	}
 	/**
-	 * Construtor para Serviço <Compra>
+	 * Constrytor para Serviço <Compra>
 	 * 
 	 * @param funcionario
 	 * @param cliente
@@ -48,6 +48,8 @@ public class NotaFiscal {
 		
 		this.funcionario = funcionario;
 		this.cliente = cliente;
+		this.carrinho = carrinho;
+		this.tipo = "Compra";
 	}
 	
 	/**
