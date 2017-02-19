@@ -12,14 +12,14 @@ public class ControladorServico {
 	public ControladorServico(IRepositorioServico instance){
 		this.repositorioServico = instance;
 	}
-	void cadastrarServico(Servico novo)throws ObjectJaExisteException,ObjectNaoExisteException{
+	void cadastrarServico(Servico novo)throws ObjectJaExisteException{
 		repositorioServico.addAoRepositorio(novo);
 	}
-	void removerServico(Servico servico)throws ObjectNaoExisteException{
+	void removerServico(Servico servico)throws CodigoNaoExisteException{
 		repositorioServico.removeDoRepositorio(servico);
 	}
 	void removerServicoNome(String nome)throws ObjectNaoExisteException{
-		repositorioServico.removerDoRepositorioNome(nome);
+		return repositorioServico.removerDoRepositorioNome(nome);
 	}
 	Servico buscarServico(String nome)throws ObjectNaoExisteException{
 		return repositorioServico.pesquisarNomeNoRepositorioS(nome);

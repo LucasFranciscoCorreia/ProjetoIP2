@@ -20,25 +20,65 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="150.0" prefWidth="181.0" text="Menu" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#menuPrincipal" prefHeight="120.0" prefWidth="181.0" text="Menu" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/home-512.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteCadastrar" prefHeight="151.0" prefWidth="181.0" text="Cadastrar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteCadastrar" prefHeight="120.0" prefWidth="181.0" text="Cadastrar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/add-128.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteRemover" prefHeight="150.0" prefWidth="181.0" text="Remover" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteRemover" prefHeight="120.0" prefWidth="181.0" text="Remover" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/lixeira.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClientePesquisar" prefHeight="150.0" prefWidth="181.0" text="Pesquisar" textAlignment="RIGHT">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClientePesquisar" prefHeight="120.0" prefWidth="181.0" text="Pesquisar" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/busca.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="181.0" text="Voltar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="75.0">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/editor-grid-view-block-glyph-128.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </VBox>
@@ -83,7 +123,14 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="salvarPet" contentDisplay="TOP" disable="true" layoutX="278.0" layoutY="169.0" mnemonicParsing="false" onAction="#adicionarPet" text="Salvar" />
+                        <Button fx:id="salvarPet" contentDisplay="TOP" disable="true" layoutX="278.0" layoutY="169.0" mnemonicParsing="false" onAction="#adicionarPet" text="Salvar">
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../../../../../lib/Imgs/save-file.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Label fx:id="avisoAddPetCliente" alignment="CENTER" layoutX="51.0" layoutY="261.0" prefHeight="30.0" prefWidth="514.0" textFill="RED">
                            <font>
                               <Font size="18.0" />
@@ -187,12 +234,19 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="salvarEnd" contentDisplay="TOP" disable="true" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" onAction="#alterarEndereço" text="Salvar">
+                        <Button fx:id="salvarEnd" contentDisplay="TOP" disable="true" layoutX="277.0" layoutY="211.0" mnemonicParsing="false" onAction="#alterarEndereco" text="Salvar">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0">
+                                 <image>
+                                    <Image url="@../../../../../lib/Imgs/save-file.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Label fx:id="avisoClienteAtualizar" alignment="CENTER" layoutX="34.0" layoutY="295.0" prefHeight="36.0" prefWidth="544.0">
+                        <Label fx:id="avisoClienteAtualizar" alignment="CENTER" layoutX="34.0" layoutY="295.0" prefHeight="36.0" prefWidth="544.0" textFill="RED">
                            <font>
                               <Font size="14.0" />
                            </font>

@@ -15,7 +15,7 @@ public class ControladorServico {
 	void cadastrarServico(Servico novo)throws ObjectJaExisteException,ObjectNaoExisteException{
 		repositorioServico.addAoRepositorio(novo);
 	}
-	void removerServico(Servico servico)throws ObjectNaoExisteException{
+	void removerServico(Servico servico)throws CodigoNaoExisteException{
 		repositorioServico.removeDoRepositorio(servico);
 	}
 	void removerServicoNome(String nome)throws ObjectNaoExisteException{
