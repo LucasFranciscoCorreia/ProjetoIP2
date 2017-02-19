@@ -14,6 +14,7 @@ public class Loja {
 	
 	private Cliente cliente;
 	private Carrinho carrinho;
+	private LocalDate dataCompra;
 	/**
 	 * Construtor básico da Loja
 	 */
@@ -89,10 +90,30 @@ public class Loja {
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				
-				new NotaFiscal();
+				//TODO gerar nota fiscal
 			}else{throw new ObjectNaoExisteException();}
 		}
-	}		
+	}
+	
+	//private String gerarNota(){
+		//String nota = "Compra no CPF: "+ this.cliente.
+		//iria implementar, mas lembrei que vamos usar a GUI
+		//TODO dúvida: Devo criar uma classe "notaFiscal" que tenha um repositório onde
+		//savaremos todas as compras feitas? Assim passamos tudo pra lá, aki, nessa função
+		// e depois na hora de exibir na tela é só pegar as strings direto da nota fiscal
+	
+	
+		//Simplesmente dar new em notaFiscal
+	//}
+	
+	
+		// TODO Dúvidas
+			//RealizarCompra(AL produto, AL quantidade)
+		/** realizarCompra tem que retornar alguma coisa, boolean (sucesso/ falha)?
+		 * 	
+		 * 
+		 * caixa.addDinheiro
+		 */
 
 	
 }

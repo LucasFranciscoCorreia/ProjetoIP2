@@ -35,10 +35,11 @@ public class NotaFiscal {
 		this.funcionario = funcionario;
 		this.cliente = cliente;
 		this.pet = pet;
+		this.servico = servico;
 
 	}
 	/**
-	 * Construtor para Serviço <Compra>
+	 * Constrytor para Serviço <Compra>
 	 * 
 	 * @param funcionario
 	 * @param cliente
@@ -48,6 +49,7 @@ public class NotaFiscal {
 		
 		this.funcionario = funcionario;
 		this.cliente = cliente;
+		this.carrinho = carrinho;
 	}
 	
 	/**

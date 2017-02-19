@@ -38,7 +38,7 @@ public class NotaFiscal {
 
 	}
 	/**
-	 * Construtor para Serviço <Compra>
+	 * Constrytor para Serviço <Compra>
 	 * 
 	 * @param funcionario
 	 * @param cliente
