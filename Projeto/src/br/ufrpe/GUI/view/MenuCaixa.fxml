@@ -35,7 +35,7 @@
          <center>
             <VBox prefHeight="545.0" prefWidth="297.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton lineSpacing="1.0" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
+                  <JFXButton lineSpacing="1.0" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
@@ -47,19 +47,7 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Serviços">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@../../../../../lib/Imgs/settings_icon-icons.com_72415.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton onAction="#abrirClienteMenuCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente " textAlignment="CENTER" wrapText="true">
+                  <JFXButton onAction="#abrirClienteMenuCaixa" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente " textAlignment="CENTER" wrapText="true">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
@@ -71,7 +59,7 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Animal" textAlignment="CENTER" wrapText="true">
+                  <JFXButton prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="PetCare" textAlignment="CENTER" wrapText="true">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
