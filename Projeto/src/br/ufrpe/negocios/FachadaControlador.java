@@ -8,6 +8,7 @@ import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Login;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
@@ -17,6 +18,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.RepositorioAnimal;
 import br.ufrpe.repositorios.RepositorioPessoa;
 import br.ufrpe.repositorios.RepositorioProduto;
+import br.ufrpe.repositorios.RepositorioServico;
 /* Facade */
 /**
  * Esta classe representa a fachada do sistema, pela qual os controladores
@@ -30,6 +32,7 @@ public class FachadaControlador {
 	private IControladorAnimal controladorAnimal;
 	private IControladorPessoa controladorPessoa;
 	private IControladorProduto controladorProduto;
+	private IControladorServico controladorServico;
 	private static FachadaControlador instance;
 	
 	/**
@@ -39,6 +42,7 @@ public class FachadaControlador {
 		this.controladorAnimal = new ControladorAnimal(RepositorioAnimal.getInstance());
 		this.controladorProduto = new ControladorProduto(RepositorioProduto.getInstance());
 		this.controladorPessoa = new ControladorPessoa(RepositorioPessoa.getInstance());
+		this.controladorServico = new ControladorServico(RepositorioServico.getInstance());
 	}
 	/**
 	 * Método getInstance, para garantir a unicidade da classe.
@@ -182,6 +186,9 @@ public class FachadaControlador {
 		return controladorProduto.gerarCodigo();
 	}
 	
+	public ArrayList<Servico> listarServico(){
+		return controladorServico.listarServico();
+	}
 	
 
 }

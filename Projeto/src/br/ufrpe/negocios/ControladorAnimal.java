@@ -54,6 +54,7 @@ public class ControladorAnimal implements IControladorAnimal{
 	
 	public Animal buscar(String codigo) throws CodigoNaoExisteException{
 			Animal a = repositorioAnimal.buscar(codigo);
+			return a;
 	}
 		
 

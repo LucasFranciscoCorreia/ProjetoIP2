@@ -28,7 +28,7 @@ public class RepositorioServico implements IRepositorioServico{
 		this.ArrayDeServicos = new ArrayList<>();
 	}
 	
-	public IRepositorioServico getInstance(){
+	public static IRepositorioServico getInstance(){
 		if(unicInstance == null){
 			unicInstance = lerDoArquivo();
 		}
@@ -177,5 +177,8 @@ public class RepositorioServico implements IRepositorioServico{
 			throw new ObjectNaoExisteException();
 		}
 	}
-
+	
+	public ArrayList<Servico> listarServico(){
+		return ArrayDeServicos;
+	}
 }
