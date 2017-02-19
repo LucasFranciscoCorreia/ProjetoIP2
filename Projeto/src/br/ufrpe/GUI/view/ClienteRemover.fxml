@@ -13,7 +13,11 @@
    <children>
       <VBox layoutX="619.0" prefHeight="600.0" prefWidth="181.0">
          <children>
+<<<<<<< HEAD
             <Button fx:id="btnMenu" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="150.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+=======
+            <Button fx:id="btnMenu" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="120.0" prefWidth="200.0" text="Menu" textAlignment="RIGHT">
+>>>>>>> branch 'master' of https://github.com/LucasFranciscoCorreia/ProjetoIP2.git
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,7 +29,11 @@
                   </ImageView>
                </graphic>
             </Button>
+<<<<<<< HEAD
             <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteAtualizar" prefHeight="150.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+=======
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#atualizaCliente" prefHeight="120.0" prefWidth="200.0" text="Atualizar" textAlignment="RIGHT">
+>>>>>>> branch 'master' of https://github.com/LucasFranciscoCorreia/ProjetoIP2.git
                <font>
                   <Font size="18.0" />
                </font>
@@ -37,7 +45,11 @@
                   </ImageView>
                </graphic>
             </Button>
+<<<<<<< HEAD
             <Button fx:id="btnCadastrar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClienteCadastrar" prefHeight="150.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+=======
+            <Button fx:id="btnCadastrar" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#cadastroCliente" prefHeight="120.0" prefWidth="200.0" text="Cadastrar" textAlignment="RIGHT">
+>>>>>>> branch 'master' of https://github.com/LucasFranciscoCorreia/ProjetoIP2.git
                <font>
                   <Font size="18.0" />
                </font>
@@ -49,7 +61,11 @@
                   </ImageView>
                </graphic>
             </Button>
+<<<<<<< HEAD
             <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirClientePesquisar" prefHeight="150.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+=======
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#pesquisaCliente" prefHeight="120.0" prefWidth="200.0" text="Pesquisar" textAlignment="RIGHT">
+>>>>>>> branch 'master' of https://github.com/LucasFranciscoCorreia/ProjetoIP2.git
                <font>
                   <Font size="18.0" />
                </font>
