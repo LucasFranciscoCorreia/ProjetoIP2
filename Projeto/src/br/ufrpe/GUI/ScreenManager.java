@@ -45,9 +45,9 @@ public class ScreenManager {
 		              "view/ClienteAtualizarCaixa.fxml"));
 			this.clienteAtualizarCaixa = new Scene(clienteAtualizarCaixa);
 	
-//			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ClienteAtualizar.fxml"));
-//			this.clienteAtualizar = new Scene(clienteAtualizar);
+			AnchorPane clienteAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ClienteAtualizar.fxml"));
+			this.clienteAtualizar = new Scene(clienteAtualizar);
 			
 			StackPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrar.fxml"));

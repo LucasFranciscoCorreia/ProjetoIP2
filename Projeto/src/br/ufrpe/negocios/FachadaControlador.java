@@ -178,6 +178,9 @@ public class FachadaControlador {
 	public ArrayList<Produto> listarProduto() {
 		return controladorProduto.listarProduto();
 	}
+	public String gerarCodigo(){
+		return controladorProduto.gerarCodigo();
+	}
 	
 	
 
