@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
@@ -23,29 +22,3 @@
       </Pane>
    </children>
 </AnchorPane>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.paint.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
-   <children>
-      <Pane layoutX="25.0" layoutY="23.0" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: white;">
-         <children>
-            <JFXTextField fx:id="login" focusColor="#2900ff" labelFloat="true" layoutX="21.0" layoutY="40.0" maxWidth="367.0" minWidth="193.0" onAction="#realizarLogin" prefHeight="31.0" prefWidth="244.0" promptText="Login" unFocusColor="BLACK" />
-            <JFXPasswordField fx:id="password" focusColor="#2900ff" layoutX="21.0" layoutY="100.0" maxWidth="361.0" minWidth="193.0" onAction="#realizarLogin" prefHeight="31.0" prefWidth="244.0" promptText="Senha" unFocusColor="BLACK" />
-            <JFXButton fx:id="okButton" buttonType="RAISED" layoutX="232.0" layoutY="161.0" onAction="#realizarLogin" ripplerFill="BLACK" style="-fx-background-color: #2900ff;" text="Login" textAlignment="CENTER" textFill="WHITE" />
-            <Label fx:id="Aviso" layoutX="14.0" layoutY="166.0" textFill="RED">
-               <font>
-                  <Font size="11.0" />
-               </font></Label>
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
->>>>>>> branch 'master' of https://github.com/LucasFranciscoCorreia/ProjetoIP2.git
