@@ -23,14 +23,14 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="300.0" text="ANIMAL">
+            <Button mnemonicParsing="false" onAction="#abrirMenuServicos" prefHeight="150.0" prefWidth="300.0" text="Serviços">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="138.0" fitWidth="138.0">
                      <image>
-                        <Image url="@../../../../../lib/Imgs/animalMenu.png" />
+                        <Image url="@../../../../../lib/Imgs/settings_icon-icons.com_72415.png" />
                      </image>
                   </ImageView>
                </graphic>
