@@ -13,12 +13,12 @@ import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
+import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
-import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.FachadaControlador;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -44,13 +44,13 @@ public class ClienteController implements Initializable{
 	@FXML
 	private Label aviso, avisoCadastro, clienteEncontrado, clienteDeletado, avisoRemover, avisoAtualizar, syso, erroPesquisa;
 	@FXML
-	private Label avisoAddPetCliente, infDonoPet; 
+	private Label avisoAddPetCliente, infDonoPet, avisoClienteAtualizar; 
 	@FXML
 	private Button buttonCliente, buttonCadastrarCliente, buttonCancelarCadastroCliente, buttonCadastrarNovoCliente, buttonProcurar, buttonDeletar, btnPesquisar, salvarPet, salvarEnd	;
 	@FXML	
 	private TextField nome, cpf, aniversario, cep, rua, numero, complemento, cidadeUF, buscaRemover, salario, cargo, cpfDono;
 	@FXML
-	private TextField raça, nomePet, peso, altura, especie;
+	private TextField raca, nomePet, peso, altura, especie;
 	
 	private static Pessoa donoPet;
 	
@@ -115,11 +115,26 @@ public class ClienteController implements Initializable{
 	public void procuraDono(ActionEvent evt){
 		if(cpfDono.getText().isEmpty()){
 			infDonoPet.setText("Digite um cpf para busca");
+			raca.setDisable(true);
+			nomePet.setDisable(true);
+			peso.setDisable(true);
+			altura.setDisable(true);
+			especie.setDisable(true);
+			rua.setDisable(true);
+			numero.setDisable(true);
+			complemento.setDisable(true);
+			cep.setDisable(true);
+			cidadeUF.setDisable(true);
+			salvarEnd.setDisable(true);
+			salvarPet.setDisable(true);
+			avisoAddPetCliente.setText("");
+			avisoClienteAtualizar.setText("");
 		}else{
-			try {
+			try {	
 				donoPet = FachadaControlador.getInstance().buscarPessoa(cpfDono.getText());
+				
 				infDonoPet.setText(donoPet.getNome());
-				raça.setDisable(false);
+				raca.setDisable(false);
 				nomePet.setDisable(false);
 				peso.setDisable(false);
 				altura.setDisable(false);
@@ -133,18 +148,53 @@ public class ClienteController implements Initializable{
 				salvarPet.setDisable(false);
 			} catch (ObjectNaoExisteException e) {
 				infDonoPet.setText(e.getMessage());
+				raca.setDisable(true);
+				nomePet.setDisable(true);
+				peso.setDisable(true);
+				altura.setDisable(true);
+				especie.setDisable(true);
+				rua.setDisable(true);
+				numero.setDisable(true);
+				complemento.setDisable(true);
+				cep.setDisable(true);
+				cidadeUF.setDisable(true);
+				salvarEnd.setDisable(true);
+				salvarPet.setDisable(true);
 			}
 		}
 	}
 	
 	@FXML
 	public void adicionarPet(ActionEvent evt){
-		if(raça.getText().isEmpty() || peso.getText().isEmpty() || altura.getText().isEmpty() || especie.getText().isEmpty() || nome.getText().isEmpty()){
+		if(raca.getText().isEmpty() || peso.getText().isEmpty() || altura.getText().isEmpty() || especie.getText().isEmpty() || nomePet.getText().isEmpty()){
 			avisoAddPetCliente.setText("Todos os campos devem ser preenchidos");
 		}else{
-			Animal novo = new Animal(true, especie.getText(), raça.getText(), donoPet, Double.parseDouble(peso.getText()), Double.parseDouble(altura.getText()), nomePet.getText(),null);
+			Animal novo = new Animal(true, especie.getText(), raca.getText(), donoPet, Double.parseDouble(peso.getText()), Double.parseDouble(altura.getText()), nomePet.getText(), FachadaControlador.getInstance().gerarCodigo());
 			try {
 				FachadaControlador.getInstance().cadastrar(novo);
+				avisoAddPetCliente.setText("Pet cadastrado ao dono com sucesso");
+				raca.setText("");
+				nomePet.setText("");
+				peso.setText("");
+				altura.setText("");
+				especie.setText("");
+				rua.setText("");
+				numero.setText("");
+				complemento.setText("");
+				cep.setText("");
+				cidadeUF.setText("");
+				raca.setDisable(true);
+				nomePet.setDisable(true);
+				peso.setDisable(true);
+				altura.setDisable(true);
+				especie.setDisable(true);
+				rua.setDisable(true);
+				numero.setDisable(true);
+				complemento.setDisable(true);
+				cep.setDisable(true);
+				cidadeUF.setDisable(true);
+				salvarEnd.setDisable(true);
+				salvarPet.setDisable(true);
 			} catch (ObjectJaExisteException e) {
 				avisoAddPetCliente.setText(e.getMessage());
 			}
@@ -159,16 +209,33 @@ public class ClienteController implements Initializable{
 	}
 	
 	@FXML
+	public void alterarEndereco(ActionEvent evt){
+		if(rua.getText().isEmpty() || complemento.getText().isEmpty() || numero.getText().isEmpty() || cep.getText().isEmpty() || cidadeUF.getText().isEmpty()){
+			avisoClienteAtualizar.setText("Todos os campos devem ser preenchidos");
+		}else{
+			Endereco end;
+			try{
+				end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
+				donoPet.setEnd(end);
+			}catch(Exception e){
+				
+			}
+		}
+	}
+	
+	@FXML
 	public void pesquisarCliente(ActionEvent evt){
 		Pessoa p;
 		try {
-			p = (Cliente) FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
-			if(!(p instanceof Cliente)){
+			p = FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
+			if(p instanceof Funcionario){
 				throw new ObjectNaoExisteException();
 			}
 			syso.setText(p.toString());
+			erroPesquisa.setText("");
 		} catch (ObjectNaoExisteException e) {
 			erroPesquisa.setText(e.getMessage());
+			syso.setText("");
 		}
 	}
 	
