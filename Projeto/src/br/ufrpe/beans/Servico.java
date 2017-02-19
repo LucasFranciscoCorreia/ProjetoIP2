@@ -12,7 +12,7 @@ public class Servico extends Produto{
 	 * @param preco
 	 */
 	public Servico(String nome, float preco) {
-		super( preco,  nome, "Serviço", "código", 0);
+		super( preco,  nome, "Serviço", 0);
 	}	
 	/**
 	 * Método equals

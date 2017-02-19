@@ -32,11 +32,11 @@ public abstract class Produto implements Serializable{
 	 * @param codigo
 	 * @param estoque
 	 */
-	public Produto(float preco, String nome, String tipo, String codigo, int estoque) {
+	public Produto(float preco, String nome, String tipo, int estoque) {
 		this.preco = preco;
 		this.nome = nome;
 		this.tipo = tipo;
-		this.codigo = codigo;
+		this.codigo = null;
 		this.estoque = estoque;
 	}	
 	/**
@@ -60,6 +60,9 @@ public abstract class Produto implements Serializable{
 	 * Getters and Setters
 	 * @return
 	 */
+	
+	
+	
 	public float getPreco() {
 		return preco;
 	}	
@@ -77,6 +80,9 @@ public abstract class Produto implements Serializable{
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public String getCodigo() {
 		return codigo;

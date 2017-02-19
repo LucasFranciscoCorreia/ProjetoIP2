@@ -30,7 +30,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 /**
  * Este repositorio armazena dados sobre os produtos existentes na loja.
  * 
- * Lembrete: Repositorio incompleto, n�o foi feito a implementa��o de exce��es
+ * Lembrete: Repositorio incompleto, não foi feito a implementação de exceções
  * 
  * @author Diego
  * 

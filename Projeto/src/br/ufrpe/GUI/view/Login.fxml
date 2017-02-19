@@ -15,7 +15,7 @@
             <JFXTextField fx:id="login" focusColor="#2900ff" labelFloat="true" layoutX="21.0" layoutY="40.0" maxWidth="367.0" minWidth="193.0" onAction="#realizarLogin" prefHeight="31.0" prefWidth="244.0" promptText="Login" unFocusColor="BLACK" />
             <JFXPasswordField fx:id="password" focusColor="#2900ff" layoutX="21.0" layoutY="100.0" maxWidth="361.0" minWidth="193.0" onAction="#realizarLogin" prefHeight="31.0" prefWidth="244.0" promptText="Senha" unFocusColor="BLACK" />
             <JFXButton fx:id="okButton" buttonType="RAISED" layoutX="232.0" layoutY="161.0" onAction="#realizarLogin" ripplerFill="BLACK" style="-fx-background-color: #2900ff;" text="Login" textAlignment="CENTER" textFill="WHITE" />
-            <Label fx:id="Aviso" layoutX="14.0" layoutY="166.0" textFill="RED">
+            <Label fx:id="aviso" layoutX="14.0" layoutY="166.0" prefHeight="16.0" prefWidth="189.0" textFill="RED">
                <font>
                   <Font size="11.0" />
                </font></Label>

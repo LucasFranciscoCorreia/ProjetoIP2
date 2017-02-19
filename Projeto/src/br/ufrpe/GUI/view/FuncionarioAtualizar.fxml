@@ -79,7 +79,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="aviso" layoutX="8.0" layoutY="131.0" prefHeight="59.0" prefWidth="194.0" textAlignment="CENTER">
+      <Label fx:id="aviso" layoutX="8.0" layoutY="131.0" prefHeight="59.0" prefWidth="332.0" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -189,7 +189,7 @@
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="avisoAtualizar" layoutX="81.0" layoutY="282.0" prefHeight="36.0" prefWidth="432.0">
+      <Label fx:id="avisoAtualizar" layoutX="105.0" layoutY="265.0" prefHeight="36.0" prefWidth="432.0">
          <font>
             <Font size="14.0" />
          </font></Label>

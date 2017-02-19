@@ -34,9 +34,9 @@ public class Acessorio extends Produto{
 	private double tamanho;
 	private LocalDate validade;
     
-	public Acessorio(float preco, String nome, String tipo, String codigo, int estoque, String cor ,double tamanho, 
+	public Acessorio(float preco, String nome, String tipo, int estoque, String cor ,double tamanho, 
 			LocalDate validade) {
-		super(preco, nome, tipo, codigo, estoque);
+		super(preco, nome, tipo, estoque);
 		this.cor = cor;
 		this.tamanho = tamanho;
 		this.validade = validade;

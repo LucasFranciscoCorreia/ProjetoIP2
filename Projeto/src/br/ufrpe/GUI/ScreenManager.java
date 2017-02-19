@@ -119,21 +119,21 @@ public class ScreenManager {
 //		              "view/ProdutoAtualizar.fxml"));
 //			this.produtoAtualizar = new Scene(produtoAtualizar);
 //			
-//			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
-//		              "view/ProdutoCadastrar.fxml"));
-//			this.produtoCadastrar = new Scene(produtoCadastrar);
+			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
+		              "view/ProdutoCadastrar.fxml"));
+  		    this.produtoCadastrar = new Scene(produtoCadastrar);
 			
 			produtos = new FXMLLoader(this.getClass().getResource("view/ProdutoListar.fxml"));
 			AnchorPane produtoListar = produtos.load();
 			this.produtoListar = new Scene(produtoListar);
-//			
-//			AnchorPane produtoPesquisar = FXMLLoader.load(getClass().getResource(
-//		              "view/ProdutoPesquisar.fxml"));
-//			this.produtoPesquisar = new Scene(produtoPesquisar);
-//			
-//			AnchorPane produtoRemover = FXMLLoader.load(getClass().getResource(
-//		              "view/ProdutoRemover.fxml"));
-//			this.produtoRemover = new Scene(produtoRemover);
+			
+			AnchorPane produtoPesquisar = FXMLLoader.load(getClass().getResource(
+		              "view/ProdutoPesquisar.fxml"));
+			this.produtoPesquisar = new Scene(produtoPesquisar);
+			
+			AnchorPane produtoRemover = FXMLLoader.load(getClass().getResource(
+		              "view/ProdutoRemover.fxml"));
+			this.produtoRemover = new Scene(produtoRemover);
 			
 			
 			

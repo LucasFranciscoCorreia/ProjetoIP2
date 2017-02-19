@@ -54,7 +54,7 @@ public class FuncionarioController{
 		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
 		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
 		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
-		
+		tableFuncionario.setPlaceholder(new Label("Nenhum registro encontrado."));
 		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
 	}
 	
@@ -246,6 +246,7 @@ public class FuncionarioController{
 		}else{
 			aviso.setText("Informe um CPF válido");
 		}
+		
 	}
 	
 	@FXML
@@ -261,11 +262,17 @@ public class FuncionarioController{
 				funcionarioToString.setText(achada.toString());
 				
 				buttonAtualizar.setVisible(true);
+				
 			} catch (ObjectNaoExisteException e) {
 				aviso.setText(e.getMessage());
-			}	
+			}
+			
 		}else{
 			aviso.setText("Informe um CPF válido!!!");
+		}
+		if(!avisoAtualizar.getText().isEmpty() && !funcionarioToString.getText().isEmpty()){
+			avisoAtualizar.setText("");
+			funcionarioToString.setText("");
 		}
 					
 	}

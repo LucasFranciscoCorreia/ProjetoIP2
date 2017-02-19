@@ -13,7 +13,7 @@ package br.ufrpe.beans;
 
 /**
  * Esta classe representa produtos do tipo remedio, foi nescessario criar uma classe separada para remedio, 
- * pois esse tipo de produto nescessita de informa��es um pouco diferentes dos outros tipos de produto.
+ * pois esse tipo de produto nescessita de informações um pouco diferentes dos outros tipos de produto.
  * 
  * 
  * @see Produto
@@ -35,9 +35,9 @@ public class Remedio extends Produto{
 	 * @param bula
 	 * @param tarja
 	 */
-	public Remedio(float preco, String nome, String tipo, String codigo, int estoque,String bula, String tarja){
+	public Remedio(float preco, String nome, String tipo, int estoque,String bula, String tarja){
 		
-		super(preco,nome,tipo,codigo,estoque);
+		super(preco,nome,tipo,estoque);
 		this.bula = bula;
 		this.tarja = tarja;
 	}

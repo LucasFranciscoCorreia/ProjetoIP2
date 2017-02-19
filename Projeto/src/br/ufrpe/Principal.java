@@ -488,7 +488,7 @@ public class Principal {
 				System.out.println("Informe a quantidade em estoque: ");
 				estoque = getInt(scanner);
 
-				Produto produtoNovo = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
+				Produto produtoNovo = new Remedio(preco, nome, tipo, estoque,"asd","dsa");
 				produtoControlador.atualizar(produtoNovo);
 			}
 		} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
@@ -534,7 +534,7 @@ public class Principal {
 		estoque = getInt(scanner);
 
 
-		produto = new Remedio(preco, nome, tipo, codigo, estoque,"asd","dsa");
+		produto = new Remedio(preco, nome, tipo, estoque,"asd","dsa");
 
 		try {
 			produtoControlador.cadastrar(produto);
