@@ -59,7 +59,7 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onAction="#abrirClienteCadastarCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Cadastrar" textAlignment="CENTER" wrapText="true">
+                  <JFXButton onAction="#abrirClienteMenuCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente " textAlignment="CENTER" wrapText="true">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
@@ -71,23 +71,11 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton onAction="#abrirClienteBuscarCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Pesquisar" textAlignment="CENTER" wrapText="true">
+                  <JFXButton prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Animal" textAlignment="CENTER" wrapText="true">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0">
                            <image>
-                              <Image url="@../../../../../lib/Imgs/busca.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton onAction="#abrirClienteAtualizarCaixa" prefHeight="150.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente Atualizar" textAlignment="CENTER" wrapText="true">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
-                           <image>
-                              <Image url="@../../../../../lib/Imgs/1380118359_new-24.png" />
+                              <Image url="@../../../../../lib/Imgs/animalMenu.png" />
                            </image>
                         </ImageView>
                      </graphic>

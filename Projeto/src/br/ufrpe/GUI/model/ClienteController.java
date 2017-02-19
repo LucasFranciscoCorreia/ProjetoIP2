@@ -103,13 +103,38 @@ public class ClienteController implements Initializable{
 	}
 	
 	@FXML
+	public void abrirClienteCadastrarCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteCadastrarCaixa();
+	}
+	
+	@FXML
+	public void abrirClienteAtualizarCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteAtualizarCaixa();
+	}
+	
+	@FXML
+	public void abrirClientePesquisarCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClientePesquisarCaixa();
+	}
+	
+	@FXML
 	public void voltarMenu(ActionEvent evento){
 		ScreenManager.getInstance().showClienteListar();
 		ClienteController controlador = ScreenManager.getInstance().getClientes().getController();
 		controlador.preencherTabela();
 	}
 	
+	@FXML
+	public void voltarMenuClienteCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteMenuCaixa();
+		ClienteController controlador = ScreenManager.getInstance().getClientesCaixa().getController();
+		controlador.preencherTabela();
+	}
 	
+	@FXML
+	public void menuCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showMenuCaixa();
+	}
 	
 	@FXML
 	public void procuraDono(ActionEvent evt){
