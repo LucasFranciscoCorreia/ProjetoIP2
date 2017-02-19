@@ -177,18 +177,5 @@ public class RepositorioServico implements IRepositorioServico{
 			throw new ObjectNaoExisteException();
 		}
 	}
-	
-	public void atualizarServico(Servico novo, Servico antigo)throws ObjectNaoExisteException{
-		if(novo != null && antigo != null ){
-			for (Servico servicoR : this.ArrayDeServicos) {
-				if(servicoR.equals(antigo)){
-					servicoR = novo;
-				}
-			}
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
-	}
 
 }
