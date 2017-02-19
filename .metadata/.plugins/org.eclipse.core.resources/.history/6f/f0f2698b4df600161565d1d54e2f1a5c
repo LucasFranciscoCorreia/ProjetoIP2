@@ -89,7 +89,7 @@ public class Loja {
 				int quantidadeC = this.carrinho.getArrayDeQuantidade().get(index);
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
-				
+				//TODO caixa
 				//TODO gerar nota fiscal
 			}else{throw new ObjectNaoExisteException();}
 		}

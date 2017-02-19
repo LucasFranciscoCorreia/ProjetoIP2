@@ -11,16 +11,31 @@ public class Servico extends Produto{
 	 * @param nome
 	 * @param preco
 	 */
-	public Servico(String nome, float preco) {
+	public Servico(String nome, double preco) {
 		super( preco,  nome, "Serviço", "código", 0);
-	}	
+	}
+
 	/**
-	 * Método equals
-	 * @param servico
+	 * Getters and Setters
 	 * @return
 	 */
-	public boolean equals(Servico servico){
-		return super.equals(servico);
+	public String getNome() {
+		return nome;
 	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+	
+	
+	
 
 }

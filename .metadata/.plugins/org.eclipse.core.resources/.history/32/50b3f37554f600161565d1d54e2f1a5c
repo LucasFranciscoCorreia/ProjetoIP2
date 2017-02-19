@@ -163,19 +163,13 @@ public class RepositorioServico implements IRepositorioServico{
 		
 	}
 	
-	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException{
-		
-		if (servico != null) {
-			for (Servico servicoR : ArrayDeServicos) {
-				if (servicoR.equals(servico)) {
-					return ArrayDeServicos.indexOf(servicoR);
-				}
+	public int pesquisarServicoNoRepositorio(Servico servico){
+		for (Servico servicoR : ArrayDeServicos) {
+			if(servicoR.equals(servico)){
+				return ArrayDeServicos.indexOf(servicoR);
 			}
-			return -1;
 		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
+		return -1;
 	}
 
 }

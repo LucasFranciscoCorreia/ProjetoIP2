@@ -14,13 +14,5 @@ public class Servico extends Produto{
 	public Servico(String nome, float preco) {
 		super( preco,  nome, "Serviço", "código", 0);
 	}	
-	/**
-	 * Método equals
-	 * @param servico
-	 * @return
-	 */
-	public boolean equals(Servico servico){
-		return super.equals(servico);
-	}
 
 }
