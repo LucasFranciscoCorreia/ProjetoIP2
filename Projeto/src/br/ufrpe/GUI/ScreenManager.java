@@ -13,7 +13,7 @@ public class ScreenManager {
 	private static ScreenManager unicInstanc;
 	private Stage mainStage;
 	
-	private FXMLLoader funcionarios, produtos;
+	private FXMLLoader funcionarios, produtos, clientes;
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
@@ -52,9 +52,9 @@ public class ScreenManager {
 			StackPane clienteCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ClienteCadastrar.fxml"));
 			this.clienteCadastrar = new Scene(clienteCadastrar);
-					
-			AnchorPane clienteListar = FXMLLoader.load(getClass().getResource(
-		              "view/ClienteListar.fxml"));
+				
+			clientes = new FXMLLoader(this.getClass().getResource("view/ClienteListar.fxml"));
+			AnchorPane clienteListar = clientes.load();
 			this.clienteListar = new Scene(clienteListar);
 			
 			AnchorPane clientePesquisar = FXMLLoader.load(getClass().getResource(
@@ -285,5 +285,9 @@ public class ScreenManager {
 	
 	public FXMLLoader getProdutos() {
 		return this.produtos;
+	}
+	
+	public FXMLLoader getClientes(){
+		return this.clientes;
 	}
 }

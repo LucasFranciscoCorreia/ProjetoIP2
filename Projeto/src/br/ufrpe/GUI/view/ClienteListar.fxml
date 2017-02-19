@@ -75,10 +75,10 @@
             </Button>
          </children>
       </VBox>
-      <TableView layoutX="138.0" layoutY="37.0" prefHeight="600.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="clienteTable" layoutX="138.0" layoutY="37.0" prefHeight="600.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="544.0" text="C2" />
+          <TableColumn fx:id="nomeCol" prefWidth="183.0" text="Nome" />
+          <TableColumn fx:id="cpfCol" prefWidth="346.0" text="CPF" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

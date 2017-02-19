@@ -133,6 +133,8 @@ public class FuncionarioController{
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){
 		ScreenManager.getInstance().showFuncionarioListar();
+		FuncionarioController controlador = ScreenManager.getInstance().getFuncionarios().getController();
+		controlador.preencherTabela();
 	}
 	
 	@FXML

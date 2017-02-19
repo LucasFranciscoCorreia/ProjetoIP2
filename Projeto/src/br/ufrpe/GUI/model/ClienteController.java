@@ -4,6 +4,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -12,7 +13,6 @@ import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.Endereco;
-import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Pessoa;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
@@ -20,15 +20,25 @@ import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.ControladorPessoa;
 import br.ufrpe.negocios.FachadaControlador;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ClienteController implements Initializable{
 
+	@FXML
+	private TableView<Cliente> clienteTable;
+	@FXML
+	private TableColumn<Cliente, String> nomeCol;
+	@FXML
+	private TableColumn<Cliente, String> cpfCol;
 	@FXML
 	private JFXButton okButton, buttonAddCliente, buttonRemoverCliente, buttonListarCliente, buttonPesquisarCliente, buttonAtualizarCliente, buttonCancelar;
 	@FXML
@@ -41,9 +51,16 @@ public class ClienteController implements Initializable{
 	private TextField nome, cpf, aniversario, cep, rua, numero, complemento, cidadeUF, buscaRemover, salario, cargo, cpfDono;
 	@FXML
 	private TextField raça, nomePet, peso, altura, especie;
-
-	private static Funcionario logado;
+	
 	private static Pessoa donoPet;
+	
+	public void preencherTabela() {
+		ArrayList<Cliente> clienteLista = FachadaControlador.getInstance().listarCLiente();
+		
+		nomeCol.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+		cpfCol.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
+		clienteTable.setItems(FXCollections.observableArrayList(clienteLista));	
+	}
 	
 	
 	@SuppressWarnings("finally")
@@ -87,7 +104,9 @@ public class ClienteController implements Initializable{
 	
 	@FXML
 	public void voltarMenu(ActionEvent evento){
-		ScreenManager.getInstance().showFuncionarioListar();
+		ScreenManager.getInstance().showClienteListar();
+		ClienteController controlador = ScreenManager.getInstance().getClientes().getController();
+		controlador.preencherTabela();
 	}
 	
 	
