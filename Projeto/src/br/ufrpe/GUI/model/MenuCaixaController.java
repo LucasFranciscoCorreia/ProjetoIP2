@@ -84,21 +84,13 @@ public class MenuCaixaController {
 	}
 	
 	@FXML
-	public void abrirClienteCadastarCaixa(ActionEvent evt){
-		ScreenManager.getInstance().showClienteCadastrarCaixa();
+	public void abrirClienteMenuCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteMenuCaixa();
+		ClienteController controlador = ScreenManager.getInstance().getClientesCaixa().getController();
+		controlador.preencherTabela();
 	}
 	
-	@FXML
-	public void abrirClienteAtualizarCaixa(ActionEvent evt){
-		ScreenManager.getInstance().showClienteAtualizarCaixa();
-	}
-	
-	@FXML
-	public void abrirClienteBuscarCaixa(ActionEvent evt){
-		ScreenManager.getInstance().showClientePesquisarCaixa();
-	}
-	
-	@FXML
+	/*@FXML
 	public void cadastrarClienteCaixa(ActionEvent evt) throws ObjectNaoExisteException{
 		if(rua.getText().isEmpty() || numero.getText().isEmpty() || cep.getText().isEmpty()
 				|| cidadeUF.getText().isEmpty() || cpf.getText().isEmpty()
@@ -246,5 +238,5 @@ public class MenuCaixaController {
 		}else{
 			avisoAtualizar.setText("Informe um CPF válido!!");
 		}
-	}
+	}*/
 }

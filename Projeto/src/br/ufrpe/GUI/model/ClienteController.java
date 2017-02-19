@@ -43,9 +43,9 @@ public class ClienteController implements Initializable{
 	@FXML
 	private JFXButton okButton, buttonAddCliente, buttonRemoverCliente, buttonListarCliente, buttonPesquisarCliente, buttonAtualizarCliente, buttonCancelar;
 	@FXML
-	private Label aviso, avisoCadastro, clienteEncontrado, clienteDeletado, avisoRemover, avisoAtualizar, syso, erroPesquisa;
+	private Label aviso, avisoCadastro, clienteEncontrado, avisoClienteAtualizar, clienteDeletado, avisoRemover, avisoAtualizar, syso, erroPesquisa;
 	@FXML
-	private Label avisoAddPetCliente, infDonoPet, avisoClienteAtualizar, avisoDelecao; 
+	private Label avisoAddPetCliente, infDonoPet; 
 	@FXML
 	private Button buttonCliente, buttonCadastrarCliente, buttonCancelarCadastroCliente, buttonCadastrarNovoCliente, buttonProcurar, buttonDeletar, btnPesquisar, salvarPet, salvarEnd	;
 	@FXML	
@@ -123,24 +123,51 @@ public class ClienteController implements Initializable{
 	public void abrirClienteAtualizar(ActionEvent evt){
 		ScreenManager.getInstance().showClienteAtualizar();
 	}
-
+	
 	@FXML
 	public void abrirClientePesquisar(ActionEvent evt){
 		ScreenManager.getInstance().showClientePesquisar();
 	}
-
+	
 	@FXML
 	public void abrirClienteRemover(ActionEvent evt){
 		ScreenManager.getInstance().showClienteRemover();
 	}
 
 	@FXML
+	public void abrirClienteCadastrarCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteCadastrarCaixa();
+	}
+	
+	@FXML
+	public void abrirClienteAtualizarCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteAtualizarCaixa();
+	}
+	
+	@FXML
+	public void abrirClientePesquisarCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClientePesquisarCaixa();
+	}
+	
+	@FXML
 	public void voltarMenu(ActionEvent evento){
 		ScreenManager.getInstance().showClienteListar();
 		ClienteController controlador = ScreenManager.getInstance().getClientes().getController();
 		controlador.preencherTabela();
 	}
-
+	
+	@FXML
+	public void voltarMenuClienteCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showClienteMenuCaixa();
+		ClienteController controlador = ScreenManager.getInstance().getClientesCaixa().getController();
+		controlador.preencherTabela();
+	}
+	
+	@FXML
+	public void menuCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showMenuCaixa();
+	}
+	
 	@FXML
 	public void procuraDono(ActionEvent evt){
 		if(cpfDono.getText().isEmpty()){
@@ -193,7 +220,7 @@ public class ClienteController implements Initializable{
 			}
 		}
 	}
-
+	
 	@FXML
 	public void adicionarPet(ActionEvent evt){
 		if(raca.getText().isEmpty() || peso.getText().isEmpty() || altura.getText().isEmpty() || especie.getText().isEmpty() || nomePet.getText().isEmpty()){
@@ -235,9 +262,8 @@ public class ClienteController implements Initializable{
 				avisoAddPetCliente.setText(e.getMessage());
 			}
 		}
-
 	}
-
+	
 	@FXML
 	public void alterarEndereco(ActionEvent evt){
 		if(rua.getText().isEmpty() || complemento.getText().isEmpty() || numero.getText().isEmpty() || cep.getText().isEmpty() || cidadeUF.getText().isEmpty()){
@@ -302,10 +328,12 @@ public class ClienteController implements Initializable{
 		}
 	}
 
+		
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

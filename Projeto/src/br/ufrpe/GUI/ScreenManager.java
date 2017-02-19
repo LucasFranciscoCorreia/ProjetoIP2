@@ -13,11 +13,11 @@ public class ScreenManager {
 	private static ScreenManager unicInstanc;
 	private Stage mainStage;
 	
-	private FXMLLoader funcionarios, produtos, clientes;
+	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa;
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, errorMessage, telaCaixa;
+	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa;
 	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
@@ -65,6 +65,9 @@ public class ScreenManager {
 		              "view/ClienteRemover.fxml"));
 			this.clienteRemover = new Scene(clienteRemover);
 			
+			clientesCaixa = new FXMLLoader(this.getClass().getResource("view/ClienteMenuCaixa.fxml"));
+			AnchorPane clienteMenuCaixa = clientesCaixa.load();
+			this.clienteMenuCaixa = new Scene(clienteMenuCaixa);	
 			
 			
 			// FUNCIONARIO TELAS:
@@ -195,6 +198,10 @@ public class ScreenManager {
 		this.mainStage.setScene(this.clienteListar);
 	}
 	
+	public void showClienteMenuCaixa(){
+		this.mainStage.setScene(this.clienteMenuCaixa);
+	}
+	
 	// CHAMADA DA TELA DE ERRO:
 	public void showErrorMessage(){
 		this.mainStage.setScene(this.errorMessage);
@@ -289,5 +296,9 @@ public class ScreenManager {
 	
 	public FXMLLoader getClientes(){
 		return this.clientes;
+	}
+	
+	public FXMLLoader getClientesCaixa(){
+		return this.clientesCaixa;
 	}
 }
