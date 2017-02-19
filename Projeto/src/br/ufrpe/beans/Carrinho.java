@@ -11,13 +11,10 @@ import java.util.ArrayList;
  * @author srtacamelo
  */
 public class Carrinho {
-	// TODO  Dúvidas: Um array de produto e outro pra quantidade?
-	//Carrinho pode ser protected (construtor)?
-	//Precisa de Get e set pro carrinho? se ja tem adicionar e remover
 	
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;
-	private LocalDateTime dataCompra;
+	
 	/**
 	 * Construtor de Carrinho, apenas inicializa os dois ArrayLists
 	 * caso não haja um carrinho inicializado.
@@ -30,7 +27,7 @@ public class Carrinho {
 		
 		this.arrayDeProdutos = new ArrayList<Produto>();
 		this.arrayDeQuantidade = new ArrayList<Integer>();
-		this.dataCompra = LocalDateTime.now();
+		
 	}
 	/**
 	 * Getters and Setters
