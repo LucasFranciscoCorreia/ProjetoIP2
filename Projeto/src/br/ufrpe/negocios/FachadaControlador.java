@@ -190,5 +190,16 @@ public class FachadaControlador {
 		return controladorServico.listarServico();
 	}
 	
+	public void cadastrarServico(Servico novo)throws ObjectJaExisteException,ObjectNaoExisteException{
+		controladorServico.cadastrarServico(novo);
+	}
+	
+	public Servico buscarServico(String nome)throws ObjectNaoExisteException{
+		return controladorServico.buscarServico(nome);
+	}
+	
+	public void removerServicoNome(String nome)throws ObjectNaoExisteException{
+		controladorServico.removerServicoNome(nome);
+	}
 
 }

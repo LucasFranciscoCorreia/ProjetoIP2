@@ -88,95 +88,57 @@ public class RepositorioServico implements IRepositorioServico{
 		}
 	}
 	
-	public void addAoRepositorio(Servico servico) throws ObjectNaoExisteException, ObjectJaExisteException{
-		
-		if(servico != null){
+	public void addAoRepositorio(Servico servico) throws ObjectJaExisteException{
 			
-			for (Servico servicoA : ArrayDeServicos) {
-				if(servicoA.equals(servico)){
-					throw new ObjectJaExisteException();
-				}
-				else{
-					servico.setCodigo(gerarCodigo());
-					this.ArrayDeServicos.add(servico);
-				}
+		for (Servico servicoA : ArrayDeServicos) {
+			if(servicoA.equals(servico)){
+				throw new ObjectJaExisteException();
+			}
+			else{
+				servico.setCodigo(gerarCodigo());
+				this.ArrayDeServicos.add(servico);
 			}
 		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
+		
 	}
 	
-	public void removeDoRepositorio(Servico servico)throws ObjectNaoExisteException{
+	public void removerDoRepositorio(String nome) throws ObjectNaoExisteException{
+		boolean achado = false;
 		
-		if(servico != null){
-			
-			for (Servico servicoA : ArrayDeServicos) {
-				
-				if(servicoA.equals(servico)){
-					this.ArrayDeServicos.remove(servicoA);
-				}
-			}
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
-	}
-	
-	public void removerDoRepositorioNome(String nome){
-		
-		if(nome != null){
-			
+		if(nome != null){	
 			for (Servico servico : ArrayDeServicos) {
 				if(servico.equals(servico.getNome())){
 					this.ArrayDeServicos.remove(servico);
+					achado = true;
 				}
 			}
 		}
+		
+		if(!achado){
+			throw new ObjectNaoExisteException();
+		}
 	}
 	
-	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException{
+	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException{
+		boolean achado = true;
 		
-		if(nome != null){
-			
+		if(nome != null){	
 			for (Servico servico : ArrayDeServicos) {
 				
 				if(nome.equals(servico.getNome())){
 					return servico;
 				}
 			}
-			return null;
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
-	}
-    
-	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException{
-	
-		if(nome != null){
-			Servico servico = pesquisarNomeNoRepositorioS(nome);
-			return this.ArrayDeServicos.indexOf(servico);
-		}
-		else{
-			throw new ObjectNaoExisteException();
+			achado = false;
+		}else{
+			achado = false;
 		}
 		
-	}
-	
-	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException{ 
-		
-		if (servico != null) {
-			for (Servico servicoR : ArrayDeServicos) {
-				if (servicoR.equals(servico)) {
-					return ArrayDeServicos.indexOf(servicoR);
-				}
-			}
-			return -1;
-		}
-		else{
+		if(!achado){
 			throw new ObjectNaoExisteException();
 		}
+
+		return null;
 	}
     
 	private String gerarCodigo(){

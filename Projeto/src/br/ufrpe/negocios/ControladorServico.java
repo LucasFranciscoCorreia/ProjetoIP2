@@ -15,23 +15,15 @@ public class ControladorServico implements IControladorServico{
 		this.repositorioServico = instance;
 	}
 	
-	public void cadastrarServico(Servico novo)throws ObjectJaExisteException,ObjectNaoExisteException{
+	public void cadastrarServico(Servico novo)throws ObjectJaExisteException{
 		repositorioServico.addAoRepositorio(novo);
 	}
-	public void removerServico(Servico servico)throws ObjectNaoExisteException{
-		repositorioServico.removeDoRepositorio(servico);
-	}
+	
 	public void removerServicoNome(String nome)throws ObjectNaoExisteException{
-		repositorioServico.removerDoRepositorioNome(nome);
+		repositorioServico.removerDoRepositorio(nome);
 	}
 	public Servico buscarServico(String nome)throws ObjectNaoExisteException{
-		return repositorioServico.pesquisarNomeNoRepositorioS(nome);
-	}
-	public int buscarNome(String nome)throws ObjectNaoExisteException{
-		return repositorioServico.pesquisarNomeNoRepositorioI(nome);
-	}
-	public int buscarServico(Servico servico) throws ObjectNaoExisteException{
-		return repositorioServico.pesquisarServicoNoRepositorio(servico);
+		return repositorioServico.pesquisarNoRepositorio(nome);
 	}
 
 	public void salvarNoArquivo(){
