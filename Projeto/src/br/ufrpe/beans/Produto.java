@@ -100,7 +100,7 @@ public abstract class Produto implements Serializable{
 		if(tipo == "Serviço"){
 			prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s", nome,preco,codigo);
 		}
-		prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
+		prod = String.format("Codigo: %s\nNome: %s \nPreço: %.2f\nTipo: %s\nEstoque: %d",codigo, nome,preco,tipo,estoque);
 		return prod;  
 	}
 

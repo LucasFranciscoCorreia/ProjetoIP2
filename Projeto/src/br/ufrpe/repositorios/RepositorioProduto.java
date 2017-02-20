@@ -159,7 +159,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 				}
 			}
 				
-			novo.setCodigo(gerarCodigo());
+			
 		
 			if(!ok){
 				throw new ObjectJaExisteException();
@@ -226,16 +226,29 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	
 	public String gerarCodigo(){
 		int ger = 1;
-		String codigo = null;
-		for(int i = 0; i< this.Size(); i++){
-			if(Integer.toString(ger) == this.repositorio.get(i).getCodigo()){
-				ger++;
-			}else{
-				codigo = "" + ger;
+		String ok = null;
+		if(!(this.Size() <= 0)){
+			for(int i = 0 ; i<= this.Size()-1; i++){
+				String codigo = "" + ger;
+				
+				if(codigo.equalsIgnoreCase(repositorio.get(i).getCodigo())){
+					ger++;
+					codigo = null;
+				}
+				else{
+					ok = "" + ger;
+				}
+				if (ger>this.Size()){
+					ok = "" + ger;
+				}
 			}
 		}
+		else{
+			ok = "" + ger;
+		}
 		
-		return codigo;
+		
+		return ok;
 	}
 	
 }
