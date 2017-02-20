@@ -53,38 +53,6 @@ public class NotaFiscal {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		NotaFiscal other = (NotaFiscal) obj;
-		if (carrinho == null) {
-			if (other.carrinho != null)
-				return false;
-		} else if (!carrinho.equals(other.carrinho))
-			return false;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
-		if (funcionario == null) {
-			if (other.funcionario != null)
-				return false;
-		} else if (!funcionario.equals(other.funcionario))
-			return false;
-		if (horaDaCompra == null) {
-			if (other.horaDaCompra != null)
-				return false;
-		} else if (!horaDaCompra.equals(other.horaDaCompra))
-			return false;
-		return true;
-	}
 	@Override
 	public String toString() {
 		return "NotaFiscal [funcionario=" + funcionario + ", cliente=" + cliente + ", carrinho=" + carrinho

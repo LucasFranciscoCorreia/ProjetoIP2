@@ -1,0 +1,10 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.repositorios.IRepositorioNotaFiscal;
+
+public class ControladorNotaFiscal {
+
+	private IRepositorioNotaFiscal repositorioNotaFiscal;
+	
+	public ControladorNotaFiscal()
+}

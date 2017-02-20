@@ -12,7 +12,7 @@ import br.ufrpe.beans.NotaFiscal;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 
-public class RepositorioNotaFiscal implements IRepositorioNotaFiscal{
+public class RepositorioNotaFiscal {
 
 	private ArrayList<NotaFiscal> arrayDeNotaFiscal;
 	private RepositorioNotaFiscal repositorioNotaFiscal;
