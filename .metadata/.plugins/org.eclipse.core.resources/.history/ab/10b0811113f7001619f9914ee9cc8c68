@@ -25,27 +25,12 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 	
 	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException{
 		if(novo != null){
-			
-			for (PetCare petCare : this.arrayListPetCare) {
-				if (this.arrayListPetCare.equals(novo)) {
-					throw new ObjectJaExisteException();
-				}
-			}
-			this.arrayListPetCare.add(novo);	
-		}
-		else{
-			throw new ObjectNaoExisteException();
+			this.arrayListPetCare.add(novo);
 		}
 	}
 	
-	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
-		
-		if (petcare != null) {
-			this.arrayListPetCare.remove(petcare);
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
+	public void removerPetCare(PetCare petcare){
+		this.arrayListPetCare.remove(petcare);
 	}
 	
 	private static RepositorioPetCare lerDoArquivo(){

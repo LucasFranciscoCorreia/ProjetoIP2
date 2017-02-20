@@ -13,11 +13,4 @@ public class ControladorPetCare {
 	public void adicionarPetCare(PetCare petcare){
 		this.repositorioPetCare.adicionarPetCare(petcare);
 	}
-	
-	public void removerPetCare(PetCare petcare){
-		this.removerPetCare(petcare);
-	}
-	public void salvarNoArquivo(){
-		this.repositorioPetCare.salvarNoArquivo();
-	}
 }

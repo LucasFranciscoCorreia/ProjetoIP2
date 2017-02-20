@@ -17,7 +17,5 @@ public class ControladorPetCare {
 	public void removerPetCare(PetCare petcare){
 		this.removerPetCare(petcare);
 	}
-	public void salvarNoArquivo(){
-		this.repositorioPetCare.salvarNoArquivo();
-	}
+	
 }

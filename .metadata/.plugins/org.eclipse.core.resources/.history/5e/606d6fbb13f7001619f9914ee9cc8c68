@@ -38,13 +38,10 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 		}
 	}
 	
-	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
+	public void removerPetCare(PetCare petcare){
 		
 		if (petcare != null) {
 			this.arrayListPetCare.remove(petcare);
-		}
-		else{
-			throw new ObjectNaoExisteException();
 		}
 	}
 	
