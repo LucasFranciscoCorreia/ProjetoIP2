@@ -10,6 +10,7 @@ import br.ufrpe.negocios.FachadaControlador;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,9 +27,12 @@ public class MenuServicosController {
 	@FXML
 	private TableColumn<Servico, Float> precoCol;
 	@FXML
-	private TextField nome, preco;
+	private TextField nome, preco, codigo;
 	@FXML
-	private Label aviso;
+	private Label aviso, servicoToString;
+	@FXML
+	private Button buttonRemover;
+	
 	
 	public void preencherTabela(){
 		ArrayList<Servico> servicoListar = FachadaControlador.getInstance().listarServico();
@@ -49,10 +53,49 @@ public class MenuServicosController {
 			
 			try {
 				FachadaControlador.getInstance().cadastrarServico(servico);
+				aviso.setText("Serviço adiciona com sucesso!!!");
 			} catch (ObjectJaExisteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				aviso.setText(e.getMessage());
 			}
+		}
+		
+		nome.setText("");
+		preco.setText("");
+	}
+	
+	@FXML
+	public void pesquisarServico(ActionEvent evt){
+//		if(!servicoToString.getText().isEmpty()){
+//			servicoToString.setText("");
+//		}
+		
+		if(codigo.getText().isEmpty()){
+			servicoToString.setText("INFORME UM CÓDIGO VÁLIDO!!!");
+		}else{
+			try {
+				Servico achado = null;
+				achado = FachadaControlador.getInstance().buscarServico(codigo.getText());
+				servicoToString.setText(achado.toString());
+				buttonRemover.setVisible(true);
+			} catch (ObjectNaoExisteException e) {
+				servicoToString.setText(e.getMessage());
+			}
+		}
+		
+		codigo.setText("");
+	}
+	
+	@FXML
+	public void removerServico(ActionEvent evt){
+		if(!aviso.getText().isEmpty()){
+			aviso.setText("");
+		}
+		
+		try {
+			FachadaControlador.getInstance().removerServicoNome(codigo.getText());
+			aviso.setText("SERVICO REMOVIDO COM SUCESSO!!!");
+		} catch (ObjectNaoExisteException e) {
+			aviso.setText(e.getMessage());
 		}
 	}
 	
@@ -74,6 +117,8 @@ public class MenuServicosController {
 	@FXML
 	public void voltarMenuServicos(ActionEvent evt){
 		ScreenManager.getInstance().showMenuServicos();
+		MenuServicosController controlador = ScreenManager.getInstance().getMenuServicos().getController();
+		controlador.preencherTabela();
 	}
 	
 	@FXML

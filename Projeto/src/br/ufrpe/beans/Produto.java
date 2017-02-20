@@ -96,7 +96,11 @@ public abstract class Produto implements Serializable{
 		this.estoque = estoque;
 	}	
 	public String toString(){
-		String prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
+		String prod;
+		if(tipo == "Serviço"){
+			prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s", nome,preco,codigo);
+		}
+		prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
 		return prod;  
 	}
 

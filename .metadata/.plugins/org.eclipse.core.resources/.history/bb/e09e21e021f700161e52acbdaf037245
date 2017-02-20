@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa {
 
 	private ArrayList<Animal> pets;
+	private int qntPets;
 	
 	
 	/**
@@ -41,6 +42,7 @@ public class Cliente extends Pessoa {
 	public Cliente(String cpf, LocalDate nascimento, String nome, Endereco end) {
 
 		super(cpf, nascimento,nome,end);
+		this.qntPets = 0;
 	}
 	
 	public Cliente(String cpf){
@@ -48,20 +50,16 @@ public class Cliente extends Pessoa {
 	}
 	
 	/**
-	 * Adiciona um pet ao arraylist de animals
-	 * @param novo
-	 */
+	* Cadastra um pet em uma quantidade indefinida que um cliente pode possuir
+	* 
+	* @param pets		Todos os pets cadastrados pelo usuario
+	* @param qntPets	Quantidade de pets cadastrados pelo usuario
+	* 
+	* @see Animal
+	*/
 	public void addPet(Animal novo){
-		this.pets.add(novo);
+		
 	}
-	/**
-	 * Remove o pet do ArrayList de animais.
-	 * @param antigo
-	 */
-	public void removePet(Animal antigo){
-		this.pets.remove(antigo);
-	}
-	
 	/**
 	 * Retorna os pets cadastrados pelo usuario
 	 * 
@@ -69,14 +67,9 @@ public class Cliente extends Pessoa {
 	 * 
 	 * @see Animal
 	 */
-	
-	public ArrayList<Animal> getPets(){
-		return this.pets;
-	}
-	/*public Animal[] getPets() {
+	public Animal[] getPets() {
 		return pets;
-	}*/
-	
+	}
 	/**
 	 * Aumenta a capacidade de pets para armazenamento por cliente
 	 * 

@@ -22,5 +22,4 @@ public class Servico extends Produto{
 	public boolean equals(Servico servico){
 		return super.equals(servico);
 	}
-
 }

@@ -48,20 +48,16 @@ public class Cliente extends Pessoa {
 	}
 	
 	/**
-	 * Adiciona um pet ao arraylist de animals
-	 * @param novo
-	 */
+	* Cadastra um pet em uma quantidade indefinida que um cliente pode possuir
+	* 
+	* @param pets		Todos os pets cadastrados pelo usuario
+	* @param qntPets	Quantidade de pets cadastrados pelo usuario
+	* 
+	* @see Animal
+	*/
 	public void addPet(Animal novo){
 		this.pets.add(novo);
 	}
-	/**
-	 * Remove o pet do ArrayList de animais.
-	 * @param antigo
-	 */
-	public void removePet(Animal antigo){
-		this.pets.remove(antigo);
-	}
-	
 	/**
 	 * Retorna os pets cadastrados pelo usuario
 	 * 
@@ -70,9 +66,6 @@ public class Cliente extends Pessoa {
 	 * @see Animal
 	 */
 	
-	public ArrayList<Animal> getPets(){
-		return this.pets;
-	}
 	/*public Animal[] getPets() {
 		return pets;
 	}*/

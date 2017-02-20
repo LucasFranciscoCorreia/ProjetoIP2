@@ -45,7 +45,6 @@ public class FuncionarioController{
 	private TableColumn<Funcionario, Double> salarioTab;
 	@FXML
 	private TableColumn<Funcionario, String> cargoTab;
-	boolean confirmar = false;
 	
 	public void preencherTabela() {
 		ArrayList<Funcionario> funcionarioLista = FachadaControlador.getInstance().listarFuncionario();

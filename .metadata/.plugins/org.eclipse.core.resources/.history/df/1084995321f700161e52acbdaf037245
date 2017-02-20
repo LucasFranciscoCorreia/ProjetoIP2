@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa {
 
 	private ArrayList<Animal> pets;
+	private int qntPets;
 	
 	
 	/**
@@ -41,6 +42,8 @@ public class Cliente extends Pessoa {
 	public Cliente(String cpf, LocalDate nascimento, String nome, Endereco end) {
 
 		super(cpf, nascimento,nome,end);
+		this.pets = new Animal[1];
+		this.qntPets = 0;
 	}
 	
 	public Cliente(String cpf){
@@ -48,20 +51,20 @@ public class Cliente extends Pessoa {
 	}
 	
 	/**
-	 * Adiciona um pet ao arraylist de animals
-	 * @param novo
-	 */
+	* Cadastra um pet em uma quantidade indefinida que um cliente pode possuir
+	* 
+	* @param pets		Todos os pets cadastrados pelo usuario
+	* @param qntPets	Quantidade de pets cadastrados pelo usuario
+	* 
+	* @see Animal
+	*/
 	public void addPet(Animal novo){
-		this.pets.add(novo);
+		pets[qntPets] = novo;
+		qntPets++;
+		if (qntPets == pets.length) {
+			duplicarArray();
+		}
 	}
-	/**
-	 * Remove o pet do ArrayList de animais.
-	 * @param antigo
-	 */
-	public void removePet(Animal antigo){
-		this.pets.remove(antigo);
-	}
-	
 	/**
 	 * Retorna os pets cadastrados pelo usuario
 	 * 
@@ -69,28 +72,21 @@ public class Cliente extends Pessoa {
 	 * 
 	 * @see Animal
 	 */
-	
-	public ArrayList<Animal> getPets(){
-		return this.pets;
-	}
-	/*public Animal[] getPets() {
+	public Animal[] getPets() {
 		return pets;
-	}*/
-	
+	}
 	/**
 	 * Aumenta a capacidade de pets para armazenamento por cliente
 	 * 
 	 * @param pets		novo pets
 	 */
-	
-	/*private void duplicarArray() {
+	private void duplicarArray() {
 		Animal[] novo = new Animal[pets.length*2];
 		for (int i = 0; i < pets.length; i++) {
 			novo[i] = pets[i];
 		}
 		this.pets = novo;
-	}*/
-	
+	}
 	/**
 	 * Informa todos os dados do cliente
 	 * 
@@ -104,7 +100,9 @@ public class Cliente extends Pessoa {
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario(), this.getEnd());
 		res += "\nAnimais: \n";
-		
+		for(int i = 0; i < qntPets;i++){
+			res+= pets[i];
+		}
 		return res;
 	}
 }

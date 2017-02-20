@@ -108,7 +108,7 @@ public class RepositorioServico implements IRepositorioServico{
 		
 		if(nome != null){	
 			for (Servico servico : ArrayDeServicos) {
-				if(servico.equals(servico.getNome())){
+				if(servico.equals(servico.getCodigo())){
 					this.ArrayDeServicos.remove(servico);
 					achado = true;
 				}
@@ -129,13 +129,13 @@ public class RepositorioServico implements IRepositorioServico{
 			throw new ErroAoAtualizarException();
 		}
 	}
-	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException{
+	public Servico pesquisarNoRepositorio(String codigo) throws ObjectNaoExisteException{
 		boolean achado = true;
 		
-		if(nome != null){	
+		if(codigo != null){	
 			for (Servico servico : ArrayDeServicos) {
 				
-				if(nome.equals(servico.getNome())){
+				if(codigo.equals(servico.getCodigo())){
 					return servico;
 				}
 			}

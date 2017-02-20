@@ -54,13 +54,6 @@ public class Cliente extends Pessoa {
 	public void addPet(Animal novo){
 		this.pets.add(novo);
 	}
-	/**
-	 * Remove o pet do ArrayList de animais.
-	 * @param antigo
-	 */
-	public void removePet(Animal antigo){
-		this.pets.remove(antigo);
-	}
 	
 	/**
 	 * Retorna os pets cadastrados pelo usuario
@@ -70,9 +63,6 @@ public class Cliente extends Pessoa {
 	 * @see Animal
 	 */
 	
-	public ArrayList<Animal> getPets(){
-		return this.pets;
-	}
 	/*public Animal[] getPets() {
 		return pets;
 	}*/
