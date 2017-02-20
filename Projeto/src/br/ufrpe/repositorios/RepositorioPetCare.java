@@ -6,12 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import br.ufrpe.beans.*;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 
-public class RepositorioPetCare implements IRepositorioPetCare {
+public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 
 	private ArrayList<PetCare> arrayListPetCare;
 	private RepositorioPetCare repositorioPetCare;
@@ -102,15 +103,15 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 	
 	public ArrayList<PetCare> listarServicoEmAndamento(){
 			
-			ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
-			
-			for (PetCare petCare : arrayListPetCare) {
-				if(petCare.getDataFim() == null){
-					arrayEmAndamento.add(petCare);
-				}
+		ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
+		
+		for (PetCare petCare : arrayListPetCare) {
+			if(petCare.getDataFim() == null){
+				arrayEmAndamento.add(petCare);
 			}
-			return arrayEmAndamento;
 		}
+		return arrayEmAndamento;
+	}
 	
 	public ArrayList<PetCare> listarServicoConcluido(){
 		

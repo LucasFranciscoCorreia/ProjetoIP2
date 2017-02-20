@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Servico;
@@ -18,7 +19,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
  * @author srtacamelo
  *
  */
-public class RepositorioServico implements IRepositorioServico{
+public class RepositorioServico implements IRepositorioServico, Serializable{
 	
 	private ArrayList<Servico> ArrayDeServicos;
 	private static IRepositorioServico unicInstance;
