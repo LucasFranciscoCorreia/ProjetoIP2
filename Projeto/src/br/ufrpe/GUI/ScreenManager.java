@@ -79,7 +79,8 @@ public class ScreenManager {
 		              "view/FuncionarioCadastrar.fxml"));
 			this.funcionarioCadastrar = new Scene(funcionarioCadastar);
 			
-			funcionarios = new FXMLLoader(this.getClass().getResource("view/FuncionarioListar.fxml"));
+			funcionarios = new FXMLLoader(this.getClass().getResource(
+					"view/FuncionarioListar.fxml"));
 			AnchorPane funcionarioListar = funcionarios.load();
 			this.funcionarioListar = new Scene(funcionarioListar);
 			
@@ -111,11 +112,13 @@ public class ScreenManager {
 		              "view/MenuCaixa.fxml"));
 			this.menuCaixa = new Scene(menuCaixa);
 			
-			menuServicos = new FXMLLoader(this.getClass().getResource("view/MenuServicos.fxml"));
+			menuServicos = new FXMLLoader(this.getClass().getResource(
+					"view/MenuServicos.fxml"));
 			AnchorPane menuServico = menuServicos.load();
 			this.menuServico = new Scene(menuServico);
 			
-			servicos = new FXMLLoader(this.getClass().getResource("view/PetCareMenu.fxml"));
+			servicos = new FXMLLoader(this.getClass().getResource(
+					"view/PetCareMenu.fxml"));
 			AnchorPane petCareMenu = servicos.load();
 			this.petCareMenu = new Scene(petCareMenu);
 			

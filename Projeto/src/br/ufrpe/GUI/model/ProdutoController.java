@@ -136,16 +136,16 @@ public class ProdutoController{
 	@FXML
 	public void buttonProdutoRemover(ActionEvent event) {
 		
-			try {
-				
-				FachadaControlador.getInstance().remover(codigoProduto.getText());
-				FachadaControlador.getInstance().salvarNoArquivoProduto();
-				
-				avisoRemover.setText("Produto removido do sistema!!!");
-				buttonRemover.setVisible(false);
-			} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
-				avisoRemover.setText(e.getMessage());
-			}			
+		try {
+			
+			FachadaControlador.getInstance().remover(codigoProduto.getText());
+			FachadaControlador.getInstance().salvarNoArquivoProduto();
+			
+			avisoRemover.setText("Produto removido do sistema!!!");
+			buttonRemover.setVisible(false);
+		} catch (ObjectNaoExisteException | ErroAoRemoverException e) {
+			avisoRemover.setText(e.getMessage());
+		}			
 		
 
 		if(!codigoProduto.getText().isEmpty()){
@@ -184,22 +184,22 @@ public class ProdutoController{
 				avisoCadastroAnimal.setText("Alguns campos devem ser escritos em numeros");
 			}
 				
-				try {
-
-					
-						Produto novoProduto = new Animal(preçoOk, nomeAnimal.getText(), 
-						"", estoqueOk, true, especieAnimal.getText(), racaAnimal.getText(),
-						pesoOk, tamanhoOk);	
-						int i=1;
-						novoProduto.setCodigo("" + i);
-						FachadaControlador.getInstance().cadastrar((Produto)novoProduto);
-						FachadaControlador.getInstance().salvarNoArquivoProduto();
-								
-					avisoCadastroAnimal.setText("Produto cadastrado com sucesso!!");
-				 
-				} catch (ErroAoSalvarException | ObjectJaExisteException f) {
-					avisoCadastroAnimal.setText(f.getMessage());
-				} 
+			try {
+	
+				
+					Produto novoProduto = new Animal(preçoOk, nomeAnimal.getText(), 
+					"", estoqueOk, true, especieAnimal.getText(), racaAnimal.getText(),
+					pesoOk, tamanhoOk);	
+					int i=1;
+					novoProduto.setCodigo("" + i);
+					FachadaControlador.getInstance().cadastrar((Produto)novoProduto);
+					FachadaControlador.getInstance().salvarNoArquivoProduto();
+							
+				avisoCadastroAnimal.setText("Produto cadastrado com sucesso!!");
+			 
+			} catch (ErroAoSalvarException | ObjectJaExisteException f) {
+				avisoCadastroAnimal.setText(f.getMessage());
+			} 
 		}
 	
 
@@ -222,15 +222,8 @@ public class ProdutoController{
 	
 	}
 		
-		
-		
-		
-	
-	
 	@FXML
 	public void buttonCadastrarProdutoRemedio(ActionEvent event) throws ObjectNaoExisteException{
-		
-		
 		
 		
 	}
@@ -238,29 +231,6 @@ public class ProdutoController{
 	@FXML
 	public void buttonCadastrarProdutoAcessorio(ActionEvent event) throws ObjectNaoExisteException{
 		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
