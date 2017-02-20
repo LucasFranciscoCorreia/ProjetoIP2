@@ -21,5 +21,8 @@ public interface IRepositorioServico {
 	public void removerDoRepositorioNome(String nome);
 	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException;
 	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException;
+	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException;
+	public void salvarNoArquivo();
+	public ArrayList<Servico> listarServico();
 	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException;	
 }

@@ -1,14 +1,16 @@
 package br.ufrpe.GUI.model;
-import java.net.URL;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 public class AnimalController {
 
 	/**
 	 * Tela animal Cadastrar
 	 */
+	
 	@FXML
 	private TextField  animalNome, animalTamanho, animalPeso, animalEspecie, animalRaca;
-	@FXML
+
 	
 	
 }

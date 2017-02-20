@@ -28,7 +28,7 @@ public class RepositorioServico implements IRepositorioServico{
 		this.ArrayDeServicos = new ArrayList<>();
 	}
 	
-	public IRepositorioServico getInstance(){
+	public static IRepositorioServico getInstance(){
 		if(unicInstance == null){
 			unicInstance = lerDoArquivo();
 		}
@@ -181,5 +181,9 @@ public class RepositorioServico implements IRepositorioServico{
     
 	private String gerarCodigo(){
 		return String.valueOf(this.ArrayDeServicos.size()+1);
+	}
+	
+	public ArrayList<Servico> listarServico(){
+		return ArrayDeServicos;
 	}
 }

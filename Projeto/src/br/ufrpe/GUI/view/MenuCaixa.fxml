@@ -37,7 +37,7 @@
                <children>
                   <JFXButton lineSpacing="1.0" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                        <ImageView fitHeight="150.0" fitWidth="150.0">
                            <image>
                               <Image url="@../../../../../lib/Imgs/Ecommerce-Cash-Register-icon.png" />
                            </image>
@@ -49,7 +49,7 @@
                   </JFXButton>
                   <JFXButton onAction="#abrirClienteMenuCaixa" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="Cliente " textAlignment="CENTER" wrapText="true">
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                        <ImageView fitHeight="150.0" fitWidth="150.0">
                            <image>
                               <Image url="@../../../../../lib/Imgs/clienteMenu.png" />
                            </image>
@@ -59,11 +59,11 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="PetCare" textAlignment="CENTER" wrapText="true">
+                  <JFXButton onAction="#abrirPetCareMenu" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="PetCare" textAlignment="CENTER" wrapText="true">
                      <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0">
+                        <ImageView fitHeight="150.0" fitWidth="150.0">
                            <image>
-                              <Image url="@../../../../../lib/Imgs/animalMenu.png" />
+                              <Image url="@../../../../../lib/Imgs/dog-clothes-1-512.png" />
                            </image>
                         </ImageView>
                      </graphic>

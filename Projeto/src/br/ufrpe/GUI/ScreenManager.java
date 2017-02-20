@@ -13,12 +13,11 @@ public class ScreenManager {
 	private static ScreenManager unicInstanc;
 	private Stage mainStage;
 	
-	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa;
+	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa, servicos;
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServicos;
-	private Scene animalAtualizar, animalCadastrar, animalListar, animalPesquisar, animalRemover;
+	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServicos, petCareMenu;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
 	
@@ -115,6 +114,10 @@ public class ScreenManager {
 		              "view/MenuServicos.fxml"));
 			this.menuServicos = new Scene(menuServicos);
 			
+			servicos = new FXMLLoader(this.getClass().getResource("view/PetCareMenu.fxml"));
+			AnchorPane petCareMenu = servicos.load();
+			this.petCareMenu = new Scene(petCareMenu);
+			
 //			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
 //		              "view/TelaCaixa.fxml"));
 //			this.telaCaixa = new Scene(telaCaixa);
@@ -141,19 +144,7 @@ public class ScreenManager {
 			AnchorPane produtoRemover = FXMLLoader.load(getClass().getResource(
 		              "view/ProdutoRemover.fxml"));
 			this.produtoRemover = new Scene(produtoRemover);
-			
-			
-			
-			// ANIMAL TELAS:
-//			AnchorPane  animalCadastrar = FXMLLoader.load(getClass().getResource(
-//		              "view/AnimalCadastrar.fxml"));
-//			this.animalCadastrar = new Scene(animalCadastrar);
-//			
-//			AnchorPane  animalRemover = FXMLLoader.load(getClass().getResource(
-//		              "view/AnimalRemover.fxml"));
-//			this.animalRemover = new Scene(animalRemover);
-			
-			
+						
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -212,6 +203,10 @@ public class ScreenManager {
 	}
 	private static Stage loginStage;
 	// CHAMADA DA TELA DE MENU:
+	
+	public void showPetCareMenu(){
+		this.mainStage.setScene(this.petCareMenu);
+	}
 	
 	public void showMenuServicos(){
 		this.mainStage.setScene(this.menuServicos);
@@ -309,5 +304,9 @@ public class ScreenManager {
 	
 	public FXMLLoader getClientesCaixa(){
 		return this.clientesCaixa;
+	}
+	
+	public FXMLLoader getServicos(){
+		return this.servicos;
 	}
 }
