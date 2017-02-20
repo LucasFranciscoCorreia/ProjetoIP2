@@ -1,0 +1,25 @@
+package br.ufrpe.repositorios;
+
+import java.util.ArrayList;
+import br.ufrpe.beans.*;
+
+public class RepositorioPetCare {
+
+	private ArrayList<PetCare> arrayListPetCare;
+	private RepositorioPetCare repositorioPetCare;
+	
+	public RepositorioPetCare getInstance(){
+		if(this.repositorioPetCare == null){
+			
+		}
+		return this.repositorioPetCare;
+	}
+	
+	public void adicionarPetCare(PetCare novo){
+		this.arrayListPetCare.add(novo);
+	}
+	
+	public void removerPetCare(PetCare petcare){
+		
+	}
+}

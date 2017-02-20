@@ -38,7 +38,6 @@ public class PetCare {
 		this.cliente = cliente;
 		this.funcionario = funcionario;
 		this.pet = pet;
-		this.dataComeco = LocalDateTime.now();
 	}
 	/**
 	 * Inicializa o serviço

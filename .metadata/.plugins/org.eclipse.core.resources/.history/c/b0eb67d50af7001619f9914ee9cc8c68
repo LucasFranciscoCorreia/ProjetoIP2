@@ -53,11 +53,5 @@ public class NotaFiscal {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	@Override
-	public String toString() {
-		return "NotaFiscal [funcionario=" + funcionario + ", cliente=" + cliente + ", carrinho=" + carrinho
-				+ ", horaDaCompra=" + horaDaCompra + "]";
-	}
-	
 	
 }

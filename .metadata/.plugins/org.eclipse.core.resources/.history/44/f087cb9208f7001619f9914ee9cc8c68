@@ -90,7 +90,7 @@ public class Loja {
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				
-				new NotaFiscal(funcionario, cliente, carrinho);
+				new NotaFiscal();
 			}else{throw new ObjectNaoExisteException();}
 		}
 	}		

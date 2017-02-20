@@ -44,7 +44,7 @@ public class PetCare {
 	 * Inicializa o serviço
 	 */
 	public void comecarServico(){
-		this.dataComeco = LocalDateTime.now();
+		
 	}
 	
 	/**

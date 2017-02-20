@@ -105,7 +105,7 @@ public class Carrinho {
 	 */
 	@Override
 	public String toString() {
-		return "Comprou:\n" + arrayDeProdutos + ", arrayDeQuantidade=" + arrayDeQuantidade + "]";
+		return "Carrinho [arrayDeProdutos=" + arrayDeProdutos + ", arrayDeQuantidade=" + arrayDeQuantidade + "]";
 	}
 	
 

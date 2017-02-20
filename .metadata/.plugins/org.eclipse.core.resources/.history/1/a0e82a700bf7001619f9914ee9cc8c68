@@ -1,0 +1,8 @@
+package br.ufrpe.repositorios;
+
+import java.util.ArrayList;
+
+public class RepositorioPetCare {
+
+	private ArrayList<PetCare> repositorioPetCare;
+}

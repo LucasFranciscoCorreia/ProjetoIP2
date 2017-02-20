@@ -1,6 +1,5 @@
 package br.ufrpe.beans;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public class NotaFiscal {
 	private Funcionario funcionario;
 	private Cliente cliente;
 	private Carrinho carrinho;
-	private LocalDate horaDaCompra;
+	private LocalDateTime horaDaCompra;
 	/**
 	 * Construtor vazio padrão.
 	 */
@@ -32,8 +31,7 @@ public class NotaFiscal {
 		
 		this.funcionario = funcionario;
 		this.cliente = cliente;
-		this.carrinho = carrinho;
-		this.horaDaCompra = LocalDate.now();
+		this.ca
 	}
 	
 	/**
@@ -53,11 +51,5 @@ public class NotaFiscal {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	@Override
-	public String toString() {
-		return "NotaFiscal [funcionario=" + funcionario + ", cliente=" + cliente + ", carrinho=" + carrinho
-				+ ", horaDaCompra=" + horaDaCompra + "]";
-	}
-	
 	
 }
