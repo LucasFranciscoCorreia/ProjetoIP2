@@ -32,7 +32,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		return this.repositorioPetCare;
 	}
 	/**
-	 * Método que adiciona um novo "PetCare" ao repositório de petCare
+	 * 
 	 */
 	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException{
 		if(novo != null){
@@ -48,9 +48,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			throw new ObjectNaoExisteException();
 		}
 	}
-	/**
-	 * Método que remove um PetCare do repositório de PetCare
-	 */
+	
 	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
 		
 		if (petcare != null) {
@@ -60,10 +58,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			throw new ObjectNaoExisteException();
 		}
 	}
-	/**
-	 * Método que le as o ArrayList de petCare do arquivo
-	 * @return
-	 */
+	
 	private static RepositorioPetCare lerDoArquivo(){
 		RepositorioPetCare unicInstanc = null;
 
@@ -89,9 +84,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		}
 		return unicInstanc;
 	}
-	/**
-	 * Método que salva o arrayList de petCare no arquivo
-	 */
+	
 	public void salvarNoArquivo() {
 		if (this.repositorioPetCare == null){
 			return;
@@ -117,10 +110,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			}
 		}
 	}
-	/**
-	 * Método que lista os serviços ainda não concluídos. 
-	 * Usado na TableView da GUI
-	 */
+	
 	public ArrayList<PetCare> listarServicoEmAndamento(){
 			
 		ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
@@ -132,10 +122,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		}
 		return arrayEmAndamento;
 	}
-	/**
-	 * Método que lista os Serviços que já foram concluidos.
-	 * Usado na TableView da GUI
-	 */
+	
 	public ArrayList<PetCare> listarServicoConcluido(){
 		
 		ArrayList<PetCare> arrayConcluido = new ArrayList<PetCare>();

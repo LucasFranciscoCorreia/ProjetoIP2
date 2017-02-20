@@ -20,21 +20,14 @@ public class RepositorioNotaFiscal implements IRepositorioNotaFiscal{
 
 	private ArrayList<NotaFiscal> arrayDeNotaFiscal;
 	private RepositorioNotaFiscal repositorioNotaFiscal;
-	/**
-	 * Método getInstance, garante que haverá apenas uma instancia da classe.
-	 * @see Padrão SingleTon
-	 * @return
-	 */
+	
 	public RepositorioNotaFiscal getInstance(){
 		if(this.repositorioNotaFiscal == null){
 			this.repositorioNotaFiscal = lerDoArquivo();
 		}
 		return this.repositorioNotaFiscal;
 	}
-	/**
-	 * Função que lê as notas fiscais do arquivo
-	 * @return
-	 */
+	
 	private static RepositorioNotaFiscal lerDoArquivo(){
 		RepositorioNotaFiscal unicInstanc = null;
 
@@ -60,9 +53,7 @@ public class RepositorioNotaFiscal implements IRepositorioNotaFiscal{
 		}
 		return unicInstanc;
 	}
-	/**
-	 * Função que salva as notas fiscais no arquivo
-	 */
+	
 	public void salvarNoArquivo() {
 		if (this.repositorioNotaFiscal == null){
 			return;
@@ -88,9 +79,7 @@ public class RepositorioNotaFiscal implements IRepositorioNotaFiscal{
 			}
 		}
 	}
-	/**
-	 * Função que adiciona uma nova nota fiscal ao repositório
-	 */
+	
 	public void adicionarNotaFiscal(NotaFiscal nova)throws ObjectNaoExisteException, ObjectJaExisteException{
 		if(nova != null){
 			for (NotaFiscal notaFiscal : arrayDeNotaFiscal) {
@@ -105,9 +94,7 @@ public class RepositorioNotaFiscal implements IRepositorioNotaFiscal{
 		}
 			
 	}
-	/**
-	 * Função que remove uma nota fiscal do repositório
-	 */
+	
 	public void removerNotaFical(NotaFiscal canseiDessaBosta)throws ObjectNaoExisteException{
 		
 		if(canseiDessaBosta != null){

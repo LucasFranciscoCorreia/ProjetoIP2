@@ -21,7 +21,7 @@ public class RepositorioNotaFiscal implements IRepositorioNotaFiscal{
 	private ArrayList<NotaFiscal> arrayDeNotaFiscal;
 	private RepositorioNotaFiscal repositorioNotaFiscal;
 	/**
-	 * Método getInstance, garante que haverá apenas uma instancia da classe.
+	 * Método getInstance
 	 * @see Padrão SingleTon
 	 * @return
 	 */

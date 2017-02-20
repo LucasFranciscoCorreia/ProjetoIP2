@@ -178,15 +178,15 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 		return String.valueOf(this.ArrayDeServicos.size()+1);
 	}
 	/**
-	 * Método que lista os serviços, retornando um arrayList de Produtos (Classe mais genérica, já que 
-	 * Serviço extends produto.
+	 * Método que lista os serviços, retornando um arrayList
 	 */
 	public ArrayList<Produto> listarServico(){
 		
-		ArrayList<Produto> servicos = new ArrayList();
+	/*	ArrayList<Produto> servicos = new ArrayList();
 		for(Servico servicoA : ArrayDeServicos){
 			servicos.add(servicoA);
 		}
-		return servicos;
+		return servicos;*/
+		return (Produto)this.ArrayDeServicos;
 	}
 }
