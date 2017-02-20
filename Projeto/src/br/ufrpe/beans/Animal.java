@@ -142,8 +142,14 @@ public class Animal extends Produto implements Serializable{
 	}
 
 	public String toString(){
-		String res = String.format("Dono: %s\nCPF do dono: %s\nRa�a: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
+		String res = String.format("Dono: %s\nCPF do dono: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\n", dono.getNome(), dono.getCpf(), raca, especie, tamanho, peso);
 		res+="Is Alive? " + isAlive +"\nCategoria: Animal";
+		return res;
+	}
+	
+	public String toStringP(){
+		String res = String.format("Nome: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\nPreço:R$ %.2f", this.getNome(), raca, especie, tamanho, peso, this.getPreco());
+		res+="\nCategoria: Animal";
 		return res;
 	}
 	
@@ -154,8 +160,7 @@ public class Animal extends Produto implements Serializable{
 	public boolean equals(Object  outro){
 		boolean res = false;
 		if(outro instanceof Animal){
-			if(dono.getCpf() == ((Animal)outro).getDonoCPF()
-					&& raca == ((Animal)outro).getRaca()
+			if(		raca == ((Animal)outro).getRaca()
 					&& especie == ((Animal)outro).getEspecie()
 					&& isAlive == ((Animal)outro).getIsAlive()){
 				res = true;

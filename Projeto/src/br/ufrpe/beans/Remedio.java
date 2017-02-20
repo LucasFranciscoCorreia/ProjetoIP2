@@ -22,7 +22,6 @@ package br.ufrpe.beans;
  */
 public class Remedio extends Produto{
 	
-	private String bula;
 	private String tarja;
 	
 	/**
@@ -35,25 +34,18 @@ public class Remedio extends Produto{
 	 * @param bula
 	 * @param tarja
 	 */
-	public Remedio(float preco, String nome, String tipo, int estoque,String bula, String tarja){
+	public Remedio(float preco, String nome, String tipo, int estoque, String tarja){
 		
-		super(preco,nome,tipo,estoque);
-		this.bula = bula;
+		super(preco,nome,"Remedio",estoque);
 		this.tarja = tarja;
 	}
 	/**
 	 * Getters and Setters
 	 * @return
 	 */
-	public String getBula(){
-		return this.bula;
-	}
 	
 	public String getTarja(){
 		return this.tarja;
-	}
-	public void setBula(String bula){
-		this.bula = bula;
 	}
 	public void setTarja(String tarja){
 		this.tarja = tarja;
@@ -62,6 +54,6 @@ public class Remedio extends Produto{
 	 * Método to String
 	 */
 	public String toString(){
-		return super.toString()+" Bula: "+this.bula+"\nTarja: "+this.tarja;
+		return super.toString()+"\nTarja: "+this.tarja;
 	}
 }
