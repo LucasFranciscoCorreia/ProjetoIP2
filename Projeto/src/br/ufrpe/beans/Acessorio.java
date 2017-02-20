@@ -79,10 +79,10 @@ public class Acessorio extends Produto{
 		
 		if (this.validade != null){
 			resul = super.toString() + "\n" + "Cor: " + this.cor + "\nTamanho: " + this.tamanho +"cm"
-					+"\nValidade: "+ this.validade;
+					+"\nValidade: "+ this.validade + "\nCategoria: Acessório";
 		}
 		else {
-			resul = super.toString() + "\n" + "Cor: " + this.cor + "\nTamanho: " + this.tamanho +"cm";
+			resul = super.toString() + "\n" + "Cor: " + this.cor + "\nTamanho: " + this.tamanho +"cm" + "\nCategoria: Acessório";
 		}
 		return resul;
 	}
