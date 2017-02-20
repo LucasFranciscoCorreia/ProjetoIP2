@@ -73,10 +73,6 @@ public class Cliente extends Pessoa {
 	public ArrayList<Animal> getPets(){
 		return this.pets;
 	}
-	
-	public void setPets(ArrayList<Animal> pets){
-		this.pets = pets;
-	}
 	/*public Animal[] getPets() {
 		return pets;
 	}*/
