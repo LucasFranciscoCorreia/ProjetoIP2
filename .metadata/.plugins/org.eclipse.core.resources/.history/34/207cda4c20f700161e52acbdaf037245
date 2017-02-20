@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
-import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.*;
@@ -27,9 +26,6 @@ public class ControladorServico implements IControladorServico{
 		return repositorioServico.pesquisarNoRepositorio(nome);
 	}
 
-	public void atualizarServico(Servico antigo, Servico novo)throws ErroAoAtualizarException{
-		this.repositorioServico.atualizarServico(antigo, novo);
-	}
 	public void salvarNoArquivo(){
 		repositorioServico.salvarNoArquivo();
 	}
@@ -37,6 +33,5 @@ public class ControladorServico implements IControladorServico{
 	public ArrayList<Servico> listarServico(){
 		return repositorioServico.listarServico();
 	}
-	
 
 }

@@ -125,9 +125,6 @@ public class RepositorioServico implements IRepositorioServico{
 			this.ArrayDeServicos.remove(antigo);
 			this.ArrayDeServicos.add(novo);
 		}
-		else{
-			throw new ErroAoAtualizarException();
-		}
 	}
 	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException{
 		boolean achado = true;

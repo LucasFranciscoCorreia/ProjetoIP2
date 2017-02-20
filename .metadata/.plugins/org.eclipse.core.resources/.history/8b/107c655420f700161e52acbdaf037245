@@ -28,7 +28,7 @@ public class ControladorServico implements IControladorServico{
 	}
 
 	public void atualizarServico(Servico antigo, Servico novo)throws ErroAoAtualizarException{
-		this.repositorioServico.atualizarServico(antigo, novo);
+		
 	}
 	public void salvarNoArquivo(){
 		repositorioServico.salvarNoArquivo();

@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import br.ufrpe.beans.Servico;
-import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 
@@ -120,13 +119,9 @@ public class RepositorioServico implements IRepositorioServico{
 		}
 	}
 	
-	public void atualizarServico(Servico antigo, Servico novo)throws ErroAoAtualizarException{
+	public void atualizarServico(Servico antigo, Servico novo){
 		if(antigo != null){
-			this.ArrayDeServicos.remove(antigo);
-			this.ArrayDeServicos.add(novo);
-		}
-		else{
-			throw new ErroAoAtualizarException();
+			
 		}
 	}
 	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException{
