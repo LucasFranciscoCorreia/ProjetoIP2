@@ -9,6 +9,8 @@ public class MenuController {
 	@FXML
 	public void abrirMenuServicos(ActionEvent evt){
 		ScreenManager.getInstance().showMenuServicos();
+		MenuServicosController controlador = ScreenManager.getInstance().getMenuServicos().getController();
+		controlador.preencherTabela();
 	}
 	@FXML
 	public void abrirFuncionarioListar(ActionEvent evento){

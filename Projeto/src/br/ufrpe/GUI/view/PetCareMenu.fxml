@@ -37,7 +37,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="167.0" text="Realizar no Serviço" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirRealizarServico" prefHeight="150.0" prefWidth="167.0" text="Realizar Serviço" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -63,8 +63,9 @@
             </Button>
          </children>
       </VBox>
-      <TableView fx:id="servicosTable" layoutX="-2.0" prefHeight="600.0" prefWidth="414.0">
+      <TableView fx:id="servicosTable" layoutX="-2.0" prefHeight="600.0" prefWidth="492.0">
         <columns>
+            <TableColumn fx:id="codigoCol" prefWidth="75.0" text="Código" />
           <TableColumn fx:id="nomeCol" prefWidth="291.0" text="Nome" />
           <TableColumn fx:id="precoCol" minWidth="0.0" prefWidth="123.0" text="Preço" />
         </columns>
