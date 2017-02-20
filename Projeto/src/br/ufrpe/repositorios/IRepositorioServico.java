@@ -3,6 +3,7 @@ import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
+import java.util.ArrayList;
 
 /**
  * Interface do Repositório de Serviços
@@ -21,7 +22,6 @@ public interface IRepositorioServico {
 	public void removerDoRepositorioNome(String nome);
 	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException;
 	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException;
-	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException;
 	public void salvarNoArquivo();
 	public ArrayList<Servico> listarServico();
 	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException;	

@@ -13,11 +13,12 @@ public class ScreenManager {
 	private static ScreenManager unicInstanc;
 	private Stage mainStage;
 	
-	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa, servicos;
+	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa, servicos, menuServicos;
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
-	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServicos, petCareMenu;
+	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServico, petCareMenu;
+	private Scene realizarServico, servicoAdicionar, servicoRemover, servicoAtualizar;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
 	
@@ -110,9 +111,9 @@ public class ScreenManager {
 		              "view/MenuCaixa.fxml"));
 			this.menuCaixa = new Scene(menuCaixa);
 			
-			AnchorPane menuServicos = FXMLLoader.load(getClass().getResource(
-		              "view/MenuServicos.fxml"));
-			this.menuServicos = new Scene(menuServicos);
+			menuServicos = new FXMLLoader(this.getClass().getResource("view/MenuServicos.fxml"));
+			AnchorPane menuServico = menuServicos.load();
+			this.menuServico = new Scene(menuServico);
 			
 			servicos = new FXMLLoader(this.getClass().getResource("view/PetCareMenu.fxml"));
 			AnchorPane petCareMenu = servicos.load();
@@ -144,6 +145,22 @@ public class ScreenManager {
 			AnchorPane produtoRemover = FXMLLoader.load(getClass().getResource(
 		              "view/ProdutoRemover.fxml"));
 			this.produtoRemover = new Scene(produtoRemover);
+			
+			AnchorPane realizarServico = FXMLLoader.load(getClass().getResource(
+		              "view/RealizarServico.fxml"));
+			this.realizarServico = new Scene(realizarServico);
+			
+			AnchorPane servicoAdicionar = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoAdicionar.fxml"));
+			this.servicoAdicionar = new Scene(servicoAdicionar);
+			
+			AnchorPane servicoRemover = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoRemover.fxml"));
+			this.servicoRemover = new Scene(servicoRemover);
+			
+			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoAtualizar.fxml"));
+			this.servicoAtualizar = new Scene(servicoAtualizar);
 						
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -209,7 +226,7 @@ public class ScreenManager {
 	}
 	
 	public void showMenuServicos(){
-		this.mainStage.setScene(this.menuServicos);
+		this.mainStage.setScene(this.menuServico);
 	}
 	
 	public void showMenu(){
@@ -290,6 +307,22 @@ public class ScreenManager {
 		this.mainStage.setScene(this.produtoRemover);
 	}
 	
+	public void showRealizarServico(){
+		this.mainStage.setScene(this.realizarServico);
+	}
+	
+	public void showServicoAdicionar(){
+		this.mainStage.setScene(this.servicoAdicionar);
+	}
+	
+	public void showServicoRemover(){
+		this.mainStage.setScene(this.servicoRemover);
+	}
+	
+	public void showServicoAtualizar(){
+		this.mainStage.setScene(this.servicoAtualizar);
+	}
+	
 	public FXMLLoader getFuncionarios() {
 		return this.funcionarios;
 	}
@@ -309,4 +342,9 @@ public class ScreenManager {
 	public FXMLLoader getServicos(){
 		return this.servicos;
 	}
+	
+	public FXMLLoader getMenuServicos(){
+		return this.menuServicos;
+	}
+
 }
