@@ -1,6 +1,7 @@
 package br.ufrpe.negocios;
 import java.util.ArrayList;
 
+import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
@@ -34,7 +35,7 @@ public class ControladorServico implements IControladorServico{
 		repositorioServico.salvarNoArquivo();
 	}
 	
-	public ArrayList<Servico> listarServico(){
+	public ArrayList<Produto> listarServico(){
 		return repositorioServico.listarServico();
 	}
 	

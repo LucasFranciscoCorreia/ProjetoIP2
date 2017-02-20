@@ -1,4 +1,5 @@
 package br.ufrpe.repositorios;
+import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.CodigoNaoExisteException;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
@@ -23,5 +24,5 @@ public interface IRepositorioServico {
 	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException;
 	public void atualizarServico(Servico antigo, Servico novo)throws ErroAoAtualizarException;
 	public void salvarNoArquivo();
-	public ArrayList<Servico> listarServico();
+	public ArrayList<Produto> listarServico();
 }

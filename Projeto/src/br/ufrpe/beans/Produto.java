@@ -104,12 +104,17 @@ public abstract class Produto implements Serializable{
 		return prod;  
 	}
 
-	public boolean equals(Produto prod) {
-		
+	public boolean equals(Object prod) {
 		boolean resultado = false;
-		if (this.getTipo().equals(prod.getTipo()) && this.getNome().equalsIgnoreCase(prod.getNome())){
-			resultado = true;
+
+		if(prod instanceof  Produto){
+			Produto p = (Produto) prod;
+			if (this.getTipo().equals(p.getTipo()) 
+					&& this.getNome().equalsIgnoreCase(p.getNome())){
+				resultado = true;
+			}	
 		}
+		
 		return resultado;	
 	}
 }

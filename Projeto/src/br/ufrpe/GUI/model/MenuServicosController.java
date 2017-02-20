@@ -3,6 +3,7 @@ package br.ufrpe.GUI.model;
 import java.util.ArrayList;
 
 import br.ufrpe.GUI.ScreenManager;
+import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
@@ -19,13 +20,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MenuServicosController {
 	@FXML
-	private TableView<Servico> servicosTable;
+	private TableView<Produto> servicosTable;
 	@FXML
-	private TableColumn<Servico, String> nomeCol;
+	private TableColumn<Produto, String> nomeCol;
 	@FXML
-	private TableColumn<Servico, String> codigoCol;
+	private TableColumn<Produto, String> codigoCol;
 	@FXML
-	private TableColumn<Servico, Float> precoCol;
+	private TableColumn<Produto, Float> precoCol;
 	@FXML
 	private TextField nome, preco, codigo;
 	@FXML
@@ -35,11 +36,11 @@ public class MenuServicosController {
 	
 	
 	public void preencherTabela(){
-		ArrayList<Servico> servicoListar = FachadaControlador.getInstance().listarServico();
+		ArrayList<Produto> servicoListar = FachadaControlador.getInstance().listarServico();
 		
-		nomeCol.setCellValueFactory(new PropertyValueFactory<Servico, String>("nome"));
-		precoCol.setCellValueFactory(new PropertyValueFactory<Servico, Float>("preco"));
-		codigoCol.setCellValueFactory(new PropertyValueFactory<Servico, String>("codigo"));
+		nomeCol.setCellValueFactory(new PropertyValueFactory<Produto, String>("nome"));
+		precoCol.setCellValueFactory(new PropertyValueFactory<Produto, Float>("preco"));
+		codigoCol.setCellValueFactory(new PropertyValueFactory<Produto, String>("codigo"));
 		
 		servicosTable.setItems(FXCollections.observableArrayList(servicoListar));
 	}

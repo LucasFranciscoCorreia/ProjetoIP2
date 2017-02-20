@@ -24,75 +24,69 @@ import br.ufrpe.repositorios.IRepositorioProduto;
 
 public class ControladorProduto implements IControladorProduto{
 	private IRepositorioProduto repositorioProduto;
-	
+
 	public ControladorProduto(IRepositorioProduto instance){
 		repositorioProduto = instance;
 	}
-	
+
 	public void salvarNoArquivo(){
 		repositorioProduto.salvarNoArquivo();
 	}
-	
+
 	public void cadastrar(Produto produto) throws ObjectJaExisteException, ErroAoSalvarException{	
 		if(produto != null){
 			try {
-			produto.setCodigo(repositorioProduto.gerarCodigo());	
-			if(repositorioProduto.buscar(produto.getCodigo()) == null){
-						
-			}else{throw new ObjectJaExisteException();}}
+				produto.setCodigo(repositorioProduto.gerarCodigo());	
+				if(repositorioProduto.buscar(produto.getCodigo()) == null){
+
+				}else{throw new ObjectJaExisteException();}}
 			catch (ObjectNaoExisteException e) {
-				System.out.println("\t*****Produto cadastrado com sucesso*****");
 				repositorioProduto.cadastrar(produto); }			
-			
+
 		}else{throw new ErroAoSalvarException(produto);}
 	}
-	
+
 	public void remover(String codigo) throws ObjectNaoExisteException, ErroAoRemoverException{
 		if(codigo != null){
-			
-				if(repositorioProduto.buscar(codigo) != null){
+
+			if(repositorioProduto.buscar(codigo) != null){
 				repositorioProduto.remover(codigo);
-				System.out.println("\t*****Produto removido com sucesso*****");
-				}
-			
-			
+			}
+
+
 		}else{throw new ErroAoRemoverException();}
 	}
 
-	
+
 	public Produto pesquisar(String codigo) throws ObjectNaoExisteException{
 		if(codigo != null){
-			
-				if(repositorioProduto.buscar(codigo) != null){
-					return repositorioProduto.buscar(codigo);
-				
+
+			if(repositorioProduto.buscar(codigo) != null){
+				return repositorioProduto.buscar(codigo);
 			}
-				
-					
 		}else{throw new ObjectNaoExisteException();}
 		return null;
 	}
-	
+
 	public void atualizar(Produto produto) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		if(produto != null){
 			String codigo = produto.getCodigo();
-			
+
 			if(repositorioProduto.buscar(codigo) != null){
 				repositorioProduto.atualizar(produto);
-				System.out.println("\t*****Produto atualizado com sucesso*****");
-			   }
-			
-			
+			}
+
+
 		}else{throw new ErroAoAtualizarException();}
 	}
-	
+
 	public ArrayList<Produto> listarProduto(){
 		return repositorioProduto.listarProduto();
 	}
-	
+
 	public String gerarCodigo(){
 		return repositorioProduto.gerarCodigo();
 	}
-	
-	
+
+
 }

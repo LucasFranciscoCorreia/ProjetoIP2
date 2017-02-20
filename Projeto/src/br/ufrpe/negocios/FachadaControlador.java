@@ -186,7 +186,7 @@ public class FachadaControlador {
 		return controladorProduto.gerarCodigo();
 	}
 	
-	public ArrayList<Servico> listarServico(){
+	public ArrayList<Produto> listarServico(){
 		return controladorServico.listarServico();
 	}
 	

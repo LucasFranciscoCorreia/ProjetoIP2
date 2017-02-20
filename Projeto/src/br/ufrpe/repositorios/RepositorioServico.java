@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
@@ -156,7 +157,11 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 		return String.valueOf(this.ArrayDeServicos.size()+1);
 	}
 	
-	public ArrayList<Servico> listarServico(){
-		return ArrayDeServicos;
+	public ArrayList<Produto> listarServico(){
+		ArrayList<Produto> servicos = new ArrayList();
+		for(Servico servicoA : ArrayDeServicos){
+			servicos.add(servicoA);
+		}
+		return servicos;
 	}
 }
