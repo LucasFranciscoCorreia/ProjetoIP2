@@ -17,12 +17,9 @@ import java.util.ArrayList;
  */
 public interface IRepositorioServico {
 	
-	public void addAoRepositorio(Servico servico) throws ObjectNaoExisteException, ObjectJaExisteException;
-	public void removeDoRepositorio(Servico servico)throws ObjectNaoExisteException;
-	public void removerDoRepositorioNome(String nome);
-	public Servico pesquisarNomeNoRepositorioS(String nome) throws ObjectNaoExisteException;
-	public int pesquisarNomeNoRepositorioI(String nome)throws ObjectNaoExisteException;
+	public void addAoRepositorio(Servico servico) throws ObjectJaExisteException;
+	public void removerDoRepositorio(String nome)throws ObjectNaoExisteException;
+	public Servico pesquisarNoRepositorio(String nome) throws ObjectNaoExisteException;
 	public void salvarNoArquivo();
 	public ArrayList<Servico> listarServico();
-	public int pesquisarServicoNoRepositorio(Servico servico) throws ObjectNaoExisteException;	
 }

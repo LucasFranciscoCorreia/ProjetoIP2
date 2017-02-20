@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Servico;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.FachadaControlador;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -39,8 +41,19 @@ public class MenuServicosController {
 	}
 	
 	@FXML
-	public void adicionarServico(ActionEvent evt){
-		
+	public void adicionarServico(ActionEvent evt) throws ObjectNaoExisteException{
+		if(nome.getText().isEmpty() || preco.getText().isEmpty()){
+			aviso.setText("INFORME DADOS VÁLIDOS!!!");
+		}else{
+			Servico servico = new Servico(nome.getText(), Float.parseFloat(preco.getText()));
+			
+			try {
+				FachadaControlador.getInstance().cadastrarServico(servico);
+			} catch (ObjectJaExisteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@FXML
