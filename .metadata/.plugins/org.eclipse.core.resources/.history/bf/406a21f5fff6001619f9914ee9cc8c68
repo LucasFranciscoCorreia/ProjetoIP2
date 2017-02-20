@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- * Esta Classe representa a nota fiscal gerada pelas compras 
+ * Esta Classe representa a nota fiscal gerada do servico realizado (Compra ou Serviço PetCare) 
  * @author srtacamelo
  *
  */
@@ -13,6 +13,7 @@ public class NotaFiscal {
 	private ArrayList<Produto> itens;
 	private Funcionario funcionario;
 	private Cliente cliente;
+	private Animal pet;
 	private LocalDateTime horaComeco;
 	private LocalDateTime horaFim;
 	/**

@@ -179,7 +179,7 @@ public class RepositorioServico implements IRepositorioServico{
 		}
 	}
     
-	private String gerarCodigo(){
+	public String gerarCodigo(){
 		return String.valueOf(this.ArrayDeServicos.size()+1);
 	}
 }

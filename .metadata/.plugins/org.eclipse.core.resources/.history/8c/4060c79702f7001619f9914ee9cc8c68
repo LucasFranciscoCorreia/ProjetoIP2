@@ -97,7 +97,6 @@ public class RepositorioServico implements IRepositorioServico{
 					throw new ObjectJaExisteException();
 				}
 				else{
-					servico.setCodigo(gerarCodigo());
 					this.ArrayDeServicos.add(servico);
 				}
 			}
@@ -179,7 +178,7 @@ public class RepositorioServico implements IRepositorioServico{
 		}
 	}
     
-	private String gerarCodigo(){
+	public String gerarCodigo(){
 		return String.valueOf(this.ArrayDeServicos.size()+1);
 	}
 }
