@@ -132,7 +132,7 @@ public class ScreenManager {
 //			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
 //		              "view/ProdutoAtualizar.fxml"));
 //			this.produtoAtualizar = new Scene(produtoAtualizar);
-//			
+			
 			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ProdutoCadastrar.fxml"));
   		    this.produtoCadastrar = new Scene(produtoCadastrar);

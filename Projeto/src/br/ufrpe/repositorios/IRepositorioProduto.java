@@ -39,9 +39,9 @@ public interface IRepositorioProduto {
 	void remover(String codigo) throws ErroAoRemoverException;
 	void atualizar(Produto novo) throws ObjectNaoExisteException, ErroAoAtualizarException;
 	public Produto buscarP(Produto produto) throws ObjectNaoExisteException;
-	public void alterarDoEstoque(Produto produto, int quantidade) throws ObjectNaoExisteException;
 	public int buscarProduto(Produto produto);
 	ArrayList<Produto> listarProduto();
+	public void alterarDoEstoque(Produto produto, int quantidade) throws ObjectNaoExisteException;
 	void salvarNoArquivo();
 	String gerarCodigo();
 	

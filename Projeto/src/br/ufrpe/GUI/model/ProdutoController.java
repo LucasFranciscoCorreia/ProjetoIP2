@@ -14,6 +14,7 @@ import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Remedio;
+import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
@@ -29,12 +30,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 
 public class ProdutoController{
 	@FXML
 	private Button buttonRemover, buttonAtualizar;
 	@FXML
-	private TextField nomeProduto, tipoProduto, preçoProduto, estoqueProduto, codigoProduto, codigoProdutoRemover;
+	private Pane animalAtualizar, acessorioAtualizar, remedioAtualizar;
+	@FXML
+	private TextField nomeProduto, tipoProduto, preçoProduto, estoqueProduto, codigoProduto, codigoProdutoRemover, codigoProdutoAtualizar;
 	@FXML 
 	private TextField nomeAnimal, precoAnimal, estoqueAnimal, especieAnimal, racaAnimal, pesoAnimal, tamanhoAnimal;
 	@FXML 
@@ -80,15 +84,10 @@ public class ProdutoController{
 	}
 	@FXML
 	public void abrirProdutoListar(ActionEvent evento){
-		try{
+		
 			ProdutoController controlador = ScreenManager.getInstance().getProdutos().getController();
 			controlador.preencherTabela();
-			ScreenManager.getInstance().showProdutoListar();
-		}
-		catch(NullPointerException e){
-			
-		}
-		
+			ScreenManager.getInstance().showProdutoListar();	
 	}
 	@FXML
 	public void abrirProdutoRemover(ActionEvent evento){
@@ -361,5 +360,141 @@ public class ProdutoController{
 		}
 				
 	}
+	
+	@FXML
+	public void buttonPesquisarProdutoAtualizar(ActionEvent event){		
+			
+			try {	
+				
+				Produto encontrado = FachadaControlador.getInstance().pesquisar(codigoProdutoAtualizar.getText());
+				
+				if(encontrado instanceof Animal){
+					produtoToString.setText(((Animal) encontrado).toStringP());
+					animalAtualizar.setDisable(false);
+					animalAtualizar.setVisible(true);
+					
+				}
+				else if(encontrado instanceof Acessorio){
+					produtoToString.setText(((Acessorio) encontrado).toString());
+					acessorioAtualizar.setVisible(true);
+					acessorioAtualizar.setDisable(false);
+				}
+				
+				else if(encontrado instanceof Remedio){
+					produtoToString.setText(((Remedio) encontrado).toString());	
+					remedioAtualizar.setVisible(true);
+					remedioAtualizar.setDisable(false);
+				}
+				
+				aviso.setText("Produto encontrado no sistema!!!");
+				
+			} catch (ObjectNaoExisteException | NullPointerException e) {
+				aviso.setText(e.getMessage());
+			    produtoToString.setText("");
+				
+				}
+		
+		
+	}
+	
+	@FXML
+	public void buttonProdutoAtualizar(ActionEvent event){
+		
+		if(animalAtualizar.isVisible()){
+		    		
+			Produto novo = new Animal(0, null, null, -1, true, null, null, 0, 0);
+			if(!nomeAnimal.getText().isEmpty()){
+				novo.setNome(nomeAnimal.getText());
+			}
+			if(!precoAnimal.getText().isEmpty()){
+				novo.setPreco(Float.parseFloat(precoAnimal.getText()));
+			}
+			if(!estoqueAnimal.getText().isEmpty()){
+				novo.setEstoque(Integer.parseInt(estoqueAnimal.getText()));
+			}
+			if(!tamanhoAnimal.getText().isEmpty()){
+				((Animal)novo).setTamanho(Double.parseDouble(tamanhoAnimal.getText()));
+			}
+			if(!pesoAnimal.getText().isEmpty()){
+				((Animal)novo).setPeso(Double.parseDouble(pesoAnimal.getText()));
+			}
+			
+				try {
+					FachadaControlador.getInstance().atualizar(novo);
+					FachadaControlador.getInstance().salvarNoArquivoProduto();
+					animalAtualizar.setVisible(false);
+					animalAtualizar.setDisable(true);
+					produtoToString.setText("");
+					aviso.setText("Produto atualizado com sucesso!!");
+					
+				} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {		
+					aviso.setText(e.getMessage());
+				}
+				
+		}
+		else if(acessorioAtualizar.isVisible()){
+			
+			Produto novo = new Acessorio(0, null, null, -1, null, 0, null);
+			if(!nomeAcessorio.getText().isEmpty()){
+				novo.setNome(nomeAcessorio.getText());
+			}
+			if(!precoAcessorio.getText().isEmpty()){
+				novo.setPreco(Float.parseFloat(precoAcessorio.getText()));
+			}
+			if(!estoqueAcessorio.getText().isEmpty()){
+				novo.setEstoque(Integer.parseInt(estoqueAcessorio.getText()));
+			}
+			if(!tamanhoAcessorio.getText().isEmpty()){
+				((Acessorio)novo).setTamanho(Double.parseDouble(tamanhoAcessorio.getText()));
+			}
+			if(!corAcessorio.getText().isEmpty()){
+				((Acessorio)novo).setCor(corAcessorio.getText());
+			}
+			
+				try {
+					FachadaControlador.getInstance().atualizar(novo);
+					FachadaControlador.getInstance().salvarNoArquivoProduto();
+					acessorioAtualizar.setVisible(false);
+					acessorioAtualizar.setDisable(true);
+					produtoToString.setText("");
+					aviso.setText("Produto atualizado com sucesso!!");
+					
+				} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {		
+					aviso.setText(e.getMessage());
+				}
+			
+		}
+		else if(remedioAtualizar.isVisible()){
+			
+			Produto novo = new Remedio(0, null, null, -1, null);
+			if(!nomeRemedio.getText().isEmpty()){
+				novo.setNome(nomeRemedio.getText());
+			}
+			if(!precoRemedio.getText().isEmpty()){
+				novo.setPreco(Float.parseFloat(precoRemedio.getText()));
+			}
+			if(!estoqueRemedio.getText().isEmpty()){
+				novo.setEstoque(Integer.parseInt(estoqueRemedio.getText()));
+			}
+			if(!tamanhoAcessorio.getText().isEmpty()){
+				((Remedio)novo).setTarja(tamanhoAcessorio.getText());
+			}
+			
+				try {
+					FachadaControlador.getInstance().atualizar(novo);
+					FachadaControlador.getInstance().salvarNoArquivoProduto();
+					remedioAtualizar.setVisible(false);
+					remedioAtualizar.setDisable(true);
+					produtoToString.setText("");
+					aviso.setText("Produto atualizado com sucesso!!");
+					
+				} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {		
+					aviso.setText(e.getMessage());
+				}
+		}
+		
+		
+	}
+	
 		
 }

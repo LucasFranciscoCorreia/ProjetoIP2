@@ -54,6 +54,6 @@ public class Remedio extends Produto{
 	 * Método to String
 	 */
 	public String toString(){
-		return super.toString()+"\nTarja: "+this.tarja;
+		return super.toString()+"\nTarja: "+this.tarja + "\nCategoria: Remédio";
 	}
 }
