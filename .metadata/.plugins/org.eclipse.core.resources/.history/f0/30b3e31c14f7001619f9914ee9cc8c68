@@ -1,8 +1,6 @@
 package br.ufrpe.negocios;
 
 import br.ufrpe.beans.PetCare;
-import br.ufrpe.excecoes.ObjectJaExisteException;
-import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.IRepositorioPetCare;
 
 public class ControladorPetCare {
@@ -12,11 +10,11 @@ public class ControladorPetCare {
 	public ControladorPetCare(IRepositorioPetCare instance){
 		this.repositorioPetCare = instance;
 	}
-	public void adicionarPetCare(PetCare petcare)throws ObjectJaExisteException, ObjectNaoExisteException{
+	public void adicionarPetCare(PetCare petcare){
 		this.repositorioPetCare.adicionarPetCare(petcare);
 	}
 	
-	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
+	public void removerPetCare(PetCare petcare){
 		this.removerPetCare(petcare);
 	}
 	public void salvarNoArquivo(){

@@ -16,7 +16,7 @@ public class ControladorPetCare {
 		this.repositorioPetCare.adicionarPetCare(petcare);
 	}
 	
-	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
+	public void removerPetCare(PetCare petcare){
 		this.removerPetCare(petcare);
 	}
 	public void salvarNoArquivo(){
