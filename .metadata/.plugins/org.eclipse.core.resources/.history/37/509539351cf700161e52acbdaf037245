@@ -51,7 +51,7 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 	private static RepositorioPetCare lerDoArquivo(){
 		RepositorioPetCare unicInstanc = null;
 
-		File in = new File("Arquivos/PetCare.data");
+		File in = new File("Arquivos/Pessoa.data");
 		FileInputStream fi = null;
 		ObjectInputStream oi = null;
 

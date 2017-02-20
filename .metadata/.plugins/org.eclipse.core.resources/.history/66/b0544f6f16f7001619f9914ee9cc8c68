@@ -1,0 +1,14 @@
+package br.ufrpe.repositorios;
+
+import java.util.ArrayList;
+
+import br.ufrpe.beans.NotaFiscal;
+
+public class RepositorioNotaFiscal {
+
+	private ArrayList<NotaFiscal> repositorioNotaFiscal;
+	
+	public RepositorioNotaFiscal(){
+		
+	}
+}

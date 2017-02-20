@@ -51,7 +51,7 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 	private static RepositorioPetCare lerDoArquivo(){
 		RepositorioPetCare unicInstanc = null;
 
-		File in = new File("Arquivos/PetCare.data");
+		File in = new File("Arquivos/Pessoa.data");
 		FileInputStream fi = null;
 		ObjectInputStream oi = null;
 
@@ -79,7 +79,7 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 			return;
 		}
 
-		File out = new File("Arquivos/PetCare.data");
+		File out = new File("Arquivos/Pessoa.data");
 		FileOutputStream fo = null;
 		ObjectOutputStream oos = null;
 
@@ -98,29 +98,5 @@ public class RepositorioPetCare implements IRepositorioPetCare {
 				}
 			}
 		}
-	}
-	
-	public ArrayList<PetCare> listarServicoEmAndamento(){
-			
-			ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
-			
-			for (PetCare petCare : arrayListPetCare) {
-				if(petCare.getDataFim() == null){
-					arrayEmAndamento.add(petCare);
-				}
-			}
-			return arrayEmAndamento;
-		}
-	
-	public ArrayList<PetCare> listarServicoConcluido(){
-		
-		ArrayList<PetCare> arrayConcluido = new ArrayList<PetCare>();
-		
-		for (PetCare petCare : arrayListPetCare) {
-			if(petCare.getDataFim() != null){
-				arrayConcluido.add(petCare);
-			}
-		}
-		return arrayConcluido;
 	}
 }
