@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="br.ufrpe.GUI.model.MenuServicosController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.MenuServicosController">
    <children>
       <VBox layoutX="646.0" prefHeight="600.0" prefWidth="154.0">
          <children>
@@ -50,5 +51,31 @@
             </Button>
          </children>
       </VBox>
+      <Label layoutX="22.0" layoutY="21.0" prefHeight="30.0" prefWidth="54.0" text="Nome">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nome" layoutX="22.0" layoutY="51.0" prefHeight="30.0" prefWidth="211.0" promptText="Nome do serviço">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="preco" layoutX="265.0" layoutY="51.0" prefHeight="30.0" prefWidth="106.0" promptText="Preço do serviço" />
+      <Label layoutX="265.0" layoutY="21.0" prefHeight="30.0" prefWidth="106.0" text="Preço">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="23.0" layoutY="146.0" mnemonicParsing="false" onAction="#adicionarServico" prefHeight="59.0" prefWidth="78.0" text="Salvar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="aviso" layoutX="136.0" layoutY="153.0" prefHeight="45.0" prefWidth="268.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
