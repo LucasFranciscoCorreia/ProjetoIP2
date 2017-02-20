@@ -1,5 +1,6 @@
 package br.ufrpe.beans;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 /**
  * Esta classe representa o "PetCare" espécie de loja onde serão adicionados os serviços prestados
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
  * @author srtacamelo
  *
  */
-public class PetCare {
+public class PetCare implements Serializable{
 	
 	private Servico servico;
 	private Cliente cliente;

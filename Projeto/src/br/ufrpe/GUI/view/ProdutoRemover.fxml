@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.ProdutoController">
    <children>
-      <VBox layoutX="633.0" prefHeight="600.0" prefWidth="181.0">
+      <VBox layoutX="611.0" prefHeight="600.0" prefWidth="181.0">
          <children>
             <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirProdutoListar" prefHeight="150.0" prefWidth="200.0" text="Voltar" textAlignment="RIGHT">
                <font>
@@ -68,7 +68,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="codigoProduto" layoutX="14.0" layoutY="41.0" prefHeight="25.0" prefWidth="165.0" promptText="XXXX">
+      <TextField fx:id="codigoProdutoRemover" layoutX="14.0" layoutY="41.0" prefHeight="25.0" prefWidth="165.0" promptText="XXXX">
          <font>
             <Font size="14.0" />
          </font>

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 /**
  * Esta classe representa produtos do tipo acessorio que possivelmente ser�o cadastrados no petshop.
- * Ela possui informa��es padr�es que produtos devem ter.
+ * Ela possui informações padrões que produtos devem ter.
  * 
  * Exemplo de uso: 
  * Acessorio acessorio = new Acessorio(54.99f, "Casa para cachorro", 
@@ -33,10 +33,11 @@ public class Acessorio extends Produto{
 	private String cor;
 	private double tamanho;
 	private LocalDate validade;
+	
     
 	public Acessorio(float preco, String nome, String tipo, int estoque, String cor ,double tamanho, 
 			LocalDate validade) {
-		super(preco, nome, tipo, estoque);
+		super(preco, nome, "Acessório", estoque);
 		this.cor = cor;
 		this.tamanho = tamanho;
 		this.validade = validade;
@@ -73,8 +74,17 @@ public class Acessorio extends Produto{
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n" + "Cor: " + this.cor + "\nTamanho: " + this.tamanho +"cm"
-				+"\nValidade: "+ this.validade;
+		
+		String resul = null;
+		
+		if (this.validade != null){
+			resul = super.toString() + "\n" + "Cor: " + this.cor + "\nTamanho: " + this.tamanho +"cm"
+					+"\nValidade: "+ this.validade + "\nCategoria: Acessório";
+		}
+		else {
+			resul = super.toString() + "\n" + "Cor: " + this.cor + "\nTamanho: " + this.tamanho +"cm" + "\nCategoria: Acessório";
+		}
+		return resul;
 	}
 	
 	

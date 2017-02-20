@@ -20,7 +20,10 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import br.ufrpe.beans.Acessorio;
+import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Produto;
+import br.ufrpe.beans.Remedio;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ErroAoRemoverException;
 import br.ufrpe.excecoes.ErroAoSalvarException;
@@ -132,14 +135,6 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	  
 	}
 	
-	public void alterarDoEstoque(Produto produto, int quantidade) throws ObjectNaoExisteException{
-		int index = this.buscarProduto(produto);
-		if(index != -1){
-			
-			this.repositorio.get(index).setEstoque(quantidade);;
-		}else{throw new ObjectNaoExisteException();}
-	}
-		
 	private int buscarI(String bus){
 		for(int i = 0; i < repositorio.size();i++){
 			if(repositorio.get(i).getCodigo().equals(bus)){
@@ -159,7 +154,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 				}
 			}
 				
-			novo.setCodigo(gerarCodigo());
+			
 		
 			if(!ok){
 				throw new ObjectJaExisteException();
@@ -193,6 +188,14 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 		
 	}
 	
+	public void alterarDoEstoque(Produto produto, int quantidade) throws ObjectNaoExisteException{
+		int index = this.buscarProduto(produto);
+		if(index != -1){
+			
+			this.repositorio.get(index).setEstoque(quantidade);;
+		}else{throw new ObjectNaoExisteException();}
+}
+	
 	public void atualizar(Produto novo) throws ObjectNaoExisteException, ErroAoAtualizarException{
 		if(novo == null){
 			throw new ErroAoAtualizarException();
@@ -203,12 +206,68 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	    	throw new ObjectNaoExisteException();
 	    }
 	    else{
-	    	repositorio.get(i).setNome(novo.getNome());
-			repositorio.get(i).setEstoque(novo.getEstoque());
-			repositorio.get(i).setPreco(novo.getPreco());
-			repositorio.get(i).setTipo(novo.getTipo());
-	    	
-	    }
+	    	if(novo instanceof Animal){
+	    		
+	    		Animal achado = (Animal)repositorio.get(i);
+	    		
+	    		if(novo.getNome() != null){
+	    			achado.setNome(novo.getNome());
+	    		}    		
+	    		if(novo.getPreco() != 0){
+	    			achado.setPreco(novo.getPreco());
+	    		}
+	    		if(novo.getEstoque() != -1){
+	    			achado.setEstoque(novo.getEstoque());
+	    		}
+	    		if(((Animal) novo).getPeso()!=0){
+	    			achado.setPeso(((Animal) novo).getPeso());
+	    		}
+	    		if(((Animal) novo).getTamanho()!=0){
+	    			achado.setTamanho(((Animal) novo).getTamanho());
+	    		}
+   		    		
+	    	}
+	    	else if(novo instanceof Acessorio){
+	    		
+	    		Acessorio achado = (Acessorio)repositorio.get(i);
+	    		
+	    		if(novo.getNome()!= null){
+	    			achado.setNome(novo.getNome());
+	    		}
+	    		if(((Acessorio) novo).getCor()!=null){
+	    			achado.setCor(((Acessorio) novo).getCor());
+	    		}
+	    		if(novo.getEstoque()!=-1){
+	    			achado.setEstoque(novo.getEstoque());
+	    		}
+	    		if(novo.getPreco()!=0){
+	    			achado.setPreco(novo.getPreco());
+	    		}
+	    		if(((Acessorio) novo).getTamanho()!=0){
+	    			achado.setTamanho(((Acessorio) novo).getTamanho());
+	    		}
+	    			
+	    	}
+	    	else if(novo instanceof Remedio){
+	    		
+	    		Remedio achado = (Remedio)repositorio.get(i);
+	    		
+	    		if(novo.getNome() != null){
+	    			achado.setNome(novo.getNome());
+	    		}
+	    		if(novo.getEstoque()!=-1){
+	    			achado.setEstoque(novo.getEstoque());
+	    		}
+	    		if(novo.getPreco()!= 0){
+	    			achado.setPreco(novo.getPreco());
+	    		}
+	    		if(((Remedio) novo).getTarja()!= null){
+	    			achado.setTarja(((Remedio) novo).getTarja());
+	    			}
+	    		
+	    		}
+	    	  	
+	    	}
 	    
 		}
 	}
@@ -226,16 +285,29 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	
 	public String gerarCodigo(){
 		int ger = 1;
-		String codigo = null;
-		for(int i = 0; i< this.Size(); i++){
-			if(Integer.toString(ger) == this.repositorio.get(i).getCodigo()){
-				ger++;
-			}else{
-				codigo = "" + ger;
+		String ok = null;
+		if(!(this.Size() <= 0)){
+			for(int i = 0 ; i<= this.Size()-1; i++){
+				String codigo = "" + ger;
+				
+				if(codigo.equalsIgnoreCase(repositorio.get(i).getCodigo())){
+					ger++;
+					codigo = null;
+				}
+				else{
+					ok = "" + ger;
+				}
+				if (ger>this.Size()){
+					ok = "" + ger;
+				}
 			}
 		}
+		else{
+			ok = "" + ger;
+		}
 		
-		return codigo;
+		
+		return ok;
 	}
 	
 }

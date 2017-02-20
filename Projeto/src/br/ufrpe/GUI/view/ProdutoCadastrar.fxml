@@ -38,62 +38,62 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="324.0" layoutY="29.0" prefHeight="27.0" prefWidth="181.0" text="Espécie">
+                        <Label layoutX="370.0" layoutY="29.0" prefHeight="27.0" prefWidth="181.0" text="Espécie">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="especieAnimal" layoutX="324.0" layoutY="57.0" prefHeight="30.0" prefWidth="166.0" promptText="Espécie">
+                        <TextField fx:id="especieAnimal" layoutX="370.0" layoutY="56.0" prefHeight="30.0" prefWidth="166.0" promptText="Espécie">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="453.0" layoutY="94.0" prefHeight="25.0" prefWidth="73.0" text="Estoque">
+                        <Label layoutX="453.0" layoutY="86.0" prefHeight="25.0" prefWidth="73.0" text="Estoque">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="racaAnimal" layoutX="194.0" layoutY="124.0" prefHeight="30.0" prefWidth="160.0" promptText="Raça">
+                        <TextField fx:id="racaAnimal" layoutX="195.0" layoutY="113.0" prefHeight="30.0" prefWidth="160.0" promptText="Raça">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="194.0" layoutY="94.0" prefHeight="25.0" prefWidth="73.0" text="Raça">
+                        <Label layoutX="194.0" layoutY="86.0" prefHeight="25.0" prefWidth="73.0" text="Raça">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="estoqueAnimal" layoutX="453.0" layoutY="124.0" prefHeight="30.0" prefWidth="125.0" promptText="Estoque">
+                        <TextField fx:id="estoqueAnimal" layoutX="453.0" layoutY="113.0" prefHeight="30.0" prefWidth="125.0" promptText="Estoque">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="116.0" layoutY="94.0" prefHeight="27.0" prefWidth="65.0" text="Peso">
+                        <Label layoutX="117.0" layoutY="86.0" prefHeight="27.0" prefWidth="65.0" text="Peso">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="pesoAnimal" layoutX="116.0" layoutY="124.0" prefHeight="30.0" prefWidth="66.0" promptText="Peso">
+                        <TextField fx:id="pesoAnimal" layoutX="117.0" layoutY="113.0" prefHeight="30.0" prefWidth="66.0" promptText="Peso">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="370.0" layoutY="94.0" prefHeight="25.0" prefWidth="73.0" text="Preço">
+                        <Label layoutX="370.0" layoutY="86.0" prefHeight="25.0" prefWidth="73.0" text="Preço">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="precoAnimal" layoutX="370.0" layoutY="124.0" prefHeight="30.0" prefWidth="64.0" promptText="R$">
+                        <TextField fx:id="precoAnimal" layoutX="370.0" layoutY="113.0" prefHeight="30.0" prefWidth="64.0" promptText="R$">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="7.0" layoutY="94.0" prefHeight="27.0" prefWidth="84.0" text="Tamanho">
+                        <Label layoutX="4.0" layoutY="86.0" prefHeight="27.0" prefWidth="84.0" text="Tamanho">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tamanhoAnimal" layoutX="7.0" layoutY="124.0" prefHeight="30.0" prefWidth="93.0" promptText="Tamanho">
+                        <TextField fx:id="tamanhoAnimal" layoutX="7.0" layoutY="113.0" prefHeight="30.0" prefWidth="101.0" promptText="Centimetros">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -111,7 +111,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button contentDisplay="TOP" layoutX="537.0" layoutY="447.0" mnemonicParsing="false" text="Salvar">
+                        <Button contentDisplay="TOP" layoutX="537.0" layoutY="447.0" mnemonicParsing="false" onAction="#buttonCadastrarProdutoAcessorio" text="Salvar">
                            <graphic>
                               <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -120,6 +120,71 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Label layoutX="7.0" layoutY="26.0" prefHeight="25.0" prefWidth="73.0" text="Nome">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nomeAcessorio" layoutX="7.0" layoutY="53.0" prefHeight="30.0" prefWidth="297.0" promptText="Nome">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="365.0" layoutY="26.0" prefHeight="27.0" prefWidth="181.0" text="Validade">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="validadeAcessorio" layoutX="365.0" layoutY="53.0" prefHeight="30.0" prefWidth="166.0" promptText="DD-MM-AAAA">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="419.0" layoutY="84.0" prefHeight="25.0" prefWidth="73.0" text="Estoque">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="corAcessorio" layoutX="7.0" layoutY="109.0" prefHeight="30.0" prefWidth="160.0" promptText="Cor">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="7.0" layoutY="84.0" prefHeight="25.0" prefWidth="73.0" text="Cor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="estoqueAcessorio" layoutX="419.0" layoutY="109.0" prefHeight="30.0" prefWidth="125.0" promptText="Estoque">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="326.0" layoutY="84.0" prefHeight="25.0" prefWidth="73.0" text="Preço">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="precoAcessorio" layoutX="328.0" layoutY="109.0" prefHeight="30.0" prefWidth="70.0" promptText="R$">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="192.0" layoutY="84.0" prefHeight="27.0" prefWidth="84.0" text="Tamanho">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tamanhoAcessorio" layoutX="192.0" layoutY="109.0" prefHeight="30.0" prefWidth="119.0" promptText="Centímetros">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label fx:id="avisoCadastroAcessorio" alignment="CENTER" layoutX="30.0" layoutY="473.0" prefHeight="30.0" prefWidth="457.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
             </content>
@@ -128,7 +193,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button contentDisplay="TOP" layoutX="537.0" layoutY="447.0" mnemonicParsing="false" text="Salvar">
+                        <Button contentDisplay="TOP" layoutX="537.0" layoutY="447.0" mnemonicParsing="false" onAction="#buttonCadastrarProdutoRemedio" text="Salvar">
                            <graphic>
                               <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -137,6 +202,51 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Label layoutX="13.0" layoutY="31.0" prefHeight="25.0" prefWidth="73.0" text="Nome">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nomeRemedio" layoutX="12.0" layoutY="58.0" prefHeight="30.0" prefWidth="297.0" promptText="Nome">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="110.0" layoutY="88.0" prefHeight="25.0" prefWidth="73.0" text="Estoque">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="estoqueRemedio" layoutX="110.0" layoutY="115.0" prefHeight="30.0" prefWidth="125.0" promptText="Estoque">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="14.0" layoutY="88.0" prefHeight="25.0" prefWidth="73.0" text="Preço">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="precoRemedio" layoutX="14.0" layoutY="115.0" prefHeight="30.0" prefWidth="70.0" promptText="R$">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tarjaRemedio" layoutX="261.0" layoutY="115.0" prefHeight="30.0" prefWidth="297.0" promptText="Tarja">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="261.0" layoutY="88.0" prefHeight="25.0" prefWidth="73.0" text="Tarja">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="avisoCadastroRemedio" alignment="CENTER" layoutX="33.0" layoutY="473.0" prefHeight="30.0" prefWidth="457.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
               </content>
             </Tab>

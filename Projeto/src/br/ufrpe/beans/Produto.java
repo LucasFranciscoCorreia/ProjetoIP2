@@ -100,16 +100,21 @@ public abstract class Produto implements Serializable{
 		if(tipo == "Serviço"){
 			prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s", nome,preco,codigo);
 		}
-		prod = String.format("Nome: %s \nPreço: %.2f\nCodigo %s\nTipo: %s\nEstoque: %d", nome,preco,codigo,tipo,estoque);
+		prod = String.format("Codigo: %s\nNome: %s \nPreço: %.2f\nEstoque: %d",codigo, nome,preco,estoque);
 		return prod;  
 	}
 
-	public boolean equals(Produto prod) {
-		
+	public boolean equals(Object prod) {
 		boolean resultado = false;
-		if (this.getCodigo()== prod.getCodigo() && this.getTipo().equals(prod.getTipo())){
-			resultado = true;
+
+		if(prod instanceof  Produto){
+			Produto p = (Produto) prod;
+			if (this.getTipo().equals(p.getTipo()) 
+					&& this.getNome().equalsIgnoreCase(p.getNome())){
+				resultado = true;
+			}	
 		}
+		
 		return resultado;	
 	}
 }

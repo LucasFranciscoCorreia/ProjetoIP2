@@ -5,8 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Servico;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
@@ -18,7 +20,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
  * @author srtacamelo
  *
  */
-public class RepositorioServico implements IRepositorioServico{
+public class RepositorioServico implements IRepositorioServico, Serializable{
 	
 	private ArrayList<Servico> ArrayDeServicos;
 	private static IRepositorioServico unicInstance;
@@ -155,7 +157,11 @@ public class RepositorioServico implements IRepositorioServico{
 		return String.valueOf(this.ArrayDeServicos.size()+1);
 	}
 	
-	public ArrayList<Servico> listarServico(){
-		return ArrayDeServicos;
+	public ArrayList<Produto> listarServico(){
+		ArrayList<Produto> servicos = new ArrayList();
+		for(Servico servicoA : ArrayDeServicos){
+			servicos.add(servicoA);
+		}
+		return servicos;
 	}
 }
