@@ -1,0 +1,8 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.repositorios.IRepositorioPetCare;
+
+public class ControladorPetCare {
+
+	private IRepositorioPetCare instance;
+}

@@ -1,0 +1,14 @@
+package br.ufrpe.repositorios;
+
+import br.ufrpe.beans.PetCare;
+import br.ufrpe.excecoes.ObjectJaExisteException;
+import br.ufrpe.excecoes.ObjectNaoExisteException;
+
+public interface IRepositorioPetCare {
+
+	public RepositorioPetCare getInstance();
+	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException
+	public void removerPetCare(PetCare petcare);
+	public void salvarNoArquivo();
+	
+}

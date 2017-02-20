@@ -1,5 +1,6 @@
 package br.ufrpe.beans;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -10,31 +11,15 @@ import java.util.ArrayList;
  */
 public class NotaFiscal {
 
-	private ArrayList<Produto> itens;
 	private Funcionario funcionario;
 	private Cliente cliente;
-	private LocalDateTime horaComeco;
-	private LocalDateTime horaFim;
+	private Carrinho carrinho;
+	private LocalDate horaDaCompra;
 	/**
 	 * Construtor vazio padrão.
 	 */
 	public NotaFiscal(){
 		
-	}
-	/**
-	 * Construtor para Nota Fiacal de serviço realizado no PetCare
-	 * 
-	 * @param funcionario
-	 * @param cliente
-	 * @param pet
-	 * @param servico
-	 */
-	public NotaFiscal(Funcionario funcionario, Cliente cliente, Animal pet, Servico servico) {
-	
-		this.funcionario = funcionario;
-		this.cliente = cliente;
-		this.pet = pet;
-
 	}
 	/**
 	 * Construtor para Serviço <Compra>
@@ -47,6 +32,8 @@ public class NotaFiscal {
 		
 		this.funcionario = funcionario;
 		this.cliente = cliente;
+		this.carrinho = carrinho;
+		this.horaDaCompra = LocalDate.now();
 	}
 	
 	/**
@@ -66,11 +53,11 @@ public class NotaFiscal {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public Animal getPet() {
-		return pet;
+	@Override
+	public String toString() {
+		return "NotaFiscal [funcionario=" + funcionario + ", cliente=" + cliente + ", carrinho=" + carrinho
+				+ ", horaDaCompra=" + horaDaCompra + "]";
 	}
-	public void setPet(Animal pet) {
-		this.pet = pet;
-	}
+	
 	
 }

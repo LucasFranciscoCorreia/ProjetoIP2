@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class Carrinho {
 	
+	
+
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;
 	
@@ -97,6 +99,13 @@ public class Carrinho {
 		
 		int index = arrayDeProdutos.indexOf(produto);
 		this.arrayDeQuantidade.set(index, this.arrayDeQuantidade.get(index)- quantidade);
+	}
+	/**
+	 * Método ToString();
+	 */
+	@Override
+	public String toString() {
+		return "Comprou:\n" + arrayDeProdutos + ", arrayDeQuantidade=" + arrayDeQuantidade + "]";
 	}
 	
 

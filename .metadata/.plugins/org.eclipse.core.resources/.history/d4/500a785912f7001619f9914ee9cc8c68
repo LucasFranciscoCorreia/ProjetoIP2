@@ -1,0 +1,15 @@
+package br.ufrpe.negocios;
+
+import br.ufrpe.repositorios.IRepositorioPetCare;
+
+public class ControladorPetCare {
+
+	private IRepositorioPetCare repositorioPetCare;
+	
+	public ControladorPetCare(IRepositorioPetCare instance){
+		this.repositorioPetCare = instance;
+	}
+	public void adicionarPetCare(PetCare petcare){
+		repositorioPetCare.adicionarPetCare(novo);
+	}
+}

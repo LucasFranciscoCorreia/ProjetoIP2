@@ -14,6 +14,7 @@ public class Loja {
 	
 	private Cliente cliente;
 	private Carrinho carrinho;
+	private Funcionario funcionario;
 	/**
 	 * Construtor básico da Loja
 	 */
@@ -89,7 +90,7 @@ public class Loja {
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				
-				new NotaFiscal();
+				new NotaFiscal(funcionario, cliente, carrinho);
 			}else{throw new ObjectNaoExisteException();}
 		}
 	}		
