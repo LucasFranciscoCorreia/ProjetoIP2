@@ -184,9 +184,9 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Label fx:id="funcionarioToString" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="214.0" layoutY="11.0" prefHeight="325.0" prefWidth="389.0" textAlignment="CENTER">
+      <Label fx:id="funcionarioToString" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="214.0" layoutY="11.0" prefHeight="325.0" prefWidth="389.0" textAlignment="RIGHT" wrapText="true">
          <font>
-            <Font size="11.0" />
+            <Font size="14.0" />
          </font>
       </Label>
       <Label fx:id="avisoAtualizar" layoutX="105.0" layoutY="265.0" prefHeight="36.0" prefWidth="432.0">

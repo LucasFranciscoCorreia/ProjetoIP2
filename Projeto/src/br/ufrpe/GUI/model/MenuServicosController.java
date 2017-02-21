@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Servico;
+import br.ufrpe.excecoes.ErroAoSalvarException;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.FachadaControlador;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class MenuServicosController {
 	@FXML
@@ -33,6 +35,8 @@ public class MenuServicosController {
 	private Label aviso, servicoToString;
 	@FXML
 	private Button buttonRemover;
+	@FXML
+	private AnchorPane pesquisarScene, atualizarScene;
 	
 	
 	public void preencherTabela(){
@@ -47,6 +51,10 @@ public class MenuServicosController {
 	
 	@FXML
 	public void adicionarServico(ActionEvent evt) throws ObjectNaoExisteException{
+		if(!aviso.getText().isEmpty()){
+			aviso.setText("");
+		}
+		
 		if(nome.getText().isEmpty() || preco.getText().isEmpty()){
 			aviso.setText("INFORME DADOS VÁLIDOS!!!");
 		}else{
@@ -54,8 +62,9 @@ public class MenuServicosController {
 			
 			try {
 				FachadaControlador.getInstance().cadastrarServico(servico);
+				FachadaControlador.getInstance().salvarNoArquivoServico();
 				aviso.setText("Serviço adiciona com sucesso!!!");
-			} catch (ObjectJaExisteException e) {
+			} catch (ObjectJaExisteException | ErroAoSalvarException e) {
 				aviso.setText(e.getMessage());
 			}
 		}
@@ -66,9 +75,10 @@ public class MenuServicosController {
 	
 	@FXML
 	public void pesquisarServico(ActionEvent evt){
-//		if(!servicoToString.getText().isEmpty()){
-//			servicoToString.setText("");
-//		}
+		if(!servicoToString.getText().isEmpty() | !aviso.getText().isEmpty()){
+			servicoToString.setText("");
+			aviso.setText("");
+		}
 		
 		if(codigo.getText().isEmpty()){
 			servicoToString.setText("INFORME UM CÓDIGO VÁLIDO!!!");
@@ -82,22 +92,70 @@ public class MenuServicosController {
 				servicoToString.setText(e.getMessage());
 			}
 		}
+	}
+	
+	@FXML
+	public void removerServico(ActionEvent evt){
+		if(!aviso.getText().isEmpty() || !servicoToString.getText().isEmpty()){
+			aviso.setText("");
+			servicoToString.setText("");
+		}
+		
+		try {
+			FachadaControlador.getInstance().removerServicoNome(codigo.getText());
+			FachadaControlador.getInstance().salvarNoArquivoServico();
+			aviso.setText("SERVICO REMOVIDO COM SUCESSO!!!");
+			buttonRemover.setVisible(false);
+		} catch (ObjectNaoExisteException e) {
+			aviso.setText(e.getMessage());
+		}
 		
 		codigo.setText("");
 	}
 	
 	@FXML
-	public void removerServico(ActionEvent evt){
+	public void pesquisarServicoAtualizar(ActionEvent evt){
+		if(!servicoToString.getText().isEmpty()){
+			servicoToString.setText("");
+		}
+		
+		if(codigo.getText().isEmpty()){
+			servicoToString.setText("INFORME UM CÓDIGO VÁLIDO!!!");
+		}else{
+			try {
+				Servico achado = null;
+				achado = FachadaControlador.getInstance().buscarServico(codigo.getText());
+				servicoToString.setText(achado.toString());
+				pesquisarScene.setVisible(false);
+				atualizarScene.setVisible(true);
+			} catch (ObjectNaoExisteException e) {
+				servicoToString.setText(e.getMessage());
+			}
+		}
+	}
+	
+	@FXML
+	public void atualizarServico(ActionEvent evt){
 		if(!aviso.getText().isEmpty()){
 			aviso.setText("");
 		}
 		
-		try {
-			FachadaControlador.getInstance().removerServicoNome(codigo.getText());
-			aviso.setText("SERVICO REMOVIDO COM SUCESSO!!!");
-		} catch (ObjectNaoExisteException e) {
-			aviso.setText(e.getMessage());
+		if(!nome.getText().isEmpty() && !preco.getText().isEmpty()){
+			try {
+				Servico antigo = FachadaControlador.getInstance().buscarServico(codigo.getText());
+				Servico novo = new Servico(nome.getText(), Float.parseFloat(preco.getText()));
+				
+				FachadaControlador.getInstance().atualizarServico(antigo, novo);
+				FachadaControlador.getInstance().salvarNoArquivoServico();
+				aviso.setText("ATUALIZADO COM SUCESSO!!!");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}			
+		}else{
+			aviso.setText("INFORME DADOS VÁLIDOS!!!");
 		}
+		nome.setText("");
+		preco.setText("");
 	}
 	
 	@FXML

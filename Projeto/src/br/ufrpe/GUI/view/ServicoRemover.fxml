@@ -56,15 +56,15 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="codigo" layoutX="66.0" layoutY="58.0" prefHeight="36.0" prefWidth="64.0" promptText="XXX" />
-      <Button fx:id="pesquisarServico" layoutX="52.0" layoutY="112.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="PESQUISAR">
+      <TextField fx:id="codigo" alignment="CENTER" layoutX="66.0" layoutY="58.0" prefHeight="36.0" prefWidth="64.0" promptText="XXX" />
+      <Button layoutX="52.0" layoutY="112.0" mnemonicParsing="false" onAction="#pesquisarServico" prefHeight="36.0" prefWidth="92.0" text="PESQUISAR">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Label fx:id="servicoToString" alignment="CENTER" layoutX="299.0" layoutY="22.0" prefHeight="132.0" prefWidth="263.0" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <Button fx:id="buttonRemover" layoutX="52.0" layoutY="209.0" mnemonicParsing="false" onAction="#removerServico" prefHeight="36.0" prefWidth="92.0" text="REMOVER" visible="false">

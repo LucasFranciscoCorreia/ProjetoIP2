@@ -190,16 +190,24 @@ public class FachadaControlador {
 		return controladorServico.listarServico();
 	}
 	
-	public void cadastrarServico(Servico novo)throws ObjectJaExisteException,ObjectNaoExisteException{
+	public void salvarNoArquivoServico(){
+		controladorServico.salvarNoArquivo();
+	}
+	
+	public void cadastrarServico(Servico novo)throws ObjectJaExisteException,ObjectNaoExisteException, ErroAoSalvarException{
 		controladorServico.cadastrarServico(novo);
 	}
 	
-	public Servico buscarServico(String nome)throws ObjectNaoExisteException{
-		return controladorServico.buscarServico(nome);
+	public Servico buscarServico(String codigo)throws ObjectNaoExisteException{
+		return controladorServico.buscarServico(codigo);
 	}
 	
-	public void removerServicoNome(String nome)throws ObjectNaoExisteException{
-		controladorServico.removerServicoNome(nome);
+	public void removerServicoNome(String codigo)throws ObjectNaoExisteException{
+		controladorServico.removerServicoNome(codigo);
+	}
+	
+	public void atualizarServico(Servico antigo, Servico novo)throws ErroAoAtualizarException, ObjectNaoExisteException{
+		controladorServico.atualizarServico(antigo, novo);
 	}
 
 }

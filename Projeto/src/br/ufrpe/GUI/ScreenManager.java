@@ -164,9 +164,9 @@ public class ScreenManager {
 		              "view/ServicoRemover.fxml"));
 			this.servicoRemover = new Scene(servicoRemover);
 			
-			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
-		              "view/ServicoAtualizar.fxml"));
-			this.servicoAtualizar = new Scene(servicoAtualizar);
+//			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
+//		              "view/ServicoAtualizar.fxml"));
+//			this.servicoAtualizar = new Scene(servicoAtualizar);
 			
 			AnchorPane servicoConcluido = FXMLLoader.load(getClass().getResource(
 		              "view/ServicoConcluido.fxml"));

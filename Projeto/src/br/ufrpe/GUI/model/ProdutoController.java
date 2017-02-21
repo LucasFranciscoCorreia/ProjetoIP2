@@ -78,7 +78,6 @@ public class ProdutoController{
 	}
 	@FXML
 	public void abrirProdutoListar(ActionEvent evento){
-
 		ProdutoController controlador = ScreenManager.getInstance().getProdutos().getController();
 		controlador.preencherTabela();
 		ScreenManager.getInstance().showProdutoListar();	
