@@ -42,6 +42,19 @@ public class PetCare implements Serializable{
 		this.dataComeco = LocalDateTime.now();
 	}
 	/**
+	 * Construtor II
+	 * @param servico
+	 * @param cliente
+	 * @param pet
+	 */
+	public PetCare(Servico servico, Cliente cliente,Animal pet) {
+		
+		this.servico = servico;
+		this.cliente = cliente;
+		this.pet = pet;
+		this.dataComeco = LocalDateTime.now();
+	}
+	/**
 	 * Inicializa o serviço
 	 */
 	public void comecarServico(){
