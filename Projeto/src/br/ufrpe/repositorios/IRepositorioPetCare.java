@@ -8,7 +8,6 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 
 public interface IRepositorioPetCare {
 
-	public RepositorioPetCare getInstance();
 	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException;
 	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException;
 	public ArrayList<PetCare> listarServicoEmAndamento();

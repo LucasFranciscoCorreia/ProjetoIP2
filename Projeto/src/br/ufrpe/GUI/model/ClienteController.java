@@ -371,8 +371,8 @@ public class ClienteController implements Initializable{
 					Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
 					DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 					LocalDate aniversario = LocalDate.parse(this.aniversario.getText(), DATE_FORMAT);
-					String cpf = cpfPadronizar(cpf.getText());
-					novo = new Cliente(cpf.getText(),aniversario, nome.getText(), end);
+					String cpfNovo = cpfPadronizar(cpf.getText());
+					novo = new Cliente(cpfNovo,aniversario, nome.getText(), end);
 				}catch(NumberFormatException e){
 					avisoCadastro.setText("Numero de residencia deve ser um numero");
 				}

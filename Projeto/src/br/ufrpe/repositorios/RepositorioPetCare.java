@@ -19,51 +19,23 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
  */
 public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 
-	private ArrayList<PetCare> arrayListPetCare;
-	private static IRepositorioPetCare repositorioPetCare;
+	private ArrayList<PetCare> repositorio;
+	private static IRepositorioPetCare unicInstanc;
 
 	private RepositorioPetCare(){
-		this.arrayListPetCare = new ArrayList<PetCare>();
+		this.repositorio = new ArrayList<>();
 	}
 	/**
 	 * Método getInstance, garante que existirá apenas uma instancia da classe.
 	 * @see Padrão Singleton
 	 */
 	public static IRepositorioPetCare getInstance(){
-		if(repositorioPetCare == null){
-			repositorioPetCare = lerDoArquivo();
+		if(unicInstanc == null){
+			unicInstanc = lerDoArquivo();
 		}
-		return repositorioPetCare;
+		return unicInstanc;
 	}
-	/**
-	 * Método que adiciona um novo "PetCare" ao repositório de petCare
-	 */
-	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException{
-		if(novo != null){
-			
-			for (PetCare petCare : this.arrayListPetCare) {
-				if (this.arrayListPetCare.equals(novo)) {
-					throw new ObjectJaExisteException();
-				}
-			}
-			this.arrayListPetCare.add(novo);	
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
-	}
-	/**
-	 * Método que remove um PetCare do repositório de PetCare
-	 */
-	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
-		
-		if (petcare != null) {
-			this.arrayListPetCare.remove(petcare);
-		}
-		else{
-			throw new ObjectNaoExisteException();
-		}
-	}
+	
 	/**
 	 * Método que le as o ArrayList de petCare do arquivo
 	 * @return
@@ -97,7 +69,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 	 * Método que salva o arrayList de petCare no arquivo
 	 */
 	public void salvarNoArquivo() {
-		if (this.repositorioPetCare == null){
+		if (this.unicInstanc == null){
 			return;
 		}
 
@@ -109,7 +81,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			fo = new FileOutputStream(out);
 			oos = new ObjectOutputStream(fo);
 
-			oos.writeObject(this.repositorioPetCare);
+			oos.writeObject(this.unicInstanc);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -121,6 +93,37 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			}
 		}
 	}
+	
+	/**
+	 * Método que adiciona um novo "PetCare" ao repositório de petCare
+	 */
+	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException{
+		if(novo != null){
+			
+			for (PetCare petCare : this.repositorio) {
+				if (this.repositorio.equals(novo)) {
+					throw new ObjectJaExisteException();
+				}
+			}
+			this.repositorio.add(novo);	
+		}
+		else{
+			throw new ObjectNaoExisteException();
+		}
+	}
+	/**
+	 * Método que remove um PetCare do repositório de PetCare
+	 */
+	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
+		
+		if (petcare != null) {
+			this.repositorio.remove(petcare);
+		}
+		else{
+			throw new ObjectNaoExisteException();
+		}
+	}
+	
 	/**
 	 * Método que lista os serviços ainda não concluídos. 
 	 * Usado na TableView da GUI
@@ -129,7 +132,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			
 		ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
 		
-		for (PetCare petCare : arrayListPetCare) {
+		for (PetCare petCare : repositorio) {
 			if(petCare.getDataFim() == null){
 				arrayEmAndamento.add(petCare);
 			}
@@ -144,7 +147,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		
 		ArrayList<PetCare> arrayConcluido = new ArrayList<PetCare>();
 		
-		for (PetCare petCare : arrayListPetCare) {
+		for (PetCare petCare : repositorio) {
 			if(petCare.getDataFim() != null){
 				arrayConcluido.add(petCare);
 			}
