@@ -20,8 +20,7 @@ import br.ufrpe.excecoes.ObjectNaoExisteException;
 public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 
 	private ArrayList<PetCare> arrayListPetCare;
-	private static IRepositorioPetCare repositorioPetCare;
-
+	private static RepositorioPetCare repositorioPetCare;
 	private RepositorioPetCare(){
 		this.arrayListPetCare = new ArrayList<PetCare>();
 	}
@@ -29,11 +28,11 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 	 * Método getInstance, garante que existirá apenas uma instancia da classe.
 	 * @see Padrão Singleton
 	 */
-	public static IRepositorioPetCare getInstance(){
-		if(repositorioPetCare == null){
-			repositorioPetCare = lerDoArquivo();
+	public IRepositorioPetCare getInstance(){
+		if(this.repositorioPetCare == null){
+			this.repositorioPetCare = lerDoArquivo();
 		}
-		return repositorioPetCare;
+		return this.repositorioPetCare;
 	}
 	/**
 	 * Método que adiciona um novo "PetCare" ao repositório de petCare

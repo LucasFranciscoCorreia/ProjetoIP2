@@ -46,7 +46,7 @@ public class FachadaControlador {
 		this.controladorProduto = new ControladorProduto(RepositorioProduto.getInstance());
 		this.controladorPessoa = new ControladorPessoa(RepositorioPessoa.getInstance());
 		this.controladorServico = new ControladorServico(RepositorioServico.getInstance());
-		this.controladorPetCare = new ControladorPetCare(RepositorioPetCare.getInstance());
+		this.controladorPetCare = new ControladorPetCare(RepositorioPetCare.getInstance());s
 	}
 	/**
 	 * Método getInstance, para garantir a unicidade da classe.

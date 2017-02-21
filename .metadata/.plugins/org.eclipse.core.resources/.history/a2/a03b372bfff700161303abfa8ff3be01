@@ -5,7 +5,7 @@ import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.repositorios.IRepositorioPetCare;
 
-public class ControladorPetCare implements IControladorPetCare{
+public class ControladorPetCare {
 
 	private IRepositorioPetCare repositorioPetCare;
 	
