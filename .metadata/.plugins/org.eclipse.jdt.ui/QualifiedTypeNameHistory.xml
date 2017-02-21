@@ -6,10 +6,10 @@
 <fullyQualifiedTypeName name="br.ufrpe.beans.Login"/>
 <fullyQualifiedTypeName name="br.ufrpe.beans.Servico"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioAnimal"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.RepositorioServico"/>
 <fullyQualifiedTypeName name="br.ufrpe.repositorios.IRepositorioServico"/>
 <fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectJaExisteException"/>
 <fullyQualifiedTypeName name="br.ufrpe.excecoes.ObjectNaoExisteException"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
