@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
    <children>
       <VBox layoutX="633.0" prefHeight="600.0" prefWidth="167.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="167.0" text="Serviços Concluidos" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirServicoConcluido" prefHeight="150.0" prefWidth="167.0" text="Serviços Concluidos" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -35,6 +36,9 @@
                      <image>
                         <Image url="@../../../../../lib/Imgs/simbolo-correcto_318-41920.png" />
                      </image>
+                     <effect>
+                        <ColorAdjust brightness="-0.1" />
+                     </effect>
                   </ImageView>
                </graphic>
             </Button>

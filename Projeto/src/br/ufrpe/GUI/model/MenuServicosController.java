@@ -47,6 +47,7 @@ public class MenuServicosController {
 		codigoCol.setCellValueFactory(new PropertyValueFactory<Produto, String>("codigo"));
 		
 		servicosTable.setItems(FXCollections.observableArrayList(servicoListar));
+		servicosTable.refresh();
 	}
 	
 	@FXML
@@ -126,7 +127,6 @@ public class MenuServicosController {
 				Servico achado = null;
 				achado = FachadaControlador.getInstance().buscarServico(codigo.getText());
 				servicoToString.setText(achado.toString());
-				pesquisarScene.setVisible(false);
 				atualizarScene.setVisible(true);
 			} catch (ObjectNaoExisteException e) {
 				servicoToString.setText(e.getMessage());
@@ -140,14 +140,14 @@ public class MenuServicosController {
 			aviso.setText("");
 		}
 		
-		if(!nome.getText().isEmpty() && !preco.getText().isEmpty()){
+		if(!nome.getText().isEmpty() || !preco.getText().isEmpty()){
 			try {
 				Servico antigo = FachadaControlador.getInstance().buscarServico(codigo.getText());
 				Servico novo = new Servico(nome.getText(), Float.parseFloat(preco.getText()));
 				
 				FachadaControlador.getInstance().atualizarServico(antigo, novo);
 				FachadaControlador.getInstance().salvarNoArquivoServico();
-				aviso.setText("ATUALIZADO COM SUCESSO!!!");
+				atualizarScene.setVisible(false);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}			
@@ -156,6 +156,7 @@ public class MenuServicosController {
 		}
 		nome.setText("");
 		preco.setText("");
+		
 	}
 	
 	@FXML

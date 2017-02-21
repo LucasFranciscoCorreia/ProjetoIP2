@@ -129,9 +129,9 @@ public class ScreenManager {
 			
 			
 			// PRODUTO TELAS:
-//			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ProdutoAtualizar.fxml"));
-//			this.produtoAtualizar = new Scene(produtoAtualizar);
+			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ProdutoAtualizar.fxml"));
+			this.produtoAtualizar = new Scene(produtoAtualizar);
 			
 			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ProdutoCadastrar.fxml"));
@@ -164,9 +164,9 @@ public class ScreenManager {
 		              "view/ServicoRemover.fxml"));
 			this.servicoRemover = new Scene(servicoRemover);
 			
-//			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ServicoAtualizar.fxml"));
-//			this.servicoAtualizar = new Scene(servicoAtualizar);
+			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoAtualizar.fxml"));
+			this.servicoAtualizar = new Scene(servicoAtualizar);
 			
 			servicoConcluidos = new FXMLLoader(this.getClass().getResource(
 					"view/ServicoConcluido.fxml"));

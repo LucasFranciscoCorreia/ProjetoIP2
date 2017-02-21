@@ -91,5 +91,6 @@
             <Image url="@../../../../../lib/Imgs/petshop.png" />
          </image>
       </ImageView>
+      <Button layoutX="741.0" layoutY="568.0" mnemonicParsing="false" onAction="#voltarLogin" prefHeight="25.0" prefWidth="54.0" text="Sair" />
    </children>
 </AnchorPane>
