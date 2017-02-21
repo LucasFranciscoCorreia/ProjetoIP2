@@ -21,9 +21,6 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 
 	private ArrayList<PetCare> arrayListPetCare;
 	private static RepositorioPetCare repositorioPetCare;
-	private RepositorioPetCare(){
-		this.arrayListPetCare = new ArrayList<PetCare>();
-	}
 	/**
 	 * Método getInstance, garante que existirá apenas uma instancia da classe.
 	 * @see Padrão Singleton
