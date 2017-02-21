@@ -94,22 +94,6 @@ public class ClienteController implements Initializable{
 			}
 		}
 	}
-	
-	public String cpfPadronizar(String cpf){
-		String novoCpf = "";
-		char[] cpfChar = cpf.toCharArray();
-		
-		for(int i = 0; i < cpf.length(); i++){
-			novoCpf += cpfChar[i];
-			if(i == 2 || i == 5){
-				novoCpf += ".";
-			}else if(i == 8){
-				novoCpf += "-";
-			}
-		}
-		
-		return novoCpf;
-	}
 
 	@SuppressWarnings("finally")
 	public boolean dataOk(String data){
@@ -371,7 +355,6 @@ public class ClienteController implements Initializable{
 					Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
 					DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 					LocalDate aniversario = LocalDate.parse(this.aniversario.getText(), DATE_FORMAT);
-					String cpf = cpfPadronizar(cpf.getText());
 					novo = new Cliente(cpf.getText(),aniversario, nome.getText(), end);
 				}catch(NumberFormatException e){
 					avisoCadastro.setText("Numero de residencia deve ser um numero");
