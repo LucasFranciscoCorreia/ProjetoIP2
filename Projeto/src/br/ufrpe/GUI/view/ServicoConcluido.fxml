@@ -1,8 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="br.ufrpe.GUI.model.PetCareController">
+   <children>
+      <VBox layoutX="633.0" prefHeight="600.0" prefWidth="167.0">
+         <children>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirServicoAndamento" prefHeight="150.0" prefWidth="167.0" text="Serviços em Andamento" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/checkbox-unchecked-clip-art-at-clker-com-vector-clip-art-online-V6frfR-clipart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFinalizarServico" prefHeight="150.0" prefWidth="167.0" text="Finalizar Servico">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/simbolo-correcto_318-41920.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirRealizarServico" prefHeight="150.0" prefWidth="167.0" text="Realizar Serviço" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/add-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenuServico" prefHeight="150.0" prefWidth="167.0" text="Voltar" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/dog-clothes-1-512.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <ScrollPane prefHeight="600.0" prefWidth="629.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="602.0" prefWidth="861.0">
+               <children>
+                  <TableView fx:id="concluidoTable" prefHeight="600.0" prefWidth="861.0">
+                     <columns>
+                        <TableColumn fx:id="dataInicioCol" prefWidth="99.0" text="DATA INICIO" />
+                        <TableColumn fx:id="dataFimCol" prefWidth="88.0" text="DATA FIM" />
+                        <TableColumn fx:id="servicoCol" prefWidth="71.0" text="SERVIÇO" />
+                        <TableColumn fx:id="funcionarioCol" minWidth="0.0" prefWidth="170.0" text="FUNCIONÁRIO" />
+                        <TableColumn fx:id="cpfFuncionarioCol" prefWidth="128.0" text="CPF FUNCIONARIO" />
+                        <TableColumn fx:id="clienteCol" prefWidth="170.0" text="CLIENTE" />
+                        <TableColumn fx:id="cpfClienteCol" prefWidth="128.0" text="CPF CLIENTE" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
 </AnchorPane>
-

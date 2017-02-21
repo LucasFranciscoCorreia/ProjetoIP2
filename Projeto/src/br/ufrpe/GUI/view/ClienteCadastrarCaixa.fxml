@@ -100,7 +100,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="aviso" alignment="CENTER" layoutX="15.0" layoutY="310.0" prefHeight="41.0" prefWidth="588.0" textFill="RED">
+      <Label fx:id="avisoCadastro" alignment="CENTER" layoutX="15.0" layoutY="310.0" prefHeight="41.0" prefWidth="588.0" textFill="RED">
          <font>
             <Font size="18.0" />
          </font>
