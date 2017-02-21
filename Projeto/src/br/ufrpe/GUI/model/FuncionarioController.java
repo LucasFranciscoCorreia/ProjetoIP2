@@ -53,6 +53,7 @@ public class FuncionarioController{
 		cpfTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
 		salarioTab.setCellValueFactory(new PropertyValueFactory<Funcionario, Double>("salario"));
 		cargoTab.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cargo"));
+		
 		tableFuncionario.setPlaceholder(new Label("Nenhum registro encontrado."));
 		tableFuncionario.setItems(FXCollections.observableArrayList(funcionarioLista));	
 	}

@@ -30,14 +30,21 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 	private RepositorioServico(){
 		this.ArrayDeServicos = new ArrayList<>();
 	}
-	
+	/**
+	 * Método getInstance, garante que haverá apenas uma instancia da classe.
+	 * @see Padrão Singleton
+	 * @return
+	 */
 	public static IRepositorioServico getInstance(){
 		if(unicInstance == null){
 			unicInstance = lerDoArquivo();
 		}
 		return unicInstance;
 	}
-	
+	/**
+	 * Método le os serviços salvos no aquivo e os passa para o arrayList
+	 * @return
+	 */
 	private static RepositorioServico lerDoArquivo(){
 		RepositorioServico unicInstanc = null;
 		
@@ -64,7 +71,9 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 		
 		return unicInstanc;
 	}
-	
+	/**
+	 * Método salva os serviços do ArrayList do sistema no arquivo 
+	 */
 	public void salvarNoArquivo() {
 		if (unicInstance == null){
 			return;
@@ -90,11 +99,13 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 			}
 		}
 	}
-	
+	/**
+	 * Método que adicona um novo serviço ao repositóro de serviços
+	 */
 	public void addAoRepositorio(Servico servico) throws ObjectJaExisteException{
 			
 		for (Servico servicoA : ArrayDeServicos) {
-			if(servicoA.equals(servico)){
+			if(servicoA.getNome().equalsIgnoreCase(servico.getNome())){
 				throw new ObjectJaExisteException();
 			}
 			else{
@@ -104,7 +115,9 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 		}
 		
 	}
-	
+	/**
+	 * Método que remove um serviço do repositório de Serviço
+	 */
 	public void removerDoRepositorio(String nome) throws ObjectNaoExisteException{
 		boolean achado = false;
 		
@@ -121,7 +134,9 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 			throw new ObjectNaoExisteException();
 		}
 	}
-	
+	/**
+	 * Método atualiza um serviço já existente, (trocando nome ou preço)
+	 */
 	public void atualizarServico(Servico antigo, Servico novo)throws ErroAoAtualizarException{
 		if(antigo != null){
 			this.ArrayDeServicos.remove(antigo);
@@ -131,6 +146,9 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 			throw new ErroAoAtualizarException();
 		}
 	}
+	/**
+	 * Método que pesquisa pelo código o serviço no repositório
+	 */
 	public Servico pesquisarNoRepositorio(String codigo) throws ObjectNaoExisteException{
 		boolean achado = true;
 		
@@ -152,13 +170,20 @@ public class RepositorioServico implements IRepositorioServico, Serializable{
 
 		return null;
 	}
-    
+    /**
+     * Método que gera o código do serviço através da quantidade no repositório.
+     * @return
+     */
 	private String gerarCodigo(){
 		return String.valueOf(this.ArrayDeServicos.size()+1);
 	}
-	
+	/**
+	 * Método que lista os serviços, retornando um arrayList de Produtos (Classe mais genérica, já que 
+	 * Serviço extends produto.
+	 */
 	public ArrayList<Produto> listarServico(){
-		ArrayList<Produto> servicos = new ArrayList();
+		
+		ArrayList<Produto> servicos = new ArrayList<>();
 		for(Servico servicoA : ArrayDeServicos){
 			servicos.add(servicoA);
 		}

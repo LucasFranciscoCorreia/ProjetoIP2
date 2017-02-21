@@ -1,17 +1,12 @@
 package br.ufrpe.GUI.model;
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-import com.sun.javafx.image.impl.ByteIndexed.Getter;
 
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Acessorio;
 import br.ufrpe.beans.Animal;
-import br.ufrpe.beans.Funcionario;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Remedio;
 import br.ufrpe.excecoes.ErroAoAtualizarException;
@@ -23,7 +18,6 @@ import br.ufrpe.negocios.FachadaControlador;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
