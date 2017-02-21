@@ -122,9 +122,9 @@ public class ScreenManager {
 			AnchorPane petCareMenu = servicos.load();
 			this.petCareMenu = new Scene(petCareMenu);
 			
-//			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
-//		              "view/TelaCaixa.fxml"));
-//			this.telaCaixa = new Scene(telaCaixa);
+			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
+		              "view/TelaCaixa.fxml"));
+			this.telaCaixa = new Scene(telaCaixa);
 			
 			
 			
@@ -243,6 +243,9 @@ public class ScreenManager {
 	
 	public void showMenuServicos(){
 		this.mainStage.setScene(this.menuServico);
+	}
+	public void showTelaCaixa(){
+		this.mainStage.setScene(this.telaCaixa);
 	}
 	
 	public void showMenu(){

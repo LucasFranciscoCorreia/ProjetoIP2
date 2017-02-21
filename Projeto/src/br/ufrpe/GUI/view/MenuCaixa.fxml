@@ -35,7 +35,7 @@
          <center>
             <VBox prefHeight="545.0" prefWidth="297.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton lineSpacing="1.0" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
+                  <JFXButton lineSpacing="1.0" onAction="#abrirTelaCaixa" prefHeight="200.0" prefWidth="297.0" style="-fx-border-color: black;" text="Caixa">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="150.0">
                            <image>

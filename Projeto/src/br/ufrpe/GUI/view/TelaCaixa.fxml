@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="602.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.PrincipalGui">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.TelaCaixaController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="164.0" text="Código do Produto">
          <font>
@@ -24,7 +23,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button contentDisplay="TOP" layoutX="601.0" layoutY="487.0" mnemonicParsing="false" onAction="#buttonSalvarCadastrarFuncionario" text="Concluir">
+      <Button contentDisplay="TOP" layoutX="601.0" layoutY="487.0" mnemonicParsing="false" text="Concluir">
          <graphic>
             <ImageView fitHeight="52.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,27 +40,27 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="TOP" layoutX="682.0" layoutY="503.0" mnemonicParsing="false" onAction="#buttonVoltarAction" prefHeight="103.0" prefWidth="118.0" text="Voltar" textAlignment="RIGHT">
-         <graphic>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../Pictures/editor-grid-view-block-glyph-128.png" />
-               </image>
-            </ImageView>
-         </graphic>
+      <Button alignment="CENTER" contentDisplay="TOP" layoutX="669.0" mnemonicParsing="false" onAction="#voltarMenuCaixa" prefHeight="103.0" prefWidth="118.0" text="Voltar" textAlignment="RIGHT">
          <font>
             <Font size="18.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../lib/Imgs/home-512.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
       <TableView fx:id="tableCarrinho" layoutY="186.0" prefHeight="141.0" prefWidth="665.0">
         <placeholder>
-        	<Label text="Nenhum produto adicionado!!"/>
+        	<Label text="Nenhum produto adicionado!!" />
     	</placeholder>
         <columns>
-          <TableColumn prefWidth="75.0" text="Código" />
-          <TableColumn prefWidth="429.0" text="Nome" />
-            <TableColumn prefWidth="76.0" text="Preço" />
-            <TableColumn prefWidth="83.0" text="Quantidade" />
+          <TableColumn fx:id="codigo" prefWidth="75.0" text="Código" />
+          <TableColumn fx:id="nome" prefWidth="327.0" text="Nome" />
+            <TableColumn fx:id="tipo" prefWidth="133.0" text="Tipo" />
+            <TableColumn fx:id="preco" prefWidth="50.0" text="Preço" />
         </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="159.0" prefHeight="27.0" prefWidth="164.0" text="Carrinho">
@@ -69,8 +68,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="addCarrinho" layoutX="115.0" layoutY="51.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="28.0" text="+" />
-      <Button contentDisplay="TOP" layoutX="631.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonSalvarCadastrarFuncionario" prefHeight="30.0" prefWidth="36.0">
+      <Button layoutX="223.0" layoutY="52.0" mnemonicParsing="false" onAction="#buttonAddCarrinho" prefHeight="27.0" prefWidth="28.0" text="+" />
+      <Button contentDisplay="TOP" layoutX="631.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonRemoverCarrinho" prefHeight="30.0" prefWidth="36.0">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -79,5 +78,16 @@
             </ImageView>
          </graphic>
       </Button>
+      <TextField fx:id="quantidadeVenda" layoutX="119.0" layoutY="50.0" prefHeight="30.0" prefWidth="91.0" promptText="Quantidade">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="aviso" layoutX="272.0" layoutY="50.0" prefHeight="30.0" prefWidth="363.0" />
+      <Label fx:id="valorTotal" layoutX="7.0" layoutY="331.0" prefHeight="51.0" prefWidth="203.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

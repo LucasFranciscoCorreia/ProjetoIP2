@@ -11,6 +11,11 @@ public class MenuCaixaController {
 	}
 	
 	@FXML
+	public void abrirTelaCaixa(ActionEvent evt){
+		ScreenManager.getInstance().showTelaCaixa();
+	}
+	
+	@FXML
 	public void abrirClienteMenuCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showClienteMenuCaixa();
 		ClienteController controlador = ScreenManager.getInstance().getClientesCaixa().getController();
