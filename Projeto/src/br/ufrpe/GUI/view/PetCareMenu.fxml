@@ -37,7 +37,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="167.0" text="Finalizar Servico">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFinalizarServico" prefHeight="120.0" prefWidth="167.0" text="Finalizar Servico">
                <font>
                   <Font size="18.0" />
                </font>

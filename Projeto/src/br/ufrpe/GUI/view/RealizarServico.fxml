@@ -13,36 +13,48 @@
    <children>
       <VBox layoutX="633.0" prefHeight="600.0" prefWidth="167.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="167.0" text="Serviços Concluidos" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="167.0" text="Serviços Concluidos" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../lib/Imgs/5091-512.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="167.0" text="Serviços em Andamento" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="167.0" text="Serviços em Andamento" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../lib/Imgs/checkbox-unchecked-clip-art-at-clker-com-vector-clip-art-online-V6frfR-clipart.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenuServico" prefHeight="200.0" prefWidth="167.0" text="Voltar" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirFinalizarServico" prefHeight="150.0" prefWidth="167.0" text="Finalizar Servico" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/simbolo-correcto_318-41920.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenuServico" prefHeight="150.0" prefWidth="167.0" text="Voltar" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../lib/Imgs/dog-clothes-1-512.png" />
                      </image>
@@ -62,7 +74,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="avisoPesquisar" layoutX="21.0" layoutY="128.0" prefHeight="60.0" prefWidth="182.0" wrapText="true">
+      <Label fx:id="avisoPesquisar" layoutX="21.0" layoutY="128.0" prefHeight="87.0" prefWidth="182.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -74,45 +86,50 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cpf" editable="false" layoutX="18.0" layoutY="44.0" prefHeight="30.0" prefWidth="174.0" promptText="INFORME APENAS NÚMEROS" />
+            <TextField fx:id="cpf" layoutX="18.0" layoutY="44.0" prefHeight="30.0" prefWidth="174.0" promptText="INFORME APENAS NÚMEROS" />
             <Button layoutX="65.0" layoutY="82.0" mnemonicParsing="false" onAction="#pesquisarCliente" prefHeight="36.0" prefWidth="79.0" text="Pesquisar">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="avisoCliente" layoutX="22.0" layoutY="125.0" prefHeight="70.0" prefWidth="174.0">
+            <Label fx:id="avisoCliente" layoutX="11.0" layoutY="125.0" prefHeight="75.0" prefWidth="200.0" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="petsScene" layoutX="426.0" layoutY="4.0" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="petsScene" layoutX="426.0" layoutY="4.0" prefHeight="200.0" prefWidth="200.0" visible="false">
          <children>
-            <Label fx:id="listarAnimais" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="6.0" prefHeight="192.0" prefWidth="189.0">
+            <Label fx:id="listarAnimais" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="7.0" layoutY="6.0" prefHeight="192.0" prefWidth="189.0" underline="true">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="iniciarServicoScene" layoutX="159.0" layoutY="254.0" prefHeight="232.0" prefWidth="359.0" visible="false">
+      <AnchorPane fx:id="iniciarServicoScene" layoutX="178.0" layoutY="261.0" prefHeight="306.0" prefWidth="313.0" visible="false">
          <children>
-            <TextField fx:id="nomeAnimal" alignment="CENTER" layoutX="76.0" layoutY="14.0" prefHeight="36.0" prefWidth="208.0" promptText="NOME DO ANIMAL">
+            <TextField fx:id="nomeAnimal" alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="36.0" prefWidth="208.0" promptText="NOME DO ANIMAL">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="128.0" layoutY="89.0" mnemonicParsing="false" onAction="#iniciarServico" prefHeight="60.0" prefWidth="103.0" text="INICIAR SERVIÇO" textAlignment="CENTER" wrapText="true">
+            <Button layoutX="105.0" layoutY="142.0" mnemonicParsing="false" onAction="#iniciarServico" prefHeight="60.0" prefWidth="103.0" text="INICIAR SERVIÇO" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="avisoServico" alignment="CENTER" layoutX="69.0" layoutY="170.0" prefHeight="36.0" prefWidth="244.0" textAlignment="CENTER">
+            <Label fx:id="avisoServico" alignment="CENTER" layoutX="35.0" layoutY="239.0" prefHeight="36.0" prefWidth="244.0" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <TextField fx:id="cpfFuncionario" alignment="CENTER" layoutX="53.0" layoutY="64.0" prefHeight="36.0" prefWidth="208.0" promptText="CPF DO FUNCIONARIO">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>

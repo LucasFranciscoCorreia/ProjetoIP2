@@ -13,7 +13,7 @@ public class ScreenManager {
 	private static ScreenManager unicInstanc;
 	private Stage mainStage;
 	
-	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa, servicos, menuServicos;
+	private FXMLLoader funcionarios, produtos, clientes, clientesCaixa, servicos, menuServicos, servicoAndamentos, servicoConcluidos;
 	
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
@@ -168,12 +168,14 @@ public class ScreenManager {
 //		              "view/ServicoAtualizar.fxml"));
 //			this.servicoAtualizar = new Scene(servicoAtualizar);
 			
-			AnchorPane servicoConcluido = FXMLLoader.load(getClass().getResource(
-		              "view/ServicoConcluido.fxml"));
+			servicoConcluidos = new FXMLLoader(this.getClass().getResource(
+					"view/ServicoConcluido.fxml"));
+			AnchorPane servicoConcluido = servicoConcluidos.load();
 			this.servicoConcluido = new Scene(servicoConcluido);
 			
-			AnchorPane servicoAndamento = FXMLLoader.load(getClass().getResource(
-		              "view/ServicoAndamento.fxml"));
+			servicoAndamentos = new FXMLLoader(this.getClass().getResource(
+					"view/ServicoAndamento.fxml"));
+			AnchorPane servicoAndamento = servicoAndamentos.load();
 			this.servicoAndamento = new Scene(servicoAndamento);
 						
 		} catch (IOException e) {
@@ -369,6 +371,14 @@ public class ScreenManager {
 	
 	public FXMLLoader getMenuServicos(){
 		return this.menuServicos;
+	}
+	
+	public FXMLLoader getServicoAndamentos(){
+		return this.servicoAndamentos;
+	}
+	
+	public FXMLLoader getServicoConcluidos(){
+		return this.servicoConcluidos;
 	}
 
 }
