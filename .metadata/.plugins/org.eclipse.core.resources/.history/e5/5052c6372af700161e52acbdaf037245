@@ -320,7 +320,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 				}else if(pessoa instanceof Cliente){
 					if (((Cliente) pessoa).getPets() != null){
 						
-						Cliente c = ((Cliente) repositorio.get(indice)).setPets( ((Cliente)pessoa).getPets() );
+						(Cliente) repositorio.get(indice);
 					}if(pessoa.getEnd() != null){
 						repositorio.get(indice).setEnd(pessoa.getEnd());
 					}

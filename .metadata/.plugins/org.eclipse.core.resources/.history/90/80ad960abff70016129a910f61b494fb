@@ -117,10 +117,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			}
 		}
 	}
-	/**
-	 * Método que lista os serviços ainda não concluídos. 
-	 * Usado na TableView da GUI
-	 */
+	
 	public ArrayList<PetCare> listarServicoEmAndamento(){
 			
 		ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
@@ -132,10 +129,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		}
 		return arrayEmAndamento;
 	}
-	/**
-	 * Método que lista os Serviços que já foram concluidos.
-	 * Usado na TableView da GUI
-	 */
+	
 	public ArrayList<PetCare> listarServicoConcluido(){
 		
 		ArrayList<PetCare> arrayConcluido = new ArrayList<PetCare>();
