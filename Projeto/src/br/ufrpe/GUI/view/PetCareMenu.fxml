@@ -13,7 +13,7 @@
    <children>
       <VBox layoutX="633.0" prefHeight="600.0" prefWidth="167.0">
          <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="167.0" text="Serviços Concluidos" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirServicoConcluido" prefHeight="120.0" prefWidth="167.0" text="Serviços Concluidos" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -25,7 +25,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="150.0" prefWidth="167.0" text="Serviços em Andamento" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirServicoAndamento" prefHeight="120.0" prefWidth="167.0" text="Serviços em Andamento" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -37,7 +37,19 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirRealizarServico" prefHeight="150.0" prefWidth="167.0" text="Realizar Serviço" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="120.0" prefWidth="167.0" text="Finalizar Servico">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../lib/Imgs/simbolo-correcto_318-41920.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#abrirRealizarServico" prefHeight="120.0" prefWidth="167.0" text="Realizar Serviço" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -49,7 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenuCaixa" prefHeight="150.0" prefWidth="167.0" text="Voltar" textAlignment="CENTER" wrapText="true">
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#voltarMenuCaixa" prefHeight="120.0" prefWidth="167.0" text="Voltar" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>

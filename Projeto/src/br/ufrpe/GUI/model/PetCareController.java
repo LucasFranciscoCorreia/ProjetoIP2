@@ -63,6 +63,16 @@ public class PetCareController {
 	}
 	
 	@FXML
+	public void abrirServicoAndamento(ActionEvent evt){
+		ScreenManager.getInstance().showServicoAndamento();
+	}
+	
+	@FXML
+	public void abrirServicoConcluido(ActionEvent evt){
+		ScreenManager.getInstance().showServicoConcluido();
+	}
+	
+	@FXML
 	public void pesquisarServico(ActionEvent evt){
 		//clientePesquisarScene.setVisible(true);
 	}

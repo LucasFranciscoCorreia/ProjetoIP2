@@ -18,7 +18,7 @@ public class ScreenManager {
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
 	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServico, petCareMenu;
-	private Scene realizarServico, servicoAdicionar, servicoRemover, servicoAtualizar;
+	private Scene realizarServico, servicoAdicionar, servicoRemover, servicoAtualizar, servicoConcluido, servicoAndamento;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
 	
@@ -150,6 +150,8 @@ public class ScreenManager {
 		              "view/ProdutoRemover.fxml"));
 			this.produtoRemover = new Scene(produtoRemover);
 			
+			
+			// TELAS SERVIÇOS:
 			AnchorPane realizarServico = FXMLLoader.load(getClass().getResource(
 		              "view/RealizarServico.fxml"));
 			this.realizarServico = new Scene(realizarServico);
@@ -165,6 +167,14 @@ public class ScreenManager {
 			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
 		              "view/ServicoAtualizar.fxml"));
 			this.servicoAtualizar = new Scene(servicoAtualizar);
+			
+			AnchorPane servicoConcluido = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoConcluido.fxml"));
+			this.servicoConcluido = new Scene(servicoConcluido);
+			
+			AnchorPane servicoAndamento = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoAndamento.fxml"));
+			this.servicoAndamento = new Scene(servicoAndamento);
 						
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -327,6 +337,16 @@ public class ScreenManager {
 		this.mainStage.setScene(this.servicoAtualizar);
 	}
 	
+	public void showServicoConcluido(){
+		this.mainStage.setScene(this.servicoConcluido);
+	}
+	
+	public void showServicoAndamento(){
+		this.mainStage.setScene(this.servicoAndamento);
+	}
+	
+	
+	// TABELAS
 	public FXMLLoader getFuncionarios() {
 		return this.funcionarios;
 	}
