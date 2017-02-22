@@ -13,20 +13,17 @@ import br.ufrpe.repositorios.RepositorioProduto;
 public class Loja {
 	
 	private Cliente cliente;
-	private Carrinho carrinho;
 	private Funcionario funcionario;
 	/**
 	 * Construtor básico da Loja
 	 */
 	public Loja(){
-		this.carrinho = new Carrinho();
 		this.cliente.setCpf("not-informed");
 	}
 	/*
 	 * Construtor do cliente já cadastrado
 	 */
 	public Loja(Cliente cliente){
-		this.carrinho = new Carrinho();
 		this.cliente = cliente;
 	}
 	public void GetLocalDate(){
@@ -38,38 +35,6 @@ public class Loja {
 		this.cliente.setCpf(cpf);
 	}
 	/**
-	 * Este método adiciona um produto ao carrinho, com sua quantidade
-	 * @param produto
-	 * @param quantidade
-	 */
-	public void addAoCarrinho(Produto produto, int quantidade){
-		
-		this.carrinho.adicionarAoCarrinho(quantidade, produto);
-	}
-	/**
-	 * Este método remove o produto do carrinho, deixando '0' dele.
-	 * @param produto
-	 */
-	public void removeDoCarrinhoTD(Produto produto){
-		this.carrinho.removerDoCarrinho(produto);
-	}
-	/**
-	 * Este método altera a quantidade de determinado item no carrinho, aumentando
-	 * @param produto
-	 * @param quantidade
-	 */
-	public void addMaisAoCarrinho(int i, Produto produto, int quantidade){
-		this.carrinho.addMaisAoCarrinho(i, produto, quantidade);
-	}
-	/**
-	 * Este método altera a quantidade de determinado item no carrinho, diminuindo 
-	 * @param produto
-	 * @param quantidade
-	 */
-	public void removeMaisDoCarrinho(Produto produto, int quantidade){
-		this.carrinho.removeMaisDoCarrinho(produto, quantidade);
-	}
-	/**
 	 * Este método realiza a compra, removendo a quantidade comprada do produto do estoque.
 	 * Um for-reach circula pelo array de produtos do carrinho, o produto é pesquisado no array
 	 * do repositório de produtos(carrinho) e seu indice é retornado (caso o produto não exista o retorno é -1).
@@ -78,19 +43,19 @@ public class Loja {
 	 * @throws ProdutoNaoExisteException
 	 */
 	
-	public void realizarCompra()throws ObjectNaoExisteException{
+	public void realizarCompra(Carrinho compra)throws ObjectNaoExisteException{
 		
 		//TODO saber que antes d chamar <realizarCompra> o cliente deve ser perguntado se quer colocar o CPF
 		//Caso não cadastrado
-		for (Produto elemento : this.carrinho.getArrayDeProdutos()) {
-			int index = this.carrinho.getArrayDeProdutos().indexOf(elemento);
+		for (Produto elemento : compra.getArrayDeProdutos()) {
+			int index = compra.getArrayDeProdutos().indexOf(elemento);
 			if(index != -1){
 				
-				int quantidadeC = this.carrinho.getArrayDeQuantidade().get(index);
+				int quantidadeC = compra.getArrayDeQuantidade().get(index);
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				
-				new NotaFiscal(funcionario, cliente, carrinho);
+				new NotaFiscal(funcionario, cliente, compra);
 			}else{throw new ObjectNaoExisteException();}
 		}
 	}		
