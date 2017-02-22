@@ -360,6 +360,15 @@ public class ProdutoController{
 		try {	
 
 			Produto encontrado = FachadaControlador.getInstance().pesquisar(codigoProdutoAtualizar.getText());
+			animalAtualizar.setVisible(false);
+			animalAtualizar.setDisable(true);
+			acessorioAtualizar.setVisible(false);
+			acessorioAtualizar.setDisable(true);
+			remedioAtualizar.setVisible(false);
+			remedioAtualizar.setDisable(true);
+			
+			
+			
 
 			if(encontrado instanceof Animal){
 				produtoToString.setText(((Animal) encontrado).toStringP());

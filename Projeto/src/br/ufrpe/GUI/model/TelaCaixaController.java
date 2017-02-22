@@ -8,10 +8,12 @@ import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Acessorio;
 import br.ufrpe.beans.Animal;
 import br.ufrpe.beans.Carrinho;
+import br.ufrpe.beans.Loja;
 import br.ufrpe.beans.Produto;
 import br.ufrpe.beans.Remedio;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
 import br.ufrpe.negocios.FachadaControlador;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -41,6 +43,8 @@ public class TelaCaixaController {
 	@FXML
 	private TableView<Produto> tableCarrinho;
 	@FXML
+	private TableView<Integer> tableQuantidade;
+	@FXML
 	private TableColumn<Produto, String> codigo;
 	@FXML
 	private TableColumn<Produto, String> nome;
@@ -64,11 +68,12 @@ public class TelaCaixaController {
 		nome.setCellValueFactory(new PropertyValueFactory<Produto, String>("nome"));
 		tipo.setCellValueFactory(new PropertyValueFactory<Produto, String>("tipo"));
 		preco.setCellValueFactory(new PropertyValueFactory<Produto, Float>("preco"));
-//		quantidade.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("quantidade"));
-		
-		
-		tableCarrinho.setItems(FXCollections.observableArrayList(carrinhoLista));
-		tableCarrinho.refresh();
+		quantidade.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("novo.getArrayDeQuantidade()"));
+	
+			tableCarrinho.setItems(FXCollections.observableArrayList(carrinhoLista));
+			tableQuantidade.setItems(FXCollections.observableArrayList(novo.getArrayDeQuantidade()));
+			tableCarrinho.refresh();
+			tableQuantidade.refresh();
 
 	}
 	
@@ -90,25 +95,36 @@ public class TelaCaixaController {
     			
     			if(!(novo.Size()<= 0)){
     				for(int i = 0; i<=novo.Size()-1;i++){
-    					if(!encontrado.equals(novo.getArrayDeProdutos().get(i))){
-    						novo.adicionarAoCarrinho(quantidade, encontrado);
+    					if(!encontrado.equals(novo.getArrayDeProdutos().get(i)) && i == novo.Size() -1){
+    						if(quantidade<=encontrado.getEstoque()){
+    							novo.adicionarAoCarrinho(quantidade, encontrado);
+    						}else{
+    							aviso.setText("Não existe produtos suficientes no estoque");
+    						}
+    						
     						
     			            break;
-    					}else{
-    							novo.addMaisAoCarrinho(i, novo.getArrayDeProdutos().get(i), quantidade);
+    					}else if(encontrado.equals(novo.getArrayDeProdutos().get(i))){
     							
-        						break;
-    						
-    						
+    							if(quantidade<=encontrado.getEstoque()){
+    								novo.addMaisAoCarrinho(i, novo.getArrayDeProdutos().get(i), quantidade);
+        						}else{
+        							aviso.setText("Não existe produtos suficientes no estoque");
+        						}
+        						break;		
     					}
     				}	
     			}else{
-    				novo.adicionarAoCarrinho(quantidade, encontrado);
+    				if(quantidade<=encontrado.getEstoque()){
+						novo.adicionarAoCarrinho(quantidade, encontrado);
+					}else{
+						aviso.setText("Não existe produtos suficientes no estoque");
+					}
 	
     			}
     			encontrado = null;
-    			aviso.setText("OK");
-    			valorTotal.setText("R$ "+novo.valorTotal());
+    			
+    			valorTotal.setText("Valor Total á pagar: R$ "+novo.valorTotal());
                 preencherTabelaCarrinho();		
                   	
             }else{
@@ -125,6 +141,24 @@ public class TelaCaixaController {
 	
 	@FXML
 	public void buttonRealizarCompra(ActionEvent event){		
+	          
+	        if(tableCarrinho.getItems() != null){
+	        	Loja venda = new Loja(null);
+	        	try {
+					venda.realizarCompra(novo);
+					FachadaControlador.getInstance().salvarNoArquivoProduto();
+					aviso.setText("Compra realizada com sucesso");
+					tableCarrinho.getItems().clear();
+					valorTotal.setText("Valor total a pagar: ");
+				} catch (ObjectNaoExisteException e) {
+					
+					e.printStackTrace();
+				}
+	        }else{
+	        	aviso.setText("Nenhum produto no carrinho!!");
+	        }
+	
+
 	}
 	
 	@FXML
@@ -147,7 +181,7 @@ public class TelaCaixaController {
 		}
 		
 		preencherTabelaCarrinho();
-		valorTotal.setText("R$ "+novo.valorTotal());
+		valorTotal.setText("Valor Total á pagar: R$ "+novo.valorTotal());
 	}
 	
 	
