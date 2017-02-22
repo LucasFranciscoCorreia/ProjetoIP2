@@ -18,7 +18,7 @@ public class ScreenManager {
 	private Scene clienteAtualizar, clienteCadastrar, clienteListar, clientePesquisar, clienteRemover;
 	private Scene funcionarioAtualizar, funcionarioCadastrar, funcionarioListar, funcionarioPesquisar, funcionarioRemover;
 	private Scene login, menu, menuCaixa, errorMessage, telaCaixa, clienteMenuCaixa, menuServico, petCareMenu;
-	private Scene realizarServico, servicoAdicionar, servicoRemover, servicoAtualizar, servicoConcluido, servicoAndamento;
+	private Scene realizarServico, servicoAdicionar, servicoRemover, servicoAtualizar, servicoConcluido, servicoAndamento, finalizarServico;
 	private Scene produtoAtualizar, produtoCadastrar, produtoListar, produtoPesquisar, produtoRemover; 
 	private Scene clienteCadastrarCaixa, clientePesquisarCaixa, clienteAtualizarCaixa;
 	
@@ -177,6 +177,10 @@ public class ScreenManager {
 					"view/ServicoAndamento.fxml"));
 			AnchorPane servicoAndamento = servicoAndamentos.load();
 			this.servicoAndamento = new Scene(servicoAndamento);
+			
+			AnchorPane finalizarServico = FXMLLoader.load(getClass().getResource(
+		              "view/FinalizarServico.fxml"));
+			this.finalizarServico = new Scene(finalizarServico);
 						
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -350,6 +354,9 @@ public class ScreenManager {
 		this.mainStage.setScene(this.servicoAndamento);
 	}
 	
+	public void showFinalizarServico(){
+		this.mainStage.setScene(finalizarServico);
+	}
 	
 	// TABELAS
 	public FXMLLoader getFuncionarios() {

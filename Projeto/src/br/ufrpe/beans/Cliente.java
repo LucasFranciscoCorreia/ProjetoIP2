@@ -41,6 +41,7 @@ public class Cliente extends Pessoa {
 	public Cliente(String cpf, LocalDate nascimento, String nome, Endereco end) {
 
 		super(cpf, nascimento,nome,end);
+		pets = null;
 	}
 	
 	public Cliente(String cpf){
@@ -72,6 +73,17 @@ public class Cliente extends Pessoa {
 	
 	public ArrayList<Animal> getPets(){
 		return this.pets;
+	}
+	
+	private String listarPets(){
+		String pets = "";
+		if(pets != null){
+			for (Animal animal : this.pets) {
+				pets += "\n" + animal.getNome();
+			}
+		}
+				
+		return pets;
 	}
 	
 	public void setPets(ArrayList<Animal> pets){
@@ -107,7 +119,9 @@ public class Cliente extends Pessoa {
 	@Override
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario(), this.getEnd());
-		res += "\nAnimais: \n";
+		if(listarPets().length() > 0){
+			res += "\nPets \n" + listarPets();
+		}
 		
 		return res;
 	}
