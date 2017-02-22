@@ -237,17 +237,5 @@ public class FachadaControlador {
 	public PetCare busca(Cliente b, Animal p){
 		return controladorPetCare.busca(b, p);
 	}
-	
-	public void atualizar(Animal novo, Animal antigo) throws ObjectJaExisteException, ObjectNaoExisteException {
-		controladorAnimal.atualizar(novo, antigo);
-	}
-	public Pessoa buscar(String cpf) throws ObjectNaoExisteException {
-		return controladorPessoa.buscar(cpf);
-	}
-	public void salvarNoArquivo() {
-		controladorServico.salvarNoArquivo();
-	}
-	
-	
 
 }
