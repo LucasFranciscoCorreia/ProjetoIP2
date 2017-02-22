@@ -41,11 +41,12 @@ public class Cliente extends Pessoa {
 	public Cliente(String cpf, LocalDate nascimento, String nome, Endereco end) {
 
 		super(cpf, nascimento,nome,end);
-		pets = null;
+		pets = new ArrayList<>();
 	}
 	
 	public Cliente(String cpf){
 		super(cpf, null, null);
+		pets = new ArrayList<>();
 	}
 	
 	/**
