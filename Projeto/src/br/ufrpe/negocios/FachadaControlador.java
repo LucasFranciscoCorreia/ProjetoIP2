@@ -234,7 +234,7 @@ public class FachadaControlador {
 		return controladorPetCare.listarServicoConcluido();
 	}
 	
-	public PetCare busca(Cliente b, Animal p){
+	public PetCare busca(Cliente b, Animal p) throws ObjectNaoExisteException{
 		return controladorPetCare.busca(b, p);
 	}
 	
