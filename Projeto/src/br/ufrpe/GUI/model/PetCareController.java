@@ -33,21 +33,21 @@ public class PetCareController {
 	private TableColumn<Produto, String> codigoCol;
 	@FXML
 	private TableColumn<Produto, Float> precoCol;
-	
+
 	//TABLEVIEW DE SERVIÇO EM ANDAMENTO
 	@FXML
 	private TableView<PetCare> andamentoTable;
 	@FXML
-	private TableColumn<Servico, String> servicoCol;
+	private TableColumn<PetCare, String> servicoCol;
 	@FXML
-	private TableColumn<Funcionario, String> funcionarioCol;
+	private TableColumn<PetCare, String> funcionarioCol;
 	@FXML
-	private TableColumn<Funcionario, String> cpfFuncionarioCol;
+	private TableColumn<PetCare, String> clienteCol;
 	@FXML
-	private TableColumn<Cliente, String> clienteCol;
+	private TableColumn<PetCare, String> cpfClienteCol;
 	@FXML
-	private TableColumn<Cliente, String> cpfClienteCol;
-	
+	private TableColumn<PetCare, String> nomeAnimalCol;
+
 	//TABLEVIEW DE SERVIÇO CONCLUIDOS
 	@FXML
 	private TableView<PetCare> concluidoTable;
@@ -55,7 +55,7 @@ public class PetCareController {
 	private TableColumn<PetCare, LocalDateTime> dataInicioCol;
 	@FXML
 	private TableColumn<PetCare, LocalDateTime> dataFimCol;
-	
+
 	@FXML
 	private TextField codigo, cpf, nomeAnimal, cpfFuncionario;
 	@FXML
@@ -63,30 +63,40 @@ public class PetCareController {
 	@FXML
 	private AnchorPane clientePesquisarScene, petsScene, iniciarServicoScene;
 	
-	
+
+
 
 	public void preencherTabela(){
 		ArrayList<Produto> servicoListar = FachadaControlador.getInstance().listarServico();
-		
+
 		nomeCol.setCellValueFactory(new PropertyValueFactory<Produto, String>("nome"));
 		precoCol.setCellValueFactory(new PropertyValueFactory<Produto, Float>("preco"));
 		codigoCol.setCellValueFactory(new PropertyValueFactory<Produto, String>("codigo"));
-		
+
 		servicosTable.setItems(FXCollections.observableArrayList(servicoListar));
 	}
-	
+
 	public void preencherTabelaAndamento(){
-		// TODO chamar o ArrayList de serviços em andamento
+		ArrayList<PetCare> servicoAndamento = FachadaControlador.getInstance().listarServicoEmAndamento();
+		
+		dataInicioCol.setCellValueFactory(new PropertyValueFactory<PetCare, LocalDateTime>("dataComeco"));
+		servicoCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeServico"));
+		funcionarioCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeFuncionario"));
+		clienteCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeCliente"));
+		cpfClienteCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("cpfCliente"));
+		nomeAnimalCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeAnimal"));
+		
+		andamentoTable.setItems(FXCollections.observableArrayList(servicoAndamento));
 	}
-	
+
 	public void preencherTabelaConcluido(){
 		// TODO
 	}
-	
+
 	public boolean cpfOk(String cpf){
 		boolean ok = true;
 		char[] cpfChar = cpf.toCharArray();
-		
+
 		if(cpf.length() == 11){
 			for(int i = 0; i < cpf.length(); i++){
 				if(!Character.isDigit(cpfChar[i])){
@@ -96,14 +106,14 @@ public class PetCareController {
 		}else{
 			ok = false;
 		}
-		
+
 		return ok;
 	}
-	
+
 	public String cpfPadronizar(String cpf){
 		String novoCpf = "";
 		char[] cpfChar = cpf.toCharArray();
-		
+
 		for(int i = 0; i < cpf.length(); i++){
 			novoCpf += cpfChar[i];
 			if(i == 2 || i == 5){
@@ -112,27 +122,27 @@ public class PetCareController {
 				novoCpf += "-";
 			}
 		}
-		
+
 		return novoCpf;
 	}
-	
+
 	@FXML
 	public void abrirRealizarServico(ActionEvent evt){
 		ScreenManager.getInstance().showRealizarServico();
 	}
-	
+
 	@FXML
 	public void voltarMenuServico(ActionEvent evt){
 		ScreenManager.getInstance().showPetCareMenu();
 		PetCareController controlador = ScreenManager.getInstance().getServicos().getController();
 		controlador.preencherTabela();
 	}
-	
+
 	@FXML
 	public void voltarMenuCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showMenuCaixa();
 	}
-	
+
 	@FXML
 	public void abrirServicoAndamento(ActionEvent evt){
 		ScreenManager.getInstance().showServicoAndamento();
@@ -146,13 +156,13 @@ public class PetCareController {
 		PetCareController controlador = ScreenManager.getInstance().getServicoConcluidos().getController();
 		controlador.preencherTabelaConcluido();
 	}
-	
+
 	@FXML
 	public void abrirFinalizarServico(ActionEvent evt){
 		ScreenManager.getInstance().showFinalizarServico();
 	}
-	
-	
+
+
 	@FXML
 	public void pesquisarServico(ActionEvent evt){
 		//clientePesquisarScene.setVisible(true);
@@ -160,21 +170,21 @@ public class PetCareController {
 			avisoPesquisar.setText("");
 			avisoCliente.setText("");
 		}
-		
+
 		if(codigo.getText().isEmpty()){
 			avisoPesquisar.setText("INFORME UM CÓDIGO VÁLIDO!!!");
 			codigo.setText("");
 		}else{
 			try {
 				Servico achado = FachadaControlador.getInstance().buscarServico(codigo.getText());
-				clientePesquisarScene.setVisible(true);
+				clientePesquisarScene.setDisable(false);
 			} catch (ObjectNaoExisteException e) {
 				avisoPesquisar.setText(e.getMessage());
 				codigo.setText("");
 			}
 		}
 	}
-	
+
 	@FXML
 	public void pesquisarCliente(ActionEvent evt){
 		if(cpf.getText().isEmpty()){
@@ -185,9 +195,9 @@ public class PetCareController {
 				String cpfNovo = cpfPadronizar(cpf.getText());
 				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				String animaisS = "";					
-				
+
 				String mensagem = "CLIENTE ENCONTRADO NO SISTEMA!!!";
-				
+
 				ArrayList<Animal> animais;
 				if(achado.getPets() != null){
 					animais = achado.getPets();
@@ -195,76 +205,74 @@ public class PetCareController {
 						animaisS += animal.getNome() + "\n";
 					}					
 				}
-				if(animaisS == ""){
+				if(animaisS.length() == 0){
 					avisoCliente.setText( mensagem + "\nESTE CLIENTE NÃO POSSUI ANIMAIS EM NOSSO CADASTRO!!!");
 				}else{
 					avisoCliente.setText(mensagem);
 					listarAnimais.setText(animaisS);
-					iniciarServicoScene.setVisible(true);
+					iniciarServicoScene.setDisable(false);
+					clientePesquisarScene.setDisable(true);
 				}
-				
-				System.out.println("terminou aqui");
 			} catch (Exception e) {
 				avisoCliente.setText(e.getMessage());
 				cpf.setText("");
 			}
 		}
 	}
-	
+
 	@FXML
 	public void iniciarServico(ActionEvent evt){
+		boolean ok = false;
+				
 		if(nomeAnimal.getText().isEmpty() && cpfFuncionario.getText().isEmpty()){
 			avisoServico.setText("INFORME TODOS OS DADOS!!!");
 		}else if (cpfOk(cpfFuncionario.getText())) {
 			try {
 				String cpfNovo = cpfPadronizar(cpf.getText());
 				String cpfFuncionarioNovo = cpfPadronizar(cpfFuncionario.getText());
-				
+
 				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				Animal pet = null;
-				ArrayList<Animal> animais = null;
+				ArrayList<Animal> animais = new ArrayList<>();
 				animais = achado.getPets();
 				for(Animal animal: animais){
-					if(animal.getNome().equals(nomeAnimal)){
+					if(animal.getNome().equalsIgnoreCase(nomeAnimal.getText())){
 						pet = animal;
 						break;
 					}
 				}
-				
+
 				Funcionario funcionario = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpfFuncionarioNovo);
 				Cliente cliente = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				Servico servico = FachadaControlador.getInstance().buscarServico(codigo.getText());
-				
+
 				if(pet != null){
 					PetCare petcare = new PetCare(servico, cliente, funcionario, pet);
 					FachadaControlador.getInstance().adicionarPetCare(petcare);
 					FachadaControlador.getInstance().salvarNoArquivoPetCare();
 					avisoServico.setText("PETCARE INICIADO!!");
+					iniciarServicoScene.setDisable(true);
+					ok = true;
 				}else{
 					avisoServico.setText("ANIMAL NÃO CADASTRADO!!!");
 				}
-				
+
 			} catch (Exception e) {
 				avisoServico.setText(e.getMessage());
 			}
 		}else{
-			avisoServico.setText("INFORME APENAS NÚMEROS NO CPF");
+			avisoServico.setText("INFORME UM CPF VÁLIDO");
 		}
-		
-		
-		if(!avisoPesquisar.getText().isEmpty() || !codigo.getText().isEmpty() 
-				|| !cpf.getText().isEmpty() || !avisoCliente.getText().isEmpty()
-				|| !listarAnimais.getText().isEmpty() || !nomeAnimal.getText().isEmpty()
-				|| !cpfFuncionario.getText().isEmpty()){
-			clientePesquisarScene.setVisible(false);
-			petsScene.setVisible(false);
+
+		if(ok){
 			avisoPesquisar.setText("");
 			codigo.setText("");
 			cpf.setText("");
 			avisoCliente.setText("");
 			listarAnimais.setText("");
 			nomeAnimal.setText("");
-			cpfFuncionario.setText("");
+			cpfFuncionario.setText("");			
 		}
+
 	}
 }

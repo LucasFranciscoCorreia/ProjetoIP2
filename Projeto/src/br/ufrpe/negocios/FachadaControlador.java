@@ -226,12 +226,12 @@ public class FachadaControlador {
 		controladorPetCare.salvarNoArquivo();
 	}
 	
-	public void listarServicoEmAndamento(){
-		controladorPetCare.listarServicoEmAndamento();
+	public ArrayList<PetCare> listarServicoEmAndamento(){
+		return controladorPetCare.listarServicoEmAndamento();
 	}
 	
-	public void listarServicoConcluido(){
-		controladorPetCare.listarServicoConcluido();
+	public ArrayList<PetCare> listarServicoConcluido(){
+		return controladorPetCare.listarServicoConcluido();
 	}
 
 }

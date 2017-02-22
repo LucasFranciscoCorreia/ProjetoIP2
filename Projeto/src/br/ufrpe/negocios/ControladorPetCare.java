@@ -19,7 +19,7 @@ public class ControladorPetCare implements IControladorPetCare{
 	}
 	
 	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
-		this.removerPetCare(petcare);
+		repositorioPetCare.removerPetCare(petcare);
 	}
 	public void salvarNoArquivo(){
 		this.repositorioPetCare.salvarNoArquivo();

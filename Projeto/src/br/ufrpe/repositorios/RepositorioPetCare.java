@@ -93,7 +93,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 	 * Método que salva o arrayList de petCare no arquivo
 	 */
 	public void salvarNoArquivo() {
-		if (this.unicInstanc == null){
+		if (unicInstanc == null){
 			return;
 		}
 
@@ -105,7 +105,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			fo = new FileOutputStream(out);
 			oos = new ObjectOutputStream(fo);
 
-			oos.writeObject(this.unicInstanc);
+			oos.writeObject(unicInstanc);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -124,8 +124,8 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 	public void adicionarPetCare(PetCare novo) throws ObjectNaoExisteException, ObjectJaExisteException{
 		if(novo != null){
 			
-			for (PetCare petCare : this.repositorio) {
-				if (this.repositorio.equals(novo)) {
+			for (PetCare petCare : repositorio) {
+				if (petCare.equals(novo)) {
 					throw new ObjectJaExisteException();
 				}
 			}
@@ -154,7 +154,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 	 */
 	public ArrayList<PetCare> listarServicoEmAndamento(){
 			
-		ArrayList<PetCare> arrayEmAndamento = new ArrayList<PetCare>();
+		ArrayList<PetCare> arrayEmAndamento = new ArrayList<>();
 		
 		for (PetCare petCare : repositorio) {
 			if(petCare.getDataFim() == null){
@@ -169,7 +169,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 	 */
 	public ArrayList<PetCare> listarServicoConcluido(){
 		
-		ArrayList<PetCare> arrayConcluido = new ArrayList<PetCare>();
+		ArrayList<PetCare> arrayConcluido = new ArrayList<>();
 		
 		for (PetCare petCare : repositorio) {
 			if(petCare.getDataFim() != null){

@@ -79,7 +79,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="clientePesquisarScene" layoutX="225.0" layoutY="4.0" prefHeight="249.0" prefWidth="218.0" visible="false">
+      <AnchorPane fx:id="clientePesquisarScene" disable="true" layoutX="225.0" layoutY="4.0" prefHeight="249.0" prefWidth="218.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="182.0" text="Informe o código do cliente" textAlignment="CENTER">
                <font>
@@ -92,7 +92,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="avisoCliente" layoutX="11.0" layoutY="125.0" prefHeight="134.0" prefWidth="200.0" wrapText="true">
+            <Label fx:id="avisoCliente" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="11.0" layoutY="125.0" prefHeight="134.0" prefWidth="200.0" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -108,7 +108,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="iniciarServicoScene" layoutX="178.0" layoutY="261.0" prefHeight="306.0" prefWidth="313.0" visible="false">
+      <AnchorPane fx:id="iniciarServicoScene" disable="true" layoutX="178.0" layoutY="261.0" prefHeight="306.0" prefWidth="313.0">
          <children>
             <TextField fx:id="nomeAnimal" alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="36.0" prefWidth="208.0" promptText="NOME DO ANIMAL">
                <font>
