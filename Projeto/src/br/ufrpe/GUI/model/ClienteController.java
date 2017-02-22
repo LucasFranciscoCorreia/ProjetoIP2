@@ -68,7 +68,7 @@ public class ClienteController implements Initializable{
 		try{
 			Pessoa p = FachadaControlador.getInstance().buscarPessoa(buscaRemover.getText());
 			if(p instanceof Cliente){
-				FachadaControlador.getInstance().removerPessoa(buscaRemover.getText());
+				FachadaControlador.getInstance().removerPessoa(this.cpfPadronizar(buscaRemover.getText()));
 				FachadaControlador.getInstance().salvarNoArquivoPessoa();
 			}
 			clienteEncontrado.setText("Cliente deletado com sucesso");
@@ -76,26 +76,33 @@ public class ClienteController implements Initializable{
 			clienteEncontrado.setText(e.getMessage());
 		}finally{
 			buttonDeletar.setDisable(true);
+			buscaRemover.setText("");
 		}
 	}
 
 	@FXML
 	public void buscarCliente(ActionEvent evt){
 		if(buscaRemover.getText().isEmpty()){
-			clienteEncontrado.setText("Digite um cpf valido");
+			clienteEncontrado.setText("Digite um cpf para busca");
 			buttonDeletar.setDisable(true);
 		}else{
-			try{				
-				clienteEncontrado.setText(FachadaControlador.getInstance().buscarPessoa(buscaRemover.getText()).getNome());
-				buttonDeletar.setDisable(false);
-			}catch(Exception e){
-				clienteEncontrado.setText(e.getMessage());
-			}finally{
-
+			if(buscaRemover.getText().length() != 11){
+				clienteEncontrado.setText("CPF deve ser escrito em numeros e ter 11 numeros");
+				buttonDeletar.setDisable(true);
+			}else if(!cpfOk(buscaRemover.getText())){
+				clienteEncontrado.setText("CPF deve ter apenas numeros");
+				buttonDeletar.setDisable(true);
+			}else{
+				try {
+					clienteEncontrado.setText(FachadaControlador.getInstance().buscarPessoa(this.cpfPadronizar(buscaRemover.getText())).getNome());
+					buttonDeletar.setDisable(false);
+				}catch (ObjectNaoExisteException e) {
+					clienteEncontrado.setText(e.getMessage());
+					buttonDeletar.setDisable(true);
+				}
 			}
 		}
 	}
-
 	public String cpfPadronizar(String cpf){
 		String novoCpf = "";
 		char[] cpfChar = cpf.toCharArray();
@@ -206,28 +213,8 @@ public class ClienteController implements Initializable{
 			avisoAddPetCliente.setText("");
 			avisoClienteAtualizar.setText("");
 		}else{
-			try {
-				
-				
-				donoPet = FachadaControlador.getInstance().buscarPessoa(cpfDono.getText());
-				if(donoPet instanceof Cliente){
-					infDonoPet.setText(donoPet.getNome());
-					raca.setDisable(false);
-					nomePet.setDisable(false);
-					peso.setDisable(false);
-					altura.setDisable(false);
-					especie.setDisable(false);
-					rua.setDisable(false);
-					numero.setDisable(false);
-					complemento.setDisable(false);
-					cep.setDisable(false);
-					cidadeUF.setDisable(false);
-					salvarEnd.setDisable(false);
-					salvarPet.setDisable(false);
-				}
-				
-			} catch (ObjectNaoExisteException e) {
-				infDonoPet.setText(e.getMessage());
+			if(cpfDono.getText().length() != 11){
+				infDonoPet.setText("CPF deve ser escrito em numeros e ter 11 numeros");
 				raca.setDisable(true);
 				nomePet.setDisable(true);
 				peso.setDisable(true);
@@ -240,6 +227,53 @@ public class ClienteController implements Initializable{
 				cidadeUF.setDisable(true);
 				salvarEnd.setDisable(true);
 				salvarPet.setDisable(true);
+			}else if(!cpfOk(cpfDono.getText())){
+				infDonoPet.setText("CPF deve ter apenas numeros");
+				raca.setDisable(true);
+				nomePet.setDisable(true);
+				peso.setDisable(true);
+				altura.setDisable(true);
+				especie.setDisable(true);
+				rua.setDisable(true);
+				numero.setDisable(true);
+				complemento.setDisable(true);
+				cep.setDisable(true);
+				cidadeUF.setDisable(true);
+				salvarEnd.setDisable(true);
+				salvarPet.setDisable(true);
+			}else{
+				try {
+					donoPet = FachadaControlador.getInstance().buscarPessoa(this.cpfPadronizar(cpfDono.getText()));
+					if(donoPet instanceof Cliente){
+						infDonoPet.setText(donoPet.getNome());
+						raca.setDisable(false);
+						nomePet.setDisable(false);
+						peso.setDisable(false);
+						altura.setDisable(false);
+						especie.setDisable(false);
+						rua.setDisable(false);
+						numero.setDisable(false);
+						complemento.setDisable(false);
+						cep.setDisable(false);
+						cidadeUF.setDisable(false);
+						salvarEnd.setDisable(false);
+						salvarPet.setDisable(false);
+					}
+				} catch (ObjectNaoExisteException e) {
+					infDonoPet.setText(e.getMessage());
+					raca.setDisable(true);
+					nomePet.setDisable(true);
+					peso.setDisable(true);
+					altura.setDisable(true);
+					especie.setDisable(true);
+					rua.setDisable(true);
+					numero.setDisable(true);
+					complemento.setDisable(true);
+					cep.setDisable(true);
+					cidadeUF.setDisable(true);
+					salvarEnd.setDisable(true);
+					salvarPet.setDisable(true);
+				}
 			}
 		}
 	}
@@ -285,7 +319,7 @@ public class ClienteController implements Initializable{
 			try {
 				FachadaControlador.getInstance().atualizar(donoPet);
 				FachadaControlador.getInstance().salvarNoArquivoPessoa();
-				
+
 			} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
 				avisoAddPetCliente.setText(e.getMessage());
 			}
@@ -357,7 +391,7 @@ public class ClienteController implements Initializable{
 	}
 
 	public boolean cpfOk(String cpf){
-		for(int i = 0; i < 11;i++){
+		for(int i = 0; i < cpf.length();i++){
 			try{
 				Integer.parseInt(cpf.charAt(i)+"");
 			}catch (NumberFormatException e) {
@@ -366,15 +400,17 @@ public class ClienteController implements Initializable{
 		}
 		return true;
 	}
-	
+
 	@FXML
 	public void pesquisarCliente(ActionEvent evt){
 		Pessoa p;
 		try {
-			if(this.cpf.getText().length() != 11 && cpfOk(cpf.getText())){
-				erroPesquisa.setText("CPF deve ser escrito em numeros e ter 11 numeros");
+			if(!cpfOk(cpf.getText())){
+				erroPesquisa.setText("CPF deve conter apenas numeros");
+			}else if(this.cpf.getText().length() != 11){
+				erroPesquisa.setText("CPF deve ter 11 numeros");
 			}else{
-				p = FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
+				p = FachadaControlador.getInstance().buscarPessoa(this.cpfPadronizar(cpf.getText()));
 				if(p instanceof Funcionario || p == null){
 					throw new ObjectNaoExisteException();
 				}
@@ -395,7 +431,7 @@ public class ClienteController implements Initializable{
 			if(!cpfOk(cpf.getText())){
 				avisoCadastro.setText("CPF deve conter apenas numeros");
 			}else if(cpf.getText().length() != 11){
-				avisoCadastro.setText("CPF deve ser apenas numeros e ter 11 numeros");
+				avisoCadastro.setText("CPF deve ter 11 numeros");
 			}else{
 				if(dataOk(aniversario.getText())){
 					Pessoa novo = null;
@@ -428,7 +464,7 @@ public class ClienteController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 	}
 
 }
