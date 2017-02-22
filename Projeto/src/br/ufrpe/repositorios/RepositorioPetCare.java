@@ -37,27 +37,26 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		return unicInstanc;
 	}
 	
-	public PetCare busca(Cliente b, Animal p) {
+	public PetCare busca(Cliente b, Animal p) throws ObjectNaoExisteException {
 		LocalDate agora = LocalDate.now();
 		int i = 0;
 		boolean ok = true;
-		while(i < repositorio.size() && ok){ //Errooooo
-			if(repositorio.get(i).getDataComeco().getYear() <= agora.getYear()){
-				i++;
-			}else if(repositorio.get(i).getDataComeco().getMonthValue() < agora.getMonthValue()){
-				i++;
-			}else if(repositorio.get(i).getDataComeco().getDayOfMonth() < agora.getDayOfMonth()){
-				i++;
+		
+		ArrayList<PetCare> petCareEmAndamento = new ArrayList<>();
+		petCareEmAndamento = listarServicoEmAndamento();
+		PetCare achado = null;
+		
+		for (PetCare petCare : petCareEmAndamento) {
+			if(petCare.getCliente().equals(b) && petCare.getNomeAnimal().equals(p.getNome())){
+				achado = petCare;
+				break;
 			}
 		}
-		if(i < repositorio.size()){
-			for(;i < repositorio.size();i++){
-				if(repositorio.get(i).getCliente().equals(b) && repositorio.get(i).getPet().equals(p)){
-					return repositorio.get(i);
-				}
-			}
+		if(achado == null){
+			throw new ObjectNaoExisteException();
 		}
-		return null;
+		
+		return achado;
 	}
 	
 	/**
@@ -148,12 +147,21 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		}
 	}
 	
+//	public void removerDeAndamento(){
+//		for (PetCare pet : listarServicoEmAndamento()) {
+//			if(pet.getDataFim() != null){
+//				listarServicoEmAndamento().remove(pet);
+//			}
+//		}
+//
+//	}
+	
 	/**
 	 * Método que lista os serviços ainda não concluídos. 
 	 * Usado na TableView da GUI
 	 */
 	public ArrayList<PetCare> listarServicoEmAndamento(){
-			
+		
 		ArrayList<PetCare> arrayEmAndamento = new ArrayList<>();
 		
 		for (PetCare petCare : repositorio) {
@@ -172,6 +180,7 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		ArrayList<PetCare> arrayConcluido = new ArrayList<>();
 		
 		for (PetCare petCare : repositorio) {
+			
 			if(petCare.getDataFim() != null){
 				arrayConcluido.add(petCare);
 			}

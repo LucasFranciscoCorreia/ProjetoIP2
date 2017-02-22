@@ -2,6 +2,9 @@ package br.ufrpe.beans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 /**
  * Esta classe representa o "PetCare" espécie de loja onde serão adicionados os serviços prestados
  * aos animais (banho, tosa, etc).
@@ -20,7 +23,8 @@ public class PetCare implements Serializable{
 	private LocalDateTime dataComeco;
 	private LocalDateTime dataFim;
 	
-
+	private String dataCom;
+	private String dataFi;
 	private String nomeServico;
 	private float precoServico;
 	private String nomeCliente;
@@ -98,6 +102,19 @@ public class PetCare implements Serializable{
 	 * Getters and Setters
 	 * @return
 	 */
+	public String getDataFi(){
+		DateTimeFormatter formatador = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(new Locale("pt", "br"));
+		dataFi = dataFim.format(formatador);
+		return dataFi;
+	}
+	
+	public String getDataCom(){
+		DateTimeFormatter formatador = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(new Locale("pt", "br"));
+		dataCom = dataComeco.format(formatador);
+		
+		return dataCom;
+	}
+	
 	public String getNomeServico(){
 		return nomeServico;
 	}
@@ -191,7 +208,7 @@ public class PetCare implements Serializable{
 	@Override
 	public String toString(){
 		return nomeServico + " REALIZADO POR " + nomeFuncionario + " PARA O CLIENTE " + nomeCliente 
-				+ "DO CPF " + cpfCliente;
+				+ " DO CPF " + cpfCliente;
 	}
 
 	@Override

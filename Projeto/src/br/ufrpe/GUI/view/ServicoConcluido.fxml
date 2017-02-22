@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,6 +36,9 @@
                      <image>
                         <Image url="@../../../../../lib/Imgs/simbolo-correcto_318-41920.png" />
                      </image>
+                     <effect>
+                        <ColorAdjust brightness="-0.1" />
+                     </effect>
                   </ImageView>
                </graphic>
             </Button>
@@ -66,15 +70,14 @@
       </VBox>
       <ScrollPane prefHeight="588.0" prefWidth="629.0">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="576.0" prefWidth="861.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="576.0" prefWidth="755.0">
                <children>
-                  <TableView fx:id="concluidoTable" prefHeight="600.0" prefWidth="861.0">
+                  <TableView fx:id="concluidoTable" prefHeight="600.0" prefWidth="759.0">
                      <columns>
                         <TableColumn fx:id="dataInicioCol" prefWidth="99.0" text="DATA INICIO" />
                         <TableColumn fx:id="dataFimCol" prefWidth="88.0" text="DATA FIM" />
                         <TableColumn fx:id="servicoCol" prefWidth="71.0" text="SERVIÇO" />
                         <TableColumn fx:id="funcionarioCol" minWidth="0.0" prefWidth="170.0" text="FUNCIONÁRIO" />
-                        <TableColumn fx:id="cpfFuncionarioCol" prefWidth="128.0" text="CPF FUNCIONARIO" />
                         <TableColumn fx:id="clienteCol" prefWidth="170.0" text="CLIENTE" />
                         <TableColumn fx:id="cpfClienteCol" prefWidth="128.0" text="CPF CLIENTE" />
                      </columns>

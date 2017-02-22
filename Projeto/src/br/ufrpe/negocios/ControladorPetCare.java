@@ -35,7 +35,7 @@ public class ControladorPetCare implements IControladorPetCare{
 		return repositorioPetCare.listarServicoConcluido();
 	}
 	
-	public PetCare busca(Cliente b, Animal p){
+	public PetCare busca(Cliente b, Animal p) throws ObjectNaoExisteException{
 		return repositorioPetCare.busca(b, p);
 	}
 }

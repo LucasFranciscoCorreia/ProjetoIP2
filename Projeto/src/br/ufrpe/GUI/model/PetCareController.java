@@ -4,6 +4,7 @@ import javafx.scene.control.TextField;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import br.ufrpe.GUI.ScreenManager;
 import br.ufrpe.beans.Animal;
@@ -52,9 +53,9 @@ public class PetCareController {
 	@FXML
 	private TableView<PetCare> concluidoTable;
 	@FXML
-	private TableColumn<PetCare, LocalDateTime> dataInicioCol;
+	private TableColumn<PetCare, String> dataInicioCol;
 	@FXML
-	private TableColumn<PetCare, LocalDateTime> dataFimCol;
+	private TableColumn<PetCare, String> dataFimCol;
 
 	@FXML
 	private TextField codigo, cpf, nomeAnimal, cpfFuncionario, raca, especie;
@@ -63,7 +64,7 @@ public class PetCareController {
 	@FXML
 	private AnchorPane clientePesquisarScene, petsScene, iniciarServicoScene, animalScene;
 	@FXML
-	private Button finalizar;
+	private Button finalizar, buttonPesquisar;
 	
 
 
@@ -81,26 +82,26 @@ public class PetCareController {
 	public void preencherTabelaAndamento(){
 		ArrayList<PetCare> servicoAndamento = FachadaControlador.getInstance().listarServicoEmAndamento();
 		
-		dataInicioCol.setCellValueFactory(new PropertyValueFactory<PetCare, LocalDateTime>("dataComeco"));
+		dataInicioCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("dataCom"));
 		servicoCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeServico"));
 		funcionarioCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeFuncionario"));
 		clienteCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeCliente"));
 		cpfClienteCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("cpfCliente"));
 		nomeAnimalCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeAnimal"));
-		
+		andamentoTable.refresh();
 		andamentoTable.setItems(FXCollections.observableArrayList(servicoAndamento));
 	}
 
 	public void preencherTabelaConcluido(){
 		ArrayList<PetCare> servicoConcluido = FachadaControlador.getInstance().listarServicoConcluido();
 		
-		dataFimCol.setCellValueFactory(new PropertyValueFactory<>("dataFim"));
-		dataInicioCol.setCellValueFactory(new PropertyValueFactory<PetCare, LocalDateTime>("dataComeco"));
+		dataFimCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("dataFi"));
+		dataInicioCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("dataCom"));
 		servicoCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeServico"));
 		funcionarioCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeFuncionario"));
 		clienteCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("nomeCliente"));
 		cpfClienteCol.setCellValueFactory(new PropertyValueFactory<PetCare, String>("cpfCliente"));
-	
+		concluidoTable.refresh();
 		concluidoTable.setItems(FXCollections.observableArrayList(servicoConcluido));
 	}
 
@@ -288,24 +289,30 @@ public class PetCareController {
 	}
 
 	@FXML
-	public void pesquisarClienteFinalizar(ActionEvent evt){
+	public void pesquisarClienteFinalizar(ActionEvent evt) throws ObjectNaoExisteException{
 		if(cpf.getText().isEmpty()){
 			avisoCliente.setText("INFORME UM CPF VÁLIDO!!");
 		} if(cpfOk(cpf.getText())){
 			try {
 				String cpfNovo = cpfPadronizar(cpf.getText());
-				Cliente cliente = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
-				
-				if(cliente.getPets() == null){
-					avisoCliente.setText("ESSE CLIENTE NÃO POSSUI ANIMAIS CADASTRADOS!!!");
+				if(FachadaControlador.getInstance().buscarPessoa(cpfNovo) instanceof Cliente){
+					Cliente cliente = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);					
+					if(cliente.getPets() == null){
+						avisoCliente.setText("ESSE CLIENTE NÃO POSSUI ANIMAIS CADASTRADOS!!!");
+					}else{
+						avisoCliente.setText(cliente.getNome() + " CADASTRADO NO SISTEMA");
+						animalScene.setDisable(false);	
+						buttonPesquisar.setDisable(false);
+					}
 				}else{
-					avisoCliente.setText(cliente.getNome() + " CADASTRADO NO SISTEMA");
-					animalScene.setDisable(false);					
+					avisoCliente.setText("INFORME O CPF DE UM CLIENTE");
 				}
+				
 				
 			} catch (Exception e) {
 				avisoCliente.setText(e.getMessage());
 			}
+			
 		}
 	}
 	
@@ -340,7 +347,7 @@ public class PetCareController {
 						ok = true;
 						avisarAnimais.setText(petcare.toString());
 						finalizar.setDisable(false);
-						animalScene.setDisable(true);
+						buttonPesquisar.setDisable(true);
 					}
 				}else{
 					avisarAnimais.setText("ANIMAL NÃO EXISTE NO SISTEMA!!!");
@@ -356,6 +363,7 @@ public class PetCareController {
 	@FXML
 	public void finalizarServico(ActionEvent evt){
 		try {
+			boolean ok = false;
 			String cpfNovo = cpfPadronizar(cpf.getText());
 			Cliente cliente = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 			
@@ -365,18 +373,26 @@ public class PetCareController {
 			for (Animal animal : pets) {
 				if(animal.getEspecie().equalsIgnoreCase(especie.getText())
 						&& animal.getRaca().equalsIgnoreCase(raca.getText())
-						&& animal.getNome().equals(nomeAnimal.getText())){
+						&& animal.getNome().equalsIgnoreCase(nomeAnimal.getText())){
 					achado = animal;
+					break;
+				}
+			}
+			ArrayList<PetCare> servicoAndamento = FachadaControlador.getInstance().listarServicoEmAndamento();
+			
+			for (PetCare pet : servicoAndamento) {
+				if(pet.getCpfCliente().equals(cliente.getCpf()) && pet.getNomeAnimal().equalsIgnoreCase(achado.getNome())){
+					pet.setDataFim(LocalDateTime.now());
+					FachadaControlador.getInstance().salvarNoArquivoPetCare();
+					finalizar.setDisable(true);
+					ok = true;
+					
 				}
 			}
 			
-			PetCare petcare = FachadaControlador.getInstance().busca(cliente, achado);
-			
-			petcare.setDataFim(LocalDateTime.now());
-			
-			FachadaControlador.getInstance().removerPetCare(petcare);
-			FachadaControlador.getInstance().salvarNoArquivoPetCare();
-			finalizar.setDisable(true);
+			if(!ok){
+				avisarAnimais.setText("PETCARE JÁ FINALIZADO!!! \nTENTE OUTRO SERVIÇO");
+			}
 			
 		} catch (Exception e) {
 			// TODO: handle exception
