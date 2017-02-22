@@ -18,7 +18,7 @@ import java.io.Serializable;
  * 
  * @author Diego 
  */
-public abstract class Produto implements Serializable{
+public abstract class Produto implements Serializable, Cloneable{
 	private float preco;
 	private String nome;
 	private String tipo;
@@ -107,13 +107,12 @@ public abstract class Produto implements Serializable{
 	public boolean equals(Object prod) {
 		boolean resultado = false;
 
-		if(prod instanceof  Produto){
 			Produto p = (Produto) prod;
 			if (this.getTipo().equals(p.getTipo()) 
 					&& this.getNome().equalsIgnoreCase(p.getNome())){
 				resultado = true;
 			}	
-		}
+		
 		
 		return resultado;	
 	}

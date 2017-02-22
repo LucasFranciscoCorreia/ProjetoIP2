@@ -73,25 +73,25 @@ public class ProdutoController{
 	}
 
 	@FXML
-	public void abrirProdutoCadastrar(ActionEvent evento){
+	public void abrirProdutoCadastrar(ActionEvent event){
 		ScreenManager.getInstance().showProdutoCadastrar();
 	}
 	@FXML
-	public void abrirProdutoListar(ActionEvent evento){
+	public void abrirProdutoListar(ActionEvent event){
 		ProdutoController controlador = ScreenManager.getInstance().getProdutos().getController();
 		controlador.preencherTabela();
 		ScreenManager.getInstance().showProdutoListar();	
 	}
 	@FXML
-	public void abrirProdutoRemover(ActionEvent evento){
+	public void abrirProdutoRemover(ActionEvent event){
 		ScreenManager.getInstance().showProdutoRemover();
 	}
 	@FXML
-	public void abrirProdutoAtualizar(ActionEvent evento){
+	public void abrirProdutoAtualizar(ActionEvent event){
 		ScreenManager.getInstance().showProdutoAtualizar();
 	}
 	@FXML
-	public void abrirProdutoPesquisar(ActionEvent evento){
+	public void abrirProdutoPesquisar(ActionEvent event){
 		ScreenManager.getInstance().showProdutoPesquisar();
 	}
 

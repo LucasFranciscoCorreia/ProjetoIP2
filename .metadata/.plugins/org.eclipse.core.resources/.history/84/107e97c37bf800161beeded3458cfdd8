@@ -20,16 +20,6 @@ public class PetCare implements Serializable{
 	private LocalDateTime dataComeco;
 	private LocalDateTime dataFim;
 	
-
-	private String nomeServico;
-	private float precoServico;
-	private String nomeCliente;
-	private String cpfCliente;
-	private String nomeAnimal;
-	private String especieAnimal;
-	private String nomeFuncionario;
-	
-	
 	/**
 	 * Construtor vázio padrão.
 	 */
@@ -50,7 +40,6 @@ public class PetCare implements Serializable{
 		this.funcionario = funcionario;
 		this.pet = pet;
 		this.dataComeco = LocalDateTime.now();
-		gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI();
 	}
 	/**
 	 * Construtor II
@@ -64,20 +53,6 @@ public class PetCare implements Serializable{
 		this.cliente = cliente;
 		this.pet = pet;
 		this.dataComeco = LocalDateTime.now();
-		gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI();
-	}
-	/**
-	 * Função inútil para variáveis desnecessárias, mas que precisamos por que GUI é um bug mental.
-	 */
-	private void gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI(){
-		
-		this.nomeServico = this.servico.getNome();
-		this.precoServico = this.servico.getPreco();
-		this.nomeCliente = this.cliente.getNome();
-		this.cpfCliente = this.cliente.getCpf();
-		this.nomeAnimal = this.pet.getNome();
-		this.especieAnimal = this.pet.getEspecie();
-		this.nomeFuncionario = this.funcionario.getNome();
 	}
 	/**
 	 * Inicializa o serviço

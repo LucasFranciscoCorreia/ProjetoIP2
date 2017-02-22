@@ -32,4 +32,10 @@ public class MenuController {
 		ClienteController controlador = ScreenManager.getInstance().getClientes().getController();
 		controlador.preencherTabela();
 	}
+	
+	@FXML
+	public void voltarLogin(ActionEvent evt){
+		
+		ScreenManager.getInstance().showLogin();
+	}
 }

@@ -58,8 +58,8 @@ public class Loja {
 	 * @param produto
 	 * @param quantidade
 	 */
-	public void addMaisAoCarrinho(Produto produto, int quantidade){
-		this.carrinho.addMaisAoCarrinho(produto, quantidade);
+	public void addMaisAoCarrinho(int i, Produto produto, int quantidade){
+		this.carrinho.addMaisAoCarrinho(i, produto, quantidade);
 	}
 	/**
 	 * Este método altera a quantidade de determinado item no carrinho, diminuindo 

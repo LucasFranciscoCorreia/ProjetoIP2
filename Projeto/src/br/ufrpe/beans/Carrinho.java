@@ -31,6 +31,10 @@ public class Carrinho {
 		this.arrayDeQuantidade = new ArrayList<Integer>();
 		
 	}
+	
+	public int Size(){
+		return this.getArrayDeProdutos().size();
+	}
 	/**
 	 * Getters and Setters
 	 * @return
@@ -70,8 +74,8 @@ public class Carrinho {
 	 */
 	
 	public void removerDoCarrinho(Produto produto){
-		this.arrayDeProdutos.remove(produto);
 		this.arrayDeQuantidade.remove(this.arrayDeProdutos.indexOf(produto));
+		this.arrayDeProdutos.remove(produto);	
 	}
 	/**
 	 * Este método altera a quantidade de determinado item no carrinho, aumentando
@@ -84,10 +88,10 @@ public class Carrinho {
 	
 	//As funções que munipulam o carrinho deveriam estar na Classe loja, ao invés daqui?
 	
-	public void addMaisAoCarrinho(Produto produto, int quantidade){
+	public void addMaisAoCarrinho(int i, Produto produto, int quantidade){
 		
-		int index = arrayDeProdutos.indexOf(produto);
-		this.arrayDeQuantidade.set(index, this.arrayDeQuantidade.get(index)+ quantidade);
+		
+		this.arrayDeQuantidade.set(i, this.arrayDeQuantidade.get(i)+ quantidade);
 	}
 	
 	/**
@@ -100,6 +104,16 @@ public class Carrinho {
 		int index = arrayDeProdutos.indexOf(produto);
 		this.arrayDeQuantidade.set(index, this.arrayDeQuantidade.get(index)- quantidade);
 	}
+	
+	public double valorTotal(){
+		double resul = 0;
+		for(int i=0; i<=this.Size()-1;i++){
+			resul += this.getArrayDeProdutos().get(i).getPreco() * this.arrayDeQuantidade.get(i);
+		}
+		return resul;
+	}
+	
+
 	/**
 	 * Método ToString();
 	 */

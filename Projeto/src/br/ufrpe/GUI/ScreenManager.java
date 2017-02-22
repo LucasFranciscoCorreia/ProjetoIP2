@@ -122,16 +122,16 @@ public class ScreenManager {
 			AnchorPane petCareMenu = servicos.load();
 			this.petCareMenu = new Scene(petCareMenu);
 			
-//			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
-//		              "view/TelaCaixa.fxml"));
-//			this.telaCaixa = new Scene(telaCaixa);
+			AnchorPane telaCaixa = FXMLLoader.load(getClass().getResource(
+		              "view/TelaCaixa.fxml"));
+			this.telaCaixa = new Scene(telaCaixa);
 			
 			
 			
 			// PRODUTO TELAS:
-//			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ProdutoAtualizar.fxml"));
-//			this.produtoAtualizar = new Scene(produtoAtualizar);
+			AnchorPane produtoAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ProdutoAtualizar.fxml"));
+			this.produtoAtualizar = new Scene(produtoAtualizar);
 			
 			AnchorPane produtoCadastrar = FXMLLoader.load(getClass().getResource(
 		              "view/ProdutoCadastrar.fxml"));
@@ -164,9 +164,9 @@ public class ScreenManager {
 		              "view/ServicoRemover.fxml"));
 			this.servicoRemover = new Scene(servicoRemover);
 			
-//			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
-//		              "view/ServicoAtualizar.fxml"));
-//			this.servicoAtualizar = new Scene(servicoAtualizar);
+			AnchorPane servicoAtualizar = FXMLLoader.load(getClass().getResource(
+		              "view/ServicoAtualizar.fxml"));
+			this.servicoAtualizar = new Scene(servicoAtualizar);
 			
 			servicoConcluidos = new FXMLLoader(this.getClass().getResource(
 					"view/ServicoConcluido.fxml"));
@@ -243,6 +243,9 @@ public class ScreenManager {
 	
 	public void showMenuServicos(){
 		this.mainStage.setScene(this.menuServico);
+	}
+	public void showTelaCaixa(){
+		this.mainStage.setScene(this.telaCaixa);
 	}
 	
 	public void showMenu(){
