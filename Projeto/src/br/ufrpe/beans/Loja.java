@@ -51,7 +51,7 @@ public class Loja {
 			int index = compra.getArrayDeProdutos().indexOf(elemento);
 			if(index != -1){
 				
-				int quantidadeC = compra.getArrayDeQuantidade().get(index);
+				int quantidadeC = compra.getArrayDeProdutos().get(index).getQuantidadeCompra();
 				int quantidade = RepositorioProduto.getInstance().buscarP(elemento).getEstoque() - quantidadeC; 
 				RepositorioProduto.getInstance().alterarDoEstoque(elemento, quantidade);
 				

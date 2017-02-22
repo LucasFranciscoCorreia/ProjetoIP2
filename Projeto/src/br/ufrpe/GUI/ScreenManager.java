@@ -278,6 +278,9 @@ public class ScreenManager {
 	
 	// CHAMADA DA TELA DE LOGIN:
 	public void showLogin(){
+		if(mainStage.isShowing()){
+			mainStage.close();
+		}
 		loginStage = new Stage();
 		loginStage.setScene(this.login);
 		loginStage.setWidth(350);

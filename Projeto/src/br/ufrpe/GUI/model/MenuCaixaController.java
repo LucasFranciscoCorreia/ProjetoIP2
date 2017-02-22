@@ -28,4 +28,8 @@ public class MenuCaixaController {
 		PetCareController controlador = ScreenManager.getInstance().getServicos().getController();
 		controlador.preencherTabela();
 	}
+	@FXML
+	public void voltarLogin(ActionEvent evt){
+		ScreenManager.getInstance().showLogin();
+	}
 }

@@ -24,6 +24,7 @@ public abstract class Produto implements Serializable, Cloneable{
 	private String tipo;
 	private String codigo;
 	private int estoque;	
+	private int quantidadeCompra;
 	/**
 	 * Costrutor do produto (inclui animal vendível)
 	 * @param preco
@@ -115,5 +116,11 @@ public abstract class Produto implements Serializable, Cloneable{
 		
 		
 		return resultado;	
+	}
+	public int getQuantidadeCompra() {
+		return quantidadeCompra;
+	}
+	public void setQuantidadeCompra(int quantidadeCompra) {
+		this.quantidadeCompra = quantidadeCompra;
 	}
 }

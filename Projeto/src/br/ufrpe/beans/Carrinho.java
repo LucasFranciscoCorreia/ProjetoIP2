@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Carrinho {
 	private ArrayList <Produto> arrayDeProdutos;
-	private ArrayList <Integer> arrayDeQuantidade;
 	
 	/**
 	 * Construtor de Carrinho, apenas inicializa os dois ArrayLists
@@ -24,9 +23,7 @@ public class Carrinho {
 	 */
 	public Carrinho(){
 		
-		this.arrayDeProdutos = new ArrayList<>();
-		this.arrayDeQuantidade = new ArrayList<>();
-		
+		this.arrayDeProdutos = new ArrayList<>();	
 	}
 	
 	public int Size(){
@@ -44,13 +41,6 @@ public class Carrinho {
 		this.arrayDeProdutos = arrayDeProdutos;
 	}
 
-	public ArrayList<Integer> getArrayDeQuantidade() {
-		return arrayDeQuantidade;
-	}
-
-	public void setArrayDeQuantidade(ArrayList<Integer> arrayDeQuantidade) {
-		this.arrayDeQuantidade = arrayDeQuantidade;
-	}
 
 	/**
 	 * Este método adicona o produto selecionado do ArrayList de Produtos no carrinho
@@ -60,8 +50,8 @@ public class Carrinho {
 	 * @param produto
 	 */
 	public void adicionarAoCarrinho(int quantidade, Produto produto){
+		produto.setQuantidadeCompra(produto.getQuantidadeCompra()+quantidade);
 		this.arrayDeProdutos.add(produto);
-		this.arrayDeQuantidade.add(quantidade);
 	}
 	/**
 	 * Este método remove o produto selecionado do ArrayList de Produtos no carrinho
@@ -71,8 +61,9 @@ public class Carrinho {
 	 */
 	
 	public void removerDoCarrinho(Produto produto){
-		this.arrayDeQuantidade.remove(this.arrayDeProdutos.indexOf(produto));
-		this.arrayDeProdutos.remove(produto);	
+		produto.setQuantidadeCompra(0);
+		this.arrayDeProdutos.remove(produto);
+		
 	}
 	/**
 	 * Este método altera a quantidade de determinado item no carrinho, aumentando
@@ -87,8 +78,7 @@ public class Carrinho {
 	
 	public void addMaisAoCarrinho(int i, Produto produto, int quantidade){
 		
-		
-		this.arrayDeQuantidade.set(i, this.arrayDeQuantidade.get(i)+ quantidade);
+		produto.setQuantidadeCompra( produto.getQuantidadeCompra() + quantidade);
 	}
 	
 	/**
@@ -98,14 +88,14 @@ public class Carrinho {
 	 */
 	public void removeMaisDoCarrinho(Produto produto, int quantidade){
 		
-		int index = arrayDeProdutos.indexOf(produto);
-		this.arrayDeQuantidade.set(index, this.arrayDeQuantidade.get(index)- quantidade);
+		
+		produto.setQuantidadeCompra(produto.getQuantidadeCompra()-quantidade);
 	}
 	
 	public double valorTotal(){
 		double resul = 0;
 		for(int i=0; i<=this.Size()-1;i++){
-			resul += this.getArrayDeProdutos().get(i).getPreco() * this.arrayDeQuantidade.get(i);
+			resul += this.getArrayDeProdutos().get(i).getPreco() * this.getArrayDeProdutos().get(i).getQuantidadeCompra();
 		}
 		return resul;
 	}
@@ -116,7 +106,7 @@ public class Carrinho {
 	 */
 	@Override
 	public String toString() {
-		return "Comprou:\n" + arrayDeProdutos + ", arrayDeQuantidade=" + arrayDeQuantidade + "]";
+		return "Comprou:\n" + arrayDeProdutos;
 	}
 	
 

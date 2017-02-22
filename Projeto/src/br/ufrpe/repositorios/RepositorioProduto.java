@@ -136,7 +136,7 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	}
 
 	private int buscarI(String bus){
-		for(int i = 0; i < repositorio.size();i++){
+		for(int i = 0; i <= repositorio.size()-1;i++){
 			if(repositorio.get(i).getCodigo().equals(bus)){
 				return i;
 			}

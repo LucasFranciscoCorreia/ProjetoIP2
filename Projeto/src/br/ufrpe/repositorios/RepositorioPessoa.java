@@ -62,7 +62,7 @@ public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 	}
 
 	/**
-	 * Construtor publico de RepositorioPessoa, seguindo o padr�o singleton
+	 * Construtor publico de RepositorioPessoa, seguindo o padrão singleton
 	 * 
 	 * @param unicInstanc   Padr�o singleton
 	 * 

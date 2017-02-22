@@ -43,8 +43,6 @@ public class TelaCaixaController {
 	@FXML
 	private TableView<Produto> tableCarrinho;
 	@FXML
-	private TableView<Integer> tableQuantidade;
-	@FXML
 	private TableColumn<Produto, String> codigo;
 	@FXML
 	private TableColumn<Produto, String> nome;
@@ -53,7 +51,7 @@ public class TelaCaixaController {
 	@FXML
 	private TableColumn<Produto, Float> preco;
 	@FXML
-	private TableColumn<Integer, Integer> quantidade;
+	private TableColumn<Produto, Integer> quantidade;
 	@FXML
 	private TableColumn<Produto, Produto> delete;
 	
@@ -68,12 +66,10 @@ public class TelaCaixaController {
 		nome.setCellValueFactory(new PropertyValueFactory<Produto, String>("nome"));
 		tipo.setCellValueFactory(new PropertyValueFactory<Produto, String>("tipo"));
 		preco.setCellValueFactory(new PropertyValueFactory<Produto, Float>("preco"));
-		quantidade.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("novo.getArrayDeQuantidade()"));
+		quantidade.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("quantidadeCompra"));
 	
-			tableCarrinho.setItems(FXCollections.observableArrayList(carrinhoLista));
-			tableQuantidade.setItems(FXCollections.observableArrayList(novo.getArrayDeQuantidade()));
+			tableCarrinho.setItems(FXCollections.observableArrayList(carrinhoLista));		
 			tableCarrinho.refresh();
-			tableQuantidade.refresh();
 
 	}
 	
@@ -169,7 +165,7 @@ public class TelaCaixaController {
 		if(selecionado != null){
 			for(int i = 0; i<=novo.getArrayDeProdutos().size()-1;i++){
 				if(selecionado.equals(novo.getArrayDeProdutos().get(i))){
-					if(novo.getArrayDeQuantidade().get(i)==1){
+					if(novo.getArrayDeProdutos().get(i).getQuantidadeCompra()==1){
 						novo.removerDoCarrinho(selecionado);
 					}
 					else{
