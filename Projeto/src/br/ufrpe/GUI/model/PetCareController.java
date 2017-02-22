@@ -149,15 +149,16 @@ public class PetCareController {
 	
 	@FXML
 	public void abrirFinalizarServico(ActionEvent evt){
-		// TODO 
+		ScreenManager.getInstance().showFinalizarServico();
 	}
 	
 	
 	@FXML
 	public void pesquisarServico(ActionEvent evt){
 		//clientePesquisarScene.setVisible(true);
-		if(!avisoPesquisar.getText().isEmpty()){
+		if(!avisoPesquisar.getText().isEmpty() || !avisoCliente.getText().isEmpty()){
 			avisoPesquisar.setText("");
+			avisoCliente.setText("");
 		}
 		
 		if(codigo.getText().isEmpty()){
@@ -183,21 +184,26 @@ public class PetCareController {
 			try {
 				String cpfNovo = cpfPadronizar(cpf.getText());
 				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
-				petsScene.setVisible(true);
+				String animaisS = "";					
 				
-				ArrayList<Animal> animais = achado.getPets();
-				String animaisS = "";
-				for(Animal animal: animais){
-					animaisS += animal.getNome() + "\n";
+				String mensagem = "CLIENTE ENCONTRADO NO SISTEMA!!!";
+				
+				ArrayList<Animal> animais;
+				if(achado.getPets() != null){
+					animais = achado.getPets();
+					for(Animal animal: animais){
+						animaisS += animal.getNome() + "\n";
+					}					
 				}
-				avisoCliente.setText("CLIENTE ENCONTRADO NO SISTEMA!!!");
 				if(animaisS == ""){
-					avisoCliente.setText("ESTE CLIENTE NÃO POSSUI ANIMAIS EM NOSSO CADASTRO!!!");
+					avisoCliente.setText( mensagem + "\nESTE CLIENTE NÃO POSSUI ANIMAIS EM NOSSO CADASTRO!!!");
 				}else{
+					avisoCliente.setText(mensagem);
 					listarAnimais.setText(animaisS);
 					iniciarServicoScene.setVisible(true);
 				}
 				
+				System.out.println("terminou aqui");
 			} catch (Exception e) {
 				avisoCliente.setText(e.getMessage());
 				cpf.setText("");
@@ -209,12 +215,15 @@ public class PetCareController {
 	public void iniciarServico(ActionEvent evt){
 		if(nomeAnimal.getText().isEmpty() && cpfFuncionario.getText().isEmpty()){
 			avisoServico.setText("INFORME TODOS OS DADOS!!!");
-		}else{
+		}else if (cpfOk(cpfFuncionario.getText())) {
 			try {
 				String cpfNovo = cpfPadronizar(cpf.getText());
+				String cpfFuncionarioNovo = cpfPadronizar(cpfFuncionario.getText());
+				
 				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				Animal pet = null;
-				ArrayList<Animal> animais = achado.getPets();
+				ArrayList<Animal> animais = null;
+				animais = achado.getPets();
 				for(Animal animal: animais){
 					if(animal.getNome().equals(nomeAnimal)){
 						pet = animal;
@@ -222,13 +231,15 @@ public class PetCareController {
 					}
 				}
 				
-				Funcionario funcionario = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpfFuncionario.getText());
-				Cliente cliente = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				Funcionario funcionario = (Funcionario) FachadaControlador.getInstance().buscarPessoa(cpfFuncionarioNovo);
+				Cliente cliente = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				Servico servico = FachadaControlador.getInstance().buscarServico(codigo.getText());
 				
 				if(pet != null){
 					PetCare petcare = new PetCare(servico, cliente, funcionario, pet);
-					//TODO
+					FachadaControlador.getInstance().adicionarPetCare(petcare);
+					FachadaControlador.getInstance().salvarNoArquivoPetCare();
+					avisoServico.setText("PETCARE INICIADO!!");
 				}else{
 					avisoServico.setText("ANIMAL NÃO CADASTRADO!!!");
 				}
@@ -236,8 +247,10 @@ public class PetCareController {
 			} catch (Exception e) {
 				avisoServico.setText(e.getMessage());
 			}
-			
+		}else{
+			avisoServico.setText("INFORME APENAS NÚMEROS NO CPF");
 		}
+		
 		
 		if(!avisoPesquisar.getText().isEmpty() || !codigo.getText().isEmpty() 
 				|| !cpf.getText().isEmpty() || !avisoCliente.getText().isEmpty()

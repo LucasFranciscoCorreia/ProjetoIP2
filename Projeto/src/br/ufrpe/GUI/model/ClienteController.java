@@ -69,6 +69,7 @@ public class ClienteController implements Initializable{
 			Pessoa p = FachadaControlador.getInstance().buscarPessoa(buscaRemover.getText());
 			if(p instanceof Cliente){
 				FachadaControlador.getInstance().removerPessoa(buscaRemover.getText());
+				FachadaControlador.getInstance().salvarNoArquivoPessoa();
 			}
 			clienteEncontrado.setText("Cliente deletado com sucesso");
 		}catch(ObjectNaoExisteException | ErroAoRemoverException e){
