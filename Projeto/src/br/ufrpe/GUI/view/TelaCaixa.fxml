@@ -90,6 +90,5 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button contentDisplay="TOP" layoutX="14.0" layoutY="91.0" mnemonicParsing="false" onAction="#abrirProdutoPesquisar" prefHeight="45.0" prefWidth="91.0" text="Pesquisar" />
    </children>
 </AnchorPane>
