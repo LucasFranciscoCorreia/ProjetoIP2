@@ -146,14 +146,14 @@ public class Animal extends Produto implements Serializable{
 		res+="Is Alive? " + isAlive +"\nCategoria: Animal";
 		return res;
 	}
-	
+
 	public String toStringP(){
 		String res = String.format("Nome: %s\nRaça: %s\nEspecie: %s\nTamanho: %.2fM\nPeso: %.2fKg\nPreço:R$ %.2f", this.getNome(), raca, especie, tamanho, peso, this.getPreco());
 		res+="\nCategoria: Animal";
 		return res;
 	}
-	
-	
+
+
 	public void setDono(Cliente dono){
 		this.dono = dono;
 	}

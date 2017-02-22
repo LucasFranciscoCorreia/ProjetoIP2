@@ -50,6 +50,7 @@ public class PetCare implements Serializable{
 		this.funcionario = funcionario;
 		this.pet = pet;
 		this.dataComeco = LocalDateTime.now();
+		this.dataFim = null;
 		gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI();
 	}
 	/**
@@ -97,6 +98,35 @@ public class PetCare implements Serializable{
 	 * Getters and Setters
 	 * @return
 	 */
+	public String getNomeServico(){
+		return nomeServico;
+	}
+	
+	
+	public float getPrecoServico() {
+		return precoServico;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public String getCpfCliente() {
+		return cpfCliente;
+	}
+
+	public String getNomeAnimal() {
+		return nomeAnimal;
+	}
+
+	public String getEspecieAnimal() {
+		return especieAnimal;
+	}
+
+	public String getNomeFuncionario() {
+		return nomeFuncionario;
+	}
+
 	public Servico getServico() {
 		return servico;
 	}
@@ -157,6 +187,12 @@ public class PetCare implements Serializable{
 		result = prime * result + ((servico == null) ? 0 : servico.hashCode());
 		return result;
 	}
+	
+	@Override
+	public String toString(){
+		return nomeServico + " REALIZADO POR " + nomeFuncionario + " PARA O CLIENTE " + nomeCliente 
+				+ "DO CPF " + cpfCliente;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -199,12 +235,5 @@ public class PetCare implements Serializable{
 			return false;
 		return true;
 	}
-
-	
-	
-	
-	
-	
-	
 	
 }

@@ -2,6 +2,8 @@ package br.ufrpe.negocios;
 
 import java.util.ArrayList;
 
+import br.ufrpe.beans.Animal;
+import br.ufrpe.beans.Cliente;
 import br.ufrpe.beans.PetCare;
 import br.ufrpe.excecoes.ObjectJaExisteException;
 import br.ufrpe.excecoes.ObjectNaoExisteException;
@@ -31,5 +33,9 @@ public class ControladorPetCare implements IControladorPetCare{
 	
 	public ArrayList<PetCare> listarServicoConcluido() {
 		return repositorioPetCare.listarServicoConcluido();
+	}
+	
+	public PetCare busca(Cliente b, Animal p){
+		return repositorioPetCare.busca(b, p);
 	}
 }

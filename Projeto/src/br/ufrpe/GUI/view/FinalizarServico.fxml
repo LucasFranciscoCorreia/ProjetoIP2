@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="br.ufrpe.GUI.model.PetCareController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.GUI.model.PetCareController">
    <children>
       <VBox layoutX="633.0" prefHeight="600.0" prefWidth="167.0">
          <children>
@@ -62,5 +63,31 @@
             </Button>
          </children>
       </VBox>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="182.0" text="Informe o cpf do cliente" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cpf" layoutX="18.0" layoutY="62.0" prefHeight="30.0" prefWidth="174.0" promptText="INFORME APENAS NÚMEROS" />
+      <Button layoutX="57.0" layoutY="100.0" mnemonicParsing="false" onAction="#pesquisarClienteFinalizar" prefHeight="36.0" prefWidth="79.0" text="Pesquisar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="avisoCliente" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="18.0" layoutY="144.0" prefHeight="134.0" prefWidth="200.0" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="animalScene" disable="true" layoutX="269.0" layoutY="11.0" prefHeight="329.0" prefWidth="221.0">
+         <children>
+            <TextField fx:id="raca" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="167.0" promptText="RAÇA" />
+            <TextField fx:id="especie" layoutX="14.0" layoutY="57.0" prefHeight="30.0" prefWidth="167.0" promptText="ESPECIE" />
+            <Button layoutX="58.0" layoutY="175.0" mnemonicParsing="false" onAction="#pesquisarAnimalFinalizar" prefHeight="36.0" prefWidth="79.0" text="Pesquisar" />
+            <Label fx:id="avisarAnimais" alignment="TOP_CENTER" layoutX="15.0" layoutY="226.0" prefHeight="89.0" prefWidth="191.0" wrapText="true" />
+            <TextField fx:id="nomeAnimal" layoutX="15.0" layoutY="99.0" prefHeight="30.0" prefWidth="167.0" promptText="NOME" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="finalizar" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="502.0" layoutY="64.0" mnemonicParsing="false" onAction="#finalizarServico" prefHeight="56.0" prefWidth="96.0" text="FINALIZAR SERVIÇO" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

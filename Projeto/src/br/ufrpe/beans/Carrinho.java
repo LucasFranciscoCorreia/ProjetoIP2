@@ -11,9 +11,6 @@ import java.util.ArrayList;
  * @author srtacamelo
  */
 public class Carrinho {
-	
-	
-
 	private ArrayList <Produto> arrayDeProdutos;
 	private ArrayList <Integer> arrayDeQuantidade;
 	
@@ -27,8 +24,8 @@ public class Carrinho {
 	 */
 	public Carrinho(){
 		
-		this.arrayDeProdutos = new ArrayList<Produto>();
-		this.arrayDeQuantidade = new ArrayList<Integer>();
+		this.arrayDeProdutos = new ArrayList<>();
+		this.arrayDeQuantidade = new ArrayList<>();
 		
 	}
 	

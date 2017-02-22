@@ -353,7 +353,6 @@ public class ClienteController implements Initializable{
 			try{
 				Integer.parseInt(cpf.charAt(i)+"");
 			}catch (NumberFormatException e) {
-				avisoCadastro.setText("CPF deve conter apenas numeros");
 				return false;
 			}
 		}

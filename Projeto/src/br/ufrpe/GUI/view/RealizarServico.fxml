@@ -81,7 +81,7 @@
       </Label>
       <AnchorPane fx:id="clientePesquisarScene" disable="true" layoutX="225.0" layoutY="4.0" prefHeight="249.0" prefWidth="218.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="182.0" text="Informe o código do cliente" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="182.0" text="Informe o cpf do cliente" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

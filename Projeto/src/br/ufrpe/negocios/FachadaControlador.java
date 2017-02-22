@@ -233,5 +233,9 @@ public class FachadaControlador {
 	public ArrayList<PetCare> listarServicoConcluido(){
 		return controladorPetCare.listarServicoConcluido();
 	}
+	
+	public PetCare busca(Cliente b, Animal p){
+		return controladorPetCare.busca(b, p);
+	}
 
 }
