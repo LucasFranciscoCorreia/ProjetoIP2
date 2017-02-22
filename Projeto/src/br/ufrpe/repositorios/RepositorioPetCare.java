@@ -41,8 +41,8 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 		LocalDate agora = LocalDate.now();
 		int i = 0;
 		boolean ok = true;
-		while(i < repositorio.size() && ok){
-			if(repositorio.get(i).getDataComeco().getYear() < agora.getYear()){
+		while(i < repositorio.size() && ok){ //Errooooo
+			if(repositorio.get(i).getDataComeco().getYear() <= agora.getYear()){
 				i++;
 			}else if(repositorio.get(i).getDataComeco().getMonthValue() < agora.getMonthValue()){
 				i++;

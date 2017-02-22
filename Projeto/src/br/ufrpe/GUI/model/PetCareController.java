@@ -374,6 +374,7 @@ public class PetCareController {
 			
 			petcare.setDataFim(LocalDateTime.now());
 			
+			FachadaControlador.getInstance().removerPetCare(petcare);
 			FachadaControlador.getInstance().salvarNoArquivoPetCare();
 			finalizar.setDisable(true);
 			

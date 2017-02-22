@@ -163,7 +163,9 @@ public class ClienteController implements Initializable{
 
 	@FXML
 	public void abrirClientePesquisarCaixa(ActionEvent evt){
+
 		ScreenManager.getInstance().showClientePesquisarCaixa();
+
 	}
 
 	@FXML
@@ -204,22 +206,26 @@ public class ClienteController implements Initializable{
 			avisoAddPetCliente.setText("");
 			avisoClienteAtualizar.setText("");
 		}else{
-			try {	
-				donoPet = FachadaControlador.getInstance().buscarPessoa(cpfDono.getText());
+			try {
 				
-				infDonoPet.setText(donoPet.getNome());
-				raca.setDisable(false);
-				nomePet.setDisable(false);
-				peso.setDisable(false);
-				altura.setDisable(false);
-				especie.setDisable(false);
-				rua.setDisable(false);
-				numero.setDisable(false);
-				complemento.setDisable(false);
-				cep.setDisable(false);
-				cidadeUF.setDisable(false);
-				salvarEnd.setDisable(false);
-				salvarPet.setDisable(false);
+				
+				donoPet = FachadaControlador.getInstance().buscarPessoa(cpfDono.getText());
+				if(donoPet instanceof Cliente){
+					infDonoPet.setText(donoPet.getNome());
+					raca.setDisable(false);
+					nomePet.setDisable(false);
+					peso.setDisable(false);
+					altura.setDisable(false);
+					especie.setDisable(false);
+					rua.setDisable(false);
+					numero.setDisable(false);
+					complemento.setDisable(false);
+					cep.setDisable(false);
+					cidadeUF.setDisable(false);
+					salvarEnd.setDisable(false);
+					salvarPet.setDisable(false);
+				}
+				
 			} catch (ObjectNaoExisteException e) {
 				infDonoPet.setText(e.getMessage());
 				raca.setDisable(true);
@@ -278,6 +284,8 @@ public class ClienteController implements Initializable{
 			((Cliente) donoPet).addPet(novo);
 			try {
 				FachadaControlador.getInstance().atualizar(donoPet);
+				FachadaControlador.getInstance().salvarNoArquivoPessoa();
+				
 			} catch (ObjectNaoExisteException | ErroAoAtualizarException e) {
 				avisoAddPetCliente.setText(e.getMessage());
 			}

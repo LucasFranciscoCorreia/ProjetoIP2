@@ -76,7 +76,8 @@ public class TelaCaixaController {
 	
 	@FXML	
 	public void voltarMenuCaixa(){
-		novo = null;
+		novo.getArrayDeProdutos().clear();
+		tableCarrinho.getItems().clear();
 		ScreenManager.getInstance().showMenuCaixa();
 	}
 	
@@ -87,7 +88,7 @@ public class TelaCaixaController {
 		try {	
             if(!codigoVenda.getText().isEmpty() && !quantidadeVenda.getText().isEmpty()){
             	
-            	
+            	aviso.setText("");
             	Produto encontrado = FachadaControlador.getInstance().pesquisar(codigoVenda.getText());
     			int quantidade = Integer.parseInt(quantidadeVenda.getText());
     			
@@ -144,6 +145,7 @@ public class TelaCaixaController {
 	        	Loja venda = new Loja(null);
 	        	try {
 					venda.realizarCompra(novo);
+					novo.getArrayDeProdutos().clear();
 					FachadaControlador.getInstance().salvarNoArquivoProduto();
 					aviso.setText("Compra realizada com sucesso");
 					tableCarrinho.getItems().clear();

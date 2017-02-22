@@ -121,7 +121,7 @@ public class Cliente extends Pessoa {
 	public String toString(){
 		String res = String.format("Nome: %s\nCPF: %s\nData de nascimento: %s\nEndereco: %s", this.getNome(), this.getCpf(), this.DataAniversario(), this.getEnd());
 		if(listarPets().length() > 0){
-			res += "\nPets \n" + listarPets();
+			res += "\nPets:\n\t" + listarPets();
 		}
 		
 		return res;

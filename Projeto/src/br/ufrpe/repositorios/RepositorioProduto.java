@@ -189,8 +189,10 @@ public class RepositorioProduto implements IRepositorioProduto, Serializable {
 	public void alterarDoEstoque(Produto produto, int quantidade) throws ObjectNaoExisteException{
 		int index = this.buscarProduto(produto);
 		if(index != -1){
-
-			this.repositorio.get(index).setEstoque(quantidade);;
+            if(quantidade>=0){
+            	this.repositorio.get(index).setEstoque(quantidade);;
+            }
+			
 		}else{throw new ObjectNaoExisteException();}
 	}
 
