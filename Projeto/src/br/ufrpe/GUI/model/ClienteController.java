@@ -69,6 +69,7 @@ public class ClienteController implements Initializable{
 			Pessoa p = FachadaControlador.getInstance().buscarPessoa(buscaRemover.getText());
 			if(p instanceof Cliente){
 				FachadaControlador.getInstance().removerPessoa(buscaRemover.getText());
+				FachadaControlador.getInstance().salvarNoArquivoPessoa();
 			}
 			clienteEncontrado.setText("Cliente deletado com sucesso");
 		}catch(ObjectNaoExisteException | ErroAoRemoverException e){
@@ -243,8 +244,11 @@ public class ClienteController implements Initializable{
 			avisoAddPetCliente.setText("Todos os campos devem ser preenchidos");
 		}else{
 			Animal novo = new Animal(true, especie.getText(), raca.getText(), donoPet, Double.parseDouble(peso.getText()), Double.parseDouble(altura.getText()), nomePet.getText(), FachadaControlador.getInstance().gerarCodigo());
+			
 			try {
 				FachadaControlador.getInstance().cadastrar(novo);
+				FachadaControlador.getInstance().salvarNoArquivoAnimal();
+				
 				avisoAddPetCliente.setText("Pet cadastrado ao dono com sucesso");
 				raca.setText("");
 				nomePet.setText("");

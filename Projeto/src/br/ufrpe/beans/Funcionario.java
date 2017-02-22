@@ -71,7 +71,8 @@ public class Funcionario extends Pessoa{
 		}else{
 			senha = Integer.toString(aniversario.getDayOfMonth()) + "0" + Integer.toString(aniversario.getMonthValue()) + Integer.toString(aniversario.getYear()).charAt(2) + Integer.toString(aniversario.getYear()).charAt(3);
 		}
-		log = new Login(nome, Integer.parseInt(senha));
+		String login[] = nome.split(" ");
+		log = new Login(login[0], Integer.parseInt(senha));
 	}	
 	
 	/**

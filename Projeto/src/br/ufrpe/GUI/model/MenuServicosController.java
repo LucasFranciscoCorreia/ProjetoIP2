@@ -140,22 +140,30 @@ public class MenuServicosController {
 			aviso.setText("");
 		}
 		
-		if(!nome.getText().isEmpty() || !preco.getText().isEmpty()){
+		if(nome.getText().isEmpty() && preco.getText().isEmpty()){
+			aviso.setText("INFORME DADOS VÁLIDOS!!!");						
+		}else{
 			try {
 				Servico antigo = FachadaControlador.getInstance().buscarServico(codigo.getText());
-				Servico novo = new Servico(nome.getText(), Float.parseFloat(preco.getText()));
+				Servico novo;
+				if(nome.getText().isEmpty()){
+					novo = new Servico(antigo.getNome(), Float.parseFloat(preco.getText()));
+				}else{
+					novo = new Servico(nome.getText(), Float.parseFloat(preco.getText()));					
+				}
 				
 				FachadaControlador.getInstance().atualizarServico(antigo, novo);
 				FachadaControlador.getInstance().salvarNoArquivoServico();
 				atualizarScene.setVisible(false);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-			}			
-		}else{
-			aviso.setText("INFORME DADOS VÁLIDOS!!!");
+			}
 		}
+		codigo.setText("");
 		nome.setText("");
 		preco.setText("");
+		aviso.setText("");
+		servicoToString.setText("");
 		
 	}
 	

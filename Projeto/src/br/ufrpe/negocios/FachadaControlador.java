@@ -214,5 +214,24 @@ public class FachadaControlador {
 		controladorServico.atualizarServico(antigo, novo);
 	}
 	
+	public void adicionarPetCare(PetCare petcare) throws ObjectNaoExisteException, ObjectJaExisteException{
+		controladorPetCare.adicionarPetCare(petcare);
+	}
+	
+	public void removerPetCare(PetCare petcare) throws ObjectNaoExisteException{
+		controladorPetCare.removerPetCare(petcare);
+	}
+	
+	public void salvarNoArquivoPetCare(){
+		controladorPetCare.salvarNoArquivo();
+	}
+	
+	public void listarServicoEmAndamento(){
+		controladorPetCare.listarServicoEmAndamento();
+	}
+	
+	public void listarServicoConcluido(){
+		controladorPetCare.listarServicoConcluido();
+	}
 
 }
