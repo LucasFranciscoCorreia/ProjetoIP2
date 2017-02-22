@@ -50,7 +50,7 @@ public class PetCare implements Serializable{
 		this.funcionario = funcionario;
 		this.pet = pet;
 		this.dataComeco = LocalDateTime.now();
-		gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI();
+		gerarVariaveisDesnecessariasPraGambiarraPqNaofFunfaNaGUI();
 	}
 	/**
 	 * Construtor II
@@ -64,12 +64,12 @@ public class PetCare implements Serializable{
 		this.cliente = cliente;
 		this.pet = pet;
 		this.dataComeco = LocalDateTime.now();
-		gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI();
+		gerarVariaveisDesnecessariasPraGambiarraPqNaofFunfaNaGUI();
 	}
 	/**
 	 * Função inútil para variáveis desnecessárias, mas que precisamos por que GUI é um bug mental.
 	 */
-	private void gerarVariaveisDesnecessariasPraGambiarraPqNaoFunfaNaGUI(){
+	private void gerarVariaveisDesnecessariasPraGambiarraPqNaofFunfaNaGUI(){
 		
 		this.nomeServico = this.servico.getNome();
 		this.precoServico = this.servico.getPreco();
