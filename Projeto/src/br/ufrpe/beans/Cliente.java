@@ -126,4 +126,14 @@ public class Cliente extends Pessoa {
 		
 		return res;
 	}
+	
+	public boolean equals(Object outro){
+		boolean res = false;
+		if(outro instanceof Cliente){
+			if(((Cliente) outro).getCpf().equals(this.getCpf())){
+				res = true;
+			}
+		}
+		return res;
+	}
 }

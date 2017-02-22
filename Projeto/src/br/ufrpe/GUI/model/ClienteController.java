@@ -86,20 +86,20 @@ public class ClienteController implements Initializable{
 			buttonDeletar.setDisable(true);
 		}else{
 			try{				
-			clienteEncontrado.setText(FachadaControlador.getInstance().buscarPessoa(buscaRemover.getText()).getNome());
-			buttonDeletar.setDisable(false);
+				clienteEncontrado.setText(FachadaControlador.getInstance().buscarPessoa(buscaRemover.getText()).getNome());
+				buttonDeletar.setDisable(false);
 			}catch(Exception e){
 				clienteEncontrado.setText(e.getMessage());
 			}finally{
-				
+
 			}
 		}
 	}
-	
+
 	public String cpfPadronizar(String cpf){
 		String novoCpf = "";
 		char[] cpfChar = cpf.toCharArray();
-		
+
 		for(int i = 0; i < cpf.length(); i++){
 			novoCpf += cpfChar[i];
 			if(i == 2 || i == 5){
@@ -108,7 +108,7 @@ public class ClienteController implements Initializable{
 				novoCpf += "-";
 			}
 		}
-		
+
 		return novoCpf;
 	}
 
@@ -140,12 +140,12 @@ public class ClienteController implements Initializable{
 	public void abrirClienteAtualizar(ActionEvent evt){
 		ScreenManager.getInstance().showClienteAtualizar();
 	}
-	
+
 	@FXML
 	public void abrirClientePesquisar(ActionEvent evt){
 		ScreenManager.getInstance().showClientePesquisar();
 	}
-	
+
 	@FXML
 	public void abrirClienteRemover(ActionEvent evt){
 		ScreenManager.getInstance().showClienteRemover();
@@ -155,36 +155,36 @@ public class ClienteController implements Initializable{
 	public void abrirClienteCadastrarCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showClienteCadastrarCaixa();
 	}
-	
+
 	@FXML
 	public void abrirClienteAtualizarCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showClienteAtualizarCaixa();
 	}
-	
+
 	@FXML
 	public void abrirClientePesquisarCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showClientePesquisarCaixa();
 	}
-	
+
 	@FXML
 	public void voltarMenu(ActionEvent evento){
 		ScreenManager.getInstance().showClienteListar();
 		ClienteController controlador = ScreenManager.getInstance().getClientes().getController();
 		controlador.preencherTabela();
 	}
-	
+
 	@FXML
 	public void voltarMenuClienteCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showClienteMenuCaixa();
 		ClienteController controlador = ScreenManager.getInstance().getClientesCaixa().getController();
 		controlador.preencherTabela();
 	}
-	
+
 	@FXML
 	public void menuCaixa(ActionEvent evt){
 		ScreenManager.getInstance().showMenuCaixa();
 	}
-	
+
 	@FXML
 	public void procuraDono(ActionEvent evt){
 		if(cpfDono.getText().isEmpty()){
@@ -206,7 +206,7 @@ public class ClienteController implements Initializable{
 		}else{
 			try {	
 				donoPet = FachadaControlador.getInstance().buscarPessoa(cpfDono.getText());
-
+				
 				infDonoPet.setText(donoPet.getNome());
 				raca.setDisable(false);
 				nomePet.setDisable(false);
@@ -237,18 +237,18 @@ public class ClienteController implements Initializable{
 			}
 		}
 	}
-	
+
 	@FXML
 	public void adicionarPet(ActionEvent evt){
 		if(raca.getText().isEmpty() || peso.getText().isEmpty() || altura.getText().isEmpty() || especie.getText().isEmpty() || nomePet.getText().isEmpty()){
 			avisoAddPetCliente.setText("Todos os campos devem ser preenchidos");
 		}else{
 			Animal novo = new Animal(true, especie.getText(), raca.getText(), donoPet, Double.parseDouble(peso.getText()), Double.parseDouble(altura.getText()), nomePet.getText(), FachadaControlador.getInstance().gerarCodigo());
-			
+
 			try {
 				FachadaControlador.getInstance().cadastrar(novo);
 				FachadaControlador.getInstance().salvarNoArquivoAnimal();
-				
+
 				avisoAddPetCliente.setText("Pet cadastrado ao dono com sucesso");
 				raca.setText("");
 				nomePet.setText("");
@@ -283,7 +283,7 @@ public class ClienteController implements Initializable{
 			}
 		}
 	}
-	
+
 	@FXML
 	public void alterarEndereco(ActionEvent evt){
 		if(rua.getText().isEmpty() || complemento.getText().isEmpty() || numero.getText().isEmpty() || cep.getText().isEmpty() || cidadeUF.getText().isEmpty()){
@@ -294,6 +294,7 @@ public class ClienteController implements Initializable{
 				end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
 				donoPet.setEnd(end);
 				avisoClienteAtualizar.setText("Endereço alterado com sucesso");
+				FachadaControlador.getInstance().salvarNoArquivoPessoa();
 				raca.setText("");
 				nomePet.setText("");
 				peso.setText("");
@@ -318,7 +319,7 @@ public class ClienteController implements Initializable{
 				salvarPet.setDisable(true);
 			}catch(NumberFormatException e){
 				avisoClienteAtualizar.setText("Numero deve estar escrito em formato numerico");
-				
+
 			}catch(Exception e){
 				avisoClienteAtualizar.setText(e.getMessage());
 				raca.setText("");
@@ -347,16 +348,32 @@ public class ClienteController implements Initializable{
 		}
 	}
 
+	public boolean cpfOk(String cpf){
+		for(int i = 0; i < 11;i++){
+			try{
+				Integer.parseInt(cpf.charAt(i)+"");
+			}catch (NumberFormatException e) {
+				avisoCadastro.setText("CPF deve conter apenas numeros");
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	@FXML
 	public void pesquisarCliente(ActionEvent evt){
 		Pessoa p;
 		try {
-			p = FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
-			if(p instanceof Funcionario || p == null){
-				throw new ObjectNaoExisteException();
+			if(this.cpf.getText().length() != 11 && cpfOk(cpf.getText())){
+				erroPesquisa.setText("CPF deve ser escrito em numeros e ter 11 numeros");
+			}else{
+				p = FachadaControlador.getInstance().buscarPessoa(this.cpf.getText());
+				if(p instanceof Funcionario || p == null){
+					throw new ObjectNaoExisteException();
+				}
+				syso.setText(p.toString());
+				erroPesquisa.setText("");
 			}
-			syso.setText(p.toString());
-			erroPesquisa.setText("");
 		} catch (ObjectNaoExisteException e) {
 			erroPesquisa.setText(e.getMessage());
 			syso.setText("");
@@ -368,40 +385,46 @@ public class ClienteController implements Initializable{
 		if(nome.getText().isEmpty() || cpf.getText().isEmpty() || aniversario.getText().isEmpty() || cep.getText().isEmpty() || rua.getText().isEmpty() || numero.getText().isEmpty() || complemento.getText().isEmpty() || cidadeUF.getText().isEmpty()){
 			avisoCadastro.setText("Todos os campos devem ser preenchidos");
 		}else{
-			if(dataOk(aniversario.getText())){
-				Pessoa novo = null;
-				boolean ok = true;
-				try{					
-					Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
-					DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-					LocalDate aniversario = LocalDate.parse(this.aniversario.getText(), DATE_FORMAT);
-					String cpfNovo = cpfPadronizar(cpf.getText());
-					novo = new Cliente(cpfNovo,aniversario, nome.getText(), end);
-				}catch(NumberFormatException e){
-					avisoCadastro.setText("Numero de residencia deve ser um numero");
-				}
-				try {
-					FachadaControlador.getInstance().cadastrar(novo);
-				} catch (ObjectNaoExisteException | ErroAoSalvarException | ObjectJaExisteException e) {
-					avisoCadastro.setText(e.getMessage());
-					ok = false;
-				}
-				if(ok){
-					avisoCadastro.setText("Cliente cadastrado com sucesso");
-					FachadaControlador.getInstance().salvarNoArquivoPessoa();
-				}
+			if(!cpfOk(cpf.getText())){
+				avisoCadastro.setText("CPF deve conter apenas numeros");
+			}else if(cpf.getText().length() != 11){
+				avisoCadastro.setText("CPF deve ser apenas numeros e ter 11 numeros");
 			}else{
-				avisoCadastro.setText("Data invalida ou escrita num formato invalido(\"dia-mes-ano\")");
+				if(dataOk(aniversario.getText())){
+					Pessoa novo = null;
+					boolean ok = true;
+					try{					
+						Endereco end = new Endereco(rua.getText(), complemento.getText(), Short.parseShort(numero.getText()), cep.getText(), cidadeUF.getText());
+						DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+						LocalDate aniversario = LocalDate.parse(this.aniversario.getText(), DATE_FORMAT);
+						String cpfNovo = cpfPadronizar(cpf.getText());
+						novo = new Cliente(cpfNovo,aniversario, nome.getText(), end);
+					}catch(NumberFormatException e){
+						avisoCadastro.setText("Numero de residencia deve ser um numero");
+					}
+					try {
+						FachadaControlador.getInstance().cadastrar(novo);
+					} catch (ObjectNaoExisteException | ErroAoSalvarException | ObjectJaExisteException e) {
+						avisoCadastro.setText(e.getMessage());
+						ok = false;
+					}
+					if(ok){
+						avisoCadastro.setText("Cliente cadastrado com sucesso");
+						FachadaControlador.getInstance().salvarNoArquivoPessoa();
+					}
+				}else{
+					avisoCadastro.setText("Data invalida ou escrita num formato invalido(\"dia-mes-ano\")");
+				}
 			}
 		}
 	}
 
-		
-	
+
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

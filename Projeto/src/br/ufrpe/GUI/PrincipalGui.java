@@ -10,9 +10,7 @@ public class PrincipalGui extends Application{
 		ScreenManager.getInstance().setMainStage(primaryStage);
 		ScreenManager.getInstance().showLogin();
 	}
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 }
