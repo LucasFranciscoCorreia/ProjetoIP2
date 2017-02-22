@@ -34,6 +34,7 @@ public class PetCareController {
 	@FXML
 	private TableColumn<Produto, Float> precoCol;
 	
+	//TABLEVIEW DE SERVIÇO EM ANDAMENTO
 	@FXML
 	private TableView<PetCare> andamentoTable;
 	@FXML
@@ -47,6 +48,7 @@ public class PetCareController {
 	@FXML
 	private TableColumn<Cliente, String> cpfClienteCol;
 	
+	//TABLEVIEW DE SERVIÇO CONCLUIDOS
 	@FXML
 	private TableView<PetCare> concluidoTable;
 	@FXML
@@ -79,6 +81,39 @@ public class PetCareController {
 	
 	public void preencherTabelaConcluido(){
 		// TODO
+	}
+	
+	public boolean cpfOk(String cpf){
+		boolean ok = true;
+		char[] cpfChar = cpf.toCharArray();
+		
+		if(cpf.length() == 11){
+			for(int i = 0; i < cpf.length(); i++){
+				if(!Character.isDigit(cpfChar[i])){
+					ok = false;
+				}
+			}			
+		}else{
+			ok = false;
+		}
+		
+		return ok;
+	}
+	
+	public String cpfPadronizar(String cpf){
+		String novoCpf = "";
+		char[] cpfChar = cpf.toCharArray();
+		
+		for(int i = 0; i < cpf.length(); i++){
+			novoCpf += cpfChar[i];
+			if(i == 2 || i == 5){
+				novoCpf += ".";
+			}else if(i == 8){
+				novoCpf += "-";
+			}
+		}
+		
+		return novoCpf;
 	}
 	
 	@FXML
@@ -127,12 +162,14 @@ public class PetCareController {
 		
 		if(codigo.getText().isEmpty()){
 			avisoPesquisar.setText("INFORME UM CÓDIGO VÁLIDO!!!");
+			codigo.setText("");
 		}else{
 			try {
 				Servico achado = FachadaControlador.getInstance().buscarServico(codigo.getText());
 				clientePesquisarScene.setVisible(true);
 			} catch (ObjectNaoExisteException e) {
 				avisoPesquisar.setText(e.getMessage());
+				codigo.setText("");
 			}
 		}
 	}
@@ -141,10 +178,11 @@ public class PetCareController {
 	public void pesquisarCliente(ActionEvent evt){
 		if(cpf.getText().isEmpty()){
 			avisoCliente.setText("INFORME UM CPF VÁLIDO!");
-		}else{
+			cpf.setText("");
+		}else if (cpfOk(cpf.getText())) {
 			try {
-				//TODO erro!!!
-				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				petsScene.setVisible(true);
 				
 				ArrayList<Animal> animais = achado.getPets();
@@ -162,6 +200,7 @@ public class PetCareController {
 				
 			} catch (Exception e) {
 				avisoCliente.setText(e.getMessage());
+				cpf.setText("");
 			}
 		}
 	}
@@ -172,7 +211,8 @@ public class PetCareController {
 			avisoServico.setText("INFORME TODOS OS DADOS!!!");
 		}else{
 			try {
-				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpf.getText());
+				String cpfNovo = cpfPadronizar(cpf.getText());
+				Cliente achado = (Cliente) FachadaControlador.getInstance().buscarPessoa(cpfNovo);
 				Animal pet = null;
 				ArrayList<Animal> animais = achado.getPets();
 				for(Animal animal: animais){
