@@ -35,11 +35,12 @@ import javafx.util.Callback;
 
 public class TelaCaixaController {
     
-	
 	@FXML
-	private Label aviso,valorTotal;
+	private Button cadastrar, atualizar, remover;
+	@FXML
+	private Label aviso,valorTotal, produtoToString;
 	@FXML 
-	private TextField codigoVenda, quantidadeVenda;
+	private TextField codigoVenda, quantidadeVenda, codigoProduto;
 	@FXML
 	private TableView<Produto> tableCarrinho;
 	@FXML
@@ -78,6 +79,7 @@ public class TelaCaixaController {
 		novo = null;
 		ScreenManager.getInstance().showMenuCaixa();
 	}
+	
 	
 	@FXML
 	public void buttonAddCarrinho(ActionEvent event){
