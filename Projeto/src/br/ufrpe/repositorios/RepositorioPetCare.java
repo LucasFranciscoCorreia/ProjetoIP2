@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import br.ufrpe.beans.*;
 import br.ufrpe.excecoes.ObjectJaExisteException;
@@ -34,6 +35,29 @@ public class RepositorioPetCare implements IRepositorioPetCare, Serializable {
 			unicInstanc = lerDoArquivo();
 		}
 		return unicInstanc;
+	}
+	
+	public PetCare busca(Cliente b, Animal p) {
+		LocalDate agora = LocalDate.now();
+		int i = 0;
+		boolean ok = true;
+		while(i < repositorio.size() && ok){
+			if(repositorio.get(i).getDataComeco().getYear() < agora.getYear()){
+				i++;
+			}else if(repositorio.get(i).getDataComeco().getMonthValue() < agora.getMonthValue()){
+				i++;
+			}else if(repositorio.get(i).getDataComeco().getDayOfMonth() < agora.getDayOfMonth()){
+				i++;
+			}
+		}
+		if(i < repositorio.size()){
+			for(;i < repositorio.size();i++){
+				if(repositorio.get(i).getCliente().equals(b) && repositorio.get(i).getPet().equals(p)){
+					return repositorio.get(i);
+				}
+			}
+		}
+		return null;
 	}
 	
 	/**
